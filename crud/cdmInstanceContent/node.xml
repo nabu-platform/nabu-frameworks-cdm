@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.services.crud.CRUDArtifactManager" created="2023-10-16T11:32:24.511+02:00" lastModified="2023-10-17T13:20:59.867+02:00" leaf="false" version="3">
+    <environmentId>apollo</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>nabu.frameworks.cdm.database.types.cdmInstanceContent</references>
+    <references>nabu.services.crud.provider.basic.provider</references>
+</node>

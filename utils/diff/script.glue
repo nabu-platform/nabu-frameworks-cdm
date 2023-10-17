@@ -1,0 +1,83 @@
+original ?= null
+new ?= null
+
+originalTypeId = nabu.utils.reflection.Type.of(original)/typeId
+
+# Get all the properties, we need to know the unique keys at each level to perform proper diffing in case of lists etc
+properties = nabu.utils.reflection.Type.describe(originalTypeId, true)/parameters
+
+newTypeId = nabu.utils.reflection.Type.of(new)/typeId
+
+# If they are not of the same type, we only compare the fields that they have in common
+if (newTypeId != originalTypeId)
+	newProperties = nabu.utils.reflection.Type.describe(newTypeId, true)/parameters
+	properties = properties[path ? /newProperties/path]
+
+differ = lambda
+	original ?= null
+	new ?= null
+	# the path so far
+	path ?= null
+	# the path without any array indexes etc
+	flatPath ?= null
+
+	localProperties = when(flatPath == null, properties[path ~ "^[^/]+$"], properties[path ~ /flatPath + "/[^/]+$"])
+	
+	@return
+	diffs = series()
+	
+	# we loop over all properties so we check all values (not only values that happen to exist in the original)
+	for (property : localProperties)
+		childPath = when(path == null, "", path + "/") + property/name
+		childFlatPath = when(flatPath == null, "", flatPath + "/") + property/name
+		
+		oldValue = original[/property/name]
+		newValue = new[/property/name]
+		
+		# if it's a list, we can have inserts and updates etc
+		if (property/list)
+			listPrimary = first(properties[path ~ /childFlatPath + "/[^/]+$" && primary == true])
+			if (!listPrimary)
+				throw("Could not find primary key in loop " + property/path)
+
+			# keep track of the ids we already checked to conclude inserts
+			ids = series()
+
+			for (single : oldValue)
+				iterationPath = childPath + "[" + $index + "]"
+				primaryKey = single[/listPrimary/name]
+				ids = merge(ids, primaryKey)
+				# we need to find the equivalent entry in the new value
+				equivalent = first(newValue[$this[/listPrimary/name] == /primaryKey])
+				# it was deleted!
+				if (equivalent == null)
+					diffs = merge(diffs, structure(path: iterationPath, action: "delete", oldValue: single))
+				else
+					diffs = merge(diffs, differ(single, equivalent, iterationPath, childFlatPath))
+
+			# the insert counter starts after the last element in the old value
+			# this does not take into account deletes however, so if you apply both inserts and deletes the actual index might change
+			insertCounter = size(oldValue)					
+			for (single : newValue)
+				primaryKey = single[/listPrimary/name]
+				# if it's not in the ids, its in insert
+				if (primaryKey !? ids)
+					diffs = merge(diffs, structure(path: childPath + "[" + insertCounter + "]", action: "insert", newValue: single))
+					insertCounter = insertCounter + 1
+				
+		else if (property/simple && oldValue != newValue)
+			diffs = merge(diffs, structure(path: childPath, action: "update", oldValue: oldValue, newValue: newValue))
+			
+		else if (!property/simple)
+			# new value
+			if (oldValue == null && newValue != null)
+				diffs = merge(diffs, structure(path: childPath, action: "update", oldValue: oldValue, newValue: newValue))
+			# removed value
+			else if (oldValue != null && newValue == null)
+				diffs = merge(diffs, structure(path: childPath, action: "update", oldValue: oldValue, newValue: newValue))
+			# dig deep
+			else if (oldValue != null && newValue != null)
+				diffs = merge(diffs, differ(oldValue, newValue, childPath, childFlatPath))
+
+@return
+nabu.frameworks.cdm.utils.diffResult [] diffs = differ(original, new)

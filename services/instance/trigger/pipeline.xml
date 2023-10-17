@@ -1,0 +1,7 @@
+<structure name="pipeline">
+    <structure name="input">
+        <structure definition="java.lang.Object" minOccurs="0" name="cdmInstance"/>
+        <field maxOccurs="unbounded" minOccurs="0" name="systems" type="java.lang.String"/>
+    </structure>
+    <structure name="output"/>
+</structure>

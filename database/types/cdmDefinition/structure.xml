@@ -1,0 +1,7 @@
+<structure collectionName="cdmDefinitions" name="cdmDefinition">
+    <field name="id" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" primaryKey="true" type="java.util.UUID"/>
+    <field name="created" timezone="UTC" type="java.util.Date"/>
+    <field comment="The id of the document type that represents this canonical data model" name="typeId" type="java.lang.String"/>
+    <field comment="A user readable short title of this cdm" minOccurs="0" name="title" type="java.lang.String"/>
+    <field comment="A longer description that details the goals of this cdm" minOccurs="0" name="description" type="java.lang.String"/>
+</structure>

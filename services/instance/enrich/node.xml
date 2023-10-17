@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-16T11:28:20.913+02:00" lastModified="2023-10-17T16:09:52.099+02:00" leaf="true" version="25">
+    <environmentId>apollo</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>nabu.utils.reflection.Type.of</references>
+    <references>nabu.frameworks.cdm.utils.diffResult</references>
+    <references>nabu.utils.types.ParameterDescription</references>
+    <references>java.util.UUID</references>
+    <references>nabu.frameworks.cdm.crud.cdmEnricher.types.output</references>
+    <references>nabu.utils.reflection.Type.describe</references>
+    <references>nabu.frameworks.cdm.specs.externalIdOutput</references>
+    <references>nabu.utils.reflection.Type.details</references>
+    <references>nabu.frameworks.cdm.crud.cdmEnricher.services.list</references>
+    <references>java.lang.Object</references>
+    <references>nabu.frameworks.cdm.specs.externalIdInput</references>
+    <references>java.lang.String</references>
+    <references>nabu.frameworks.cdm.specs.enrich</references>
+    <references>nabu.utils.reflection.Type.get</references>
+</node>

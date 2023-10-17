@@ -1,0 +1,5 @@
+<structure collectionName="cdmSystems" comment="A system that has some part of the data the belongs to some cdm.&#10;We want to be able to group enrichers and subscribers in this way so we don't trigger on our own changes" name="cdmSystem">
+    <field name="id" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" primaryKey="true" type="java.util.UUID"/>
+    <field name="created" timezone="UTC" type="java.util.Date"/>
+    <field name="name" type="java.lang.String"/>
+</structure>

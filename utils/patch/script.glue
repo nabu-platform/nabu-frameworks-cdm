@@ -1,0 +1,33 @@
+instance ?= null
+nabu.frameworks.cdm.utils.diffResult [] diffs ?= null
+
+# We first apply all the updates, if there are updates to array based items, the indexes should be correct until we actually start deleting and inserting
+for (diff : diffs)
+	# if it's an update, we straight up set it
+	if (diff/action == "update")
+		instance[/diff/path] = diff/newValue
+
+# Then we perform all deletes
+# The array that it impacts should always be at the end of the path
+# However it is not guaranteed that they are in order, we might delete index 2, then 1, then 10. however, the deletes impact one another so we can't just execute them one after the other
+# Per impacted array we collect a list of indexes that should be removed
+# We then remove them all in one go
+arraysToCheck = structure()
+for (diff : diffs)	
+	if (diff/action == "delete")
+		arrayPath = replace("(.*)\[[0-9]+\]$", "$1", diff/path)
+		arrayIndex = replace(".*\[([0-9]+)\]$", "$1", diff/path)
+		arraysToCheck[/arrayPath] = when(arraysToCheck[/arrayPath] == null, series(arrayIndex), merge(arraysToCheck[/arrayPath], arrayIndex))
+
+# We sort the arrays from longest name to smallest
+# This is an easy workaround for "nested arrays" where deleting a parent might impact the child
+# For a diff done between two documents this should never happen, for a multiway diff however it could be the case
+for (arrayPath : sort(lambda(a, b, size(b) - size(a)), keys(arraysToCheck)))
+	instance[/arrayPath] = filter(lambda(x, i, i !? arraysToCheck[/arrayPath]), instance[/arrayPath])
+	
+# We then need to add any inserts, the indexes are incorrect if any deletes have happened, so instead we just append at the end
+for (diff : diffs)	
+	if (diff/action == "insert")
+		arrayPath = replace("(.*)\[[0-9]+\]$", "$1", diff/path)
+		instance[/arrayPath] = when(instance[/arrayPath] == null, series(diff/newValue), merge(instance[/arrayPath], diff/newValue))
+

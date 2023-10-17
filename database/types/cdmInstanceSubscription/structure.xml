@@ -1,0 +1,9 @@
+<structure collectionName="cdmInstanceSubscriptions" name="cdmInstanceSubscription">
+    <field name="id" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" primaryKey="true" type="java.util.UUID"/>
+    <field name="created" timezone="UTC" type="java.util.Date"/>
+    <field comment="When was it last triggered" name="pushed" timezone="UTC" type="java.util.Date"/>
+    <field foreignKey="nabu.frameworks.cdm.database.types.cdmInstance:id" name="cdmInstanceId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+    <field foreignKey="nabu.frameworks.cdm.database.types.cdmSubscriber:id" name="cdmSubscriberId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+    <field comment="The id of the last pushed content" foreignKey="nabu.frameworks.cdm.database.types.cdmInstanceContent:id" name="cdmInstanceContentId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+    <field comment="The last hash for the subsection of the cdm this subscription is interested in" name="hash" type="java.lang.String"/>
+</structure>

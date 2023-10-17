@@ -1,0 +1,9 @@
+<structure collectionName="cdmSubscribers" name="cdmSubscriber">
+    <field name="id" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" primaryKey="true" type="java.util.UUID"/>
+    <field name="created" timezone="UTC" type="java.util.Date"/>
+    <field foreignKey="nabu.frameworks.cdm.database.types.cdmDefinition:id" name="cdmDefinitionId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+    <field comment="Must implement the subscriber spec" name="serviceId" type="java.lang.String"/>
+    <field foreignKey="nabu.frameworks.cdm.database.types.cdmSystem:id" name="cdmSystemId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+    <field comment="Most subscribers are only interested in part of the CDM. You can define the type here. If left empty you will subscribe to the full cdm" minOccurs="0" name="typeId" type="java.lang.String"/>
+    <field comment="You can configure a glue filter to limit the instances you are interested in" minOccurs="0" name="filter" type="java.lang.String"/>
+</structure>

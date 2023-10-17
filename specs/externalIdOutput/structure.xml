@@ -1,0 +1,3 @@
+<structure name="externalIdOutput" restrict="system" superType="nabu.frameworks.cdm.specs.externalIdInput">
+    <field comment="Whether or not this is a global or a local identifiers. Defaults to local" minOccurs="0" name="global" type="java.lang.Boolean"/>
+</structure>
