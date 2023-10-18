@@ -469,7 +469,7 @@
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="497c50bf42af4fcd997489c7d70bcde9"
-				serviceId="nabu.frameworks.cdm.services.instance.enrich"
+				serviceId="nabu.frameworks.cdm.utils.instance.pullFromRemote"
 				resultName="result180a5c4de8654c4395ddb96414531534"
 				temporaryMapping="true"
 				x="180"

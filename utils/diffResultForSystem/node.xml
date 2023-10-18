@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.types.structure.StructureManager" created="2023-10-18T09:52:08.743+02:00" lastModified="2023-10-18T09:52:24.535+02:00" leaf="true" version="3">
+    <environmentId>apollo</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>nabu.frameworks.cdm.utils.diffResult</references>
+    <references>java.lang.String</references>
+</node>

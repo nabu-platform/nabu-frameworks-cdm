@@ -1,8 +1,0 @@
-<structure collectionName="cdmEnrichers" name="cdmEnricher">
-    <field name="id" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" primaryKey="true" type="java.util.UUID"/>
-    <field name="created" timezone="UTC" type="java.util.Date"/>
-    <field comment="The model that this provider can enrich" foreignKey="nabu.frameworks.cdm.database.types.cdmDefinition:id" name="cdmDefinitionId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
-    <field comment="The service that can enrich it, must implement the enricher spec" name="serviceId" type="java.lang.String"/>
-    <field comment="Higher prio enrichers are applied after lower level enrichers." name="priority" type="java.lang.Long"/>
-    <field foreignKey="nabu.frameworks.cdm.database.types.cdmSystem:id" name="cdmSystemId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
-</structure>

@@ -2,7 +2,8 @@
     <structure name="input">
         <structure comment="The full cdm instance as it is now" definition="java.lang.Object" name="cdmInstance"/>
         <structure definition="nabu.frameworks.cdm.specs.externalIdInput" maxOccurs="unbounded" minOccurs="0" name="externalIds" restrict="cdmInstanceId, systemId, id"/>
-        <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" minOccurs="0" name="changes"/>
     </structure>
-    <structure name="output"/>
+    <structure name="output">
+        <structure comment="External ids for this instance that you want to update. By setting the value to null, you delete them." definition="nabu.frameworks.cdm.specs.externalIdOutput" maxOccurs="unbounded" minOccurs="0" name="externalIds" restrict="system"/>
+    </structure>
 </structure>

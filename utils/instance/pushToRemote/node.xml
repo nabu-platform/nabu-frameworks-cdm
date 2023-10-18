@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-18T11:22:48.254+02:00" lastModified="2023-10-18T13:56:07.871+02:00" leaf="true" version="98">
+    <environmentId>apollo</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>nabu.utils.List.add</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceContent.services.get</references>
+    <references>nabu.frameworks.cdm.specs.subscribe</references>
+    <references>java.util.Date</references>
+    <references>nabu.frameworks.cdm.utils.diff</references>
+    <references>nabu.utils.reflection.Type.of</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.create</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.list</references>
+    <references>nabu.frameworks.cdm.utils.patch</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceContent.types.output</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output</references>
+    <references>java.lang.Boolean</references>
+    <references>java.lang.String</references>
+    <references>nabu.data.json.Services.marshal</references>
+    <references>nabu.data.json.Services.unmarshal</references>
+    <references>nabu.utils.reflection.Type.mask</references>
+    <references>nabu.utils.Stream.toString</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list</references>
+    <references>nabu.utils.String.toStream</references>
+    <references>nabu.utils.Date.now</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.create</references>
+    <references>nabu.frameworks.cdm.utils.diffResult</references>
+    <references>java.util.UUID</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output</references>
+    <references>nabu.frameworks.cdm.specs.externalIdOutput</references>
+    <references>nabu.services.jdbc.Services.update</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceContent.services.list</references>
+    <references>nabu.utils.Object.first</references>
+    <references>nabu.frameworks.cdm.specs.externalIdInput</references>
+    <references>java.lang.Object</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list</references>
+    <references>nabu.frameworks.cdm.specs.provide</references>
+</node>

@@ -51,7 +51,7 @@ differ = lambda
 				equivalent = first(newValue[$this[/listPrimary/name] == /primaryKey])
 				# it was deleted!
 				if (equivalent == null)
-					diffs = merge(diffs, structure(path: iterationPath, action: "delete", oldValue: single))
+					diffs = merge(diffs, structure(propertyPath: property/path, path: iterationPath, action: "delete", oldValue: single))
 				else
 					diffs = merge(diffs, differ(single, equivalent, iterationPath, childFlatPath))
 
@@ -66,15 +66,15 @@ differ = lambda
 					insertCounter = insertCounter + 1
 				
 		else if (property/simple && oldValue != newValue)
-			diffs = merge(diffs, structure(path: childPath, action: "update", oldValue: oldValue, newValue: newValue))
+			diffs = merge(diffs, structure(propertyPath: property/path, path: childPath, action: "update", oldValue: oldValue, newValue: newValue))
 			
 		else if (!property/simple)
 			# new value
 			if (oldValue == null && newValue != null)
-				diffs = merge(diffs, structure(path: childPath, action: "update", oldValue: oldValue, newValue: newValue))
+				diffs = merge(diffs, structure(propertyPath: property/path, path: childPath, action: "update", oldValue: oldValue, newValue: newValue))
 			# removed value
 			else if (oldValue != null && newValue == null)
-				diffs = merge(diffs, structure(path: childPath, action: "update", oldValue: oldValue, newValue: newValue))
+				diffs = merge(diffs, structure(propertyPath: property/path, path: childPath, action: "update", oldValue: oldValue, newValue: newValue))
 			# dig deep
 			else if (oldValue != null && newValue != null)
 				diffs = merge(diffs, differ(oldValue, newValue, childPath, childFlatPath))

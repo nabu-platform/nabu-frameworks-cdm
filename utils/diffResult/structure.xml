@@ -1,5 +1,6 @@
 <structure name="diffResult">
-    <field comment="The path where it applies to" name="path" type="java.lang.String"/>
+    <field comment="The property path, this does not take into account array indexes etc" name="propertyPath" type="java.lang.String"/>
+    <field comment="The exact path where it applies to, this includes the array index" name="path" type="java.lang.String"/>
     <field comment="insert, delete, update" name="action" type="java.lang.String"/>
     <structure definition="java.lang.Object" minOccurs="0" name="oldValue"/>
     <structure definition="java.lang.Object" minOccurs="0" name="newValue"/>

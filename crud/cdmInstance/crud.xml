@@ -8,6 +8,10 @@
     <createBlacklistFields>modified</createBlacklistFields>
     <createRole>$user</createRole>
     <deleteRole>$user</deleteRole>
+    <foreignFields>
+        <foreignName>cdmDefinitionId:typeId</foreignName>
+        <localName>typeId</localName>
+    </foreignFields>
     <hooks>false</hooks>
     <listRole>$user</listRole>
     <provider>nabu.services.crud.provider.basic.provider</provider>

@@ -1,6 +1,6 @@
 <sequence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		disabled="false"
-		id="a6be72f61bcd4e1a823d42f8e64418c4"
+		id="e0fbc79a7be54323ad1d616cbe9630f4"
 		lineNumber="1">
 	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 			comment="Describe the type"
@@ -104,13 +104,13 @@
 				optional="false"
 				fixedValue="false">
 			<from>result7b43f29df40f40fb84e0fe3d08ab40ed/typeId</from>
-			<to>typeId</to>
+			<to>output/typeId</to>
 		</steps>
 	</steps>
 	<steps xsi:type="be.nabu.libs.services.vm.step.Throw"
 			disabled="false"
 			id="3ebf3063e7774835942a7ef30cf2dccf"
-			label="typeId == null"
+			label="output/typeId == null"
 			lineNumber="3"
 			message="Type could not be established"
 			whitelist="false" xsi:nil="true"/>
@@ -158,126 +158,19 @@
 		</steps>
 		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 				disabled="false"
-				id="3e62be2bb37147f8b36f46c203e3cc8b"
+				id="4d74c344ba2f451c9a192f6b5f0ff137"
 				mask="false"
 				optional="false"
 				fixedValue="false">
 			<from>result88d617439e704fff8dd1d874c8e73a2c/value</from>
-			<to>primaryKeyValue</to>
+			<to>output/primaryKey</to>
 		</steps>
 	</steps>
-	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
-			comment="Get all enrichers for this type and the given systems"
+	<steps xsi:type="be.nabu.libs.services.vm.step.Throw"
 			disabled="false"
-			id="c8ccf6bdc27743508a92e605636ff0b3"
-			lineNumber="6">
-		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
-				disabled="false"
-				id="f291f873cfc04d01b69b4db0392b0051"
-				serviceId="nabu.frameworks.cdm.crud.cdmEnricher.services.list"
-				resultName="resultfb7f3b5f803e4cb7a0614b66361e447b"
-				temporaryMapping="true"
-				x="149"
-				y="95"
-				invocationOrder="0"
-				asynchronous="false"
-				recache="false">
-			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-					disabled="false"
-					id="1fabc36fd88342fb89f2a7a4d2d23d0f"
-					mask="false"
-					optional="false"
-					fixedValue="false">
-				<from>input/system</from>
-				<to>filter/system</to>
-			</steps>
-			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-					disabled="false"
-					id="b621f8e6ead845d3965ada0ed1569ca8"
-					mask="false"
-					optional="false"
-					fixedValue="false">
-				<from>typeId</from>
-				<to>filter/typeId[0]</to>
-			</steps>
-		</steps>
-		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-				disabled="false"
-				id="7dec19fffc1f46918a4877e0377691b7"
-				mask="false"
-				optional="false"
-				fixedValue="false">
-			<from>resultfb7f3b5f803e4cb7a0614b66361e447b/results</from>
-			<to>enrichers</to>
-		</steps>
-	</steps>
-	<steps xsi:type="be.nabu.libs.services.vm.step.For"
-			disabled="false"
-			id="f13795a754bb45e68937444d97840789"
-			lineNumber="7"
-			variable="enricher">
-		<steps xsi:type="be.nabu.libs.services.vm.step.Map"
-				disabled="false"
-				id="ac704f8c0222464e8cb8d14d2fdbe72a"
-				lineNumber="8">
-			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
-					disabled="false"
-					id="24e337cca52f47549755a227099c7aec"
-					serviceId="nabu.frameworks.cdm.specs.enrich"
-					resultName="result3b05240074894973ab337e9b7f531fab"
-					temporaryMapping="true"
-					x="213"
-					y="76"
-					invocationOrder="0"
-					asynchronous="false"
-					recache="false">
-				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-						disabled="false"
-						id="79fef8580886461b9ea1cba33546f7f6"
-						mask="false"
-						optional="false"
-						fixedValue="false">
-					<from>input/externalIds</from>
-					<to>externalIds</to>
-				</steps>
-				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-						disabled="false"
-						id="3c54423b80084a99971fd907b0d78fb7"
-						mask="false"
-						optional="false"
-						fixedValue="false">
-					<from>primaryKeyValue</from>
-					<to>cmdInstanceId</to>
-				</steps>
-				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-						disabled="false"
-						id="eab3d644d05949f5bfcb9c1e17708a66"
-						mask="false"
-						optional="false"
-						fixedValue="false">
-					<from>enricher/serviceId</from>
-					<to>implementationId</to>
-				</steps>
-			</steps>
-			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-					disabled="false"
-					id="622c82dd252b4934b9a0137d93528412"
-					mask="false"
-					optional="false"
-					fixedValue="false">
-				<from>result3b05240074894973ab337e9b7f531fab/cdmInstance</from>
-				<to>partialInstance</to>
-			</steps>
-			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-					disabled="false"
-					id="46530e5dd75c4bc887b7bc938bd51b60"
-					mask="false"
-					optional="false"
-					fixedValue="false">
-				<from>result3b05240074894973ab337e9b7f531fab/externalIds</from>
-				<to>newExternalIds</to>
-			</steps>
-		</steps>
-		<query>enrichers</query>
-	</steps>
+			id="444b20e601c448f0a5ee1351cd366823"
+			label="output/primaryKey == null"
+			lineNumber="6"
+			message="Primary key not set"
+			whitelist="false" xsi:nil="true"/>
 </sequence>

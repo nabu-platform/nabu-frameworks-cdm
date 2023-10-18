@@ -1,0 +1,3 @@
+<jdbcService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<sql>update ~cdm_instance_contents cic set active = false, stopped = :stopped where cic.cdm_instance_id = :instanceId</sql>
+</jdbcService>

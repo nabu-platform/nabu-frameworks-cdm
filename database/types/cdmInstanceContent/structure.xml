@@ -1,10 +1,10 @@
-<structure collectionName="cdmInstances" name="cdmInstanceContent">
+<structure collectionName="cdmInstanceContents" name="cdmInstanceContent">
     <field name="id" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" primaryKey="true" type="java.util.UUID"/>
     <field foreignKey="nabu.frameworks.cdm.database.types.cdmInstance:id" name="cdmInstanceId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
     <field comment="The actual content of this instance in JSON" name="content" type="java.lang.String"/>
-    <field comment="The hash of this content" name="hash" type="java.lang.String"/>
-    <field comment="The version of this instance" name="version" type="java.lang.Long"/>
     <field comment="Whether or not this version is active. Each instance should have one active version. It can be used for partitioning on." name="active" type="java.lang.Boolean"/>
     <field comment="Timeline of when this instance was active" name="started" timezone="UTC" type="java.util.Date"/>
     <field comment="Timeline of until when this instance was active" minOccurs="0" name="stopped" timezone="UTC" type="java.util.Date"/>
+    <field name="version" type="java.lang.Long"/>
+    <field comment="Link back to the previous version for quick lookup" foreignKey="nabu.frameworks.cdm.database.types.cdmInstanceContent:id" minOccurs="0" name="previousInstanceContentId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
 </structure>

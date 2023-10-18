@@ -1,0 +1,137 @@
+<sequence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		disabled="false"
+		id="cd79abb984ab41159b39358f48d5035a"
+		lineNumber="1">
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="6d77aed3fc1a4b4d8edb7ea69d5671a1"
+			label="input/providerId != null"
+			lineNumber="2">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="9d7c6c288a384bbd81d4f168817717ad"
+				serviceId="nabu.utils.reflection.Type.describe"
+				resultName="result0456aa1b8ecf4f5ab321c97f340c2336"
+				temporaryMapping="true"
+				x="242"
+				y="49"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="eb5cb76bcea245259f4c30313e6005f9"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>=input/providerId + ":output"</from>
+				<to>typeId</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="748a3b6311d840988307ae16cb4f7fa7"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result0456aa1b8ecf4f5ab321c97f340c2336/parameters[name == "cdmInstance"]/type</from>
+			<to>providerType</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="e9ff8a3f33d847c6960f99fc492abb7f"
+			label="input/subscriberId != null"
+			lineNumber="3">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="b60bcd30fb5c431aaddd9a523a63505c"
+				serviceId="nabu.utils.reflection.Type.describe"
+				resultName="result0456aa1b8ecf4f5ab321c97f340c2336"
+				temporaryMapping="true"
+				x="242"
+				y="49"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="532e890f41204e0ea90ffb12a130e440"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>=input/subscriberId + ":input"</from>
+				<to>typeId</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="b6d607bf2a0c4cf1b6934c06272e692e"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result0456aa1b8ecf4f5ab321c97f340c2336/parameters[name == "cdmInstance"]/type</from>
+			<to>subscriberType</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Throw"
+			disabled="false"
+			id="f7d20abc3b874baca2ba30e667eb4588"
+			label="providerType != null &amp;&amp; subscriberType != null &amp;&amp; providerType != subscriberType"
+			lineNumber="4"
+			message="The data type is not in sync for the provider and subscriber service"
+			whitelist="false" xsi:nil="true"/>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="b45f6d34739c4f678623695e5bcf87d0"
+			lineNumber="5">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="f5798c6aa93a43f988eea3b444a09864"
+				serviceId="nabu.utils.Object.first"
+				resultName="result0a8c4dd79b854b168c1108c0ffcefd86"
+				temporaryMapping="true"
+				x="233"
+				y="177"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="9708a80473154aa7b9ee81756e4c110f"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>providerType</from>
+				<to>options[0]</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="7688c8e340154b8ea88ef8657fd6e031"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>subscriberType</from>
+				<to>options[1]</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="89cf6bf1853e4b5fbb5bb3d56de0a750"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/coreTypeId</from>
+				<to>options[2]</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="4c39e06b1f584df5b48855f02e04acc7"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result0a8c4dd79b854b168c1108c0ffcefd86/first</from>
+			<to>output/typeId</to>
+		</steps>
+	</steps>
+</sequence>

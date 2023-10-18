@@ -1,0 +1,4 @@
+<structure name="parameter">
+    <field name="stopped" timezone="UTC" type="java.util.Date"/>
+    <field name="instanceId" type="java.util.UUID"/>
+</structure>

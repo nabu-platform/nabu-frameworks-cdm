@@ -8,7 +8,6 @@
     </entries>
     <entries>
         <synchronize>true</synchronize>
-        <type>nabu.frameworks.cdm.database.types.cdmEnricher</type>
         <x>711</x>
         <y>308</y>
     </entries>
@@ -16,12 +15,6 @@
         <synchronize>true</synchronize>
         <x>1325</x>
         <y>7</y>
-    </entries>
-    <entries>
-        <synchronize>true</synchronize>
-        <type>nabu.frameworks.cdm.database.types.cdmSubscriber</type>
-        <x>714</x>
-        <y>579</y>
     </entries>
     <entries>
         <synchronize>true</synchronize>
@@ -57,5 +50,11 @@
         <type>nabu.frameworks.cdm.database.types.cdmInstanceExternalId</type>
         <x>1290</x>
         <y>296</y>
+    </entries>
+    <entries>
+        <synchronize>true</synchronize>
+        <type>nabu.frameworks.cdm.database.types.cdmSystemSubscription</type>
+        <x>701</x>
+        <y>342</y>
     </entries>
 </dataModel>

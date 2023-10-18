@@ -1,0 +1,11 @@
+<structure collectionName="cdmSystemSubscriptions" name="cdmSystemSubscription">
+    <field name="id" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" primaryKey="true" type="java.util.UUID"/>
+    <field name="created" timezone="UTC" type="java.util.Date"/>
+    <field foreignKey="nabu.frameworks.cdm.database.types.cdmDefinition:id" name="cdmDefinitionId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+    <field foreignKey="nabu.frameworks.cdm.database.types.cdmSystem:id" name="cdmSystemId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+    <field comment="An optional subview of the data that is managed by this subscription" minOccurs="0" name="typeId" type="java.lang.String"/>
+    <field comment="Data provider id" minOccurs="0" name="providerId" type="java.lang.String"/>
+    <field comment="Data subscriber id" minOccurs="0" name="subscriberId" type="java.lang.String"/>
+    <field comment="The priority of this subscription in all subscriptions for the CDM" name="priority" type="java.lang.Long"/>
+    <field comment="The subscription might only apply to a portion of the cdm instances, you can set a filter here" minOccurs="0" name="filter" type="java.lang.String"/>
+</structure>
