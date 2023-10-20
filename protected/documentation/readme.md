@@ -1,3 +1,60 @@
+# todo
+
+- merging of "new" identifiers needs to take into account unchanged values, in most cases you will simply push "all" identifiers
+
+# Scenario's
+
+## Webhook
+
+The webhook approach is the simplest: a system reports something has been changed in near realtime. This has the following characteristics:
+
+- targeted: we know exactly which items are impacted, no need to scan entire systems
+- frequency: webhooks are called as they occur which means the frequency is higher on a per instance basis than for example a batch sync system: you might get multiple webhook calls for a single instance during the day versus a single batch sync at night. However, when looking at overall numbers of entities being synced back and forth the frequency is very low because you are only exchanging actually changed items rather than having to check everything for change
+- concurrency: because webhooks happen near real time, they are by their very nature during a period of active usage of the systems. This means there is a higher likelyhood of concurrent changes that are not reported and processed yet.
+
+The webhook approach follows this approach:
+
+- we pull _only_ the system that reported the change and merge this into our version of the CDM
+- we pull all other systems but do _not_ merge this into our version of the CDM (meaning the change can be picked up later). The reason we pull at all is to prevent accidently overwriting changes with historical data
+- we merge the changes from the webhook into the separate target systems
+
+If we do notice a change while pulling from a system that is not the source of the webhook, we do incorporate this into the update we push to that system but we do not report it yet to the system. This will have to wait until that system also performs a webhook or until a batch sync kicks in.
+Because our CDM has not incorporated the change, the system will trigger the next time and register this as a change.
+
+## Batch sync
+
+In the most basis batch sync principle we loop over our own items during a periodic run and for each instance perform this:
+
+- pull from each system and incoporate changes into the CDM
+- push to each system with the diff
+
+The timing interval between pull and push is short enough because we are doing this per instance. No concurrent changes are expected and this type of sync could even presumably run during business hours.
+
+This sync has a number of drawbacks:
+
+- we can't use it to pick up "new" items from remote systems
+- it will always scan all systems, even if those systems have more intelligent ways of syncing changes like last modified syncing
+
+### Combine with external looping
+
+We can run a batch service that pulls all items from a remote system and pushes them to the CDM (this counts as a pull though). The push logic can do a few things:
+
+- if it does not exist yet, create it
+- the cdm might do a check (pulled vs pushed date) that all involved systems have received new data since their last push, if so, it can start a syncing of that item early (needs locking though to ensure no double syncs) -> perhaps not doable because of next comment
+
+If your batch service has an optimized loop (e.g. last modified), it can run an additional service to mark all items from its core system for a particular cdm as being "in sync". It is unclear how this would be combined with the instance level check though, especially with locking.
+
+You can run your batch sync processes for multiple systems in parallel, they are just feeding data into the CDM. Once they are all done, the CDM can start a syncing round. To prevent the CDM from _again_ retrieving the data, we have added a pull interval. If the CDM sync routine starts within that timeframe, it will not refetch the data.
+
+Because such batch services can take a while to finish though, there can be quite a time interval between fetching the data and updating it. During this time any change in the remote system would be reset once the CDM sync kicks in.
+
+# Push vs pull
+
+The "pulled" date indicates when we last received an update of what the actual data in the remote system is.
+The "pushed" date indicates when we last pushed our changes to the remote system.
+
+If we push data, assuming no problems in the target systems, we can assume any pull done immediately after should return the exact same data.
+
 # Questions
 
 What if an update in one system should lead to a delete in another?
@@ -6,6 +63,12 @@ If we just set a filter and compare the current content (e.g. silver), we won't 
 
 If you have a filter, we need the previous version as well. If your filter applies to the previous version but no longer to the current version, you are likely still interested in that change.
 
+
+
+
+pull updates the remote data in our system but ALSO the cdm
+push does a localized pull to update our data but NOT the cdm, this has to be done in a later pull
+update pull to have a 
 
 
 

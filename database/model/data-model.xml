@@ -36,14 +36,14 @@
     <entries>
         <synchronize>true</synchronize>
         <type>nabu.frameworks.cdm.database.types.cdmInstance</type>
-        <x>711</x>
-        <y>37</y>
+        <x>735</x>
+        <y>251</y>
     </entries>
     <entries>
         <synchronize>true</synchronize>
         <type>nabu.frameworks.cdm.database.types.cdmInstanceSubscription</type>
-        <x>1291</x>
-        <y>488</y>
+        <x>1288</x>
+        <y>813</y>
     </entries>
     <entries>
         <synchronize>true</synchronize>
@@ -54,7 +54,19 @@
     <entries>
         <synchronize>true</synchronize>
         <type>nabu.frameworks.cdm.database.types.cdmSystemSubscription</type>
-        <x>701</x>
-        <y>342</y>
+        <x>652</x>
+        <y>707</y>
+    </entries>
+    <entries>
+        <synchronize>true</synchronize>
+        <type>nabu.frameworks.cdm.database.types.cdmInstanceRelation</type>
+        <x>1294</x>
+        <y>476</y>
+    </entries>
+    <entries>
+        <synchronize>true</synchronize>
+        <type>nabu.frameworks.cdm.database.types.cdmInstanceLog</type>
+        <x>1277</x>
+        <y>1079</y>
     </entries>
 </dataModel>

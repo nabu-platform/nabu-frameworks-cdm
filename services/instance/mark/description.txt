@@ -1,0 +1,2 @@
+If you are for instance doing a "last modified" batch sync, you can use the push to push specific updates.
+However at the end, you can mark any remaining as being "up to date" because they did not appear in the last modified sync

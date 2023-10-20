@@ -1,3 +1,5 @@
-Create a new instance of a cdm.
+Create a new instance of a cdm. You need to provide _some_ external ids, otherwise none of the systems will have an idea what needs to be done.
+
+
 We will create a new instance of the object, fill in a newly generated primary key field and enrich it from remote systems.
 You can provide external ids so your particular enricher can perform the basic enrichment necessary

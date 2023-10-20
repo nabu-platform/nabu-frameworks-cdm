@@ -1,0 +1,4 @@
+An external system can push a particular CDM instance.
+For example if you are using an external batch sync loop to pick up changes and want to push them. 
+
+This will not immediately be pushed to other systems by default unless you toggle the synchronize boolean

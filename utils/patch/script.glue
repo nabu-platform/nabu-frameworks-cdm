@@ -2,14 +2,16 @@ instance ?= null
 nabu.frameworks.cdm.utils.diffResult [] diffs ?= null
 
 # We are only interested in diffs that apply to properties we have
-typeId = nabu.utils.reflection.Type.of(original)/typeId
+typeId = nabu.utils.reflection.Type.of(instance)/typeId
 properties = nabu.utils.reflection.Type.describe(typeId, true)/parameters
+
 diffs = diffs[propertyPath ? /properties/path]
 
 # We first apply all the updates, if there are updates to array based items, the indexes should be correct until we actually start deleting and inserting
 for (diff : diffs)
 	# if it's an update, we straight up set it
 	if (diff/action == "update")
+		console("setting " + /diff/path + " to " + diff/newValue)
 		instance[/diff/path] = diff/newValue
 
 # Then we perform all deletes
@@ -35,4 +37,3 @@ for (diff : diffs)
 	if (diff/action == "insert")
 		arrayPath = replace("(.*)\[[0-9]+\]$", "$1", diff/path)
 		instance[/arrayPath] = when(instance[/arrayPath] == null, series(diff/newValue), merge(instance[/arrayPath], diff/newValue))
-

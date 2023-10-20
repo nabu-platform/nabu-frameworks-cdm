@@ -1,0 +1,13 @@
+<structure name="pipeline">
+    <structure name="input">
+        <field name="cdmInstanceId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+        <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.database.types.cdmInstanceExternalId" maxOccurs="unbounded" minOccurs="0" name="existingExternalIds"/>
+        <structure comment="External ids for this instance that you want to update. By setting the value to null, you delete them." definition="nabu.frameworks.cdm.specs.externalIdOutput" maxOccurs="unbounded" minOccurs="0" name="newExternalIds" restrict="system"/>
+    </structure>
+    <structure name="output">
+        <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.database.types.cdmInstanceExternalId" maxOccurs="unbounded" minOccurs="0" name="externalIds"/>
+    </structure>
+    <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.database.types.cdmInstanceExternalId" minOccurs="0" name="existingExternalId"/>
+    <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.database.types.cdmInstanceExternalId" maxOccurs="unbounded" minOccurs="0" name="existingExternalIds"/>
+    <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.database.types.cdmInstanceExternalId" maxOccurs="unbounded" minOccurs="0" name="externalIdsToUpdate"/>
+</structure>

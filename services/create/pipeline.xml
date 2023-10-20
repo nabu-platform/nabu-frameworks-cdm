@@ -1,8 +1,8 @@
 <structure name="pipeline">
     <structure name="input">
         <field comment="The cdm type id" name="typeId" type="java.lang.String"/>
-        <field comment="The originating system (if any)" minOccurs="0" name="system" type="java.lang.String"/>
-        <structure comment="Any known external ids" definition="nabu.frameworks.cdm.specs.externalIdInput" maxOccurs="unbounded" minOccurs="0" name="externalIds" restrict="cdmInstanceId, systemId, id"/>
+        <field comment="The item was created in _a_ system, we need to pull that first as it needs to form the basis of further enrichment from other providers" name="system" type="java.lang.String"/>
+        <structure comment="Any external ids you already know. Other systems will need as much information as possible about the entity." definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" name="externalIds" restrict="cdmInstanceId, systemId, id"/>
     </structure>
     <structure name="output">
         <structure definition="java.lang.Object" name="cdmInstance"/>

@@ -1,0 +1,11 @@
+<structure name="pipeline">
+    <structure name="input">
+        <structure definition="java.lang.Object" name="cdmInstance"/>
+        <field name="system" type="java.lang.String"/>
+        <structure comment="Any known external ids" definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="externalIds" restrict="cdmInstanceId, systemId, id"/>
+        <field minOccurs="0" name="synchronize" type="java.lang.Boolean"/>
+    </structure>
+    <structure name="output">
+        <field name="cdmInstanceId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+    </structure>
+</structure>

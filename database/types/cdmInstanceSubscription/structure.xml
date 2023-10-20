@@ -1,10 +1,10 @@
 <structure collectionName="cdmInstanceSubscriptions" name="cdmInstanceSubscription">
     <field name="id" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" primaryKey="true" type="java.util.UUID"/>
     <field name="created" timezone="UTC" type="java.util.Date"/>
-    <field comment="When did we last check it" name="checked" timezone="UTC" type="java.util.Date"/>
-    <field comment="When did we push data last?" minOccurs="0" name="pushed" timezone="UTC" type="java.util.Date"/>
-    <field comment="When did we pull data last?" minOccurs="0" name="pulled" timezone="UTC" type="java.util.Date"/>
+    <field comment="When did we last push our data to the remote?" minOccurs="0" name="pushed" timezone="UTC" type="java.util.Date"/>
+    <field comment="When did we get the last version of the remote system? After we push we (should) also know the pulled." minOccurs="0" name="pulled" timezone="UTC" type="java.util.Date"/>
     <field foreignKey="nabu.frameworks.cdm.database.types.cdmInstance:id" name="cdmInstanceId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
     <field foreignKey="nabu.frameworks.cdm.database.types.cdmSystemSubscription:id" name="cdmSubscriptionId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
-    <field comment="The last content" name="content" type="java.lang.String"/>
+    <field comment="The last content. It is optional because it could be deleted" minOccurs="0" name="content" type="java.lang.String"/>
+    <field comment="You can decouple a particular subscription. For instance if we notice that a system deleted an entry, we don't want to keep pushing it." minOccurs="0" name="decoupled" type="java.util.Date"/>
 </structure>

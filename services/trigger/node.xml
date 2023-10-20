@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-20T16:42:52.187+02:00" lastModified="2023-10-20T16:51:24.495+02:00" leaf="true" version="23">
+    <environmentId>apollo</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list</references>
+    <references>nabu.utils.List.unique</references>
+    <references>java.util.UUID</references>
+    <references>nabu.frameworks.cdm.utils.instance.pullFromRemote</references>
+    <references>java.lang.Integer</references>
+    <references>nabu.frameworks.cdm.specs.externalId</references>
+    <references>nabu.utils.List.size</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstance.services.list</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output</references>
+    <references>nabu.frameworks.cdm.utils.instance.pushToRemote</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output</references>
+    <references>java.lang.String</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstance.types.output</references>
+</node>

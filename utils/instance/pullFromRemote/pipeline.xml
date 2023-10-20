@@ -2,15 +2,16 @@
     <structure name="input">
         <field name="cdmInstanceId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
         <field comment="List specific systems if you want, otherwise all systems will be used" maxOccurs="unbounded" minOccurs="0" name="system" type="java.lang.String"/>
+        <field comment="By default this service will adhere to pull interval requirements. You can however force it to pull data anyway." minOccurs="0" name="force" type="java.lang.Boolean"/>
     </structure>
     <structure name="output">
+        <structure definition="java.lang.Object" name="cdmInstance"/>
         <structure comment="The order of these changes is relevant, they are incremental" definition="nabu.frameworks.cdm.utils.diffResultForSystem" maxOccurs="unbounded" minOccurs="0" name="changes"/>
-        <structure comment="Existing external ids for this instance, this can be used to match it to a target system. Will always send all external ids so you can use other identifiers " definition="nabu.frameworks.cdm.specs.externalIdInput" maxOccurs="unbounded" minOccurs="0" name="newExternalIds" restrict="cdmInstanceId, systemId, id"/>
+        <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output" maxOccurs="unbounded" minOccurs="0" name="externalIds"/>
     </structure>
     <field name="typeId" type="java.lang.String"/>
     <structure definition="java.lang.Object" name="partialInstance"/>
-    <structure comment="External ids for this instance that you want to update. By setting the value to null, you delete them." definition="nabu.frameworks.cdm.specs.externalIdOutput" maxOccurs="unbounded" minOccurs="0" name="newExternalIds" restrict="system"/>
-    <structure comment="Existing external ids for this instance, this can be used to match it to a target system. Will always send all external ids so you can use other identifiers " definition="nabu.frameworks.cdm.specs.externalIdInput" minOccurs="0" name="mappedExternalId" restrict="cdmInstanceId, systemId, id"/>
+    <structure comment="Existing external ids for this instance, this can be used to match it to a target system. Will always send all external ids so you can use other identifiers " definition="nabu.frameworks.cdm.specs.externalId" minOccurs="0" name="mappedExternalId" restrict="cdmInstanceId, systemId, id"/>
     <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="diffs"/>
     <structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" maxOccurs="unbounded" minOccurs="0" name="subscriptions"/>
     <structure collectionName="cdmInstanceSubscriptions" definition="nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output" maxOccurs="unbounded" minOccurs="0" name="instanceSubscriptions"/>
@@ -21,6 +22,7 @@
     <structure collectionName="cdmInstances" definition="nabu.frameworks.cdm.crud.cdmInstance.types.output" name="instance"/>
     <structure definition="java.lang.Object" minOccurs="0" name="cdmInstance"/>
     <structure definition="nabu.utils.types.ParameterDescription" minOccurs="0" name="primaryKeyField"/>
+    <structure comment="These will be merged into existing external ids" definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="newExternalIds" restrict="cdmInstanceId, id"/>
     <field name="newVersion" type="java.lang.Long"/>
-    <structure comment="Existing external ids for this instance, this can be used to match it to a target system. Will always send all external ids so you can use other identifiers " definition="nabu.frameworks.cdm.specs.externalIdInput" maxOccurs="unbounded" name="externalIds" restrict="cdmInstanceId, systemId, id"/>
+    <field minOccurs="0" name="earliestNextPull" type="java.util.Date"/>
 </structure>

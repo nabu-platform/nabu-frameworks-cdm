@@ -1,0 +1,209 @@
+<sequence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		disabled="false"
+		id="6b6e4045831e44dd8a6c72feafc7baf1"
+		lineNumber="1">
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			comment="Map to be used as an into target"
+			disabled="false"
+			id="d9b1b8e1460447b6a3ea6a5ca9ae271e"
+			lineNumber="2">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="8cc8d65a700245b786dc97d58441bfda"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>input/existingExternalIds</from>
+			<to>existingExternalIds</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.For"
+			disabled="false"
+			id="c97e95f71c254d64901474778099fc09"
+			lineNumber="3"
+			variable="newExternalId"
+			into="existingExternalIds">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+				comment="Get current"
+				disabled="false"
+				id="155bc27d73b9499db729c3e9901018c3"
+				lineNumber="4">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="0522f661546849e3a2f559c712bbf362"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/existingExternalIds[name == /newExternalId/name]</from>
+				<to>existingExternalId</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Switch"
+				disabled="false"
+				id="39a5073ae061435088a427156c460306"
+				lineNumber="5">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+					disabled="false"
+					id="bc1cf7c8d78f42ffa6e3d4312518581b"
+					label="!existingExternalId"
+					lineNumber="6">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+						disabled="false"
+						id="9384332e4229428dbcf18ed954752f21"
+						serviceId="nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.create"
+						resultName="resultb265b59c0f554b65bbe6205b71ffb54f"
+						temporaryMapping="true"
+						x="192"
+						y="106"
+						invocationOrder="0"
+						asynchronous="false"
+						recache="false">
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="f195f3e466704a97a8d494f1e81aff80"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>newExternalId/name</from>
+						<to>instance/name</to>
+					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="3395e4f634eb43cc97c551715a0eb05b"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>newExternalId/identifier</from>
+						<to>instance/identifier</to>
+					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="5e13dcaaf55941d5a610218a047a2ee6"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>input/cdmInstanceId</from>
+						<to>instance/cdmInstanceId</to>
+					</steps>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="96abdc3546ca4f928c3c60a932b77701"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>resultb265b59c0f554b65bbe6205b71ffb54f/created</from>
+					<to>existingExternalIds[0]</to>
+				</steps>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Sequence"
+					disabled="false"
+					id="85a37cede1d443068d7164ab6426530e"
+					label="existingExternalId/identifier != newExternalId/identifier"
+					lineNumber="7">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+						comment="Map the updated value"
+						disabled="false"
+						id="007e3b93109d4ccaa973867c0354e8da"
+						lineNumber="8">
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="a712e9d5a614432ca6952172205fda69"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>newExternalId/identifier</from>
+						<to>existingExternalId/identifier</to>
+					</steps>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+						disabled="false"
+						id="9a902e63f44b499580c58dfe358f4556"
+						lineNumber="9">
+					<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+							disabled="false"
+							id="362194b6c61844738c62aecd9568f91e"
+							serviceId="nabu.utils.List.add"
+							resultName="resulta343f143087a40ce8edd1f0620e6c46e"
+							temporaryMapping="true"
+							x="213"
+							y="165"
+							invocationOrder="0"
+							asynchronous="false"
+							recache="false">
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="cccea646c31141c997a4dcd3587a8a7d"
+								mask="false"
+								optional="false"
+								fixedValue="false">
+							<from>existingExternalId</from>
+							<to>object</to>
+						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="bbdb71854b5c42ca9bf9a18143ccbeea"
+								mask="false"
+								optional="false"
+								fixedValue="false">
+							<from>externalIdsToUpdate</from>
+							<to>list</to>
+						</steps>
+					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="63ca698b0eca4799bc70e96d8cf68631"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>resulta343f143087a40ce8edd1f0620e6c46e/list</from>
+						<to>externalIdsToUpdate</to>
+					</steps>
+				</steps>
+			</steps>
+		</steps>
+		<query>input/newExternalIds</query>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="e64b4bf3dd7845188d73955d5c4bf99c"
+			label="externalIdsToUpdate"
+			lineNumber="10">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="d288b01cf2ab46b19a29a79db9852326"
+				serviceId="nabu.services.jdbc.Services.update"
+				resultName="resultc0fb6e7a406a40e39ace85aab4c0a237"
+				temporaryMapping="true"
+				x="207"
+				y="206"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="fc9cd4621d5d4fcaba31d63bc05ad4f6"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>externalIdsToUpdate</from>
+				<to>instances</to>
+			</steps>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			comment="Map output"
+			disabled="false"
+			id="b5eb56f72f764a729cb919e8957627da"
+			lineNumber="11">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="1a85e9dd868d4de2b306e9f1c1be3e61"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>existingExternalIds</from>
+			<to>output/externalIds</to>
+		</steps>
+	</steps>
+</sequence>

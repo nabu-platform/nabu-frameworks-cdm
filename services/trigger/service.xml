@@ -1,0 +1,321 @@
+<sequence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		disabled="false"
+		id="68839e89775d490080ba2e30b173f0fc"
+		lineNumber="1">
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="6ffefff782424ef19f509186e9852d50"
+			lineNumber="2">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="3c0d0b0f6d604936a39dba505bffd0e2"
+				serviceId="nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list"
+				resultName="resultcdfe8b02dbba48c6a759078879c7d6e7"
+				temporaryMapping="true"
+				x="111"
+				y="143"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="fda4398786a84a50a7d8689bde03e365"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/externalId/name</from>
+				<to>filter/name[0]</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="18b5c65d38594d04bccfa03f141fb682"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/externalId/identifier</from>
+				<to>filter/identifier[0]</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="510093e2b2dc4fa5949872f66fd3984a"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>resultcdfe8b02dbba48c6a759078879c7d6e7/results</from>
+			<to>externalIds</to>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="46f3991301ff46f7b3ed32677d2ca283"
+				serviceId="nabu.utils.List.unique"
+				resultName="result8626a510a3104a3cb7a7d78577f7330f"
+				temporaryMapping="true"
+				x="369"
+				y="264"
+				invocationOrder="1"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="f1bc0ddc33c3413db9cfcfb089673a57"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>resultcdfe8b02dbba48c6a759078879c7d6e7/results/cdmInstanceId</from>
+				<to>list</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="7e5d96c3832243e7803bb3eefbeeb715"
+				serviceId="nabu.utils.List.size"
+				resultName="resulte11833391d0f48398e4b13cad1bba36e"
+				temporaryMapping="true"
+				x="586"
+				y="362"
+				invocationOrder="1"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="3a9f34c68091482fb9287948bada55cf"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>result8626a510a3104a3cb7a7d78577f7330f/list</from>
+				<to>list</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="079b3631dad54e83a5bb5e1d5668109a"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>resulte11833391d0f48398e4b13cad1bba36e/size</from>
+			<to>amountOfInstances</to>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="064b73e9b63f437882c138f4d65943eb"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result8626a510a3104a3cb7a7d78577f7330f/list</from>
+			<to>cdmInstanceIds</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Throw"
+			disabled="false"
+			id="d6954b4b3a4e4c11a9c444aa027abb12"
+			label="amountOfInstances == 0"
+			lineNumber="3"
+			message="Could not find CDM instance"
+			whitelist="false" xsi:nil="true"/>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="2fca53157321444ba522f6452b7ca4ec"
+			lineNumber="4">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="ea03490ce337471caa0e71d9ced0fbc0"
+				serviceId="nabu.frameworks.cdm.crud.cdmInstance.services.list"
+				resultName="resulta27061fec8a14cc5a6a5dd614e4e16f5"
+				temporaryMapping="true"
+				x="172"
+				y="69"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="fc53da3d98c84c01a00d8a425aaacc3c"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/typeId</from>
+				<to>filter/typeId[0]</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="4fe3876f99574374a08f0cb68c00c145"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>cdmInstanceIds</from>
+				<to>filter/id</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="9fdc60fe1a3d44c69cb894d60a343888"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>resulta27061fec8a14cc5a6a5dd614e4e16f5/results</from>
+			<to>cdmInstances</to>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="f1a47864abca4630b812ce6dcb21ceec"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>resulta27061fec8a14cc5a6a5dd614e4e16f5/page/totalRowCount</from>
+			<to>amountOfInstances</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Throw"
+			disabled="false"
+			id="d2da047587ca46d0b0464b6b32c05951"
+			label="amountOfInstances == 0"
+			lineNumber="5"
+			message="Could not find CDM instance with that external id for the given type"
+			whitelist="false" xsi:nil="true"/>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Throw"
+			disabled="false"
+			id="ef699e20f83e474e8ffbc80c2e6f4b93"
+			label="amountOfInstances &gt;= 2"
+			lineNumber="6"
+			message="Multiple CDM instances found of the same type for the given identifier"
+			whitelist="false" xsi:nil="true"/>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="efbb7fbd13744922a8063c2f9c94b114"
+			lineNumber="7">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="b45ce5051bf64057a3e855287a1e3ae2"
+				serviceId="nabu.frameworks.cdm.utils.instance.pullFromRemote"
+				resultName="result66f58ba709024646a3c3351ea4ba48b4"
+				temporaryMapping="true"
+				x="201"
+				y="149"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="45573fad5ab34d44bb069e0633f5116a"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/system</from>
+				<to>system[0]</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="dab39a7fa3994e289d6158c957090a4a"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>true</from>
+				<to>force</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="24b8f05f50594fceaf7e0fdef6ed4e00"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>cdmInstances[0]/id</from>
+				<to>cdmInstanceId</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="8ff9ef1dc1c643f2ae69550f0e0fcc55"
+				serviceId="nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list"
+				resultName="result20fb853080cf43ae90029cf1b44bef3d"
+				temporaryMapping="true"
+				x="296"
+				y="323"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="f14801102fb34b0e9787372c1020b42a"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/typeId</from>
+				<to>filter/coreTypeId[0]</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="c9a167ef31a94d93b3ed9d22338ad418"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>true</from>
+				<to>filter/isSubscriber</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="e6ddd6bd41c940379782b2aaeb4d92c7"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/system</from>
+				<to>filter/notSystem[0]</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="6870c8008ea44ceb981087942b9afcc4"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result20fb853080cf43ae90029cf1b44bef3d/results</from>
+			<to>impactedSubscriberSystems</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			comment="Push it to the remote systems forcing a pull before we push it"
+			disabled="false"
+			id="a3ad2fedf68d4080b08451ef8cc14fd1"
+			label="impactedSubscriberSystems"
+			lineNumber="8">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="02fe20482a4944a8ae03ac0d450b1ba2"
+				serviceId="nabu.frameworks.cdm.utils.instance.pushToRemote"
+				resultName="resultb45299d35fe54a51926ff4c5f3403857"
+				temporaryMapping="true"
+				x="414"
+				y="133"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="396ed9b51c4242d98f95510ed4e5c02f"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>cdmInstances[0]/id</from>
+				<to>cdmInstanceId</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="aa933c840ec14d2c8d21be2d8bce3037"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>impactedSubscriberSystems/system</from>
+				<to>systems</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="95710a7ba8584fc783bdb73cdf68eeb1"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>true</from>
+				<to>forcePull</to>
+			</steps>
+		</steps>
+	</steps>
+</sequence>

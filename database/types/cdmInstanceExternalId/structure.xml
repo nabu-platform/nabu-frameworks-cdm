@@ -3,5 +3,4 @@
     <field foreignKey="nabu.frameworks.cdm.database.types.cdmInstance:id" name="cdmInstanceId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
     <field name="name" type="java.lang.String"/>
     <field name="identifier" type="java.lang.String"/>
-    <field comment="It likely originated from a particular system. You can also have global external identifiers though." foreignKey="nabu.frameworks.cdm.database.types.cdmSystem:id" minOccurs="0" name="systemId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
 </structure>

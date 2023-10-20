@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.types.structure.StructureManager" created="2023-10-20T12:56:00.473+02:00" lastModified="2023-10-20T12:58:34.562+02:00" leaf="true" version="7">
+    <environmentId>apollo</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>java.util.UUID</references>
+    <references>nabu.frameworks.cdm.database.types.cdmSystem</references>
+    <references>java.lang.String</references>
+    <references>java.util.Date</references>
+    <references>nabu.frameworks.cdm.database.types.cdmDefinition</references>
+    <references>nabu.frameworks.cdm.database.types.cdmInstance</references>
+    <references>java.lang.Boolean</references>
+</node>

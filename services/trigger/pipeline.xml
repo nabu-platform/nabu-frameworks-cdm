@@ -1,0 +1,13 @@
+<structure name="pipeline">
+    <structure name="input">
+        <field name="system" type="java.lang.String"/>
+        <field name="typeId" type="java.lang.String"/>
+        <structure definition="nabu.frameworks.cdm.specs.externalId" name="externalId" restrict="cdmInstanceId, id"/>
+    </structure>
+    <structure name="output"/>
+    <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output" maxOccurs="unbounded" minOccurs="0" name="externalIds"/>
+    <field minOccurs="0" name="amountOfInstances" type="java.lang.Integer"/>
+    <field maxOccurs="unbounded" minOccurs="0" name="cdmInstanceIds" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+    <structure collectionName="cdmInstances" definition="nabu.frameworks.cdm.crud.cdmInstance.types.output" maxOccurs="unbounded" minOccurs="0" name="cdmInstances"/>
+    <structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" maxOccurs="unbounded" minOccurs="0" name="impactedSubscriberSystems"/>
+</structure>

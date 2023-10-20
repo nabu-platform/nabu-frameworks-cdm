@@ -1,9 +1,10 @@
 <structure comment="Allows you to subscribe to changes to the instance that interest you&#10;For the best experience: restrict the cdm instance and inject the correct type. This can be the full cdm, but most likely its a partial view." name="pipeline">
     <structure name="input">
         <structure comment="The full cdm instance as it is now" definition="java.lang.Object" name="cdmInstance"/>
-        <structure definition="nabu.frameworks.cdm.specs.externalIdInput" maxOccurs="unbounded" minOccurs="0" name="externalIds" restrict="cdmInstanceId, systemId, id"/>
+        <structure definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="externalIds" restrict="cdmInstanceId, id"/>
     </structure>
     <structure name="output">
-        <structure comment="External ids for this instance that you want to update. By setting the value to null, you delete them." definition="nabu.frameworks.cdm.specs.externalIdOutput" maxOccurs="unbounded" minOccurs="0" name="externalIds" restrict="system"/>
+        <structure comment="The CDM as it should exist now in the target system. If all data was updated successfully, it should just return the input. If some changes were not allowed, they should be marked as such in the instance." definition="java.lang.Object" minOccurs="0" name="cdmInstance"/>
+        <structure definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="externalIds" restrict="cdmInstanceId, id"/>
     </structure>
 </structure>

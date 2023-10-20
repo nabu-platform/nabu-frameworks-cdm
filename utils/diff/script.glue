@@ -26,6 +26,10 @@ differ = lambda
 	@return
 	diffs = series()
 	
+	# We only want to flag a change IF the new value actually has _a_ value for it
+	changedKeys = keys(new, true)
+	localProperties = localProperties[name ? /changedKeys]
+	
 	# we loop over all properties so we check all values (not only values that happen to exist in the original)
 	for (property : localProperties)
 		childPath = when(path == null, "", path + "/") + property/name

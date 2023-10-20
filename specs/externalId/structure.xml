@@ -1,0 +1,1 @@
+<structure name="externalId" restrict="cdmInstanceId, id" superType="nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output"/>

@@ -8,4 +8,6 @@
     <field comment="Data subscriber id" minOccurs="0" name="subscriberId" type="java.lang.String"/>
     <field comment="The priority of this subscription in all subscriptions for the CDM" name="priority" type="java.lang.Long"/>
     <field comment="The subscription might only apply to a portion of the cdm instances, you can set a filter here" minOccurs="0" name="filter" type="java.lang.String"/>
+    <field comment="You can limit how often we pull data. This will be compared to the last pull date." minOccurs="0" name="pullInterval" type="be.nabu.libs.types.base.Duration"/>
+    <field comment="You can disable a subscription" name="enabled" type="java.lang.Boolean"/>
 </structure>

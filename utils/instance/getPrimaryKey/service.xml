@@ -94,7 +94,7 @@
 				mask="false"
 				optional="false"
 				fixedValue="false">
-			<from>resultdb9cf77f03704aa6aa4ee6098307a51c/parameters[primary]</from>
+			<from>resultdb9cf77f03704aa6aa4ee6098307a51c/parameters[primary == true]</from>
 			<to>primaryKey</to>
 		</steps>
 		<steps xsi:type="be.nabu.libs.services.vm.step.Link"

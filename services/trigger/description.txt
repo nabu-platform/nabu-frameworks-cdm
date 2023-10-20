@@ -1,0 +1,2 @@
+Trigger a change from a specific system for a specific instance identified by the external identifier.
+This is meant to be used primarily in a webhook scenario where you know a single system has a change waiting.
