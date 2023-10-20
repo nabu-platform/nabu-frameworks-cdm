@@ -1,0 +1,8 @@
+<structure name="pipeline">
+    <structure name="input">
+        <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" minOccurs="0" name="diffs"/>
+    </structure>
+    <structure name="output">
+        <field name="marshalled" type="java.lang.String"/>
+    </structure>
+</structure>

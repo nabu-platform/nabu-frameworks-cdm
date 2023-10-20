@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.iface.ServiceInterfaceManager" created="2023-10-16T10:33:49.493+02:00" lastModified="2023-10-20T17:06:57.237+02:00" leaf="true" version="18">
+<node artifactManager="be.nabu.eai.module.services.iface.ServiceInterfaceManager" created="2023-10-16T10:33:49.493+02:00" lastModified="2023-10-20T17:25:27.213+02:00" leaf="true" version="20">
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
     <properties/>
     <references>java.lang.Object</references>
     <references>nabu.frameworks.cdm.specs.externalId</references>
-    <references>java.lang.Object</references>
+    <references>java.lang.Boolean</references>
     <references>nabu.frameworks.cdm.specs.externalId</references>
 </node>

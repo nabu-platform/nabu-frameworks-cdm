@@ -1224,79 +1224,9 @@
 				label="push"
 				lineNumber="35">
 			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
-					comment="Make a masked instance so we can diff changes"
-					disabled="false"
-					id="bcafab1868da431ebf09d91bdca8a8d2"
-					lineNumber="36">
-				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
-						disabled="false"
-						id="02557249a37c409fb4938dde129f4d81"
-						serviceId="nabu.utils.reflection.Type.mask"
-						resultName="resultcd6647e639e348e6a41a7777bd6291d0"
-						temporaryMapping="true"
-						x="402"
-						y="200"
-						invocationOrder="1"
-						asynchronous="false"
-						recache="false">
-					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-							disabled="false"
-							id="984ef61f42b7415f9c4363f066a292d1"
-							mask="false"
-							optional="false"
-							fixedValue="false">
-						<from>result591302c7e709455bb2db428f4d111d3d/typeId</from>
-						<to>type</to>
-					</steps>
-					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-							disabled="false"
-							id="62e81583b9ab4262bba2418b8045424b"
-							mask="false"
-							optional="false"
-							fixedValue="false">
-						<from>patchedPartialInstance</from>
-						<to>instance</to>
-					</steps>
-				</steps>
-				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
-						disabled="false"
-						id="9ffa416889f84ee2beed4fcb53f0783d"
-						serviceId="nabu.utils.reflection.Type.of"
-						resultName="result591302c7e709455bb2db428f4d111d3d"
-						temporaryMapping="true"
-						x="36"
-						y="72"
-						invocationOrder="0"
-						asynchronous="false"
-						recache="false">
-					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-							disabled="false"
-							id="943e34b38cfc42da9b6986e465b70763"
-							mask="false"
-							optional="false"
-							fixedValue="false">
-						<from>patchedPartialInstance</from>
-						<to>typeInstance</to>
-					</steps>
-				</steps>
-				<steps xsi:type="be.nabu.libs.services.vm.step.Drop"
-						disabled="false"
-						id="89ac999e3a2c49a38c4bb86d5a284211"
-						path="appliedDiffs" xsi:nil="true"/>
-				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-						disabled="false"
-						id="3538574e67aa4bdcb96ed60394dee435"
-						mask="false"
-						optional="false"
-						fixedValue="false">
-					<from>resultcd6647e639e348e6a41a7777bd6291d0/masked</from>
-					<to>pushedPartialInstance</to>
-				</steps>
-			</steps>
-			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 					disabled="false"
 					id="d6b3bf8a67954136acca6df8a0a8ec7b"
-					lineNumber="37">
+					lineNumber="36">
 				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 						disabled="false"
 						id="fbb3af112b5c4c659b777757d7852d8a"
@@ -1328,11 +1258,11 @@
 					</steps>
 					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 							disabled="false"
-							id="ebbcd8b1c2e74d2e8a8864356c88af2f"
+							id="a26718217f73435abfb495e984b8d1cb"
 							mask="false"
 							optional="false"
 							fixedValue="false">
-						<from>pushedPartialInstance</from>
+						<from>patchedPartialInstance</from>
 						<to>cdmInstance</to>
 					</steps>
 				</steps>
@@ -1347,12 +1277,12 @@
 				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 						disabled="false"
-						id="f6ededbd970d4181ba9e25afe115b01e"
+						id="8b0f86a9779e4886873c6c0a13a7cb7f"
 						mask="false"
 						optional="false"
 						fixedValue="false">
-					<from>result66c3d0f3aebe4c9596df5ce60f3bda6f/cdmInstance</from>
-					<to>pushedPartialInstance</to>
+					<from>result66c3d0f3aebe4c9596df5ce60f3bda6f/rejected</from>
+					<to>rejected</to>
 				</steps>
 			</steps>
 			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
@@ -1360,7 +1290,7 @@
 					disabled="false"
 					id="58998ed9bb87401695f0ec19f343fb3c"
 					label="newExternalIds"
-					lineNumber="38">
+					lineNumber="37">
 				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 						disabled="false"
 						id="08d00c30ca704f279e31c675ccec59e3"
@@ -1414,7 +1344,7 @@
 					comment="Update the &quot;pushed&quot;"
 					disabled="false"
 					id="47ce2c02fd6940e49af9c25a62a932f9"
-					lineNumber="39">
+					lineNumber="38">
 				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 						disabled="false"
 						id="1df901e2220943f494f58a70007211ed"
@@ -1425,61 +1355,60 @@
 					<to>instanceSubscription/pushed</to>
 				</steps>
 			</steps>
-			<steps xsi:type="be.nabu.libs.services.vm.step.Sequence"
+			<steps xsi:type="be.nabu.libs.services.vm.step.Switch"
 					disabled="false"
-					id="390ef9d5590d4cd3b156d9217366ad4e"
-					label="pushedPartialInstance != null"
-					lineNumber="40">
+					id="2a80362c53a24e9a8da73b4701a30989"
+					lineNumber="39">
 				<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 						disabled="false"
-						id="568be8acaac14f53a70e796652c8838d"
-						lineNumber="41">
+						id="2e53fda4265a4fd985df381cc8f78a2b"
+						label="rejected"
+						lineNumber="40">
 					<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 							disabled="false"
-							id="ade394382ef9445b9a73ead94b572568"
-							serviceId="nabu.frameworks.cdm.utils.diff"
-							resultName="resultbabfa0676cf24fdd8ffe84c866cc8cbe"
+							id="34bb96ca848044fa9a377bafa49b1709"
+							serviceId="nabu.frameworks.cdm.crud.cdmInstanceLog.services.create"
+							resultName="result3bfc1242ce19401f812500bb48e201c2"
 							temporaryMapping="true"
-							x="147"
-							y="203"
-							invocationOrder="0"
+							x="470"
+							y="146"
+							invocationOrder="1"
 							asynchronous="false"
 							recache="false">
 						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 								disabled="false"
-								id="1ed5d4a9cbcc4995ad3970981c77b557"
+								id="ea36e97c71a64fc8b7b30d2ec48a0857"
 								mask="false"
 								optional="false"
-								fixedValue="false">
-							<from>patchedPartialInstance</from>
-							<to>original</to>
+								fixedValue="true">
+							<from>push-rejected</from>
+							<to>instance/logType</to>
 						</steps>
 						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 								disabled="false"
-								id="3532e39f9447497c9201c3cef5b2042c"
+								id="0952e19aac8347a3befabaaad551f1d2"
 								mask="false"
 								optional="false"
 								fixedValue="false">
-							<from>pushedPartialInstance</from>
-							<to>new</to>
+							<from>input/cdmInstanceId</from>
+							<to>instance/cdmInstanceId</to>
 						</steps>
-					</steps>
-					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-							disabled="false"
-							id="8a70e7cec21e4400960f93829f38c359"
-							mask="false"
-							optional="false"
-							fixedValue="false">
-						<from>resultbabfa0676cf24fdd8ffe84c866cc8cbe/diffs</from>
-						<to>rejectedDiffs</to>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="61b29da9503844f295a112763457b20b"
+								mask="false"
+								optional="false"
+								fixedValue="false">
+							<from>instanceSubscription/id</from>
+							<to>instance/cdmInstanceSubscription</to>
+						</steps>
 					</steps>
 				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 						comment="Marshal the content and update &quot;pulled&quot;. We assume that the data is now synchronized and pulling it would yield the same result"
 						disabled="false"
 						id="fa7f762ff61a489fa7b4361eb2da8eeb"
-						label="!rejectedDiffs"
-						lineNumber="42">
+						lineNumber="41">
 					<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 							disabled="false"
 							id="dc1c5baeaf7f4f9481cedafcbd5eb200"
@@ -1576,7 +1505,7 @@
 			disabled="false"
 			id="973ff9e5d7214e1898fc333ee23eab74"
 			label="instanceSubscriptions"
-			lineNumber="43">
+			lineNumber="42">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="aa2f63054aa74874baa41d5989e99a55"

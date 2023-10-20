@@ -1,0 +1,88 @@
+<sequence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		disabled="false"
+		id="7d21b7535417425a869df7ad12a02358"
+		lineNumber="1">
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="beb5a5d44cc64d55bf26f2e5d1fbf1cc"
+			lineNumber="2">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="9c1006acdfc640529e7037ba91c1bfbc"
+				serviceId="nabu.data.json.Services.marshal"
+				resultName="result7d9da03ba66349aeb3b8fc249e62f44b"
+				temporaryMapping="true"
+				x="139"
+				y="71"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="fd370183423d4cc6914a69fc8a1dfc13"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input</from>
+				<to>data</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="2506b40be164478cb2772a5515c5be83"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>UTF-8</from>
+				<to>charset</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="d9f26e168e4440b68ddb56b3bcb1b2ca"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>true</from>
+				<to>prettyPrint</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="f500efbb9d2b47fe87d1dd1d04fc6635"
+				serviceId="nabu.utils.Stream.toString"
+				resultName="result672d8078bb0d4a1591a10e05877732d6"
+				temporaryMapping="true"
+				x="552"
+				y="241"
+				invocationOrder="1"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="2bed40a733e44187ba288cc2752af33e"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>result7d9da03ba66349aeb3b8fc249e62f44b/marshalled</from>
+				<to>stream</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="3241fc7ce0594fa9bc2282ddaeb0132b"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>UTF-8</from>
+				<to>charset</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="4a7d22bb630d4db69613b7cbeed31a9d"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result672d8078bb0d4a1591a10e05877732d6/string</from>
+			<to>output/marshalled</to>
+		</steps>
+	</steps>
+</sequence>

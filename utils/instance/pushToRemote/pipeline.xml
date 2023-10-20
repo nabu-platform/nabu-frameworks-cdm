@@ -23,10 +23,10 @@
     <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" minOccurs="0" name="diffToApply"/>
     <structure definition="java.lang.Object" name="staticPartialInstance"/>
     <structure definition="java.lang.Object" name="patchedPartialInstance"/>
-    <structure definition="java.lang.Object" minOccurs="0" name="pushedPartialInstance"/>
     <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="appliedDiffs"/>
     <field name="push" type="java.lang.Boolean"/>
     <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output" maxOccurs="unbounded" minOccurs="0" name="externalIds"/>
     <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="rejectedDiffs"/>
     <structure definition="java.lang.Object" name="newestPartialInstance"/>
+    <field comment="Some or all of the data was rejected" minOccurs="0" name="rejected" type="java.lang.Boolean"/>
 </structure>

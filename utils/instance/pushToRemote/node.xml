@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-18T11:22:48.254+02:00" lastModified="2023-10-20T17:17:28.473+02:00" leaf="true" version="141">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-18T11:22:48.254+02:00" lastModified="2023-10-20T17:27:12.977+02:00" leaf="true" version="151">
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
@@ -11,6 +11,7 @@
     <references>java.util.Date</references>
     <references>nabu.frameworks.cdm.utils.diff</references>
     <references>nabu.utils.reflection.Type.of</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceLog.services.create</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.create</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.list</references>
     <references>nabu.frameworks.cdm.specs.externalId</references>

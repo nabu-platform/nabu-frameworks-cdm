@@ -4,7 +4,7 @@
         <structure definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="externalIds" restrict="cdmInstanceId, id"/>
     </structure>
     <structure name="output">
-        <structure comment="The CDM as it should exist now in the target system. If all data was updated successfully, it should just return the input. If some changes were not allowed, they should be marked as such in the instance." definition="java.lang.Object" minOccurs="0" name="cdmInstance"/>
+        <field comment="Some or all of the data was rejected" minOccurs="0" name="rejected" type="java.lang.Boolean"/>
         <structure definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="externalIds" restrict="cdmInstanceId, id"/>
     </structure>
 </structure>
