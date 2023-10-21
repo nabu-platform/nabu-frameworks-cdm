@@ -6,5 +6,6 @@
     <structure name="output">
         <structure definition="java.lang.Object" minOccurs="0" name="cdmInstance"/>
         <structure comment="These will be merged into existing external ids" definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="externalIds" restrict="cdmInstanceId, id"/>
+        <structure comment="The relations of this cdm instance. These should be ALL currently active relations. If an existing relation is no longer listed, it is removed." definition="nabu.frameworks.cdm.specs.relation" maxOccurs="unbounded" minOccurs="0" name="relations"/>
     </structure>
 </structure>

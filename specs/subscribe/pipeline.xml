@@ -6,5 +6,6 @@
     <structure name="output">
         <field comment="Some or all of the data was rejected" minOccurs="0" name="rejected" type="java.lang.Boolean"/>
         <structure definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="externalIds" restrict="cdmInstanceId, id"/>
+        <structure comment="The relations of this cdm instance. These should be ALL currently active relations. If an existing relation is no longer listed, it is removed." definition="nabu.frameworks.cdm.specs.relation" maxOccurs="unbounded" minOccurs="0" name="relations"/>
     </structure>
 </structure>

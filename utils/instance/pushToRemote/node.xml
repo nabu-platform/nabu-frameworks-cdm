@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-18T11:22:48.254+02:00" lastModified="2023-10-20T17:27:12.977+02:00" leaf="true" version="151">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-18T11:22:48.254+02:00" lastModified="2023-10-21T09:07:30.096+02:00" leaf="true" version="160">
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
     <properties/>
+    <references>nabu.utils.Runtime.summarizeException</references>
     <references>nabu.utils.List.add</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceContent.services.get</references>
     <references>nabu.frameworks.cdm.utils.externalId.update</references>
@@ -31,7 +32,6 @@
     <references>nabu.frameworks.cdm.utils.diffResult</references>
     <references>java.util.UUID</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output</references>
-    <references>nabu.frameworks.cdm.specs.externalIdOutput</references>
     <references>nabu.services.jdbc.Services.update</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceContent.services.list</references>
     <references>nabu.utils.Object.first</references>

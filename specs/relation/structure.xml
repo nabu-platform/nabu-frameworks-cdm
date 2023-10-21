@@ -1,0 +1,6 @@
+<structure name="relation">
+    <field comment="The target type of this relation, preferably another CDM" name="typeId" type="java.lang.String"/>
+    <field comment="An optional relationship type that indicates what this relation means" minOccurs="0" name="relationType" type="java.lang.String"/>
+    <field comment="The name of the identifier used to figure out which instance we are related to, for example &quot;email&quot;" name="name" type="java.lang.String"/>
+    <field comment="The actual identifier" name="identifier" type="java.lang.String"/>
+</structure>

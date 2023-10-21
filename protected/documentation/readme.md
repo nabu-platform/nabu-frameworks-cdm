@@ -34,6 +34,19 @@ This sync has a number of drawbacks:
 
 - we can't use it to pick up "new" items from remote systems
 - it will always scan all systems, even if those systems have more intelligent ways of syncing changes like last modified syncing
+- it performs a lot more calls to each system as we do an instance get rather than a list for every item
+
+## Deletes
+
+Deletes are picked up as we try to "pull" from a system but it returns nothing where there was something before.
+If we do a push with a forced pull, we will also notes this particular discrepency and set it to decoupled.
+
+Note however in a custom batch sync scenario it is a lot harder to pick this up. Most remote systems will not be able to report this and the batch sync will simply not report on it.
+Especially in the optimized custom batch sync where you use the last modified, it is hard to distinguish between "it wasn't updated" or "it was deleted".
+And the custom batch is specifically meant to prevent case-by-case pull later on so the push will bypass any additional pull and simply try to push the data.
+The subscriber will likely throw an exception which will cascade into a rejection.
+
+For this reason (and also to know the actual state of the remote system after rejection) an additional provide is done on reject, this can pick up deleted data.
 
 ### Combine with external looping
 

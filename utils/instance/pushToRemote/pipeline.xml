@@ -13,7 +13,6 @@
     <structure collectionName="cdmInstanceSubscriptions" definition="nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output" minOccurs="0" name="instanceSubscription"/>
     <field comment="The id of the document type that represents this canonical data model" foreignName="cdmInstanceId:cdmDefinitionId:typeId" name="typeId" primaryKey="false" type="java.lang.String"/>
     <structure definition="java.lang.Object" name="partialInstance"/>
-    <structure comment="External ids for this instance that you want to update. By setting the value to null, you delete them." definition="nabu.frameworks.cdm.specs.externalIdOutput" maxOccurs="unbounded" minOccurs="0" name="newExternalIds" restrict="system"/>
     <structure comment="Existing external ids for this instance, this can be used to match it to a target system. Will always send all external ids so you can use other identifiers " definition="nabu.frameworks.cdm.specs.externalId" minOccurs="0" name="mappedExternalId" restrict="cdmInstanceId, systemId, id"/>
     <structure collectionName="cdmInstanceContents" definition="nabu.frameworks.cdm.crud.cdmInstanceContent.types.output" name="previousContent"/>
     <structure definition="java.lang.Object" minOccurs="0" name="cdmInstance"/>
@@ -29,4 +28,6 @@
     <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="rejectedDiffs"/>
     <structure definition="java.lang.Object" name="newestPartialInstance"/>
     <field comment="Some or all of the data was rejected" minOccurs="0" name="rejected" type="java.lang.Boolean"/>
+    <structure definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="newExternalIds" restrict="cdmInstanceId, id"/>
+    <field name="rejectionReason" type="java.lang.String"/>
 </structure>

@@ -1,0 +1,10 @@
+<structure name="pipeline">
+    <structure name="input">
+        <field comment="If we have run before, this contains the date of the last run. This can be used to perform more optimized delta syncs based on last modified." minOccurs="0" name="lastRun" type="java.util.Date"/>
+        <field name="limit" type="java.lang.Long"/>
+        <field name="offset" type="java.lang.Long"/>
+    </structure>
+    <structure name="output">
+        <structure definition="nabu.frameworks.cdm.specs.provide:output" maxOccurs="unbounded" minOccurs="0" name="instances"/>
+    </structure>
+</structure>
