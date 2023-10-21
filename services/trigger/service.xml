@@ -245,21 +245,21 @@
 			</steps>
 			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 					disabled="false"
-					id="c9a167ef31a94d93b3ed9d22338ad418"
-					mask="false"
-					optional="false"
-					fixedValue="true">
-				<from>true</from>
-				<to>filter/isSubscriber</to>
-			</steps>
-			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-					disabled="false"
 					id="e6ddd6bd41c940379782b2aaeb4d92c7"
 					mask="false"
 					optional="false"
 					fixedValue="false">
 				<from>input/system</from>
 				<to>filter/notSystem[0]</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="021423ab2d554576aaaa4c445843a507"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>true</from>
+				<to>filter/hasPush</to>
 			</steps>
 		</steps>
 		<steps xsi:type="be.nabu.libs.services.vm.step.Link"

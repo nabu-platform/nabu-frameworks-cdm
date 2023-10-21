@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T09:44:07.182+02:00" lastModified="2023-10-21T09:45:04.108+02:00" leaf="true" version="6">
+    <comment>First run any custom batches and finally the standard batch</comment>
+    <environmentId>apollo</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>java.lang.String</references>
+</node>

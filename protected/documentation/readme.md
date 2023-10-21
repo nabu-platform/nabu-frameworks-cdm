@@ -23,6 +23,8 @@ Because our CDM has not incorporated the change, the system will trigger the nex
 
 ## Batch sync
 
+### Standard batch sync
+
 In the most basis batch sync principle we loop over our own items during a periodic run and for each instance perform this:
 
 - pull from each system and incoporate changes into the CDM
@@ -35,6 +37,29 @@ This sync has a number of drawbacks:
 - we can't use it to pick up "new" items from remote systems
 - it will always scan all systems, even if those systems have more intelligent ways of syncing changes like last modified syncing
 - it performs a lot more calls to each system as we do an instance get rather than a list for every item
+
+### Custom batch sync
+
+If no webhooks are available, a custom batch sync is likely the best way to detect newly created items.
+However you don't want to first loop over all entities in an external system just to detect new ones, just to turn on the standard batch sync and pull all entities _again_ with a get.
+
+Additionally depending on how clever the remote system is, you can do optimized batch syncs where you can only fetch any modified data.
+
+For this reason there is also a pullAll service which will send you the date that the last batch sync was done and a configurable batch window so you can use paging.
+If you set the "optimizedPullAll" boolean to true, once the batch process is done, the system will assume everything that was not modified is actually "up to date" and mark them as such with the timestamp of the START of the custom batch. That is the latest point in time we know for certain that there was no change.
+
+If at least one system has a custom batch sync, the system will follow a slightly different logic: it will first start all batch syncs in separate tasks. Then once those are done it will proceed with a standard batch sync.
+IMPORTANT: to prevent the standard batch sync from still pulling data from a system that performed a custom batch sync, you _must_ configure a pullInterval that is representative of how long the whole process takes. Note that it is not only the runtime of your own sync, but potentially other custom batch syncs as well and whether or not they run in parallel.
+
+### Design choice
+
+In the first iteration the idea was just to offer you tools so you could push data into the system which meant externalizing the entire custom batch process.
+However it was added to this framework because of a few reasons:
+
+- the system now actually knows about the custom batch processes and can wait for them to finish, ensuring that the data is up to date. Otherwise you would have to rely on "smart scheduling"
+- for "optimized" batch syncs you usually need a last run which you would need to manage somewhere anyway
+- we would prefer a centralized overview of _all_ the moving parts involved in the CDM syncs, this also means centralized logging to figure out what went wrong (if anything)
+- we can internalize logic like "optimized batch pull" through configuration rather than you having to actually code those things into your solution
 
 ## Deletes
 

@@ -1,0 +1,65 @@
+<sequence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		disabled="false"
+		id="f0654815b5734fc8944300da8ab18301"
+		lineNumber="1">
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="6cd4efca1424421e988b69589f7330ab"
+			lineNumber="2">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="4135a86ec71d48cf9ae6601588809bc0"
+				serviceId="nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list"
+				resultName="resulte36223e19db6426481ff895a50c5f20b"
+				temporaryMapping="true"
+				x="189"
+				y="119"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="9787a809fa0149a7978c0249f07cbb83"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/system</from>
+				<to>filter/system[0]</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="1015ba41d06f41b7a5037d29aa1ee009"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/typeId</from>
+				<to>filter/coreTypeId[0]</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="5cc5d43efd374865b7762fdf58c98d4c"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>true</from>
+				<to>filter/hasBatchPull</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="9716b62167ad43529b66a5269bc916d1"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>resulte36223e19db6426481ff895a50c5f20b/results</from>
+			<to>subscriptions</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Break"
+			disabled="false"
+			id="505a6727a8c741d3af327881850b1e72"
+			label="!subscriptions"
+			lineNumber="3">
+		<count>1</count>
+	</steps>
+</sequence>

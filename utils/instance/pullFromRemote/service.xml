@@ -402,21 +402,21 @@
 			</steps>
 			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 					disabled="false"
-					id="fbc3a46727424498baa890c06b7757eb"
-					mask="false"
-					optional="false"
-					fixedValue="true">
-				<from>true</from>
-				<to>filter/isProvider</to>
-			</steps>
-			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-					disabled="false"
 					id="ceda20ef5a6048cfae0a74b39c5a87ef"
 					mask="false"
 					optional="false"
 					fixedValue="true">
 				<from>priority</from>
 				<to>orderBy[0]</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="9f1e1d91fbac4f519a0cb0bf4b3531e5"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>true</from>
+				<to>filter/hasPull</to>
 			</steps>
 		</steps>
 		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
@@ -627,7 +627,7 @@
 			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 					disabled="false"
 					id="24e337cca52f47549755a227099c7aec"
-					serviceId="nabu.frameworks.cdm.specs.provide"
+					serviceId="nabu.frameworks.cdm.specs.pull"
 					resultName="result3b05240074894973ab337e9b7f531fab"
 					temporaryMapping="true"
 					x="227"
@@ -635,15 +635,6 @@
 					invocationOrder="2"
 					asynchronous="false"
 					recache="false">
-				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-						disabled="false"
-						id="0996987d9dcc48f497d446c8f29edca3"
-						mask="false"
-						optional="false"
-						fixedValue="false">
-					<from>subscription/providerId</from>
-					<to>implementationId</to>
-				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 						disabled="false"
 						id="b2cd1b114ccf48b899b9f4840e820420"
@@ -661,6 +652,15 @@
 						fixedValue="false">
 					<from>output/externalIds</from>
 					<to>externalIds</to>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="77a57eac1670456980f8cce0419bfa97"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>subscription/pullId</from>
+					<to>implementationId</to>
 				</steps>
 			</steps>
 			<steps xsi:type="be.nabu.libs.services.vm.step.Link"

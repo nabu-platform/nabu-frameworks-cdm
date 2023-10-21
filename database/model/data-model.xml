@@ -54,8 +54,8 @@
     <entries>
         <synchronize>true</synchronize>
         <type>nabu.frameworks.cdm.database.types.cdmSystemSubscription</type>
-        <x>652</x>
-        <y>707</y>
+        <x>640</x>
+        <y>516</y>
     </entries>
     <entries>
         <synchronize>true</synchronize>
@@ -68,5 +68,11 @@
         <type>nabu.frameworks.cdm.database.types.cdmInstanceLog</type>
         <x>1277</x>
         <y>1079</y>
+    </entries>
+    <entries>
+        <synchronize>true</synchronize>
+        <type>nabu.frameworks.cdm.database.types.cdmSystemBatchPull</type>
+        <x>791</x>
+        <y>961</y>
     </entries>
 </dataModel>

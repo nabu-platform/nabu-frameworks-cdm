@@ -5,6 +5,6 @@
         <field name="offset" type="java.lang.Long"/>
     </structure>
     <structure name="output">
-        <structure definition="nabu.frameworks.cdm.specs.provide:output" maxOccurs="unbounded" minOccurs="0" name="instances"/>
+        <structure definition="nabu.frameworks.cdm.specs.pull:output" maxOccurs="unbounded" minOccurs="0" name="instances"/>
     </structure>
 </structure>

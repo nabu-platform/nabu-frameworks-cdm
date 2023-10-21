@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-18T10:22:59.869+02:00" lastModified="2023-10-18T10:26:16.688+02:00" leaf="true" version="11">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-18T10:22:59.869+02:00" lastModified="2023-10-21T09:15:14.913+02:00" leaf="true" version="12">
     <comment>Calculates the partial type that is used by this subscriber</comment>
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>

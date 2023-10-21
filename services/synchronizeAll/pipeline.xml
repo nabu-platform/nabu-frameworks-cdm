@@ -1,0 +1,6 @@
+<structure name="pipeline">
+    <structure name="input">
+        <field name="typeId" type="java.lang.String"/>
+    </structure>
+    <structure name="output"/>
+</structure>

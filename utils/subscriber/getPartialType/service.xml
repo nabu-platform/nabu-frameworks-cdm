@@ -5,7 +5,7 @@
 	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 			disabled="false"
 			id="6d77aed3fc1a4b4d8edb7ea69d5671a1"
-			label="input/providerId != null"
+			label="input/pullId != null"
 			lineNumber="2">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
@@ -24,7 +24,7 @@
 					mask="false"
 					optional="false"
 					fixedValue="true">
-				<from>=input/providerId + ":output"</from>
+				<from>=input/pullId + ":output"</from>
 				<to>typeId</to>
 			</steps>
 		</steps>
@@ -41,7 +41,7 @@
 	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 			disabled="false"
 			id="e9ff8a3f33d847c6960f99fc492abb7f"
-			label="input/subscriberId != null"
+			label="input/pushId != null"
 			lineNumber="3">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
@@ -60,7 +60,7 @@
 					mask="false"
 					optional="false"
 					fixedValue="true">
-				<from>=input/subscriberId + ":input"</from>
+				<from>=input/pushId + ":input"</from>
 				<to>typeId</to>
 			</steps>
 		</steps>

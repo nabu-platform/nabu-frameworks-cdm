@@ -1,0 +1,8 @@
+<structure name="pipeline">
+    <structure name="input">
+        <field name="typeId" type="java.lang.String"/>
+        <field name="system" type="java.lang.String"/>
+    </structure>
+    <structure name="output"/>
+    <structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" maxOccurs="unbounded" minOccurs="0" name="subscriptions"/>
+</structure>

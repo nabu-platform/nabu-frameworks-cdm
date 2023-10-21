@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T10:05:51.762+02:00" lastModified="2023-10-21T10:13:12.014+02:00" leaf="true" version="17">
+    <environmentId>apollo</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>nabu.frameworks.cdm.crud.cdmSystemBatchPull.services.list</references>
+    <references>java.util.Date</references>
+    <references>nabu.utils.Date.now</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.services.get</references>
+    <references>java.util.UUID</references>
+    <references>nabu.frameworks.cdm.specs.pull:output</references>
+    <references>nabu.frameworks.cdm.specs.batchPull</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemBatchPull.types.output</references>
+</node>

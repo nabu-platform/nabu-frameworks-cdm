@@ -383,12 +383,12 @@
 			</steps>
 			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 					disabled="false"
-					id="6258038651da4b97ad4eade2b9f41a83"
+					id="f9218b1059fe4c1ab2b1b868191fc3b5"
 					mask="false"
 					optional="false"
 					fixedValue="true">
 				<from>true</from>
-				<to>filter/isSubscriber</to>
+				<to>filter/hasPush</to>
 			</steps>
 		</steps>
 		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
@@ -705,7 +705,7 @@
 				comment="Refresh potentially stale data first. Pull dates are kept in sync with start dates from content instances to prevent unnecessary pulls"
 				disabled="false"
 				id="f1a03dc39cb6491482ab9662175c4974"
-				label="subscription/providerId != null &amp;&amp; input/forcePull"
+				label="subscription/pullId != null &amp;&amp; input/forcePull"
 				lineNumber="17">
 			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 					disabled="false"
@@ -714,7 +714,7 @@
 				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 						disabled="false"
 						id="82a793554830497997dc523ec3ee1602"
-						serviceId="nabu.frameworks.cdm.specs.provide"
+						serviceId="nabu.frameworks.cdm.specs.pull"
 						resultName="result7183429fcb04496d9a75bc61d18aba32"
 						temporaryMapping="true"
 						x="269"
@@ -733,21 +733,21 @@
 					</steps>
 					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 							disabled="false"
-							id="595776a12ae246878cec7cb4f5f13279"
-							mask="false"
-							optional="false"
-							fixedValue="false">
-						<from>subscription/providerId</from>
-						<to>implementationId</to>
-					</steps>
-					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-							disabled="false"
 							id="5e78a274c44843b2ab85fd95b2c3d943"
 							mask="false"
 							optional="false"
 							fixedValue="false">
 						<from>input/cdmInstanceId</from>
 						<to>cdmInstanceId</to>
+					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="ab5412bd2b9f4084920568e991af313d"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>subscription/pullId</from>
+						<to>implementationId</to>
 					</steps>
 				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
@@ -1234,7 +1234,7 @@
 					<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 							disabled="false"
 							id="fbb3af112b5c4c659b777757d7852d8a"
-							serviceId="nabu.frameworks.cdm.specs.subscribe"
+							serviceId="nabu.frameworks.cdm.specs.push"
 							resultName="result66c3d0f3aebe4c9596df5ce60f3bda6f"
 							temporaryMapping="true"
 							x="328"
@@ -1253,21 +1253,21 @@
 						</steps>
 						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 								disabled="false"
-								id="51f385ab4a534bb392961158ffb6b3a0"
-								mask="false"
-								optional="false"
-								fixedValue="false">
-							<from>subscription/subscriberId</from>
-							<to>implementationId</to>
-						</steps>
-						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-								disabled="false"
 								id="a26718217f73435abfb495e984b8d1cb"
 								mask="false"
 								optional="false"
 								fixedValue="false">
 							<from>patchedPartialInstance</from>
 							<to>cdmInstance</to>
+						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="e1cd59656cbe4c9c94b464447fec36b4"
+								mask="false"
+								optional="false"
+								fixedValue="false">
+							<from>subscription/pushId</from>
+							<to>implementationId</to>
 						</steps>
 					</steps>
 					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
@@ -1570,7 +1570,7 @@
 					comment="If it is rejected and we have a provider service, check if it was perhaps deleted"
 					disabled="false"
 					id="4132d113246d4032b1696a06e5d3cf2e"
-					label="rejected &amp;&amp; subscription/providerId != null"
+					label="rejected &amp;&amp; subscription/pullId != null"
 					lineNumber="45">
 				<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 						disabled="false"
@@ -1579,7 +1579,7 @@
 					<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 							disabled="false"
 							id="c33dfb78212641d99ef61702bad14fee"
-							serviceId="nabu.frameworks.cdm.specs.provide"
+							serviceId="nabu.frameworks.cdm.specs.pull"
 							resultName="result7183429fcb04496d9a75bc61d18aba32"
 							temporaryMapping="true"
 							x="269"
@@ -1598,21 +1598,21 @@
 						</steps>
 						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 								disabled="false"
-								id="880ffb7838a649118a3a0fa244da0cce"
-								mask="false"
-								optional="false"
-								fixedValue="false">
-							<from>subscription/providerId</from>
-							<to>implementationId</to>
-						</steps>
-						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-								disabled="false"
 								id="9353eab251084659bd080f604fa6aa4f"
 								mask="false"
 								optional="false"
 								fixedValue="false">
 							<from>input/cdmInstanceId</from>
 							<to>cdmInstanceId</to>
+						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="f15ccb055366456a97186206764d86b0"
+								mask="false"
+								optional="false"
+								fixedValue="false">
+							<from>subscription/pullId</from>
+							<to>implementationId</to>
 						</steps>
 					</steps>
 					<steps xsi:type="be.nabu.libs.services.vm.step.Link"

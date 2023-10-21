@@ -1,8 +1,8 @@
 <structure name="pipeline">
     <structure name="input">
         <field name="coreTypeId" type="java.lang.String"/>
-        <field comment="Data provider id" minOccurs="0" name="providerId" type="java.lang.String"/>
-        <field comment="Data subscriber id" minOccurs="0" name="subscriberId" type="java.lang.String"/>
+        <field comment="Data provider id" minOccurs="0" name="pullId" type="java.lang.String"/>
+        <field comment="Data subscriber id" minOccurs="0" name="pushId" type="java.lang.String"/>
     </structure>
     <structure name="output">
         <field name="typeId" type="java.lang.String"/>

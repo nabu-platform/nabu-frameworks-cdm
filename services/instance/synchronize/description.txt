@@ -1,3 +1,0 @@
-For a given type and id, start a synchronization cycle.
-If no systems are provided, it is considered a full sync.
-If systems are provided (usually only one), we assume a webhook like approach where one system wants to specifically report and propagate a change.
