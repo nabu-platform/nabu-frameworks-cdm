@@ -1,0 +1,3 @@
+<jdbcService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<sql>update cdm_instance_relations cir set stopped = :date and active = false where id = any(:cdmInstanceRelationIds)</sql>
+</jdbcService>

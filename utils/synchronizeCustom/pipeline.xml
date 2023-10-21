@@ -7,4 +7,7 @@
     <field minOccurs="0" name="started" type="java.util.Date"/>
     <structure collectionName="cdmSystemBatchPulls" definition="nabu.frameworks.cdm.crud.cdmSystemBatchPull.types.output" minOccurs="0" name="lastRun"/>
     <structure definition="nabu.frameworks.cdm.specs.pull:output" maxOccurs="unbounded" minOccurs="0" name="instances"/>
+    <structure collectionName="cdmInstances" definition="nabu.frameworks.cdm.database.types.cdmInstance" minOccurs="0" name="localInstance"/>
+    <field minOccurs="0" name="amountOfMatches" type="java.lang.Long"/>
+    <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.database.types.cdmInstanceExternalId" maxOccurs="unbounded" minOccurs="0" name="externalIds"/>
 </structure>

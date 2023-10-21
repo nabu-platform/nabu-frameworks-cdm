@@ -1,6 +1,10 @@
 # todo
 
-- merging of "new" identifiers needs to take into account unchanged values, in most cases you will simply push "all" identifiers
+- standardize relations as extension of the CRUD so we can easily map them
+- provide them in all pulling and syncing
+- expect them in the return of sync as well (worst case you just map the input to the output if you can't recheck it at that point)
+- merge relations!
+- use a separate type for pulling and pushing. pulling _MUST_ be a subtype of pushing (or equal to)
 
 # Scenario's
 
@@ -60,6 +64,17 @@ However it was added to this framework because of a few reasons:
 - for "optimized" batch syncs you usually need a last run which you would need to manage somewhere anyway
 - we would prefer a centralized overview of _all_ the moving parts involved in the CDM syncs, this also means centralized logging to figure out what went wrong (if anything)
 - we can internalize logic like "optimized batch pull" through configuration rather than you having to actually code those things into your solution
+
+## Relations
+
+A relation is unidirectional which means if a system actually has a bidirectional relation between two entities, two relation entries must be created: one in each direction.
+
+The reason for this is that a lot of relations are 1-*. If we sync the * we will usually get the correct relation to the 1, but when we are syncing the 1, we usually won't be getting the correct relations to the *.
+This leaves us with a problem when syncing the one: is the relation no longer needed? Is it simply unknown from that end of the relation?
+
+The system expects the pull services to always send all relations that are known, any relation that is not explicitly reinforced to exist will be removed upon pull.
+
+We provide you with the existing relations 
 
 ## Deletes
 

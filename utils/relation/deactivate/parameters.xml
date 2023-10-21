@@ -1,0 +1,4 @@
+<structure name="parameter">
+    <field name="date" timezone="UTC" type="java.util.Date"/>
+    <field maxOccurs="unbounded" name="cdmInstanceRelationIds" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+</structure>

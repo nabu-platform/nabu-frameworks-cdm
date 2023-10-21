@@ -25,4 +25,5 @@
     <structure comment="These will be merged into existing external ids" definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="newExternalIds" restrict="cdmInstanceId, id"/>
     <field name="newVersion" type="java.lang.Long"/>
     <field minOccurs="0" name="earliestNextPull" type="java.util.Date"/>
+    <structure comment="The relations of this cdm instance. These should be ALL currently active relations. If an existing relation is no longer listed, it is removed." definition="nabu.frameworks.cdm.specs.relation" maxOccurs="unbounded" minOccurs="0" name="relations"/>
 </structure>

@@ -30,4 +30,5 @@
     <field comment="Some or all of the data was rejected" minOccurs="0" name="rejected" type="java.lang.Boolean"/>
     <structure definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="newExternalIds" restrict="cdmInstanceId, id"/>
     <field name="rejectionReason" type="java.lang.String"/>
+    <structure comment="The relations of this cdm instance. These should be ALL currently active relations. If an existing relation is no longer listed, it is removed." definition="nabu.frameworks.cdm.specs.relation" maxOccurs="unbounded" minOccurs="0" name="relations"/>
 </structure>
