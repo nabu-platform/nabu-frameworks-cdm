@@ -2,9 +2,11 @@
     <structure name="input">
         <structure comment="The full cdm instance as it is now" definition="java.lang.Object" name="cdmInstance"/>
         <structure definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="externalIds" restrict="cdmInstanceId, id"/>
+        <structure comment="The current relations for this entity, you might need it" definition="nabu.frameworks.cdm.specs.relation" maxOccurs="unbounded" minOccurs="0" name="relations" restrict="id,cdmSystemId,started,stopped,cdmDefinitionId,sourceId,targetId,active"/>
     </structure>
     <structure name="output">
         <field comment="Some or all of the data was rejected" minOccurs="0" name="rejected" type="java.lang.Boolean"/>
         <structure definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="externalIds" restrict="cdmInstanceId, id"/>
+        <structure comment="The current relations for this entity, you might need it" definition="nabu.frameworks.cdm.specs.relation" maxOccurs="unbounded" minOccurs="0" name="relations" restrict="id,cdmSystemId,started,stopped,cdmDefinitionId,sourceId,targetId,active"/>
     </structure>
 </structure>

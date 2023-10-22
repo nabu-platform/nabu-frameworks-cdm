@@ -1,9 +1,5 @@
 # todo
 
-- standardize relations as extension of the CRUD so we can easily map them
-- provide them in all pulling and syncing
-- expect them in the return of sync as well (worst case you just map the input to the output if you can't recheck it at that point)
-- merge relations!
 - use a separate type for pulling and pushing. pulling _MUST_ be a subtype of pushing (or equal to)
 
 # Scenario's
@@ -100,6 +96,47 @@ If your batch service has an optimized loop (e.g. last modified), it can run an 
 You can run your batch sync processes for multiple systems in parallel, they are just feeding data into the CDM. Once they are all done, the CDM can start a syncing round. To prevent the CDM from _again_ retrieving the data, we have added a pull interval. If the CDM sync routine starts within that timeframe, it will not refetch the data.
 
 Because such batch services can take a while to finish though, there can be quite a time interval between fetching the data and updating it. During this time any change in the remote system would be reset once the CDM sync kicks in.
+
+## System Data
+
+When we look at external systems we need to ask ourselves two questions:
+
+- which data do they _have_? Our CDM is the union of all data pertaining to a particular subject in an enterprise. Each system however is likely only interested in a part of it.
+- once we've established which data they have, we need to determine which data they are allowed to update and which they are only allowed to receive updates about
+
+Ideally, even for the data that they are not allowed to update, we would like to know which data a system has. This will allow us to optimize synchronization strategies (e.g. only push if there is an actual difference). Additionally it allows us to check for discrepancies. For instance if the business decides that a particular system should not be able to update a particular field, we can check that it indeed doesn't.
+
+We craft a derivative CDM for each system that reflects the fields that they actually have. 
+
+
+
+
+
+
+## Pull vs push
+
+We can pull data from a system and we can push data to it.
+
+A system can have read and/or write permissions on a subset (or all) of the fields of a CDM.
+In most cases a system will have fewer write permissions than it does read permissions, this means if we were to look at exact data definitions for push and pull, the "pull" would have much less information than the "push".
+It is assumes that every field in the "pull" is also available in the "push" because even though you might have master permissions on a particular field, so might someone else.
+
+When it comes to "concurrent changes" in different systems, it only relates to the fields available in the pull, not to any additional fields that might be available in the push. They are _intended_ to overwrite concurrent changes happening in fields that it should not be meddling with.
+
+When pushing data we actually have two secondary goals:
+
+- prevent overwriting changes that have not been reported yet with historic values
+- don't push data if the system is already in sync, this helps reduce the load on the system
+
+For the first we only care _if_ the fields in question are available in the "pull", otherwise you are not a master and are not allowed to have your own values.
+Assuming no unplanned meddling in the target system, diffing our latest pushed data with the data we are about to push can prevent pushing the same data twice.
+
+Because all data in the pull _has_ to be present in the push, saving the last "pushed" content is the safer path.
+
+A push without pull can exist (the system is purely a slave), a pull without push should not exist as the system should at the very least consider that other systems might also be master of some overlapping fields.
+If you were to set up a pull without a push however we don't need to optimize away the amount of push calls so we don't need a content to diff against.
+
+All that said means that the content in the instance subscription table is that of the last _pushed_.
 
 # Push vs pull
 

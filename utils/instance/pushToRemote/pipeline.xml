@@ -30,5 +30,11 @@
     <field comment="Some or all of the data was rejected" minOccurs="0" name="rejected" type="java.lang.Boolean"/>
     <structure definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="newExternalIds" restrict="cdmInstanceId, id"/>
     <field name="rejectionReason" type="java.lang.String"/>
-    <structure comment="The relations of this cdm instance. These should be ALL currently active relations. If an existing relation is no longer listed, it is removed." definition="nabu.frameworks.cdm.specs.relation" maxOccurs="unbounded" minOccurs="0" name="relations"/>
+    <structure comment="The relations of this cdm instance. These should be ALL currently active relations. If an existing relation is no longer listed, it is removed." definition="nabu.frameworks.cdm.specs.relation" maxOccurs="unbounded" minOccurs="0" name="newRelations" restrict="id,cdmSystemId,started,stopped,cdmDefinitionId,sourceId,targetId,active"/>
+    <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" maxOccurs="unbounded" minOccurs="0" name="allExistingRelations"/>
+    <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" maxOccurs="unbounded" minOccurs="0" name="existingRelations"/>
+    <field minOccurs="0" name="nextPull" type="java.util.Date"/>
+    <field name="pullNewData" type="java.lang.Boolean"/>
+    <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="revertToCdmDiffs"/>
+    <structure definition="nabu.utils.types.ParameterDescription" maxOccurs="unbounded" minOccurs="0" name="masterParameters"/>
 </structure>

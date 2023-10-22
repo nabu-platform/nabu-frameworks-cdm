@@ -25,5 +25,11 @@
     <structure comment="These will be merged into existing external ids" definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="newExternalIds" restrict="cdmInstanceId, id"/>
     <field name="newVersion" type="java.lang.Long"/>
     <field minOccurs="0" name="earliestNextPull" type="java.util.Date"/>
-    <structure comment="The relations of this cdm instance. These should be ALL currently active relations. If an existing relation is no longer listed, it is removed." definition="nabu.frameworks.cdm.specs.relation" maxOccurs="unbounded" minOccurs="0" name="relations"/>
+    <structure comment="The relations of this cdm instance. These should be ALL currently active relations. If an existing relation is no longer listed, it is removed." definition="nabu.frameworks.cdm.specs.relation" maxOccurs="unbounded" minOccurs="0" name="newRelations" restrict="id,cdmSystemId,started,stopped,cdmDefinitionId,sourceId,targetId,active"/>
+    <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" maxOccurs="unbounded" minOccurs="0" name="results"/>
+    <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" maxOccurs="unbounded" minOccurs="0" name="allExistingRelations"/>
+    <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" maxOccurs="unbounded" minOccurs="0" name="existingRelations"/>
+    <field name="pull" type="java.lang.Boolean"/>
+    <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="fullDiff"/>
+    <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="forbiddenDiffs"/>
 </structure>

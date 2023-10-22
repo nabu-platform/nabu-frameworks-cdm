@@ -77,8 +77,8 @@
     <useExplicitLanguage>false</useExplicitLanguage>
     <useGlobalPermissionContext>false</useGlobalPermissionContext>
     <useLanguage>false</useLanguage>
-    <useListOutputForCreate>false</useListOutputForCreate>
-    <useListOutputForUpdate>false</useListOutputForUpdate>
+    <useListOutputForCreate>true</useListOutputForCreate>
+    <useListOutputForUpdate>true</useListOutputForUpdate>
     <useProjectAsPermissionContext>false</useProjectAsPermissionContext>
     <useServiceContextAsPermissionContext>false</useServiceContextAsPermissionContext>
     <useWebApplicationAsPermissionContext>false</useWebApplicationAsPermissionContext>

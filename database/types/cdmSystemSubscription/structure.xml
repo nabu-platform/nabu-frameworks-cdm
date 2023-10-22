@@ -3,7 +3,8 @@
     <field name="created" timezone="UTC" type="java.util.Date"/>
     <field foreignKey="nabu.frameworks.cdm.database.types.cdmDefinition:id" name="cdmDefinitionId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
     <field foreignKey="nabu.frameworks.cdm.database.types.cdmSystem:id" name="cdmSystemId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
-    <field comment="An optional subview of the data that is managed by this subscription" minOccurs="0" name="typeId" type="java.lang.String"/>
+    <field comment="The subtype that represents the CDM data that this system has." minOccurs="0" name="typeId" type="java.lang.String"/>
+    <field comment="If the system is only master of a subset of those fields, you can set a sub-subtype here" minOccurs="0" name="masterTypeId" type="java.lang.String"/>
     <field comment="Data provider id" minOccurs="0" name="pullId" type="java.lang.String"/>
     <field comment="A service to pull multiple entities. By default we assume you will be pulling all entities. If you have an optimized last modified pull, set the optimized boolean to true." minOccurs="0" name="batchPullId" type="java.lang.String"/>
     <field comment="The limit you want to use in pull all. This defaults to 100." minOccurs="0" name="batchPullLimit" type="java.lang.Long"/>
