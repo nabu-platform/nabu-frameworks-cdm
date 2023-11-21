@@ -4,4 +4,5 @@
     <field name="started" timezone="UTC" type="java.util.Date"/>
     <field minOccurs="0" name="stopped" timezone="UTC" type="java.util.Date"/>
     <field comment="Any description for this run" minOccurs="0" name="description" type="java.lang.String"/>
+    <field comment="RUNNING, SUCCEEDED, FAILED" name="state" type="java.lang.String"/>
 </structure>

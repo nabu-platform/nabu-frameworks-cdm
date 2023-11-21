@@ -1,0 +1,1 @@
+We set the "pulled" to the start of the batch to ensure that any changes during the batch process will be picked up afterwards because we are requesting delta syncs vs the start date of the batch.

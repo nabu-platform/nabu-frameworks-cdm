@@ -1193,7 +1193,7 @@
 					</steps>
 				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Map"
-						comment="If we have any, apply them"
+						comment="If we have any, apply them and log the reversion"
 						disabled="false"
 						id="4ada0022fc85430a8fb7aa3a28376417"
 						label="revertToCdmDiffs"
@@ -1204,8 +1204,8 @@
 							serviceId="nabu.frameworks.cdm.utils.patch"
 							resultName="resultfeb124fc2b5d448588e8092217b8fb67"
 							temporaryMapping="true"
-							x="275"
-							y="167"
+							x="73"
+							y="207"
 							invocationOrder="0"
 							asynchronous="false"
 							recache="false">
@@ -1226,6 +1226,84 @@
 								fixedValue="false">
 							<from>revertToCdmDiffs</from>
 							<to>diffs</to>
+						</steps>
+					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+							disabled="false"
+							id="6fd6e5783194459baebb3c251b72289a"
+							serviceId="nabu.frameworks.cdm.utils.instance.serializeDiff"
+							resultName="resulte5fed61ac5c041a2b5357233f89ae8f6"
+							temporaryMapping="true"
+							x="82"
+							y="20"
+							invocationOrder="0"
+							asynchronous="false"
+							recache="false">
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="4bd1c874c579452b9bd0829af677a47c"
+								mask="false"
+								optional="false"
+								fixedValue="false">
+							<from>revertToCdmDiffs</from>
+							<to>diffs</to>
+						</steps>
+					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+							disabled="false"
+							id="f215d486ade64abcb40b476951de481c"
+							serviceId="nabu.frameworks.cdm.crud.cdmInstanceLog.services.create"
+							resultName="resultc263e434ec7d4399b6702ba4dac94841"
+							temporaryMapping="true"
+							x="483"
+							y="24"
+							invocationOrder="1"
+							asynchronous="false"
+							recache="false">
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="f02d3ff548fe4a02af0ebc38e8eedab1"
+								mask="false"
+								optional="false"
+								fixedValue="false">
+							<from>resulte5fed61ac5c041a2b5357233f89ae8f6/marshalled</from>
+							<to>instance/content</to>
+						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="b22c3dca3ca64e408265a2aa988d1174"
+								mask="false"
+								optional="false"
+								fixedValue="true">
+							<from>revert-changed</from>
+							<to>instance/logType</to>
+						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="3278cb23290649779dfa63a1e4f9de1d"
+								mask="false"
+								optional="false"
+								fixedValue="false">
+							<from>date</from>
+							<to>instance/created</to>
+						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="1c14f0786a724005ad3cf63cb0462b11"
+								mask="false"
+								optional="false"
+								fixedValue="false">
+							<from>currentContent/cdmInstanceId</from>
+							<to>instance/cdmInstanceId</to>
+						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="23ad2ab8425c48d6ae034d2da8bd756c"
+								mask="false"
+								optional="false"
+								fixedValue="false">
+							<from>instanceSubscription/id</from>
+							<to>instance/cdmInstanceSubscription</to>
 						</steps>
 					</steps>
 				</steps>

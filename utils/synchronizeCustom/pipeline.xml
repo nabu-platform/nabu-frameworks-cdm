@@ -10,4 +10,7 @@
     <structure collectionName="cdmInstances" definition="nabu.frameworks.cdm.database.types.cdmInstance" minOccurs="0" name="localInstance"/>
     <field minOccurs="0" name="amountOfMatches" type="java.lang.Long"/>
     <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.database.types.cdmInstanceExternalId" maxOccurs="unbounded" minOccurs="0" name="externalIds"/>
+    <structure collectionName="cdmInstanceSubscriptions" definition="nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output" minOccurs="0" name="instanceSubscription"/>
+    <field name="marshalled" type="java.lang.String"/>
+    <structure collectionName="cdmInstanceSubscriptions" definition="nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output" maxOccurs="unbounded" minOccurs="0" name="instanceSubscriptionsToUpdate"/>
 </structure>

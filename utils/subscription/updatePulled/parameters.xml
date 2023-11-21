@@ -1,0 +1,4 @@
+<structure name="parameter">
+    <field name="pulled" timezone="UTC" type="java.util.Date"/>
+    <field name="cdmSystemSubscriptionId" type="java.util.UUID"/>
+</structure>
