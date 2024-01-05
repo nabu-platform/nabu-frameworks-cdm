@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-18T11:22:48.254+02:00" lastModified="2023-10-23T11:23:22.295+02:00" leaf="true" version="200">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-18T11:22:48.254+02:00" lastModified="2024-01-05T10:17:46.723+01:00" leaf="true" version="221">
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
@@ -20,6 +20,7 @@
     <references>nabu.utils.reflection.Type.describe</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list</references>
     <references>nabu.frameworks.cdm.specs.externalId</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemRelationType.types.output</references>
     <references>nabu.frameworks.cdm.utils.patch</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceContent.types.output</references>
     <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output</references>
@@ -28,6 +29,7 @@
     <references>java.lang.Boolean</references>
     <references>java.lang.String</references>
     <references>nabu.data.json.Services.marshal</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemRelationType.services.list</references>
     <references>nabu.data.json.Services.unmarshal</references>
     <references>nabu.utils.reflection.Type.mask</references>
     <references>nabu.utils.Stream.toString</references>

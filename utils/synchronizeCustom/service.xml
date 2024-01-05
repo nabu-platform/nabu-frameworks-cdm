@@ -567,6 +567,15 @@
 							<from>remoteInstance/relations</from>
 							<to>newRelations</to>
 						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="8291a5cdb11046bd93d51f4e7932b933"
+								mask="false"
+								optional="false"
+								fixedValue="false">
+							<from>localInstance/cdmDefinitionId</from>
+							<to>cdmDefinitionId</to>
+						</steps>
 					</steps>
 					<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 							disabled="false"

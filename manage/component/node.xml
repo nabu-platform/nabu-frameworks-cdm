@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.web.component.WebComponentManager" created="2024-01-05T10:26:57.628+01:00" lastModified="2024-01-05T10:27:30.763+01:00" leaf="true" version="3">
+    <environmentId>apollo</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>nabu.frameworks.cdm.crud.cdmDefinition</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstance</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceContent</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceLog</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceRelation</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceSubscription</references>
+    <references>nabu.frameworks.cdm.crud.cdmRelationType</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystem</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemBatchPull</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemRelationType</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemSubscription</references>
+</node>

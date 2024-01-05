@@ -12,21 +12,21 @@
     <structure collectionName="cdmInstanceSubscriptions" definition="nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output" maxOccurs="unbounded" minOccurs="0" name="instanceSubscriptions"/>
     <structure collectionName="cdmInstanceSubscriptions" definition="nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output" minOccurs="0" name="instanceSubscription"/>
     <field comment="The id of the document type that represents this canonical data model" foreignName="cdmInstanceId:cdmDefinitionId:typeId" name="typeId" primaryKey="false" type="java.lang.String"/>
-    <structure definition="java.lang.Object" name="partialInstance"/>
+    <structure collectionCrudProvider="odata" collectionName="teamsTemplates" definition="java.lang.Object" name="partialInstance"/>
     <structure comment="Existing external ids for this instance, this can be used to match it to a target system. Will always send all external ids so you can use other identifiers " definition="nabu.frameworks.cdm.specs.externalId" minOccurs="0" name="mappedExternalId" restrict="cdmInstanceId, systemId, id"/>
     <structure collectionName="cdmInstanceContents" definition="nabu.frameworks.cdm.crud.cdmInstanceContent.types.output" name="previousContent"/>
-    <structure definition="java.lang.Object" minOccurs="0" name="cdmInstance"/>
-    <structure definition="java.lang.Object" minOccurs="0" name="previousCdmInstance"/>
+    <structure collectionCrudProvider="odata" collectionName="teamsTemplates" definition="java.lang.Object" minOccurs="0" name="cdmInstance"/>
+    <structure collectionCrudProvider="odata" collectionName="teamsTemplates" definition="java.lang.Object" minOccurs="0" name="previousCdmInstance"/>
     <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" minOccurs="0" name="cdmDiff"/>
     <field minOccurs="0" name="date" type="java.util.Date"/>
     <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" minOccurs="0" name="diffToApply"/>
-    <structure definition="java.lang.Object" name="staticPartialInstance"/>
-    <structure definition="java.lang.Object" name="patchedPartialInstance"/>
+    <structure collectionCrudProvider="odata" collectionName="teamsTemplates" definition="java.lang.Object" name="staticPartialInstance"/>
+    <structure collectionCrudProvider="odata" collectionName="teamsTemplates" definition="java.lang.Object" name="patchedPartialInstance"/>
     <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="appliedDiffs"/>
     <field name="push" type="java.lang.Boolean"/>
     <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output" maxOccurs="unbounded" minOccurs="0" name="externalIds"/>
     <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="rejectedDiffs"/>
-    <structure definition="java.lang.Object" name="newestPartialInstance"/>
+    <structure collectionCrudProvider="odata" collectionName="teamsTemplates" definition="java.lang.Object" name="newestPartialInstance"/>
     <field comment="Some or all of the data was rejected" minOccurs="0" name="rejected" type="java.lang.Boolean"/>
     <structure definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="newExternalIds" restrict="cdmInstanceId, id"/>
     <field name="rejectionReason" type="java.lang.String"/>
@@ -37,4 +37,8 @@
     <field name="pullNewData" type="java.lang.Boolean"/>
     <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="revertToCdmDiffs"/>
     <structure definition="nabu.utils.types.ParameterDescription" maxOccurs="unbounded" minOccurs="0" name="masterParameters"/>
+    <structure collectionName="cdmSystemRelationTypes" definition="nabu.frameworks.cdm.crud.cdmSystemRelationType.types.output" maxOccurs="unbounded" minOccurs="0" name="allInterestedRelationTypes"/>
+    <structure collectionName="cdmSystemRelationTypes" definition="nabu.frameworks.cdm.crud.cdmSystemRelationType.types.output" maxOccurs="unbounded" minOccurs="0" name="interestedRelationTypes"/>
+    <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" maxOccurs="unbounded" minOccurs="0" name="changedRelations"/>
+    <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" maxOccurs="unbounded" minOccurs="0" name="interestingRelations"/>
 </structure>

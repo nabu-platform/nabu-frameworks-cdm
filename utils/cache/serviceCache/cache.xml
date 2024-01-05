@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cache>
+    <cacheProvider>nabu.frameworks.cdm.utils.cache.memoryCache</cacheProvider>
+    <service>nabu.frameworks.cdm.utils.relation.getRelationTypeForSystem</service>
+    <enableInDevelopment>true</enableInDevelopment>
+</cache>

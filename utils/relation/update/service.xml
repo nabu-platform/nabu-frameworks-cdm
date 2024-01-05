@@ -344,9 +344,9 @@
 					serviceId="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.create"
 					resultName="result864a2ece995b431eae3a30ba37849a97"
 					temporaryMapping="true"
-					x="95"
-					y="90"
-					invocationOrder="0"
+					x="473"
+					y="50"
+					invocationOrder="1"
 					asynchronous="false"
 					recache="false">
 				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
@@ -357,15 +357,6 @@
 						fixedValue="false">
 					<from>input/cdmSystemId</from>
 					<to>instance/cdmSystemId</to>
-				</steps>
-				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-						disabled="false"
-						id="5bc61c7050db4cf7817fed2197f61cf6"
-						mask="false"
-						optional="false"
-						fixedValue="false">
-					<from>relation/relationType</from>
-					<to>instance/relationType</to>
 				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 						disabled="false"
@@ -400,7 +391,7 @@
 						mask="false"
 						optional="false"
 						fixedValue="false">
-					<from>definitions[typeId == /relation/typeId]/id</from>
+					<from>definitions[typeId == /relation/targetTypeId]/id</from>
 					<to>instance/cdmDefinitionId</to>
 				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
@@ -430,6 +421,15 @@
 					<from>existingInstance/id</from>
 					<to>instance/targetId</to>
 				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="ff49b9e5a5f74b0780c8e518264880fe"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>result438849e01f1c4aaa8550adac71ee8a72/relationType/id</from>
+					<to>instance/cdmRelationTypeId</to>
+				</steps>
 			</steps>
 			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 					disabled="false"
@@ -439,6 +439,45 @@
 					fixedValue="false">
 				<from>result864a2ece995b431eae3a30ba37849a97/created</from>
 				<to>output/existingRelations[0]</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+					disabled="false"
+					id="1cab014855b64f98a708931721e14da6"
+					serviceId="nabu.frameworks.cdm.utils.relation.getRelationTypeForSystem"
+					resultName="result438849e01f1c4aaa8550adac71ee8a72"
+					temporaryMapping="true"
+					x="22"
+					y="364"
+					invocationOrder="0"
+					asynchronous="false"
+					recache="false">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="d16a0859f9034736a65171d3b1775d3d"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>relation/relationType</from>
+					<to>relationType</to>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="ced3bbe5753b44aea7d6ea5bfb96af6b"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>input/cdmSystemId</from>
+					<to>cdmSystemId</to>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="35b673b9a3754847a310741032bf1d2d"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>input/cdmDefinitionId</from>
+					<to>cdmDefinitionId</to>
+				</steps>
 			</steps>
 		</steps>
 		<query>input/newRelations</query>

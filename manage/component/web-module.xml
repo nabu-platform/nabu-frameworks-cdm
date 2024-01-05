@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<webModule>
+    <webFragments>nabu.frameworks.cdm.crud.cdmDefinition</webFragments>
+    <webFragments>nabu.frameworks.cdm.crud.cdmInstance</webFragments>
+    <webFragments>nabu.frameworks.cdm.crud.cdmInstanceContent</webFragments>
+    <webFragments>nabu.frameworks.cdm.crud.cdmInstanceExternalId</webFragments>
+    <webFragments>nabu.frameworks.cdm.crud.cdmInstanceLog</webFragments>
+    <webFragments>nabu.frameworks.cdm.crud.cdmInstanceRelation</webFragments>
+    <webFragments>nabu.frameworks.cdm.crud.cdmInstanceSubscription</webFragments>
+    <webFragments>nabu.frameworks.cdm.crud.cdmRelationType</webFragments>
+    <webFragments>nabu.frameworks.cdm.crud.cdmSystem</webFragments>
+    <webFragments>nabu.frameworks.cdm.crud.cdmSystemBatchPull</webFragments>
+    <webFragments>nabu.frameworks.cdm.crud.cdmSystemRelationType</webFragments>
+    <webFragments>nabu.frameworks.cdm.crud.cdmSystemSubscription</webFragments>
+</webModule>

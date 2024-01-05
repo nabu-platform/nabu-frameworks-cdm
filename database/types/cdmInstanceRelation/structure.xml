@@ -1,7 +1,7 @@
 <structure collectionName="cdmInstanceRelations" name="cdmInstanceRelation">
     <field name="id" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" primaryKey="true" type="java.util.UUID"/>
     <field comment="The system this relation belongs to" foreignKey="nabu.frameworks.cdm.database.types.cdmSystem:id" name="cdmSystemId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
-    <field comment="An optional relation type, for instance it might be the role a user has within an organisation" minOccurs="0" name="relationType" type="java.lang.String"/>
+    <field comment="Define what type of relation it is, for instance it might be the role a user has within an organisation" foreignKey="nabu.frameworks.cdm.database.types.cdmRelationType:id" name="cdmRelationTypeId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
     <field comment="The name of the identifier used to figure out which instance we are related to, for example &quot;email&quot;" name="name" type="java.lang.String"/>
     <field comment="The identifier value, for example the actual email address for a user" name="identifier" type="java.lang.String"/>
     <field name="started" timezone="UTC" type="java.util.Date"/>

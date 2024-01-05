@@ -6,7 +6,9 @@
     <coreType>nabu.frameworks.cdm.database.types.cdmInstance</coreType>
     <createBlacklistFields>created</createBlacklistFields>
     <createBlacklistFields>modified</createBlacklistFields>
+    <createPermission>cdm.manage</createPermission>
     <createRole>$user</createRole>
+    <deletePermission>cdm.manage</deletePermission>
     <deleteRole>$user</deleteRole>
     <filters>
         <caseInsensitive>false</caseInsensitive>
@@ -36,17 +38,20 @@
         <foreignName>cdmDefinitionId:typeId</foreignName>
         <localName>typeId</localName>
     </foreignFields>
+    <getPermission>cdm.list</getPermission>
     <hooks>false</hooks>
+    <listPermission>cdm.list</listPermission>
     <listRole>$user</listRole>
     <provider>nabu.services.crud.provider.basic.provider</provider>
     <restLimitToUser>true</restLimitToUser>
     <updateBlacklistFields>created</updateBlacklistFields>
     <updateBlacklistFields>modified</updateBlacklistFields>
+    <updatePermission>cdm.manage</updatePermission>
     <updateRegenerateFields>modified</updateRegenerateFields>
     <updateRole>$user</updateRole>
     <useAsAuthorizationServiceContext>false</useAsAuthorizationServiceContext>
     <useExplicitLanguage>false</useExplicitLanguage>
-    <useGlobalPermissionContext>false</useGlobalPermissionContext>
+    <useGlobalPermissionContext>true</useGlobalPermissionContext>
     <useLanguage>false</useLanguage>
     <useListOutputForCreate>true</useListOutputForCreate>
     <useListOutputForUpdate>true</useListOutputForUpdate>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2024-01-05T09:24:41.136+01:00" lastModified="2024-01-05T09:34:31.072+01:00" leaf="true" version="21">
+    <environmentId>apollo</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>nabu.frameworks.cdm.crud.cdmSystemRelationType.types.output</references>
+    <references>nabu.utils.Lock.lock</references>
+    <references>nabu.frameworks.cdm.crud.cdmRelationType.services.create</references>
+    <references>java.lang.String</references>
+    <references>java.util.UUID</references>
+    <references>nabu.frameworks.cdm.crud.cdmRelationType.services.list</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemRelationType.services.list</references>
+    <references>nabu.frameworks.cdm.crud.cdmRelationType.types.output</references>
+    <references>nabu.utils.Lock.unlock</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemRelationType.services.create</references>
+</node>

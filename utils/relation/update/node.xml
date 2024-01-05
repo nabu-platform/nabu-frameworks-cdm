@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T11:05:50.961+02:00" lastModified="2023-10-21T15:18:54.511+02:00" leaf="true" version="55">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T11:05:50.961+02:00" lastModified="2024-01-05T10:07:42.321+01:00" leaf="true" version="63">
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
@@ -20,5 +20,6 @@
     <references>nabu.utils.List.remove</references>
     <references>java.lang.Long</references>
     <references>nabu.frameworks.cdm.crud.cdmDefinition.services.list</references>
+    <references>nabu.frameworks.cdm.utils.relation.getRelationTypeForSystem</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceRelation.services.create</references>
 </node>

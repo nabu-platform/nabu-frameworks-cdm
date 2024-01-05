@@ -1,0 +1,21 @@
+<structure name="pipeline">
+    <structure name="input">
+        <field minOccurs="0" name="typeId" type="java.lang.String"/>
+        <structure collectionCrudProvider="odata" collectionName="teamsTemplates" definition="java.lang.Object" name="cdmInstance"/>
+        <field comment="The item was created in _a_ system, we need to pull that first as it needs to form the basis of further enrichment from other providers" name="system" type="java.lang.String"/>
+        <structure comment="Any external ids you already know. Other systems will need as much information as possible about the entity." definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" name="externalIds" restrict="cdmInstanceId, systemId, id"/>
+        <structure comment="The relations of this cdm instance. These should be ALL currently active relations. If an existing relation is no longer listed, it is removed." definition="nabu.frameworks.cdm.specs.relation" maxOccurs="unbounded" minOccurs="0" name="relations" restrict="id,cdmSystemId,started,stopped,cdmDefinitionId,sourceId,targetId,active"/>
+    </structure>
+    <structure name="output"/>
+    <structure collectionName="cdmInstances" definition="nabu.frameworks.cdm.database.types.cdmInstance" name="instance"/>
+    <field minOccurs="0" name="rowCount" type="java.lang.Long"/>
+    <structure collectionName="cdmDefinitions" definition="nabu.frameworks.cdm.database.types.cdmDefinition" minOccurs="0" name="definition"/>
+    <structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" minOccurs="0" name="subscription"/>
+    <structure collectionName="cdmInstanceSubscriptions" definition="nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output" minOccurs="0" name="instanceSubscription"/>
+    <field name="changed" type="java.lang.Boolean"/>
+    <structure collectionCrudProvider="odata" collectionName="teamsTemplates" definition="java.lang.Object" minOccurs="0" name="currentInstance"/>
+    <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="diffs"/>
+    <field minOccurs="0" name="date" type="java.util.Date"/>
+    <structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" maxOccurs="unbounded" minOccurs="0" name="otherSubscriptions"/>
+    <field name="newInstance" type="java.lang.Boolean"/>
+</structure>

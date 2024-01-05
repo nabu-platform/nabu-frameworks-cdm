@@ -4,7 +4,9 @@
     <broadcastCreate>false</broadcastCreate>
     <broadcastUpdate>false</broadcastUpdate>
     <coreType>nabu.frameworks.cdm.database.types.cdmInstanceRelation</coreType>
+    <createPermission>cdm.manage</createPermission>
     <createRole>$user</createRole>
+    <deletePermission>cdm.manage</deletePermission>
     <deleteRole>$user</deleteRole>
     <filters>
         <caseInsensitive>false</caseInsensitive>
@@ -68,14 +70,21 @@
         <foreignName>targetId:cdmDefinitionId:typeId</foreignName>
         <localName>targetTypeId</localName>
     </foreignFields>
+    <foreignFields>
+        <foreignName>cdmRelationTypeId:name</foreignName>
+        <localName>relationType</localName>
+    </foreignFields>
+    <getPermission>cdm.list</getPermission>
     <hooks>false</hooks>
+    <listPermission>cdm.list</listPermission>
     <listRole>$user</listRole>
     <provider>nabu.services.crud.provider.basic.provider</provider>
     <restLimitToUser>true</restLimitToUser>
+    <updatePermission>cdm.manage</updatePermission>
     <updateRole>$user</updateRole>
     <useAsAuthorizationServiceContext>false</useAsAuthorizationServiceContext>
     <useExplicitLanguage>false</useExplicitLanguage>
-    <useGlobalPermissionContext>false</useGlobalPermissionContext>
+    <useGlobalPermissionContext>true</useGlobalPermissionContext>
     <useLanguage>false</useLanguage>
     <useListOutputForCreate>true</useListOutputForCreate>
     <useListOutputForUpdate>true</useListOutputForUpdate>

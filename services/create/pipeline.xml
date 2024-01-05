@@ -5,7 +5,7 @@
         <structure comment="Any external ids you already know. Other systems will need as much information as possible about the entity." definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" name="externalIds" restrict="cdmInstanceId, systemId, id"/>
     </structure>
     <structure name="output">
-        <structure definition="java.lang.Object" name="cdmInstance"/>
+        <structure collectionCrudProvider="odata" collectionName="teamsTemplates" definition="java.lang.Object" name="cdmInstance"/>
     </structure>
     <structure collectionName="cdmDefinitions" definition="nabu.frameworks.cdm.crud.cdmDefinition.types.output" minOccurs="0" name="definition"/>
     <field maxOccurs="unbounded" minOccurs="0" name="systemNames" type="java.lang.String"/>

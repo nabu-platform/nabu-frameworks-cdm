@@ -1,0 +1,2 @@
+If you have content (e.g. you did an explicit fetch), you can push the latest version.
+We will check if it already exists. If it exists, we check if its been updated. If it doesn't exist, we create it.
