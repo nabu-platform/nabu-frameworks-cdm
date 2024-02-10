@@ -12,4 +12,5 @@
     <webFragments>nabu.frameworks.cdm.crud.cdmSystemBatchPull</webFragments>
     <webFragments>nabu.frameworks.cdm.crud.cdmSystemRelationType</webFragments>
     <webFragments>nabu.frameworks.cdm.crud.cdmSystemSubscription</webFragments>
+    <audience>MANAGER</audience>
 </webModule>
