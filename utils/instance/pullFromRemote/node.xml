@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-16T11:28:20.913+02:00" lastModified="2024-01-05T09:45:08.518+01:00" leaf="true" version="216">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-16T11:28:20.913+02:00" lastModified="2024-02-26T18:11:31.280+01:00" leaf="true" version="226">
     <comment>Update an instance according to all system subscriptions</comment>
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
@@ -7,47 +7,53 @@
     <properties/>
     <references>nabu.frameworks.cdm.utils.externalId.update</references>
     <references>java.util.Date</references>
+    <references>nabu.utils.Server.uuid</references>
     <references>nabu.frameworks.cdm.utils.diff</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceLog.services.create</references>
     <references>nabu.utils.types.ParameterDescription</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.create</references>
-    <references>nabu.frameworks.cdm.specs.relation</references>
-    <references>nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.list</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output</references>
-    <references>nabu.utils.reflection.Type.describe</references>
+    <references>nabu.utils.Object.toString</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list</references>
-    <references>nabu.frameworks.cdm.specs.externalId</references>
-    <references>nabu.frameworks.cdm.utils.instance.deactivateContent</references>
-    <references>nabu.frameworks.cdm.utils.patch</references>
-    <references>nabu.frameworks.cdm.crud.cdmInstanceContent.types.output</references>
     <references>java.lang.Long</references>
     <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output</references>
-    <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output</references>
     <references>nabu.frameworks.cdm.specs.pull</references>
-    <references>java.lang.Boolean</references>
-    <references>java.lang.String</references>
-    <references>nabu.data.json.Services.marshal</references>
     <references>nabu.data.json.Services.unmarshal</references>
     <references>nabu.utils.Stream.toString</references>
     <references>nabu.utils.reflection.Type.mask</references>
     <references>nabu.frameworks.cdm.utils.relation.update</references>
-    <references>nabu.frameworks.cdm.utils.diffResultForSystem</references>
-    <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list</references>
     <references>nabu.utils.String.toStream</references>
-    <references>nabu.utils.Date.now</references>
     <references>nabu.frameworks.cdm.utils.diffResult</references>
     <references>java.util.UUID</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output</references>
-    <references>nabu.utils.reflection.Type.set</references>
     <references>nabu.frameworks.cdm.crud.cdmInstance.services.get</references>
     <references>nabu.frameworks.cdm.utils.instance.serializeDiff</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceContent.services.list</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceContent.services.create</references>
+    <references>nabu.utils.Date.incrementDuration</references>
+    <references>nabu.frameworks.cdm.database.types.cdmInstanceSyncDiff</references>
+    <references>nabu.utils.Runtime.getCurrentToken</references>
+    <references>nabu.frameworks.cdm.specs.relation</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.list</references>
+    <references>nabu.utils.reflection.Type.describe</references>
+    <references>nabu.frameworks.cdm.specs.externalId</references>
+    <references>nabu.frameworks.cdm.utils.instance.deactivateContent</references>
+    <references>nabu.frameworks.cdm.utils.patch</references>
+    <references>nabu.services.jdbc.Services.insert</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceContent.types.output</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output</references>
+    <references>java.lang.Boolean</references>
+    <references>java.lang.String</references>
+    <references>nabu.data.json.Services.marshal</references>
+    <references>nabu.frameworks.cdm.utils.diffResultForSystem</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list</references>
+    <references>nabu.utils.Date.now</references>
+    <references>nabu.utils.reflection.Type.set</references>
     <references>nabu.utils.reflection.Type.newInstance</references>
     <references>nabu.services.jdbc.Services.update</references>
-    <references>nabu.frameworks.cdm.crud.cdmInstanceContent.services.list</references>
+    <references>nabu.frameworks.cdm.database.types.cdmInstanceSync</references>
     <references>nabu.utils.Object.first</references>
     <references>java.lang.Object</references>
     <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list</references>
-    <references>nabu.frameworks.cdm.crud.cdmInstanceContent.services.create</references>
     <references>nabu.frameworks.cdm.crud.cdmInstance.types.output</references>
-    <references>nabu.utils.Date.incrementDuration</references>
 </node>

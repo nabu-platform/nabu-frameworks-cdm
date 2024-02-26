@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.data.model.DataModelManager" created="2023-10-16T10:23:59.669+02:00" lastModified="2024-01-05T10:06:24.060+01:00" leaf="true" version="124">
+<node artifactManager="be.nabu.eai.module.data.model.DataModelManager" created="2023-10-16T10:23:59.669+02:00" lastModified="2024-02-26T17:54:01.440+01:00" leaf="true" version="139">
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
@@ -16,4 +16,6 @@
     <references>nabu.frameworks.cdm.database.types.cdmSystemBatchPull</references>
     <references>nabu.frameworks.cdm.database.types.cdmRelationType</references>
     <references>nabu.frameworks.cdm.database.types.cdmSystemRelationType</references>
+    <references>nabu.frameworks.cdm.database.types.cdmInstanceSync</references>
+    <references>nabu.frameworks.cdm.database.types.cdmInstanceSyncDiff</references>
 </node>

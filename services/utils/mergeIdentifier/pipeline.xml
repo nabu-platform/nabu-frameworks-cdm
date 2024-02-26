@@ -1,0 +1,12 @@
+<structure name="pipeline">
+    <structure name="input">
+        <field name="name" type="java.lang.String"/>
+        <field minOccurs="0" name="identifier" type="java.lang.String"/>
+        <structure comment="These will be merged into existing external ids" definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="externalIds" restrict="cdmInstanceId, id"/>
+    </structure>
+    <structure name="output">
+        <structure comment="These will be merged into existing external ids" definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="externalIds" restrict="cdmInstanceId, id"/>
+    </structure>
+    <structure comment="These will be merged into existing external ids" definition="nabu.frameworks.cdm.specs.externalId" minOccurs="0" name="existing" restrict="cdmInstanceId, id"/>
+    <structure comment="These will be merged into existing external ids" definition="nabu.frameworks.cdm.specs.externalId" name="new" restrict="cdmInstanceId, id"/>
+</structure>

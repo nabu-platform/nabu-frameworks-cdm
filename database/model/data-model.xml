@@ -78,13 +78,30 @@
     <entries>
         <synchronize>true</synchronize>
         <type>nabu.frameworks.cdm.database.types.cdmRelationType</type>
-        <x>741</x>
-        <y>481</y>
+        <x>755</x>
+        <y>444</y>
     </entries>
     <entries>
         <synchronize>true</synchronize>
         <type>nabu.frameworks.cdm.database.types.cdmSystemRelationType</type>
         <x>406</x>
         <y>600</y>
+    </entries>
+    <entries>
+        <synchronize>true</synchronize>
+        <x>1790</x>
+        <y>378</y>
+    </entries>
+    <entries>
+        <synchronize>true</synchronize>
+        <type>nabu.frameworks.cdm.database.types.cdmInstanceSync</type>
+        <x>1738</x>
+        <y>135</y>
+    </entries>
+    <entries>
+        <synchronize>true</synchronize>
+        <type>nabu.frameworks.cdm.database.types.cdmInstanceSyncDiff</type>
+        <x>1770</x>
+        <y>417</y>
     </entries>
 </dataModel>

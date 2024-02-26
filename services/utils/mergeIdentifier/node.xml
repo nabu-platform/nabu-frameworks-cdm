@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-18T14:53:50.237+02:00" lastModified="2024-02-19T09:55:40.842+01:00" leaf="true" version="19">
+    <environmentId>apollo</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>nabu.frameworks.cdm.specs.externalId</references>
+    <references>nabu.utils.List.add</references>
+    <references>java.lang.String</references>
+</node>

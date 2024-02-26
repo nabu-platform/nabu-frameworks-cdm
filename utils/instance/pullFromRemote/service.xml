@@ -131,60 +131,61 @@
 			<to>allExistingRelations</to>
 		</steps>
 	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			comment="Get the instance"
+			disabled="false"
+			id="c5ff5a68616143c6830bbce5ec6b2466"
+			lineNumber="4">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="e65dd5ad3ebe4496948f1095e20980d0"
+				serviceId="nabu.frameworks.cdm.crud.cdmInstance.services.get"
+				resultName="result21b9f7e910474dd6b8ef375ec73d0ea2"
+				temporaryMapping="true"
+				x="96"
+				y="85"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="71e61becfa0a480b8ab9eb2b5bd5f984"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/cdmInstanceId</from>
+				<to>id</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="4520773d0daf4d06983a24c884a56f6f"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result21b9f7e910474dd6b8ef375ec73d0ea2/result</from>
+			<to>instance</to>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="6c8bf8f9865a469489039b6358b4affb"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result21b9f7e910474dd6b8ef375ec73d0ea2/result/typeId</from>
+			<to>typeId</to>
+		</steps>
+	</steps>
 	<steps xsi:type="be.nabu.libs.services.vm.step.Switch"
 			disabled="false"
 			id="3a33073a471f4c24be2b92704d354635"
-			lineNumber="4">
+			lineNumber="5">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Sequence"
 				comment="If it's new, there might not be content yet, create an empty object"
 				disabled="false"
 				id="a0600641d1704133b9236689acaf61a3"
 				label="!currentContent"
-				lineNumber="5">
-			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
-					disabled="false"
-					id="c5ff5a68616143c6830bbce5ec6b2466"
-					lineNumber="6">
-				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
-						disabled="false"
-						id="e65dd5ad3ebe4496948f1095e20980d0"
-						serviceId="nabu.frameworks.cdm.crud.cdmInstance.services.get"
-						resultName="result21b9f7e910474dd6b8ef375ec73d0ea2"
-						temporaryMapping="true"
-						x="96"
-						y="85"
-						invocationOrder="0"
-						asynchronous="false"
-						recache="false">
-					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-							disabled="false"
-							id="71e61becfa0a480b8ab9eb2b5bd5f984"
-							mask="false"
-							optional="false"
-							fixedValue="false">
-						<from>input/cdmInstanceId</from>
-						<to>id</to>
-					</steps>
-				</steps>
-				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-						disabled="false"
-						id="4520773d0daf4d06983a24c884a56f6f"
-						mask="false"
-						optional="false"
-						fixedValue="false">
-					<from>result21b9f7e910474dd6b8ef375ec73d0ea2/result</from>
-					<to>instance</to>
-				</steps>
-				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-						disabled="false"
-						id="6c8bf8f9865a469489039b6358b4affb"
-						mask="false"
-						optional="false"
-						fixedValue="false">
-					<from>result21b9f7e910474dd6b8ef375ec73d0ea2/result/typeId</from>
-					<to>typeId</to>
-				</steps>
-			</steps>
+				lineNumber="6">
 			<steps xsi:type="be.nabu.libs.services.vm.step.Throw"
 					disabled="false"
 					id="1b6d815c9e224c77aecb689d0e94fc8c"
@@ -493,6 +494,75 @@
 				fixedValue="false">
 			<from>resultb98124df50ce453394418aa94b184c9c/date</from>
 			<to>date</to>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="cc87666564d04411bba89794efe06503"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>resultb98124df50ce453394418aa94b184c9c/date</from>
+			<to>instanceSync/started</to>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="4a3f6502cd5642d18a8f33938710fe11"
+				serviceId="nabu.utils.Server.uuid"
+				resultName="resultd75d8599fcb649b8ac78c2e1e5d9bdcb"
+				temporaryMapping="true"
+				x="347"
+				y="359"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="9247db8725eb4e97be9ac60948ecaafd"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>resultd75d8599fcb649b8ac78c2e1e5d9bdcb/uuid</from>
+			<to>instanceSync/id</to>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="43e53218e03e41a69d230e898fa47452"
+				mask="false"
+				optional="false"
+				fixedValue="true">
+			<from>pull</from>
+			<to>instanceSync/direction</to>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="0b42c3e3353f49a4b0358d7ee2310c3b"
+				serviceId="nabu.utils.Runtime.getCurrentToken"
+				resultName="resultbc208c33e6354443928c5cd2122e06d1"
+				temporaryMapping="true"
+				x="350"
+				y="497"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="91d3d6b760e44ce29f38e847352093be"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>resultbc208c33e6354443928c5cd2122e06d1/token/authenticationId</from>
+			<to>instanceSync/actorId</to>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="ad29d06160184a288f95071757c0245b"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>input/cdmInstanceId</from>
+			<to>instanceSync/cdmInstanceId</to>
 		</steps>
 	</steps>
 	<steps xsi:type="be.nabu.libs.services.vm.step.Break"
@@ -1488,17 +1558,157 @@
 			</steps>
 			<query>diffs</query>
 		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.For"
+				comment="Map to the sync diffs"
+				disabled="false"
+				id="e4a6cb993550471f98a25ae5dfc0f1dd"
+				lineNumber="45"
+				variable="diff"
+				into="instanceSyncDiffs">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+					disabled="false"
+					id="b4db0a5c7164413093c7516d19fc5ebc"
+					lineNumber="46">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="aaffd1c37fb54efab55667d065ed3855"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>diff/path</from>
+					<to>instanceSyncDiffs[0]/path</to>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="8e1656db2de845ffb32c1a6bc7eb48bc"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>diff/action</from>
+					<to>instanceSyncDiffs[0]/action</to>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="33748abfb23d4c91aed9eadc5545914f"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>diff/propertyPath</from>
+					<to>instanceSyncDiffs[0]/propertyPath</to>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="f33f6a1898774b6394fb7a75adbe9e9a"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>subscription/id</from>
+					<to>instanceSyncDiffs[0]/cdmSystemSubscriptionId</to>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="ba37a017894040cda47b09bd288301e3"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>instanceSync/id</from>
+					<to>instanceSyncDiffs[0]/cdmInstanceSyncId</to>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+						disabled="false"
+						id="9a299c0a924c446291cbc2464e96c0f7"
+						serviceId="nabu.utils.Server.uuid"
+						resultName="result7cbedd5fce1840409a546077499e3848"
+						temporaryMapping="true"
+						x="404"
+						y="235"
+						invocationOrder="0"
+						asynchronous="false"
+						recache="false">
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="a4fe009ab44540eea84b141317416e5d"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>result7cbedd5fce1840409a546077499e3848/uuid</from>
+					<to>instanceSyncDiffs[0]/id</to>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+						disabled="false"
+						id="cec6a0e8bff749d99a7b28797bc95bbc"
+						serviceId="nabu.utils.Object.toString"
+						resultName="result92f60fd4601144b186fd103fb94f39eb"
+						temporaryMapping="true"
+						x="340"
+						y="364"
+						invocationOrder="0"
+						asynchronous="false"
+						recache="false">
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="b08293f0a4aa4257a0026b39b8bf19c0"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>diff/oldValue</from>
+						<to>object</to>
+					</steps>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+						disabled="false"
+						id="5533f49c3fb44a75b18c7be6a5dcc66a"
+						serviceId="nabu.utils.Object.toString"
+						resultName="result30e05ea790e74763bfcd908f46d50b76"
+						temporaryMapping="true"
+						x="343"
+						y="461"
+						invocationOrder="0"
+						asynchronous="false"
+						recache="false">
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="abf40c50811f44b0950191503aee4e2e"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>diff/newValue</from>
+						<to>object</to>
+					</steps>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="763a2ee585e14a2cb553625a555108c8"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>result92f60fd4601144b186fd103fb94f39eb/string</from>
+					<to>instanceSyncDiffs[0]/oldValue</to>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="615e62381df94475aa40c7a6e733a61f"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>result30e05ea790e74763bfcd908f46d50b76/string</from>
+					<to>instanceSyncDiffs[0]/newValue</to>
+				</steps>
+			</steps>
+			<query>diffs</query>
+		</steps>
 		<steps xsi:type="be.nabu.libs.services.vm.step.Sequence"
 				comment="We have a full diff as well, let's compare our master diff"
 				disabled="false"
 				id="5be3d6fd32424d66a41abaf98c97e4ca"
 				label="subscription/masterTypeId != null"
-				lineNumber="45">
+				lineNumber="47">
 			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 					comment="Retain all the diffs in the full diff that are not in the localized diff"
 					disabled="false"
 					id="d03d9d2d665f41ca97220c856df8a523"
-					lineNumber="46">
+					lineNumber="48">
 				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 						disabled="false"
 						id="49a9702e13664e1f9ec0e3ad64bb0ee6"
@@ -1513,7 +1723,7 @@
 					disabled="false"
 					id="f3da102652be44a08b06c82a35834565"
 					label="forbiddenDiffs"
-					lineNumber="47">
+					lineNumber="49">
 				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 						disabled="false"
 						id="0cb78188cb364b28a473a2be2da9ead6"
@@ -1541,8 +1751,8 @@
 						serviceId="nabu.frameworks.cdm.crud.cdmInstanceLog.services.create"
 						resultName="result38166163b6ae420c904c6c50e5817101"
 						temporaryMapping="true"
-						x="673"
-						y="141"
+						x="551"
+						y="166"
 						invocationOrder="1"
 						asynchronous="false"
 						recache="false">
@@ -1598,7 +1808,7 @@
 				comment="We apply the diff against the object so the next diff is against a correct state"
 				disabled="false"
 				id="4bfae4044992436aaab862d494618902"
-				lineNumber="48">
+				lineNumber="50">
 			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 					disabled="false"
 					id="271b2e30e2ab48aa97f666fe09cdae96"
@@ -1637,7 +1847,7 @@
 			disabled="false"
 			id="8956318aaadb43b8863efe2ac099a067"
 			label="instanceSubscriptions"
-			lineNumber="49">
+			lineNumber="51">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="c0f5c6bb2eb842a58f3a53b05d4be141"
@@ -1665,12 +1875,12 @@
 			disabled="false"
 			id="967ae3a443df4161aa3d1d240ffc266b"
 			label="output/changes"
-			lineNumber="50">
+			lineNumber="52">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 				comment="Deactivate any active instance contents"
 				disabled="false"
 				id="ef0b33da560f447cb1b7d50c9f6b8833"
-				lineNumber="51">
+				lineNumber="53">
 			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 					disabled="false"
 					id="b9ce091172004199a969f2b9121ea971"
@@ -1706,7 +1916,7 @@
 				comment="Create a new instance content"
 				disabled="false"
 				id="383fed97c12441119fe4d960b885fdf5"
-				lineNumber="52">
+				lineNumber="54">
 			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 					disabled="false"
 					id="1068925bcb4f4dd8a1c603fc1a099f15"
@@ -1848,7 +2058,7 @@
 			comment="Map the output"
 			disabled="false"
 			id="d56a6a46f13e4b7fb5194ab2f28b4996"
-			lineNumber="53">
+			lineNumber="55">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 				disabled="false"
 				id="21f9c84fe9fa47a19bd7f32d86f7976e"
@@ -1857,6 +2067,86 @@
 				fixedValue="false">
 			<from>cdmInstance</from>
 			<to>output/cdmInstance</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			comment="Map the stopped for the sync"
+			disabled="false"
+			id="55b22a44404e46f3a684e8a0bf07e1a4"
+			lineNumber="56">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="7ceb0ed61b434367a70b84cac0b3d63b"
+				serviceId="nabu.utils.Date.now"
+				resultName="result19c939494411496aa2f85e7d09301754"
+				temporaryMapping="true"
+				x="295"
+				y="276"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="53b4f645b59a4d5b9dcd79e7dfb2955f"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result19c939494411496aa2f85e7d09301754/date</from>
+			<to>instanceSync/stopped</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="01fca7eadc9d4417adff5d814b3c04dd"
+			lineNumber="57">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="20636b3db2f24c39bfa53a6371c21d84"
+				serviceId="nabu.services.jdbc.Services.insert"
+				resultName="result47b2d4ae6d8247699eaecbfe15a861a8"
+				temporaryMapping="true"
+				x="306"
+				y="215"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="e5597656775c40afb7499c03c56156c1"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>instanceSync</from>
+				<to>instances[0]</to>
+			</steps>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="f483ce3eb03e4b0fbaa66c0e5ab6b8f3"
+			label="instanceSyncDiffs"
+			lineNumber="58">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="df3a6c1c27fd4fb786cb72d3faf3df3b"
+				serviceId="nabu.services.jdbc.Services.insert"
+				resultName="result1580698294f04cae92f5627ede6bc589"
+				temporaryMapping="true"
+				x="273"
+				y="254"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="5d87c707981545b793f143d0b575dcc4"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>instanceSyncDiffs</from>
+				<to>instances</to>
+			</steps>
 		</steps>
 	</steps>
 </sequence>
