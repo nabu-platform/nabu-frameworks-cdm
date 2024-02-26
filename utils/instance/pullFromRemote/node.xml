@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-16T11:28:20.913+02:00" lastModified="2024-02-26T18:11:31.280+01:00" leaf="true" version="226">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-16T11:28:20.913+02:00" lastModified="2024-02-26T18:18:23.103+01:00" leaf="true" version="227">
     <comment>Update an instance according to all system subscriptions</comment>
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
@@ -28,6 +28,7 @@
     <references>nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output</references>
     <references>nabu.frameworks.cdm.crud.cdmInstance.services.get</references>
     <references>nabu.frameworks.cdm.utils.instance.serializeDiff</references>
+    <references>nabu.utils.Server.getServerName</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceContent.services.list</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceContent.services.create</references>
     <references>nabu.utils.Date.incrementDuration</references>
@@ -53,6 +54,7 @@
     <references>nabu.services.jdbc.Services.update</references>
     <references>nabu.frameworks.cdm.database.types.cdmInstanceSync</references>
     <references>nabu.utils.Object.first</references>
+    <references>nabu.utils.Runtime.getCorrelationId</references>
     <references>java.lang.Object</references>
     <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list</references>
     <references>nabu.frameworks.cdm.crud.cdmInstance.types.output</references>

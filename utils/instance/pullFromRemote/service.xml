@@ -564,6 +564,48 @@
 			<from>input/cdmInstanceId</from>
 			<to>instanceSync/cdmInstanceId</to>
 		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="e292b0f2293049c49e99e28fae54ca9c"
+				serviceId="nabu.utils.Runtime.getCorrelationId"
+				resultName="result780b6434f7bc4abcb877550337176dd6"
+				temporaryMapping="true"
+				x="427"
+				y="568"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="16a43cfbd6704925838f8b101390d385"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result780b6434f7bc4abcb877550337176dd6/correlationId</from>
+			<to>instanceSync/correlationId</to>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="26977242a4704f43b47772cdd68f739a"
+				serviceId="nabu.utils.Server.getServerName"
+				resultName="result61825099215f49848d5ce74dcad5ce21"
+				temporaryMapping="true"
+				x="755"
+				y="565"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="4e41705c84384e4fa6be1f9de11d79bf"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result61825099215f49848d5ce74dcad5ce21/server</from>
+			<to>instanceSync/server</to>
+		</steps>
 	</steps>
 	<steps xsi:type="be.nabu.libs.services.vm.step.Break"
 			disabled="false"

@@ -535,6 +535,48 @@
 			<from>input/cdmInstanceId</from>
 			<to>instanceSync/cdmInstanceId</to>
 		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="97717ee73e504cc08bb27222ba908f1e"
+				serviceId="nabu.utils.Runtime.getCorrelationId"
+				resultName="result6a0a6b578c354ee58666bd79219c724b"
+				temporaryMapping="true"
+				x="567"
+				y="519"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="c008dbb6e0244f0d97a55fafff9a5af3"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result6a0a6b578c354ee58666bd79219c724b/correlationId</from>
+			<to>instanceSync/correlationId</to>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="d983cee80cf84fdf9f8ec280357c0a54"
+				serviceId="nabu.utils.Server.getServerName"
+				resultName="resultbb8f4f66659a4601b0fc951afb8aebee"
+				temporaryMapping="true"
+				x="924"
+				y="560"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="3018a1f9dae3468eb8cd9b1d44d0c49b"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>resultbb8f4f66659a4601b0fc951afb8aebee/server</from>
+			<to>instanceSync/server</to>
+		</steps>
 	</steps>
 	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 			comment="Get interesting relation types"

@@ -5,4 +5,6 @@
     <field comment="push, pull" name="direction" type="java.lang.String"/>
     <field minOccurs="0" name="actorId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
     <field foreignKey="nabu.frameworks.cdm.database.types.cdmInstance:id" name="cdmInstanceId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+    <field name="correlationId" type="java.lang.String"/>
+    <field name="server" type="java.lang.String"/>
 </structure>
