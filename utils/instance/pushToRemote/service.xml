@@ -1651,7 +1651,7 @@
 						id="ec294afc6a0f45c086fd33124403f7ba"
 						lineNumber="43">
 					<steps xsi:type="be.nabu.libs.services.vm.step.Map"
-							comment="If we have no cdm diff (first sync), we diff against the full thing"
+							comment="If we have no cdm diff (first sync of entire cdm instance), we diff against the full thing"
 							disabled="false"
 							id="49fec5a94f3646c38aa4eecefd0b8f73"
 							label="cdmDiff == null"
@@ -1885,8 +1885,8 @@
 									serviceId="nabu.frameworks.cdm.utils.diff"
 									resultName="resultb0dec1ae89e04adb92a3b6c9c0200b0d"
 									temporaryMapping="true"
-									x="695"
-									y="144"
+									x="467"
+									y="158"
 									invocationOrder="1"
 									asynchronous="false"
 									recache="false">

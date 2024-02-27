@@ -1,0 +1,4 @@
+Each successful push "assumes" that the data has been correctly synced.
+This might mean the state is not entirely correct, for example non-slave fields might not be updated.
+
+We only apply changes that we detect between two cdm versions. This means we do not aggressively keep pushing back stale values overwriting potentially new values.

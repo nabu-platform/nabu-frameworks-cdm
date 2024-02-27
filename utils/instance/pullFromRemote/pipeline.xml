@@ -35,4 +35,6 @@
     <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="forbiddenDiffs"/>
     <structure collectionName="cdmInstanceSyncs" definition="nabu.frameworks.cdm.database.types.cdmInstanceSync" name="instanceSync"/>
     <structure collectionName="cdmInstanceSyncDiffs" definition="nabu.frameworks.cdm.database.types.cdmInstanceSyncDiff" maxOccurs="unbounded" minOccurs="0" name="instanceSyncDiffs"/>
+    <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="cdmDiff"/>
+    <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="arrayDiffToApplyImmediately"/>
 </structure>
