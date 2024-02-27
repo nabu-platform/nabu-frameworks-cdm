@@ -3,8 +3,8 @@
     <entries>
         <synchronize>true</synchronize>
         <type>nabu.frameworks.cdm.database.types.cdmDefinition</type>
-        <x>132</x>
-        <y>115</y>
+        <x>39</x>
+        <y>126</y>
     </entries>
     <entries>
         <synchronize>true</synchronize>
@@ -36,8 +36,8 @@
     <entries>
         <synchronize>true</synchronize>
         <type>nabu.frameworks.cdm.database.types.cdmInstance</type>
-        <x>735</x>
-        <y>251</y>
+        <x>840</x>
+        <y>254</y>
     </entries>
     <entries>
         <synchronize>true</synchronize>
@@ -103,5 +103,11 @@
         <type>nabu.frameworks.cdm.database.types.cdmInstanceSyncDiff</type>
         <x>1770</x>
         <y>417</y>
+    </entries>
+    <entries>
+        <synchronize>true</synchronize>
+        <type>nabu.frameworks.cdm.database.types.cdmTrigger</type>
+        <x>445</x>
+        <y>2</y>
     </entries>
 </dataModel>

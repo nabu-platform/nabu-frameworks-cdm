@@ -14,5 +14,6 @@
     <webFragments>nabu.frameworks.cdm.crud.cdmSystemSubscription</webFragments>
     <webFragments>nabu.frameworks.cdm.crud.cdmInstanceSync</webFragments>
     <webFragments>nabu.frameworks.cdm.crud.cdmInstanceSyncDiff</webFragments>
+    <webFragments>nabu.frameworks.cdm.crud.cdmTrigger</webFragments>
     <audience>MANAGER</audience>
 </webModule>

@@ -2162,7 +2162,8 @@
 			<steps xsi:type="be.nabu.libs.services.vm.step.Sequence"
 					disabled="false"
 					id="25ef206d71a54d4d9daef3baaf84dbbd"
-					lineNumber="57">
+					lineNumber="57"
+					scopeDefaultTransaction="true">
 				<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 						disabled="false"
 						id="d6b3bf8a67954136acca6df8a0a8ec7b"

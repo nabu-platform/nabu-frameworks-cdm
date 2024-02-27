@@ -1,0 +1,11 @@
+<structure collectionName="cdmTriggers" name="cdmTrigger">
+    <field name="id" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" primaryKey="true" type="java.util.UUID"/>
+    <field indexed="true" name="created" timezone="UTC" type="java.util.Date"/>
+    <field name="name" type="java.lang.String"/>
+    <field comment="service, event,..." name="triggerType" type="java.lang.String"/>
+    <field comment="An identifier for the type (e.g. service id)" name="triggerId" type="java.lang.String"/>
+    <field comment="You can set a condition to determine whether a particular instance should be logged or not" minOccurs="0" name="condition" type="java.lang.String"/>
+    <field name="disabled" type="java.lang.Boolean"/>
+    <field foreignKey="nabu.frameworks.cdm.database.types.cdmDefinition:id" name="cdmDefinitionId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+    <field comment="Some triggers do a full sync, both most target a specific subscription" foreignKey="nabu.frameworks.cdm.database.types.cdmSystemSubscription:id" minOccurs="0" name="cdmSystemSubscriptionId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+</structure>
