@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T11:05:50.961+02:00" lastModified="2024-01-05T10:07:42.321+01:00" leaf="true" version="63">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T11:05:50.961+02:00" lastModified="2024-02-28T10:54:06.781+01:00" leaf="true" version="81">
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
     <properties/>
     <references>nabu.frameworks.cdm.database.types.cdmSystem</references>
+    <references>nabu.utils.List.add</references>
     <references>nabu.frameworks.cdm.utils.relation.deactivate</references>
     <references>nabu.services.jdbc.Services.selectDynamic</references>
     <references>java.util.Date</references>
@@ -17,6 +18,7 @@
     <references>nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list</references>
     <references>nabu.frameworks.cdm.utils.searchExternalIdSql</references>
+    <references>nabu.services.jdbc.Services.update</references>
     <references>nabu.utils.List.remove</references>
     <references>java.lang.Long</references>
     <references>nabu.frameworks.cdm.crud.cdmDefinition.services.list</references>

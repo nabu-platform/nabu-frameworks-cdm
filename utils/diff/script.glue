@@ -1,6 +1,11 @@
 original ?= null
 new ?= null
 
+# Suppose we have simply not set _any_ value (not even null) in the target, do we want to diff it?
+# The idea is that suppose you have an instance A and you want to diff it with instance B, but whoever created instance B can not provide any sensible value (not even null) for a particular field, if we don't check for explicitly changed, it will always revert to null
+# If this is true, we only diff values that were actually set
+changedOnly ?= true
+
 originalTypeId = nabu.utils.reflection.Type.of(original)/typeId
 
 # Get all the properties, we need to know the unique keys at each level to perform proper diffing in case of lists etc
@@ -27,7 +32,7 @@ differ = lambda
 	diffs = series()
 	
 	# We only want to flag a change IF the new value actually has _a_ value for it
-	changedKeys = keys(new, true)
+	changedKeys = keys(new, changedOnly)
 	localProperties = localProperties[name ? /changedKeys]
 	
 	# we loop over all properties so we check all values (not only values that happen to exist in the original)
@@ -40,32 +45,46 @@ differ = lambda
 		
 		# if it's a list, we can have inserts and updates etc
 		if (property/list)
-			listPrimary = first(properties[path ~ /childFlatPath + "/[^/]+$" && primary == true])
-
-			# keep track of the ids we already checked to conclude inserts
-			ids = series()
-
-			for (single : oldValue)
-				iterationPath = childPath + "[" + $index + "]"
-				# we need to find the equivalent entry in the new value, if there is no primary key field, we use the index
-				primaryKey = when(listPrimary == null, $index, single[/listPrimary/name])
-				ids = merge(ids, primaryKey)
-				equivalent = when(listPrimary == null, newValue[/primaryKey], first(newValue[$this[/listPrimary/name] == /primaryKey]))
-				# it was deleted!
-				if (equivalent == null)
-					diffs = merge(diffs, structure(propertyPath: property/path, path: iterationPath, action: "delete", oldValue: single))
-				else
-					diffs = merge(diffs, differ(single, equivalent, iterationPath, childFlatPath))
-
-			# the insert counter starts after the last element in the old value
-			# this does not take into account deletes however, so if you apply both inserts and deletes the actual index might change
-			insertCounter = size(oldValue)				
-			for (single : newValue)
-				primaryKey = when(listPrimary == null, $index, single[/listPrimary/name])
-				# if it's not in the ids, its in insert
-				if (primaryKey !? ids)
-					diffs = merge(diffs, structure(path: childPath + "[" + insertCounter + "]", action: "insert", newValue: single))
-					insertCounter = insertCounter + 1
+			# a list of simple values
+			if (property/simple)
+				for (single : oldValue)
+					iterationPath = childPath + "[" + $index + "]"
+					newIndex = when(newValue == null, -1, position(lambda(x, x == single), newValue))
+					# it was removed!
+					if (newIndex < 0)
+						diffs = merge(diffs, structure(propertyPath: property/path, path: iterationPath, action: "delete", oldValue: single))
+				insertCounter = size(oldValue)
+				for (single : newValue)
+					oldIndex = when(oldValue == null, -1, position(lambda(x, x == single), oldValue))
+					if (oldIndex < 0)
+						diffs = merge(diffs, structure(path: childPath + "[" + insertCounter + "]", action: "insert", newValue: single))
+			else
+				listPrimary = first(properties[path ~ /childFlatPath + "/[^/]+$" && primary == true])
+	
+				# keep track of the ids we already checked to conclude inserts
+				ids = series()
+	
+				for (single : oldValue)
+					iterationPath = childPath + "[" + $index + "]"
+					# we need to find the equivalent entry in the new value, if there is no primary key field, we use the index
+					primaryKey = when(listPrimary == null, $index, single[/listPrimary/name])
+					ids = merge(ids, primaryKey)
+					equivalent = when(listPrimary == null, newValue[/primaryKey], first(newValue[$this[/listPrimary/name] == /primaryKey]))
+					# it was deleted!
+					if (equivalent == null)
+						diffs = merge(diffs, structure(propertyPath: property/path, path: iterationPath, action: "delete", oldValue: single))
+					else
+						diffs = merge(diffs, differ(single, equivalent, iterationPath, childFlatPath))
+	
+				# the insert counter starts after the last element in the old value
+				# this does not take into account deletes however, so if you apply both inserts and deletes the actual index might change
+				insertCounter = size(oldValue)				
+				for (single : newValue)
+					primaryKey = when(listPrimary == null, $index, single[/listPrimary/name])
+					# if it's not in the ids, its in insert
+					if (primaryKey !? ids)
+						diffs = merge(diffs, structure(path: childPath + "[" + insertCounter + "]", action: "insert", newValue: single))
+						insertCounter = insertCounter + 1
 				
 		else if (property/simple && oldValue != newValue)
 			diffs = merge(diffs, structure(propertyPath: property/path, path: childPath, action: "update", oldValue: oldValue, newValue: newValue))

@@ -11,7 +11,7 @@ diffs = diffs[propertyPath ? /properties/path]
 for (diff : diffs)
 	# if it's an update, we straight up set it
 	if (diff/action == "update")
-		console("setting " + /diff/path + " to " + diff/newValue)
+		#console("setting " + /diff/path + " to " + diff/newValue)
 		instance[/diff/path] = diff/newValue
 
 # Then we perform all deletes

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.types.structure.StructureManager" created="2024-02-28T11:23:03.471+01:00" lastModified="2024-02-28T11:23:29.215+01:00" leaf="true" version="4">
+    <environmentId>apollo</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>nabu.frameworks.cdm.specs.relation</references>
+    <references>nabu.frameworks.cdm.specs.externalId</references>
+</node>

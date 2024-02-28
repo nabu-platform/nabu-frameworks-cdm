@@ -72,7 +72,7 @@
 						mask="false"
 						optional="false"
 						fixedValue="true">
-					<from>=input/cdmDefinitionId + ".relationType." + input/relationType</from>
+					<from>="" + input/cdmDefinitionId + ".relationType." + input/relationType</from>
 					<to>name</to>
 				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
@@ -204,7 +204,7 @@
 								mask="false"
 								optional="false"
 								fixedValue="true">
-							<from>=input/cdmDefinitionId + ".relationType." + input/relationType</from>
+							<from>="" + input/cdmDefinitionId + ".relationType." + input/relationType</from>
 							<to>name</to>
 						</steps>
 						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
@@ -291,7 +291,7 @@
 						mask="false"
 						optional="false"
 						fixedValue="true">
-					<from>=input/cdmDefinitionId + ".relationType." + input/relationType + "." + input/cdmSystemId</from>
+					<from>="" + input/cdmDefinitionId + ".relationType." + input/relationType + "." + input/cdmSystemId</from>
 					<to>name</to>
 				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
@@ -423,7 +423,7 @@
 								mask="false"
 								optional="false"
 								fixedValue="true">
-							<from>=input/cdmDefinitionId + ".relationType." + input/relationType + "." + input/cdmSystemId</from>
+							<from>="" + input/cdmDefinitionId + ".relationType." + input/relationType + "." + input/cdmSystemId</from>
 							<to>name</to>
 						</steps>
 						<steps xsi:type="be.nabu.libs.services.vm.step.Link"

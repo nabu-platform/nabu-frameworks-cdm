@@ -3,15 +3,16 @@
         <field comment="The system this relation belongs to" foreignKey="nabu.frameworks.cdm.database.types.cdmSystem:id" name="cdmSystemId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
         <field comment="The definition of the source instance of the relation" name="cdmDefinitionId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
         <field name="cdmInstanceId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
-        <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" maxOccurs="unbounded" minOccurs="0" name="existingRelations"/>
+        <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list" maxOccurs="unbounded" minOccurs="0" name="existingRelations" persister="nabu.frameworks.cdm.crud.cdmInstanceRelation.batch.updateAll"/>
         <structure definition="nabu.frameworks.cdm.specs.relation" maxOccurs="unbounded" minOccurs="0" name="newRelations" restrict="id,cdmSystemId,started,stopped,cdmDefinitionId,sourceId,targetId,active"/>
     </structure>
     <structure name="output">
-        <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" maxOccurs="unbounded" minOccurs="0" name="existingRelations"/>
+        <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list" maxOccurs="unbounded" minOccurs="0" name="existingRelations" persister="nabu.frameworks.cdm.crud.cdmInstanceRelation.batch.updateAll"/>
     </structure>
-    <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" minOccurs="0" name="existingRelation"/>
+    <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list" minOccurs="0" name="existingRelation" persister="nabu.frameworks.cdm.crud.cdmInstanceRelation.batch.updateAll"/>
     <field minOccurs="0" name="date" type="java.util.Date"/>
-    <structure collectionName="cdmDefinitions" definition="nabu.frameworks.cdm.crud.cdmDefinition.types.output" maxOccurs="unbounded" minOccurs="0" name="definitions"/>
+    <structure collectionName="cdmDefinitions" definition="nabu.frameworks.cdm.crud.cdmDefinition.types.output" enricher="nabu.frameworks.cdm.crud.cdmDefinition.services.list" maxOccurs="unbounded" minOccurs="0" name="definitions" persister="nabu.frameworks.cdm.crud.cdmDefinition.batch.updateAll"/>
     <structure collectionName="cdmInstances" definition="nabu.frameworks.cdm.database.types.cdmInstance" name="existingInstance"/>
     <field minOccurs="0" name="amountOfMatches" type="java.lang.Long"/>
+    <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list" maxOccurs="unbounded" name="relationsToUpdate" persister="nabu.frameworks.cdm.crud.cdmInstanceRelation.batch.updateAll"/>
 </structure>

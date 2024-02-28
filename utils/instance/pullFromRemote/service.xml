@@ -1362,6 +1362,15 @@
 							<from>input/cdmInstanceId</from>
 							<to>instance/cdmInstanceId</to>
 						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="eb066c05ae504513b44f7538687bf2e9"
+								mask="false"
+								optional="false"
+								fixedValue="true">
+							<from>false</from>
+							<to>instance/assumedContent</to>
+						</steps>
 					</steps>
 				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Map"
@@ -1386,6 +1395,15 @@
 							fixedValue="false">
 						<from>date</from>
 						<to>instanceSubscription/pulled</to>
+					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="c1d1c0046ae54f908b895d95ad49d83e"
+							mask="false"
+							optional="false"
+							fixedValue="true">
+						<from>false</from>
+						<to>instanceSubscription/assumedContent</to>
 					</steps>
 				</steps>
 			</steps>

@@ -1,0 +1,3 @@
+<structure name="relationWithExternalIds" superType="nabu.frameworks.cdm.specs.relation">
+    <structure definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="targetExternalIds" restrict="cdmInstanceId, id"/>
+</structure>

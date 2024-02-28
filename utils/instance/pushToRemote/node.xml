@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-18T11:22:48.254+02:00" lastModified="2024-02-27T16:23:03.093+01:00" leaf="true" version="234">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-18T11:22:48.254+02:00" lastModified="2024-02-28T11:30:31.343+01:00" leaf="true" version="239">
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
@@ -11,7 +11,9 @@
     <references>nabu.frameworks.cdm.crud.cdmInstanceLog.services.create</references>
     <references>nabu.utils.reflection.Type.of</references>
     <references>nabu.utils.types.ParameterDescription</references>
+    <references>nabu.frameworks.cdm.database.types.cdmInstance</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.create</references>
+    <references>nabu.utils.List.unique</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output</references>
     <references>nabu.utils.Object.toString</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list</references>

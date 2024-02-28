@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.jdbc.JDBCServiceManager" created="2023-10-21T11:22:01.923+02:00" lastModified="2023-10-21T11:22:52.171+02:00" leaf="false" version="5">
+<node artifactManager="be.nabu.eai.module.services.jdbc.JDBCServiceManager" created="2023-10-21T11:22:01.923+02:00" lastModified="2024-02-28T09:18:24.226+01:00" leaf="false" version="6">
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
@@ -12,6 +12,7 @@
     <references>nabu.frameworks.cdm.utils.relation.deactivate.parameters</references>
     <references>be.nabu.libs.types.api.KeyValuePair</references>
     <references>nabu.frameworks.cdm.utils.relation.deactivate.results</references>
+    <references>be.nabu.libs.services.jdbc.Statistic</references>
     <references>java.lang.Long</references>
     <references>java.lang.Boolean</references>
 </node>

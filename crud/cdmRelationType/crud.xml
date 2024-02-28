@@ -32,6 +32,10 @@
         <input>true</input>
         <vary>false</vary>
     </filters>
+    <foreignFields>
+        <foreignName>cdmDefinitionId:typeId</foreignName>
+        <localName>typeId</localName>
+    </foreignFields>
     <getPermission>cdm.list</getPermission>
     <hooks>false</hooks>
     <listPermission>cdm.list</listPermission>
