@@ -1,0 +1,5 @@
+<structure interface="nabu.frameworks.cdm.manage.rest.instance.list:api" name="pipeline">
+    <structure name="input"/>
+    <structure name="output"/>
+    <structure collectionName="cdmDefinitions" definition="nabu.frameworks.cdm.crud.cdmDefinition.types.output" enricher="nabu.frameworks.cdm.crud.cdmDefinition.services.list" maxOccurs="unbounded" minOccurs="0" name="definitions" persister="nabu.frameworks.cdm.crud.cdmDefinition.batch.updateAll"/>
+</structure>

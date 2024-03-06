@@ -1,0 +1,164 @@
+<sequence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		disabled="false"
+		id="3b213bd012d64ea08ebcb1de6a021481"
+		lineNumber="1">
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="c769a007063d443fb8800fe930d1685a"
+			lineNumber="2">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="3dd65c4a62de4777aa6e484bb9d32e67"
+				serviceId="nabu.frameworks.cdm.crud.cdmSystemSubscription.services.get"
+				resultName="resultb42131cccfb044f6bd90fdc78c9b60df"
+				temporaryMapping="true"
+				x="33"
+				y="126"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="31d1cb069409484ebefa47f151f2b3ce"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/path/cdmSystemSubscriptionId</from>
+				<to>id</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="f052503e498b48ef901667ad235e4d2a"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>resultb42131cccfb044f6bd90fdc78c9b60df/result</from>
+			<to>subscription</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Throw"
+			disabled="false"
+			id="f236a5300ebd4f79a84a26522785153e"
+			label="!subscription"
+			lineNumber="3"
+			code="404"
+			whitelist="false" xsi:nil="true"/>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Throw"
+			disabled="false"
+			id="17928ac7c0b8446da57206afe9aad9ab"
+			label="subscription/batchPullId == null"
+			lineNumber="4"
+			message="Not batch capable"
+			whitelist="false" xsi:nil="true"/>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Switch"
+			disabled="false"
+			id="d86109a3b72d4a1c8940b94ed13edd09"
+			lineNumber="5"
+			query="input/query/push">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Sequence"
+				comment="Add it to an anonymous batch job so we can run a push afterwards"
+				disabled="false"
+				id="160f68fb17534202903f9221c7440ecd"
+				label="true"
+				lineNumber="6">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+					disabled="false"
+					id="0f40fdf727054b2497eb29f91f731cf5"
+					lineNumber="7">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+						disabled="false"
+						id="f0c7954f3af349f6b1ebe4c780f90d99"
+						serviceId="nabu.frameworks.cdm.utils.synchronizeCustom"
+						resultName="resultcb3cb8bc126e43a0bfe8ea10edca0b61"
+						temporaryMapping="true"
+						x="77"
+						y="90"
+						invocationOrder="0"
+						target="nabu.frameworks.tasks.providers.executor"
+						asynchronous="false"
+						recache="false">
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="8b45b1c6b0ed481e8bc24e28b5aa51f8"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>subscription/id</from>
+						<to>cdmSystemSubscriptionId</to>
+					</steps>
+					<targetProperties
+							collectionIndex="groupId">=subscription/system</targetProperties>
+					<targetProperties
+							collectionIndex="contextId">=subscription/coreTypeId</targetProperties>
+				</steps>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+					disabled="false"
+					id="6ba6e4f1fd434b44ab3ea50631abe537"
+					lineNumber="8">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+						disabled="false"
+						id="82fceb5c89a045f796ac2a8345bb40f7"
+						serviceId="nabu.frameworks.cdm.utils.pushBatchedUpdates"
+						resultName="resultf2d937e1fe974cb39db8a27560280198"
+						temporaryMapping="true"
+						x="226"
+						y="43"
+						invocationOrder="0"
+						target="nabu.frameworks.tasks.providers.executor"
+						asynchronous="false"
+						recache="false">
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="364b9d6e8d4647809e29267f8611fe8e"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>input/path/cdmSystemSubscriptionId</from>
+						<to>cdmSystemSubscriptionId</to>
+					</steps>
+					<targetProperties
+							collectionIndex="groupId">=subscription/system</targetProperties>
+					<targetProperties
+							collectionIndex="contextId">=subscription/coreTypeId</targetProperties>
+					<targetProperties
+							collectionIndex="finalize">true</targetProperties>
+				</steps>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+				disabled="false"
+				id="03de18ae8ba74f449331fb7b8fdb8d2e"
+				lineNumber="9">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+					disabled="false"
+					id="9c22b5dc85ea458b9450a23fd0e22785"
+					serviceId="nabu.frameworks.cdm.utils.synchronizeCustom"
+					resultName="resultcb3cb8bc126e43a0bfe8ea10edca0b61"
+					temporaryMapping="true"
+					x="77"
+					y="90"
+					invocationOrder="0"
+					target="nabu.frameworks.tasks.providers.executor"
+					asynchronous="false"
+					recache="false">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="4702042dc7ec47deaa1c96b9787a25d2"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>subscription/id</from>
+					<to>cdmSystemSubscriptionId</to>
+				</steps>
+				<targetProperties
+						collectionIndex="groupId">=subscription/system</targetProperties>
+				<targetProperties
+						collectionIndex="contextId">=subscription/coreTypeId</targetProperties>
+				<targetProperties
+						collectionIndex="queue">cdm-batch</targetProperties>
+			</steps>
+		</steps>
+	</steps>
+</sequence>

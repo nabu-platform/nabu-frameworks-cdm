@@ -1,6 +1,6 @@
 <structure name="pipeline">
     <structure name="input">
-        <field comment="The system this relation belongs to" foreignKey="nabu.frameworks.cdm.database.types.cdmSystem:id" name="cdmSystemId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+        <field comment="The system this relation belongs to" foreignKey="nabu.frameworks.cdm.database.types.cdmSystemSubscription:id" name="cdmSystemSubscriptionId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
         <field comment="The definition of the source instance of the relation" name="cdmDefinitionId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
         <field name="cdmInstanceId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
         <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list" maxOccurs="unbounded" minOccurs="0" name="existingRelations" persister="nabu.frameworks.cdm.crud.cdmInstanceRelation.batch.updateAll"/>

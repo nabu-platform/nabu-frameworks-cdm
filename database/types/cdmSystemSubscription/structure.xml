@@ -9,7 +9,6 @@
     <field comment="Data provider id" minOccurs="0" name="pullId" type="java.lang.String"/>
     <field comment="A service to pull multiple entities. By default we assume you will be pulling all entities. If you have an optimized last modified pull, set the optimized boolean to true." minOccurs="0" name="batchPullId" type="java.lang.String"/>
     <field comment="The limit you want to use in pull all. This defaults to 100." minOccurs="0" name="batchPullLimit" type="java.lang.Long"/>
-    <field comment="Whether or not the batch pull is optimized. If optimized, we assume anything not updated in the batch pull _is_ up to date." minOccurs="0" name="batchPullOptimized" type="java.lang.Boolean"/>
     <field comment="Data subscriber id" minOccurs="0" name="pushId" type="java.lang.String"/>
     <field comment="The priority of this subscription in all subscriptions for the CDM" name="priority" type="java.lang.Long"/>
     <field comment="The subscription might only apply to a portion of the cdm instances, you can set a filter here" minOccurs="0" name="filter" type="java.lang.String"/>

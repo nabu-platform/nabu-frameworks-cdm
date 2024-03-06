@@ -1016,20 +1016,11 @@
 				serviceId="nabu.frameworks.cdm.utils.relation.update"
 				resultName="resultcbc069f97a48421e92d2a498d3017a60"
 				temporaryMapping="true"
-				x="665"
-				y="96"
+				x="450"
+				y="84"
 				invocationOrder="1"
 				asynchronous="false"
 				recache="false">
-			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-					disabled="false"
-					id="300023f1bcbc4fb1bb85ffa06d914ff2"
-					mask="false"
-					optional="false"
-					fixedValue="false">
-				<from>subscription/cdmSystemId</from>
-				<to>cdmSystemId</to>
-			</steps>
 			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 					disabled="false"
 					id="d054bd29ddcc4ff88ceb3c183b3bdfe2"
@@ -1066,6 +1057,15 @@
 				<from>definition/id</from>
 				<to>cdmDefinitionId</to>
 			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="d3bdf84c155a43bb9f6c1b7156a9da91"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>subscription/id</from>
+				<to>cdmSystemSubscriptionId</to>
+			</steps>
 		</steps>
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
@@ -1095,15 +1095,6 @@
 					fixedValue="false">
 				<from>instance/id</from>
 				<to>filter/sourceId[0]</to>
-			</steps>
-			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-					disabled="false"
-					id="7441e8952ca3489fab7280434544ed9e"
-					mask="false"
-					optional="false"
-					fixedValue="false">
-				<from>subscription/cdmSystemId</from>
-				<to>filter/cdmSystemId[0]</to>
 			</steps>
 		</steps>
 	</steps>

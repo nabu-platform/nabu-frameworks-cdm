@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T11:05:50.961+02:00" lastModified="2024-02-28T10:54:06.781+01:00" leaf="true" version="81">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T11:05:50.961+02:00" lastModified="2024-02-28T12:02:44.450+01:00" leaf="true" version="86">
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
     <properties/>
-    <references>nabu.frameworks.cdm.database.types.cdmSystem</references>
     <references>nabu.utils.List.add</references>
     <references>nabu.frameworks.cdm.utils.relation.deactivate</references>
     <references>nabu.services.jdbc.Services.selectDynamic</references>
@@ -16,12 +15,12 @@
     <references>java.util.UUID</references>
     <references>nabu.frameworks.cdm.specs.relation</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output</references>
-    <references>nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list</references>
     <references>nabu.frameworks.cdm.utils.searchExternalIdSql</references>
     <references>nabu.services.jdbc.Services.update</references>
     <references>nabu.utils.List.remove</references>
     <references>java.lang.Long</references>
     <references>nabu.frameworks.cdm.crud.cdmDefinition.services.list</references>
     <references>nabu.frameworks.cdm.utils.relation.getRelationTypeForSystem</references>
+    <references>nabu.frameworks.cdm.database.types.cdmSystemSubscription</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceRelation.services.create</references>
 </node>

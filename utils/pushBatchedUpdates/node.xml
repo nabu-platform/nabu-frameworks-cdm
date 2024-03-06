@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2024-02-29T08:55:39.723+01:00" lastModified="2024-02-29T08:59:50.866+01:00" leaf="true" version="11">
+    <environmentId>apollo</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>nabu.frameworks.cdm.crud.cdmSystemBatchPull.services.list</references>
+    <references>nabu.frameworks.cdm.services.synchronize</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.services.get</references>
+    <references>java.util.UUID</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.list</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemBatchPull.types.output</references>
+</node>

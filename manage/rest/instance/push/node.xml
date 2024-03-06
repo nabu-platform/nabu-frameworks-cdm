@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.rest.provider.RESTServiceManager" created="2024-02-29T09:18:09.613+01:00" lastModified="2024-02-29T09:20:57.264+01:00" leaf="true" version="11">
+    <environmentId>apollo</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output</references>
+    <references>nabu.frameworks.cdm.utils.instance.pushToRemote</references>
+    <references>java.util.UUID</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstance.types.output</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstance.services.get</references>
+</node>

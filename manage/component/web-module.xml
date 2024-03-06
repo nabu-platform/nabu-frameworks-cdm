@@ -14,6 +14,10 @@
     <webFragments>nabu.frameworks.cdm.crud.cdmSystemSubscription</webFragments>
     <webFragments>nabu.frameworks.cdm.crud.cdmInstanceSync</webFragments>
     <webFragments>nabu.frameworks.cdm.crud.cdmInstanceSyncDiff</webFragments>
-    <webFragments>nabu.frameworks.cdm.crud.cdmTrigger</webFragments>
+    <webFragments>nabu.frameworks.cdm.manage.rest.instance.list</webFragments>
+    <webFragments>nabu.frameworks.cdm.manage.rest.instance.trigger</webFragments>
+    <webFragments>nabu.frameworks.cdm.manage.rest.instance.synchronize</webFragments>
+    <webFragments>nabu.frameworks.cdm.manage.rest.batch.run</webFragments>
+    <webFragments>nabu.frameworks.cdm.manage.rest.instance.push</webFragments>
     <audience>MANAGER</audience>
 </webModule>

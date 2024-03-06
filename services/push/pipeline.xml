@@ -10,12 +10,12 @@
     <structure collectionName="cdmInstances" definition="nabu.frameworks.cdm.database.types.cdmInstance" name="instance"/>
     <field minOccurs="0" name="rowCount" type="java.lang.Long"/>
     <structure collectionName="cdmDefinitions" definition="nabu.frameworks.cdm.database.types.cdmDefinition" minOccurs="0" name="definition"/>
-    <structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" minOccurs="0" name="subscription"/>
-    <structure collectionName="cdmInstanceSubscriptions" definition="nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output" minOccurs="0" name="instanceSubscription"/>
+    <structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list" minOccurs="0" name="subscription" persister="nabu.frameworks.cdm.crud.cdmSystemSubscription.batch.updateAll"/>
+    <structure collectionName="cdmInstanceSubscriptions" definition="nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.list" minOccurs="0" name="instanceSubscription" persister="nabu.frameworks.cdm.crud.cdmInstanceSubscription.batch.updateAll"/>
     <field name="changed" type="java.lang.Boolean"/>
     <structure collectionCrudProvider="odata" collectionName="teamsTemplates" definition="java.lang.Object" minOccurs="0" name="currentInstance"/>
     <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="diffs"/>
     <field minOccurs="0" name="date" type="java.util.Date"/>
-    <structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" maxOccurs="unbounded" minOccurs="0" name="otherSubscriptions"/>
+    <structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list" maxOccurs="unbounded" minOccurs="0" name="otherSubscriptions" persister="nabu.frameworks.cdm.crud.cdmSystemSubscription.batch.updateAll"/>
     <field name="newInstance" type="java.lang.Boolean"/>
 </structure>

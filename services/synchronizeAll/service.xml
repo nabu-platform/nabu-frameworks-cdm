@@ -152,6 +152,15 @@
 					<from>input/typeId</from>
 					<to>typeId</to>
 				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="767a0257c3874d79aaa64d438436a4b3"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>results/system</from>
+					<to>skipPullForSystem</to>
+				</steps>
 				<targetProperties
 						collectionIndex="contextId">=input/typeId</targetProperties>
 				<targetProperties

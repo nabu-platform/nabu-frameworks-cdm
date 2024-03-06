@@ -148,6 +148,15 @@
 							<from>instance/id</from>
 							<to>cdmInstanceId</to>
 						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="5c2e829a83024cfd9c71f6f47cbb65da"
+								mask="false"
+								optional="false"
+								fixedValue="false">
+							<from>input/skipPullForSystem</from>
+							<to>skipPullForSystem</to>
+						</steps>
 					</steps>
 				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Map"
@@ -173,6 +182,15 @@
 								fixedValue="false">
 							<from>instance/id</from>
 							<to>cdmInstanceId</to>
+						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="eb50f346f72e40d0ab15a69ff44b26a9"
+								mask="false"
+								optional="false"
+								fixedValue="false">
+							<from>input/skipPullForSystem</from>
+							<to>skipPullForSystem</to>
 						</steps>
 					</steps>
 				</steps>

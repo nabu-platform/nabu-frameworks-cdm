@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-18T11:22:48.254+02:00" lastModified="2024-02-28T11:30:31.343+01:00" leaf="true" version="239">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-18T11:22:48.254+02:00" lastModified="2024-02-29T09:17:23.962+01:00" leaf="true" version="254">
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
@@ -31,6 +31,7 @@
     <references>nabu.frameworks.cdm.utils.instance.serializeDiff</references>
     <references>nabu.utils.Server.getServerName</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceContent.services.list</references>
+    <references>nabu.frameworks.cdm.specs.relationWithExternalIds</references>
     <references>nabu.utils.Date.incrementDuration</references>
     <references>nabu.frameworks.cdm.database.types.cdmInstanceSyncDiff</references>
     <references>nabu.utils.Runtime.summarizeException</references>

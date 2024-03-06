@@ -1,1 +1,1 @@
-<structure name="relation" restrict="id,cdmSystemId,started,stopped,cdmDefinitionId,sourceId,targetId,active,cdmRelationTypeId" superType="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output"/>
+<structure name="relation" restrict="id,cdmSystemSubscriptionId,started,stopped,cdmDefinitionId,sourceId,targetId,active,cdmRelationTypeId" superType="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output"/>

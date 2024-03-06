@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.services.jdbc.JDBCServiceManager" created="2024-02-28T16:34:43.681+01:00" lastModified="2024-02-28T16:39:56.909+01:00" leaf="false" version="6">
+    <environmentId>apollo</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>java.lang.String</references>
+    <references>java.lang.Long</references>
+    <references>java.lang.Integer</references>
+    <references>java.lang.Boolean</references>
+    <references>be.nabu.libs.services.jdbc.AffixInput</references>
+    <references>nabu.frameworks.cdm.manage.rest.instance.search.parameters</references>
+    <references>be.nabu.libs.types.api.KeyValuePair</references>
+    <references>nabu.frameworks.cdm.database.types.cdmInstance</references>
+    <references>be.nabu.libs.services.jdbc.Statistic</references>
+    <references>java.lang.Long</references>
+    <references>java.lang.Boolean</references>
+</node>

@@ -1,0 +1,145 @@
+<sequence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		disabled="false"
+		id="4b773b2f8f3c416e920d02a18839014f"
+		lineNumber="1">
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="1180104575cb4c2f8bf31e0cfe298e90"
+			lineNumber="2">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="6aa8417f919d436f848e69965767d51d"
+				serviceId="nabu.frameworks.cdm.crud.cdmInstance.services.get"
+				resultName="result3e3787fb47bf4e4bb00c09fbc1171c49"
+				temporaryMapping="true"
+				x="56"
+				y="65"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="9c21558310eb47fb9547a6c403dbc05b"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/path/cdmInstanceId</from>
+				<to>id</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="1c93d37b3881491295f7dcf534934807"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result3e3787fb47bf4e4bb00c09fbc1171c49/result</from>
+			<to>instance</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="946abb2e14684452809cfddbe2abcde5"
+			label="instance"
+			lineNumber="3">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="6fa02619044542b4b7836817885c7ce7"
+				serviceId="nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list"
+				resultName="result7bbd02358a0341ce93f2f87502327f68"
+				temporaryMapping="true"
+				x="215"
+				y="51"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="990170300b4142e1ba70563189e2bfa5"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>instance/cdmDefinitionId</from>
+				<to>filter/cdmDefinitionId[0]</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="c56435e2d102401a92d78d8af15059d3"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/path/cdmSystemId</from>
+				<to>filter/cdmSystemId[0]</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="379893175fbe4bd9902faa056561a0d7"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>true</from>
+				<to>filter/hasPush</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="76cfde7cfacf440190a9aeac192cd574"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result7bbd02358a0341ce93f2f87502327f68/results[0]</from>
+			<to>subscription</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Throw"
+			disabled="false"
+			id="92d7ba98c4be4463a635bf795b0e258e"
+			label="!subscription"
+			lineNumber="4"
+			message="Could not find subscription that supports push"
+			whitelist="false" xsi:nil="true"/>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="0d588b05ff4e42afb4415da22db48ad4"
+			lineNumber="5">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="b2554ec92afe4dcebfc860cce73427c1"
+				serviceId="nabu.frameworks.cdm.utils.instance.pushToRemote"
+				resultName="resultaa9f68256adc43b7a4046ccf246100ec"
+				temporaryMapping="true"
+				x="318"
+				y="109"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="757f83d0f2b746da8b2d31c437e21114"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/path/cdmInstanceId</from>
+				<to>cdmInstanceId</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="fda766a3e1a0477785522597827e41ca"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>subscription/system</from>
+				<to>systems[0]</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="9b052605980847fda5aa06d00c1c6507"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>subscription/system</from>
+				<to>forcePushForSystem[0]</to>
+			</steps>
+		</steps>
+	</steps>
+</sequence>

@@ -1,0 +1,7 @@
+<structure name="query">
+    <field minOccurs="0" name="limit" type="java.lang.Long"/>
+    <field minOccurs="0" name="offset" type="java.lang.Long"/>
+    <field maxOccurs="unbounded" minOccurs="0" name="orderBy" type="java.lang.String"/>
+    <field maxOccurs="unbounded" minOccurs="0" name="typeId" type="java.lang.String"/>
+    <field minOccurs="0" name="q" type="java.lang.String"/>
+</structure>

@@ -739,7 +739,7 @@
 					mask="false"
 					optional="false"
 					fixedValue="false">
-				<from>allExistingRelations[cdmSystemId == /subscription/cdmSystemId]</from>
+				<from>allExistingRelations[cdmSystemSubscriptionId == /subscription/id]</from>
 				<to>existingRelations</to>
 			</steps>
 			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
@@ -1167,15 +1167,6 @@
 						recache="false">
 					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 							disabled="false"
-							id="300023f1bcbc4fb1bb85ffa06d914ff2"
-							mask="false"
-							optional="false"
-							fixedValue="false">
-						<from>subscription/cdmSystemId</from>
-						<to>cdmSystemId</to>
-					</steps>
-					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-							disabled="false"
 							id="d054bd29ddcc4ff88ceb3c183b3bdfe2"
 							mask="false"
 							optional="false"
@@ -1209,6 +1200,15 @@
 							fixedValue="false">
 						<from>instance/cdmDefinitionId</from>
 						<to>cdmDefinitionId</to>
+					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="6f1fc09f987c447a9e4014fe0019a8df"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>subscription/id</from>
+						<to>cdmSystemSubscriptionId</to>
 					</steps>
 				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
@@ -1405,6 +1405,10 @@
 						<from>false</from>
 						<to>instanceSubscription/assumedContent</to>
 					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Drop"
+							disabled="false"
+							id="f57c398cfc68435b855a26a56f2f7262"
+							path="instanceSubscription/cdmSystemBatchPullId" xsi:nil="true"/>
 				</steps>
 			</steps>
 		</steps>

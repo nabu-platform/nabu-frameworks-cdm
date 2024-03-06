@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T09:44:07.182+02:00" lastModified="2023-10-23T11:53:53.244+02:00" leaf="true" version="18">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T09:44:07.182+02:00" lastModified="2024-02-28T15:29:11.233+01:00" leaf="true" version="19">
     <comment>First run any custom batches and finally the standard batch</comment>
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>

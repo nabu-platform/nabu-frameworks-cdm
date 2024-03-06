@@ -1,0 +1,6 @@
+<structure interface="$self:api" name="pipeline">
+    <structure name="input"/>
+    <structure name="output"/>
+    <structure collectionName="cdmInstances" definition="nabu.frameworks.cdm.crud.cdmInstance.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstance.services.list" name="instance" persister="nabu.frameworks.cdm.crud.cdmInstance.batch.updateAll"/>
+    <structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list" minOccurs="0" name="subscription" persister="nabu.frameworks.cdm.crud.cdmSystemSubscription.batch.updateAll"/>
+</structure>

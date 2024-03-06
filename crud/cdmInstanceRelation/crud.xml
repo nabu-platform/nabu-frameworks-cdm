@@ -10,7 +10,7 @@
     <deleteRole>$user</deleteRole>
     <filters>
         <caseInsensitive>false</caseInsensitive>
-        <key>cdmSystemId</key>
+        <key>cdmSystemSubscriptionId</key>
         <operator>=</operator>
         <or>false</or>
         <input>true</input>
