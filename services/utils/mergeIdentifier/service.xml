@@ -29,7 +29,7 @@
 	<steps xsi:type="be.nabu.libs.services.vm.step.Break"
 			disabled="false"
 			id="55b60ede1287496995cebe591ce58136"
-			label="input/identifier != null"
+			label="input/identifier == null"
 			lineNumber="3">
 		<count>1</count>
 	</steps>

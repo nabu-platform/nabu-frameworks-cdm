@@ -1,6 +1,6 @@
 <structure name="pipeline">
     <structure name="input">
-        <field name="typeId" type="java.lang.String"/>
+        <field minOccurs="0" name="typeId" type="java.lang.String"/>
         <field comment="You can pass in a few specific cdm instances to sync. If none are passed in, all will be synced." maxOccurs="unbounded" minOccurs="0" name="cdmInstanceId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
         <field minOccurs="0" name="limit" type="java.lang.Long"/>
         <field comment="List all the systems that should explicitly skip pulling. If you have for instance just performed a batch sync this might not be ideal." maxOccurs="unbounded" minOccurs="0" name="skipPullForSystem" type="java.lang.String"/>

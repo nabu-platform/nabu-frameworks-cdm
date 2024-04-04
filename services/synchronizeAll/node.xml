@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T09:44:07.182+02:00" lastModified="2024-02-28T15:29:11.233+01:00" leaf="true" version="19">
-    <comment>First run any custom batches and finally the standard batch</comment>
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T09:44:07.182+02:00" lastModified="2024-03-09T08:24:18.047+01:00" leaf="true" version="25">
+    <comment>First run any custom batches and then start a regular sync of all the items involved</comment>
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
     <properties/>
+    <references>nabu.frameworks.cdm.utils.pullBatch</references>
     <references>nabu.frameworks.cdm.services.synchronize</references>
     <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output</references>
-    <references>nabu.frameworks.cdm.utils.synchronizeCustom</references>
     <references>nabu.frameworks.tasks.providers.executor</references>
     <references>java.lang.String</references>
     <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list</references>

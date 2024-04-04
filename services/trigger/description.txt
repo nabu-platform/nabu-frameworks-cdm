@@ -1,2 +1,3 @@
-Trigger a change from a specific system for a specific instance identified by the external identifier.
-This is meant to be used primarily in a webhook scenario where you know a single system has a change waiting.
+You can trigger a cdm instance for one or more systems. If no systems are provided, all systems are checked.
+When you can have the target system call a webhook on change, it is best to trigger this with only that system.
+Otherwise you can trigger all systems in a recurring batch sync (e.g. nightly)

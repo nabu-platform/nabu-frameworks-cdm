@@ -14,4 +14,5 @@
     <structure collectionName="cdmInstances" definition="nabu.frameworks.cdm.crud.cdmInstance.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstance.services.list" name="instance" persister="nabu.frameworks.cdm.crud.cdmInstance.batch.updateAll"/>
     <structure definition="nabu.utils.types.ParameterDescription" maxOccurs="unbounded" minOccurs="0" name="parameters"/>
     <structure definition="nabu.utils.types.ParameterDescription" minOccurs="0" name="primaryKey"/>
+    <structure collectionName="cdmInstances" definition="nabu.frameworks.cdm.crud.cdmInstance.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstance.services.list" name="existingInstance" persister="nabu.frameworks.cdm.crud.cdmInstance.batch.updateAll"/>
 </structure>

@@ -44,6 +44,24 @@
 				<from>priority</from>
 				<to>orderBy[0]</to>
 			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="d5abc492f1e94032ac51e5d99a818759"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/system</from>
+				<to>filter/system</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="9c4068c4e7694c508b6557f127d3c75f"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/notSystem</from>
+				<to>filter/notSystem</to>
+			</steps>
 		</steps>
 		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 				disabled="false"
@@ -67,7 +85,7 @@
 			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 					disabled="false"
 					id="5e0cd9abad31432ea125f61bc6b55fd8"
-					serviceId="nabu.frameworks.cdm.utils.synchronizeCustom"
+					serviceId="nabu.frameworks.cdm.utils.pullBatch"
 					resultName="resultf997dc89b2fb4de19961e2c526a635a2"
 					temporaryMapping="true"
 					x="364"

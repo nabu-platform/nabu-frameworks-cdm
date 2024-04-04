@@ -1,0 +1,1 @@
+This service will first pull from all the systems to create a new up to date CDM instance, then proceed to push the changes to all systems

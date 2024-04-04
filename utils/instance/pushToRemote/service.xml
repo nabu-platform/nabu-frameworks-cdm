@@ -165,7 +165,7 @@
 					mask="false"
 					optional="false"
 					fixedValue="false">
-				<from>result9fcad811ad5743d9a0848f060ca00eda/results/targetId</from>
+				<from>result9fcad811ad5743d9a0848f060ca00eda/results[targetId != null]/targetId</from>
 				<to>list</to>
 			</steps>
 		</steps>
@@ -1722,6 +1722,10 @@
 					<from>result5211ea5434e34fee8c30dfb90b6241ed/masked</from>
 					<to>patchedPartialInstance</to>
 				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Drop"
+						disabled="false"
+						id="3ebcf4ab030145bd800566cf5a9044c0"
+						path="appliedDiffs" xsi:nil="true"/>
 			</steps>
 			<steps xsi:type="be.nabu.libs.services.vm.step.Sequence"
 					disabled="false"

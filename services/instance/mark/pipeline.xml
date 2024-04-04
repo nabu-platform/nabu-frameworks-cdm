@@ -1,8 +1,0 @@
-<structure name="pipeline">
-    <structure name="input">
-        <field name="system" type="java.lang.String"/>
-        <field name="typeId" type="java.lang.String"/>
-        <field comment="The date that you checked it last. This defaults to &quot;now&quot;" minOccurs="0" name="checked" type="java.util.Date"/>
-    </structure>
-    <structure name="output"/>
-</structure>
