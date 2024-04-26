@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-18T11:22:48.254+02:00" lastModified="2024-03-29T10:58:40.686+01:00" leaf="true" version="256">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-18T11:22:48.254+02:00" lastModified="2024-04-04T11:13:14.560+02:00" leaf="true" version="260">
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
@@ -38,6 +38,7 @@
     <references>nabu.utils.List.add</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceContent.services.get</references>
     <references>nabu.utils.Runtime.getCurrentToken</references>
+    <references>nabu.services.glue.Services.evaluate</references>
     <references>nabu.frameworks.cdm.specs.relation</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.list</references>
     <references>nabu.utils.reflection.Type.describe</references>

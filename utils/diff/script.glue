@@ -57,7 +57,7 @@ differ = lambda
 				for (single : newValue)
 					oldIndex = when(oldValue == null, -1, position(lambda(x, x == single), oldValue))
 					if (oldIndex < 0)
-						diffs = merge(diffs, structure(path: childPath + "[" + insertCounter + "]", action: "insert", newValue: single))
+						diffs = merge(diffs, structure(propertyPath: property/path, path: childPath + "[" + insertCounter + "]", action: "insert", newValue: single))
 			else
 				listPrimary = first(properties[path ~ /childFlatPath + "/[^/]+$" && primary == true])
 	
@@ -83,7 +83,7 @@ differ = lambda
 					primaryKey = when(listPrimary == null, $index, single[/listPrimary/name])
 					# if it's not in the ids, its in insert
 					if (primaryKey !? ids)
-						diffs = merge(diffs, structure(path: childPath + "[" + insertCounter + "]", action: "insert", newValue: single))
+						diffs = merge(diffs, structure(propertyPath: property/path, path: childPath + "[" + insertCounter + "]", action: "insert", newValue: single))
 						insertCounter = insertCounter + 1
 				
 		else if (property/simple && oldValue != newValue)
