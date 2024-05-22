@@ -4,8 +4,51 @@
 		lineNumber="1">
 	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 			disabled="false"
-			id="6ffefff782424ef19f509186e9852d50"
+			id="067d9082fbe54a05bfddcc1daac9af2a"
 			lineNumber="2">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="0204ef61866f438686531acb37e2211b"
+				serviceId="nabu.frameworks.cdm.crud.cdmDefinition.services.list"
+				resultName="resultee2e6b65fa4a47c1b5903b7484fff792"
+				temporaryMapping="true"
+				x="64"
+				y="105"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="9431ab5b18af43ad8086d4a1fb35d32f"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/typeId</from>
+				<to>filter/typeId[0]</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="fec16ae52c1e440fb85582ed0bba89be"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>resultee2e6b65fa4a47c1b5903b7484fff792/results[0]</from>
+			<to>definition</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Throw"
+			description="=&quot;Unknown definition: &quot; + input/typeId"
+			disabled="false"
+			id="d74026a9444744c2a0e64ce1e34b5d7c"
+			label="!definition"
+			lineNumber="3"
+			message="Unknown definition"
+			whitelist="false" xsi:nil="true"/>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="6ffefff782424ef19f509186e9852d50"
+			lineNumber="4">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="3c0d0b0f6d604936a39dba505bffd0e2"
@@ -34,6 +77,15 @@
 					fixedValue="false">
 				<from>input/externalId/identifier</from>
 				<to>filter/identifier[0]</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="ea7b4decf29343679bc1a1b7cdfe594e"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>definition/id</from>
+				<to>filter/cdmDefinitionId[0]</to>
 			</steps>
 		</steps>
 		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
@@ -74,7 +126,7 @@
 				temporaryMapping="true"
 				x="586"
 				y="362"
-				invocationOrder="1"
+				invocationOrder="2"
 				asynchronous="false"
 				recache="false">
 			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
@@ -110,21 +162,21 @@
 			disabled="false"
 			id="d2d2af65c14746f4b0ec7218771041c0"
 			label="amountOfInstances == 0"
-			lineNumber="3">
+			lineNumber="5">
 		<count>1</count>
 	</steps>
 	<steps xsi:type="be.nabu.libs.services.vm.step.Throw"
 			disabled="false"
 			id="ef699e20f83e474e8ffbc80c2e6f4b93"
 			label="amountOfInstances &gt;= 2"
-			lineNumber="4"
+			lineNumber="6"
 			message="Multiple CDM instances found of the same type for the given identifier"
 			whitelist="false" xsi:nil="true"/>
 	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 			comment="Map output"
 			disabled="false"
 			id="e671e6a6ae9e490dab3e05be014379b7"
-			lineNumber="5">
+			lineNumber="7">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 				disabled="false"
 				id="00985e1f0562462c90cef051001caf78"

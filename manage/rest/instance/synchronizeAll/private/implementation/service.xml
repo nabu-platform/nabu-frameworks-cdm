@@ -1,0 +1,72 @@
+<sequence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		disabled="false"
+		id="7e14a5a58d444391b86ac2c0e9a85e94"
+		lineNumber="1">
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="615d400cbb924625aefc286224630773"
+			lineNumber="2">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="27c7ab6edbcc437abce130dd5011a064"
+				serviceId="nabu.frameworks.cdm.crud.cdmDefinition.services.get"
+				resultName="resultfb078587cd054714a247ecf8bc31c990"
+				temporaryMapping="true"
+				x="70"
+				y="74"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="8dbde3a829b944eba4373ec019b6ddca"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/path/cdmDefinitionId</from>
+				<to>id</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="a5b32a0544614cedb84fe809e713c823"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>resultfb078587cd054714a247ecf8bc31c990/result</from>
+			<to>result</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Throw"
+			disabled="false"
+			id="7248b49f6dde471db187649a366857dc"
+			label="!result"
+			lineNumber="3"
+			whitelist="false" xsi:nil="true"/>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="c08e3bc84e9b488b97cfc487d980ec8a"
+			lineNumber="4">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="570555cdce0f4966be6b2ba875015179"
+				serviceId="nabu.frameworks.cdm.services.synchronizeAll"
+				resultName="result91b5b28f48604f95ba8e66218c04de25"
+				temporaryMapping="true"
+				x="228"
+				y="80"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="110a9b5f01b5438fa3e2157d8914f88d"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>result/typeId</from>
+				<to>typeId</to>
+			</steps>
+		</steps>
+	</steps>
+</sequence>

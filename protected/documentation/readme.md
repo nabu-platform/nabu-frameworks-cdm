@@ -2,6 +2,66 @@
 
 - use a separate type for pulling and pushing. pulling _MUST_ be a subtype of pushing (or equal to)
 
+# The initial problem
+
+Suppose a few scenario's:
+
+- you are starting a new CDM and onboarding 5 systems immediately
+- you are starting a new CDM with 4 systems and onboard a fifth system on day 2
+- you are starting a new CDM with 4 systems, and after a year you want to onboard a fifth system
+
+The question becomes: which data should win? When 5 systems are simultaneously merged for the first time, the priority level will dictate which values "win" out.
+If you onboard a system after onto an already existing cdm instance, potentially all "stale" data of the new system will be flagged as a delta from the cdm. And because the other systems are not reporting any deltas, the priority concept does not kick in and all the "stale" data wins by default.
+
+The reason the second and third scenario are different is because on day 2 you probably haven't cleaned up all your data, so the data in the cdm and the new system are equally likely to be correct.
+In the third scenario you are onboarding a system with stale data onto a cdm that has been running for a while and likely contains data that is more correct than the outlier system.
+
+We can't really use the "master" document definition because this is intended to highlight where mutation can take place, it does not reflect the initial data quality that is present.
+
+We could use a "initial master" document structure that highlights the fields that are of high quality. This does not really solve the priority issues that arise when a new system is onboarded into an existing CDM setup, but it does limit the impact on the amount of fields.
+
+The downside here is also that is it not "intelligent", it can not follow different rules based on the instance itself. If you are merging say 50.000 customer objects with a newly onboarded system, you might be able to automate 49.000 of them but still need to review 1000 merges.
+You don't want to arbitrarily start human tasks for each merge, but it requires actual logic to determine which merges should be reviewed.
+
+In the future we might add "merge" service support which can be used to onboard a system to an existing CDM instance.
+
+# Resolving paths
+
+Suppose you have 4 systems A through D.
+
+A knows an identifier for B, B for C, C for D.
+
+If you create an organisation based on an existing entry in A, you can cascade this to B, then C, then D.
+
+However if you create an organisation from D, it becomes tricky.
+
+Step 1:
+D: create
+
+Step 2:
+A: unknown
+B: unknown
+C: link to C
+
+Step 3:
+A: unknown
+B: link to B
+
+Step 4:
+A: link to A
+
+Depending on the depth of the linkage based on the initial data, we may need to loop A-B-C-D multiple times to get the corresponding entries everywhere.
+
+We can assume that A does not actually interact with the remote system in step1, step2 and step3 because it has no relevant identifier to do so.
+This means we can keep poking at A until it returns something without incurring overhead. If of course there is something to return.
+
+Knowing whether A can not actually resolve anything useful because there isn't anything or there isn't enough information is hard though.
+
+We could add a "resolution" priority which would indicate the path to follow when resolving a new entity. However that path is likely determined by your starting point.
+We would need more insight into how systems are correlated to extract a relevant path for resolution.
+
+Currently we are limited to 1-deep resolving based on a good trigger system that has a substantial amount of identifiers.
+
 # Scenario's
 
 ## Webhook

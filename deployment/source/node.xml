@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2024-05-14T10:51:19.839+02:00" lastModified="2024-05-14T10:56:15.014+02:00" leaf="true" version="12">
+    <environmentId>apollo</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>nabu.frameworks.cdm.database.types.cdmSystem</references>
+    <references>nabu.frameworks.cdm.database.types.cdmSystemRelationType</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystem.services.list</references>
+    <references>nabu.frameworks.cdm.database.types.cdmRelationType</references>
+    <references>nabu.frameworks.cdm.crud.cdmDefinition.services.list</references>
+    <references>nabu.frameworks.cdm.database.types.cdmTrigger</references>
+    <references>nabu.frameworks.cdm.crud.cdmTrigger.services.list</references>
+    <references>java.lang.String</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list</references>
+    <references>nabu.frameworks.cdm.database.types.cdmSystemSubscription</references>
+    <references>nabu.frameworks.cdm.crud.cdmRelationType.services.list</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemRelationType.services.list</references>
+    <references>nabu.frameworks.cdm.database.types.cdmDefinition</references>
+</node>

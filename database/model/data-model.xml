@@ -66,8 +66,8 @@
     <entries>
         <synchronize>true</synchronize>
         <type>nabu.frameworks.cdm.database.types.cdmInstanceLog</type>
-        <x>1291</x>
-        <y>1115</y>
+        <x>1328</x>
+        <y>1145</y>
     </entries>
     <entries>
         <synchronize>true</synchronize>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2024-05-14T10:51:22.747+02:00" lastModified="2024-05-17T13:10:20.420+02:00" leaf="true" version="6">
+    <environmentId>apollo</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>nabu.frameworks.cdm.database.types.cdmSystem</references>
+    <references>nabu.frameworks.cdm.database.types.cdmSystemRelationType</references>
+    <references>nabu.services.jdbc.Services.merge</references>
+    <references>nabu.frameworks.cdm.database.types.cdmTrigger</references>
+    <references>java.lang.String</references>
+    <references>nabu.frameworks.cdm.database.types.cdmSystemSubscription</references>
+    <references>nabu.frameworks.cdm.database.types.cdmDefinition</references>
+    <references>nabu.frameworks.cdm.database.types.cdmRelationType</references>
+</node>

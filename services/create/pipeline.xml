@@ -15,4 +15,7 @@
     <structure definition="nabu.utils.types.ParameterDescription" maxOccurs="unbounded" minOccurs="0" name="parameters"/>
     <structure definition="nabu.utils.types.ParameterDescription" minOccurs="0" name="primaryKey"/>
     <structure collectionName="cdmInstances" definition="nabu.frameworks.cdm.crud.cdmInstance.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstance.services.list" name="existingInstance" persister="nabu.frameworks.cdm.crud.cdmInstance.batch.updateAll"/>
+    <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list" maxOccurs="unbounded" minOccurs="0" name="matchingIdentifiers" persister="nabu.frameworks.cdm.crud.cdmInstanceExternalId.batch.updateAll"/>
+    <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list" minOccurs="0" name="matchingIdentifier" persister="nabu.frameworks.cdm.crud.cdmInstanceExternalId.batch.updateAll"/>
+    <field maxOccurs="unbounded" minOccurs="0" name="systemsToSkipPull" type="java.lang.String"/>
 </structure>

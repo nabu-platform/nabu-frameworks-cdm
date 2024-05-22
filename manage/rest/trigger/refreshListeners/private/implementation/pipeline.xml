@@ -1,0 +1,4 @@
+<structure interface="nabu.frameworks.cdm.manage.rest.trigger.refreshListeners:api" name="pipeline">
+    <structure name="input"/>
+    <structure name="output"/>
+</structure>

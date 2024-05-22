@@ -1,0 +1,7 @@
+<structure name="pipeline">
+    <structure name="input"/>
+    <structure name="output"/>
+    <field comment="If it's a service action, the service id to track. A dedicated field for fast lookup." maxOccurs="unbounded" minOccurs="0" name="toBeAudited" type="java.lang.String"/>
+    <field maxOccurs="unbounded" minOccurs="0" name="currentlyAudited" type="java.lang.String"/>
+    <field maxOccurs="unbounded" name="connectionIds" type="java.lang.String"/>
+</structure>

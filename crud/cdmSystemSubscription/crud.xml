@@ -77,6 +77,14 @@
         <input>true</input>
         <vary>false</vary>
     </filters>
+    <filters>
+        <caseInsensitive>false</caseInsensitive>
+        <key>id</key>
+        <operator>=</operator>
+        <or>false</or>
+        <input>true</input>
+        <vary>false</vary>
+    </filters>
     <foreignFields>
         <foreignName>cdmSystemId:name</foreignName>
         <localName>system</localName>

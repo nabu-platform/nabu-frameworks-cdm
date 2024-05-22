@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <webModule>
+    <path>/cdm</path>
     <webFragments>nabu.frameworks.cdm.crud.cdmDefinition</webFragments>
     <webFragments>nabu.frameworks.cdm.crud.cdmInstance</webFragments>
     <webFragments>nabu.frameworks.cdm.crud.cdmInstanceContent</webFragments>
@@ -19,5 +20,8 @@
     <webFragments>nabu.frameworks.cdm.manage.rest.instance.synchronize</webFragments>
     <webFragments>nabu.frameworks.cdm.manage.rest.batch.run</webFragments>
     <webFragments>nabu.frameworks.cdm.manage.rest.instance.push</webFragments>
+    <webFragments>nabu.frameworks.cdm.manage.rest.trigger.refreshListeners</webFragments>
+    <webFragments>nabu.frameworks.cdm.manage.rest.instance.synchronizeAll</webFragments>
+    <webFragments>nabu.frameworks.cdm.manage.rest.instance.recouple</webFragments>
     <audience>MANAGER</audience>
 </webModule>

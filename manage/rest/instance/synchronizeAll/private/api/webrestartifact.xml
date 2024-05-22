@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<restInterface>
+    <method>POST</method>
+    <path>/cdm/definition/{cdmDefinitionId}/synchronize</path>
+    <role>$user</role>
+    <permissionAction>cdm.manage</permissionAction>
+    <useServiceContextAsPermissionContext>false</useServiceContextAsPermissionContext>
+    <useWebApplicationAsPermissionContext>false</useWebApplicationAsPermissionContext>
+    <useProjectAsPermissionContext>false</useProjectAsPermissionContext>
+    <useGlobalPermissionContext>true</useGlobalPermissionContext>
+    <lenient>true</lenient>
+    <webApplicationId>false</webApplicationId>
+    <geoPosition>false</geoPosition>
+    <useAsAuthorizationServiceContext>false</useAsAuthorizationServiceContext>
+    <language>false</language>
+    <allowFormBinding>false</allowFormBinding>
+    <caseInsensitive>false</caseInsensitive>
+    <cache>false</cache>
+    <allowCookiesWithoutReferer>false</allowCookiesWithoutReferer>
+    <allowCookiesWithExternalReferer>false</allowCookiesWithExternalReferer>
+    <request>false</request>
+    <allowHeaderAsQueryParameter>false</allowHeaderAsQueryParameter>
+    <useServerCache>false</useServerCache>
+    <source>false</source>
+    <allowRaw>false</allowRaw>
+    <domain>false</domain>
+    <origin>false</origin>
+    <scheme>false</scheme>
+    <ignoreOffline>false</ignoreOffline>
+    <allowRootArrays>false</allowRootArrays>
+    <captureErrors>false</captureErrors>
+    <captureSuccessful>false</captureSuccessful>
+    <limitedToInterface>false</limitedToInterface>
+    <allowExplicitResponseCode>false</allowExplicitResponseCode>
+    <stubbed>false</stubbed>
+</restInterface>

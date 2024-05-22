@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<startupService>
+    <service>nabu.frameworks.cdm.startup.registerListeners</service>
+    <asynchronous>false</asynchronous>
+    <runPostDeployment>false</runPostDeployment>
+    <properties/>
+    <runPreDeployment>false</runPreDeployment>
+    <runDuringDeployment>false</runDuringDeployment>
+    <runAtStartup>true</runAtStartup>
+    <runAfterStartup>false</runAfterStartup>
+    <startPhase>EARLY</startPhase>
+</startupService>

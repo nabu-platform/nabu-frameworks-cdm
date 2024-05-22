@@ -5,6 +5,7 @@
         <field comment="Force pulling data before we push" minOccurs="0" name="forcePull" type="java.lang.Boolean"/>
         <field comment="List specific systems if you want, otherwise all systems will be used" maxOccurs="unbounded" minOccurs="0" name="skipPullForSystem" type="java.lang.String"/>
         <field maxOccurs="unbounded" minOccurs="0" name="forcePushForSystem" type="java.lang.String"/>
+        <field minOccurs="0" name="source" type="java.lang.String"/>
     </structure>
     <structure name="output">
         <structure comment="Existing external ids for this instance, this can be used to match it to a target system. Will always send all external ids so you can use other identifiers " definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="newExternalIds" restrict="cdmInstanceId, systemId, id"/>
@@ -37,7 +38,7 @@
     <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list" maxOccurs="unbounded" minOccurs="0" name="existingRelations" persister="nabu.frameworks.cdm.crud.cdmInstanceRelation.batch.updateAll"/>
     <field minOccurs="0" name="nextPull" type="java.util.Date"/>
     <field name="pullNewData" type="java.lang.Boolean"/>
-    <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="revertToCdmDiffs"/>
+    <structure comment="Should be renamed to &quot;revertToPreviousVersionDiffs&quot;" definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="revertToCdmDiffs"/>
     <structure definition="nabu.utils.types.ParameterDescription" maxOccurs="unbounded" minOccurs="0" name="masterParameters"/>
     <structure collectionName="cdmSystemRelationTypes" definition="nabu.frameworks.cdm.crud.cdmSystemRelationType.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystemRelationType.services.list" maxOccurs="unbounded" minOccurs="0" name="allInterestedRelationTypes" persister="nabu.frameworks.cdm.crud.cdmSystemRelationType.batch.updateAll"/>
     <structure collectionName="cdmSystemRelationTypes" definition="nabu.frameworks.cdm.crud.cdmSystemRelationType.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystemRelationType.services.list" maxOccurs="unbounded" minOccurs="0" name="interestedRelationTypes" persister="nabu.frameworks.cdm.crud.cdmSystemRelationType.batch.updateAll"/>
@@ -49,4 +50,6 @@
     <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list" maxOccurs="unbounded" minOccurs="0" name="allExistingRelationTargetExternalIds" persister="nabu.frameworks.cdm.crud.cdmInstanceExternalId.batch.updateAll"/>
     <structure definition="nabu.frameworks.cdm.specs.relationWithExternalIds" maxOccurs="unbounded" minOccurs="0" name="interestingRelationsWithIds"/>
     <field name="interested" type="java.lang.Boolean"/>
+    <structure collectionName="cdmInstanceLogs" definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" name="log"/>
+    <structure collectionName="cdmInstanceLogs" definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" maxOccurs="unbounded" minOccurs="0" name="logs"/>
 </structure>

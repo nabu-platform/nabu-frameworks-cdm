@@ -1,0 +1,3 @@
+<structure name="path">
+    <field name="cdmDefinitionId" type="java.util.UUID"/>
+</structure>

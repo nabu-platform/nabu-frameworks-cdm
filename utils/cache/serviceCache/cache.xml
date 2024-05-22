@@ -2,5 +2,6 @@
 <cache>
     <cacheProvider>nabu.frameworks.cdm.utils.cache.memoryCache</cacheProvider>
     <service>nabu.frameworks.cdm.utils.relation.getRelationTypeForSystem</service>
+    <service>nabu.frameworks.cdm.utils.getTriggers</service>
     <enableInDevelopment>true</enableInDevelopment>
 </cache>

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.cache.service.CacheManager" created="2024-01-05T09:35:51.123+01:00" lastModified="2024-01-05T09:35:57.108+01:00" leaf="true" version="4">
+<node artifactManager="be.nabu.eai.module.cache.service.CacheManager" created="2024-01-05T09:35:51.123+01:00" lastModified="2024-05-07T15:26:02.284+02:00" leaf="true" version="5">
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
     <properties/>
     <references>nabu.frameworks.cdm.utils.cache.memoryCache</references>
     <references>nabu.frameworks.cdm.utils.relation.getRelationTypeForSystem</references>
+    <references>nabu.frameworks.cdm.utils.getTriggers</references>
 </node>

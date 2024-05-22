@@ -1,0 +1,8 @@
+<structure name="pipeline">
+    <structure name="input"/>
+    <structure name="output">
+        <field maxOccurs="unbounded" name="connectionIds" type="java.lang.String"/>
+    </structure>
+    <field maxOccurs="unbounded" name="connectionIds" type="java.lang.String"/>
+    <structure definition="nabu.protocols.jdbc.pool.types.JDBCPoolInformation" minOccurs="0" name="information"/>
+</structure>

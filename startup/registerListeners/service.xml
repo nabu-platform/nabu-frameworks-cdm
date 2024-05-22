@@ -1,0 +1,22 @@
+<sequence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		disabled="false"
+		id="c1fd3d86e7ec4995be5f7a7eb3a10f53"
+		lineNumber="1">
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="d09c253da3fc48bba6124985631e5e49"
+			lineNumber="2">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="be6e7a0e2bc04e9fa558c78f9d5f7f09"
+				serviceId="nabu.frameworks.cdm.startup.registerServiceListeners"
+				resultName="resultc6981844bb18480ea85299749101ea47"
+				temporaryMapping="true"
+				x="103"
+				y="51"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+		</steps>
+	</steps>
+</sequence>

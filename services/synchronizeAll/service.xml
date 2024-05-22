@@ -41,7 +41,7 @@
 					mask="false"
 					optional="false"
 					fixedValue="true">
-				<from>priority</from>
+				<from>priority desc</from>
 				<to>orderBy[0]</to>
 			</steps>
 			<steps xsi:type="be.nabu.libs.services.vm.step.Link"

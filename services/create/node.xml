@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-16T12:13:45.664+02:00" lastModified="2024-03-28T14:32:49.421+01:00" leaf="true" version="73">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-16T12:13:45.664+02:00" lastModified="2024-05-13T15:16:00.314+02:00" leaf="true" version="82">
     <comment>Create a new instance of a CDM</comment>
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
     <properties/>
     <references>nabu.frameworks.cdm.crud.cdmSystem.types.output</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list</references>
     <references>nabu.frameworks.cdm.crud.cdmDefinition.types.output</references>
     <references>nabu.frameworks.cdm.crud.cdmInstance.services.create</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.create</references>
@@ -14,10 +15,12 @@
     <references>nabu.frameworks.cdm.utils.instance.pullFromRemote</references>
     <references>nabu.frameworks.cdm.crud.cdmInstance.services.get</references>
     <references>nabu.utils.reflection.Type.describe</references>
+    <references>nabu.utils.List.addAll</references>
     <references>nabu.frameworks.cdm.specs.externalId</references>
     <references>nabu.frameworks.cdm.crud.cdmDefinition.services.create</references>
     <references>nabu.frameworks.cdm.crud.cdmDefinition.services.list</references>
     <references>nabu.frameworks.cdm.utils.instance.pushToRemote</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output</references>
     <references>java.lang.Object</references>
     <references>java.lang.String</references>
     <references>nabu.frameworks.cdm.crud.cdmInstance.types.output</references>

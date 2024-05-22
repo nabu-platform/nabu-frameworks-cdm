@@ -1,0 +1,12 @@
+<structure name="pipeline">
+    <structure name="input">
+        <field name="connectionId" type="java.lang.String"/>
+        <structure collectionName="cdmDefinitions" definition="nabu.frameworks.cdm.database.types.cdmDefinition" maxOccurs="unbounded" minOccurs="0" name="definitions"/>
+        <structure collectionName="cdmRelationTypes" definition="nabu.frameworks.cdm.database.types.cdmRelationType" maxOccurs="unbounded" minOccurs="0" name="relationTypes"/>
+        <structure collectionName="cdmSystems" comment="A system that has some part of the data the belongs to some cdm.&#10;We want to be able to group enrichers and subscribers in this way so we don't trigger on our own changes" definition="nabu.frameworks.cdm.database.types.cdmSystem" maxOccurs="unbounded" minOccurs="0" name="systems"/>
+        <structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.database.types.cdmSystemSubscription" maxOccurs="unbounded" minOccurs="0" name="systemSubscriptions"/>
+        <structure collectionName="cdmSystemRelationTypes" definition="nabu.frameworks.cdm.database.types.cdmSystemRelationType" maxOccurs="unbounded" minOccurs="0" name="systemRelationTypes"/>
+        <structure collectionName="cdmTriggers" definition="nabu.frameworks.cdm.database.types.cdmTrigger" maxOccurs="unbounded" minOccurs="0" name="triggers"/>
+    </structure>
+    <structure name="output"/>
+</structure>

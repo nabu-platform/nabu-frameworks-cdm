@@ -2,13 +2,17 @@
     <structure name="input">
         <field name="cdmInstanceId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
         <field comment="List specific systems if you want, otherwise all systems will be used" maxOccurs="unbounded" minOccurs="0" name="system" type="java.lang.String"/>
+        <field maxOccurs="unbounded" minOccurs="0" name="notSystem" type="java.lang.String"/>
         <field comment="By default this service will adhere to pull interval requirements. You can however force it to pull data anyway." minOccurs="0" name="force" type="java.lang.Boolean"/>
         <field comment="List specific systems if you want, otherwise all systems will be used" maxOccurs="unbounded" minOccurs="0" name="skipPullForSystem" type="java.lang.String"/>
+        <field minOccurs="0" name="source" type="java.lang.String"/>
+        <field comment="By skipping the merge, you don't create a new cdm content instance. This can be useful for updating only the external identifiers for instance." minOccurs="0" name="metadataOnly" type="java.lang.Boolean"/>
     </structure>
     <structure name="output">
         <structure collectionCrudProvider="odata" collectionName="teamsTemplates" definition="java.lang.Object" name="cdmInstance"/>
         <structure comment="The order of these changes is relevant, they are incremental" definition="nabu.frameworks.cdm.utils.diffResultForSystem" maxOccurs="unbounded" minOccurs="0" name="changes"/>
         <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list" maxOccurs="unbounded" minOccurs="0" name="externalIds" persister="nabu.frameworks.cdm.crud.cdmInstanceExternalId.batch.updateAll"/>
+        <field maxOccurs="unbounded" minOccurs="0" name="systems" type="java.lang.String"/>
     </structure>
     <field name="typeId" type="java.lang.String"/>
     <structure collectionCrudProvider="odata" collectionName="teamsTemplates" definition="java.lang.Object" name="partialInstance"/>
@@ -37,4 +41,8 @@
     <structure collectionName="cdmInstanceSyncDiffs" definition="nabu.frameworks.cdm.database.types.cdmInstanceSyncDiff" maxOccurs="unbounded" minOccurs="0" name="instanceSyncDiffs"/>
     <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="cdmDiff"/>
     <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="arrayDiffToApplyImmediately"/>
+    <structure collectionName="cdmInstanceLogs" definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" name="log"/>
+    <structure collectionName="cdmInstanceLogs" definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" maxOccurs="unbounded" minOccurs="0" name="logs"/>
+    <field name="newInstanceSubscription" type="java.lang.Boolean"/>
+    <field name="direction" type="java.lang.String"/>
 </structure>

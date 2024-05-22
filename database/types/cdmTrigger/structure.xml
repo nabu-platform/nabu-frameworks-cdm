@@ -7,5 +7,6 @@
     <field comment="You can set a condition to determine whether a particular instance should be logged or not" minOccurs="0" name="condition" type="java.lang.String"/>
     <field name="disabled" type="java.lang.Boolean"/>
     <field foreignKey="nabu.frameworks.cdm.database.types.cdmDefinition:id" name="cdmDefinitionId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
-    <field comment="Some triggers do a full sync, both most target a specific subscription" foreignKey="nabu.frameworks.cdm.database.types.cdmSystemSubscription:id" minOccurs="0" name="cdmSystemSubscriptionId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+    <field comment="Most triggers target a specific system. If we ever want to trigger full syncs, we can make this optional" foreignKey="nabu.frameworks.cdm.database.types.cdmSystemSubscription:id" name="cdmSystemSubscriptionId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+    <field comment="Rule to extract identifiers from the trigger. Currently mandatory because we don't want to sync _everything_ (probably). Make optional if this is necessary" name="identifierRule" type="java.lang.String"/>
 </structure>

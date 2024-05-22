@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2024-03-09T07:54:43.357+01:00" lastModified="2024-03-09T07:57:40.510+01:00" leaf="true" version="7">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2024-03-09T07:54:43.357+01:00" lastModified="2024-05-07T14:59:17.155+02:00" leaf="true" version="10">
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
@@ -7,6 +7,8 @@
     <references>nabu.frameworks.cdm.specs.externalId</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list</references>
     <references>nabu.utils.List.size</references>
+    <references>nabu.frameworks.cdm.crud.cdmDefinition.services.list</references>
+    <references>nabu.frameworks.cdm.crud.cdmDefinition.types.output</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output</references>
     <references>nabu.utils.List.unique</references>
     <references>java.lang.String</references>

@@ -1,0 +1,8 @@
+<structure interface="nabu.cms.core.hooks.security.initialize" name="pipeline">
+    <structure name="input"/>
+    <structure name="output"/>
+    <field maxOccurs="unbounded" minOccurs="0" name="managerPermissions" type="java.lang.String"/>
+    <field name="has" type="java.lang.Boolean"/>
+    <structure definition="nabu.utils.types.NodeDescription" maxOccurs="unbounded" minOccurs="0" name="connections"/>
+    <structure collectionCrudProvider="node" collectionName="nodes" definition="nabu.cms.core.types.emodel.core.Node" id="127-0-1-1--349ff93a:1578fc8f0d7:-8000:0000000000000990" minOccurs="0" name="globalContext"/>
+</structure>
