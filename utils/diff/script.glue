@@ -92,7 +92,9 @@ differ = lambda
 		else if (!property/simple)
 			# new value
 			if (oldValue == null && newValue != null)
-				diffs = merge(diffs, structure(propertyPath: property/path, path: childPath, action: "update", oldValue: oldValue, newValue: newValue))
+				#diffs = merge(diffs, structure(propertyPath: property/path, path: childPath, action: "update", oldValue: oldValue, newValue: newValue))
+				# in the past we just flagged the entire object as an update, but when applying multiple diffs against a central instance, we still want field-level patching rather than overwriting the entire object every time because the initial value happened to be null
+				diffs = merge(diffs, differ(oldValue, newValue, childPath, childFlatPath))
 			# removed value
 			else if (oldValue != null && newValue == null)
 				diffs = merge(diffs, structure(propertyPath: property/path, path: childPath, action: "update", oldValue: oldValue, newValue: newValue))

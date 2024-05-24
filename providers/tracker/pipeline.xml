@@ -4,7 +4,7 @@
     <field minOccurs="0" name="serviceContextConnectionId" type="java.lang.String"/>
     <structure collectionName="cdmTriggers" definition="nabu.frameworks.cdm.crud.cdmTrigger.types.output" enricher="nabu.frameworks.cdm.crud.cdmTrigger.services.list" maxOccurs="unbounded" minOccurs="0" name="triggers" persister="nabu.frameworks.cdm.crud.cdmTrigger.batch.updateAll"/>
     <structure collectionCrudProvider="odata" collectionName="teamsTemplates" definition="java.lang.Object" minOccurs="0" name="pipeline"/>
-    <field maxOccurs="unbounded" name="identifiers" type="java.lang.String"/>
+    <field maxOccurs="unbounded" name="externalIdentifiers" type="java.lang.String"/>
     <structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list" maxOccurs="unbounded" minOccurs="0" name="subscriptions" persister="nabu.frameworks.cdm.crud.cdmSystemSubscription.batch.updateAll"/>
     <structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list" minOccurs="0" name="subscription" persister="nabu.frameworks.cdm.crud.cdmSystemSubscription.batch.updateAll"/>
     <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list" maxOccurs="unbounded" minOccurs="0" name="externalIdMatches" persister="nabu.frameworks.cdm.crud.cdmInstanceExternalId.batch.updateAll"/>

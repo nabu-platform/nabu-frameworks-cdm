@@ -142,6 +142,15 @@
 			<from>resultfd642ff4fcc249a59f2163bf7732d42d/results[0]</from>
 			<to>lastRun</to>
 		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="3ee85a221b17469ba22aafc97893f5ec"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>resultfd642ff4fcc249a59f2163bf7732d42d/results[0]/started</from>
+			<to>pullSince</to>
+		</steps>
 	</steps>
 	<steps xsi:type="be.nabu.libs.services.vm.step.Throw"
 			disabled="false"
@@ -297,15 +306,6 @@
 						recache="false">
 					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 							disabled="false"
-							id="7c07391a03cb4be0820c05c7642381c5"
-							mask="false"
-							optional="false"
-							fixedValue="false">
-						<from>lastRun/started</from>
-						<to>lastRun</to>
-					</steps>
-					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-							disabled="false"
 							id="b5154d6e2b134691bea5ac42de9ae119"
 							mask="false"
 							optional="false"
@@ -330,6 +330,15 @@
 							fixedValue="false">
 						<from>subscription/batchPullId</from>
 						<to>implementationId</to>
+					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="fc748dd3ef8442eea7aace1e2ccbbd25"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>pullSince</from>
+						<to>lastRun</to>
 					</steps>
 				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Link"

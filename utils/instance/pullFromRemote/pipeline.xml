@@ -7,6 +7,8 @@
         <field comment="List specific systems if you want, otherwise all systems will be used" maxOccurs="unbounded" minOccurs="0" name="skipPullForSystem" type="java.lang.String"/>
         <field minOccurs="0" name="source" type="java.lang.String"/>
         <field comment="By skipping the merge, you don't create a new cdm content instance. This can be useful for updating only the external identifiers for instance." minOccurs="0" name="metadataOnly" type="java.lang.Boolean"/>
+        <field comment="When maximizing data gathering, we " minOccurs="0" name="skipNulls" type="java.lang.Boolean"/>
+        <field comment="You can skip master documents and focus on maximizing the data gathering" minOccurs="0" name="skipMaster" type="java.lang.Boolean"/>
     </structure>
     <structure name="output">
         <structure collectionCrudProvider="odata" collectionName="teamsTemplates" definition="java.lang.Object" name="cdmInstance"/>

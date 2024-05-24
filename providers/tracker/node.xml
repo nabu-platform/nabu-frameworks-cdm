@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2024-01-30T16:04:55.022+01:00" lastModified="2024-05-07T15:55:45.529+02:00" leaf="true" version="101">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2024-01-30T16:04:55.022+01:00" lastModified="2024-05-24T15:38:47.703+02:00" leaf="true" version="112">
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
     <properties/>
     <references>be.nabu.eai.module.auditing.api.FlatServiceTracker.track</references>
     <references>nabu.frameworks.cdm.utils.getTriggers</references>
-    <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list</references>
     <references>nabu.utils.Runtime.getPipeline</references>
-    <references>be.nabu.eai.module.auditing.api.FlatServiceTracker$TrackType</references>
     <references>java.util.Date</references>
     <references>nabu.frameworks.cdm.database.types.cdmInstance</references>
     <references>nabu.services.glue.Services.evaluate</references>
     <references>nabu.utils.List.unique</references>
-    <references>java.util.UUID</references>
     <references>be.nabu.libs.authentication.api.Device</references>
-    <references>be.nabu.libs.authentication.api.Token</references>
     <references>java.lang.Integer</references>
-    <references>java.lang.Exception</references>
+    <references>nabu.frameworks.cdm.services.create</references>
     <references>be.nabu.libs.artifacts.api.ExternalDependency</references>
     <references>java.lang.Long</references>
-    <references>nabu.frameworks.cdm.crud.cdmTrigger.types.output</references>
     <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output</references>
     <references>java.lang.Boolean</references>
-    <references>java.lang.Object</references>
     <references>java.lang.String</references>
     <references>nabu.protocols.jdbc.pool.Services.connectionForContext</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list</references>
+    <references>be.nabu.eai.module.auditing.api.FlatServiceTracker$TrackType</references>
+    <references>java.util.UUID</references>
+    <references>be.nabu.libs.authentication.api.Token</references>
+    <references>java.lang.Exception</references>
+    <references>nabu.frameworks.cdm.crud.cdmTrigger.types.output</references>
+    <references>java.lang.Object</references>
     <references>nabu.frameworks.cdm.services.trigger</references>
 </node>

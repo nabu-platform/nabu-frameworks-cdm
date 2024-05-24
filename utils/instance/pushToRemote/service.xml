@@ -2591,15 +2591,31 @@
 						<to>newRelations</to>
 					</steps>
 				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+						comment="Defaults to false"
+						disabled="false"
+						id="40c41df8c6bf44968e9b3b4ef01d79e8"
+						label="rejected == null"
+						lineNumber="75">
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="b941796e12cd411b9a6ba07515b8ed46"
+							mask="false"
+							optional="false"
+							fixedValue="true">
+						<from>false</from>
+						<to>rejected</to>
+					</steps>
+				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Catch"
 						disabled="false"
 						id="c2243305dcd04460b9ecdbb8c2dd7ce8"
-						lineNumber="75"
+						lineNumber="76"
 						variable="exception">
 					<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 							disabled="false"
 							id="d1d29d9eacfd4d38b854124ac5fbbfcc"
-							lineNumber="76">
+							lineNumber="77">
 						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 								disabled="false"
 								id="f9be0a5c0cef40cbaebc4e6bc21de404"
@@ -2645,13 +2661,13 @@
 			<steps xsi:type="be.nabu.libs.services.vm.step.For"
 					disabled="false"
 					id="9e141712ece540a781f468245641d9c5"
-					lineNumber="77"
+					lineNumber="78"
 					variable="appliedDiff"
 					into="instanceSyncDiffs">
 				<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 						disabled="false"
 						id="6441928ac44142639daf31fbfa9718ee"
-						lineNumber="78">
+						lineNumber="79">
 					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 							disabled="false"
 							id="28fe544f5360439d819389e7a591a70e"
@@ -2795,7 +2811,7 @@
 					disabled="false"
 					id="58998ed9bb87401695f0ec19f343fb3c"
 					label="newExternalIds"
-					lineNumber="79">
+					lineNumber="80">
 				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 						disabled="false"
 						id="08d00c30ca704f279e31c675ccec59e3"
@@ -2849,7 +2865,7 @@
 					comment="Update the &quot;pushed&quot;, this is incorrect if it has been rejected!"
 					disabled="true"
 					id="47ce2c02fd6940e49af9c25a62a932f9"
-					lineNumber="80">
+					lineNumber="81">
 				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 						disabled="false"
 						id="1df901e2220943f494f58a70007211ed"
@@ -2872,16 +2888,16 @@
 			<steps xsi:type="be.nabu.libs.services.vm.step.Switch"
 					disabled="false"
 					id="2a80362c53a24e9a8da73b4701a30989"
-					lineNumber="81">
+					lineNumber="82">
 				<steps xsi:type="be.nabu.libs.services.vm.step.Sequence"
 						disabled="false"
 						id="db8bc11e546241a88a1b9b43adfbbf35"
 						label="rejected"
-						lineNumber="82">
+						lineNumber="83">
 					<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 							disabled="false"
 							id="2e53fda4265a4fd985df381cc8f78a2b"
-							lineNumber="83">
+							lineNumber="84">
 						<steps xsi:type="be.nabu.libs.services.vm.step.Drop"
 								disabled="false"
 								id="38d63c670bcf4630a061b546e3d4c7df"
@@ -2965,7 +2981,7 @@
 					<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 							disabled="false"
 							id="48ad440912c640618e4b70ea9f313ce5"
-							lineNumber="84">
+							lineNumber="85">
 						<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 								disabled="false"
 								id="2fa8da2ae03d4836b67b5baf8f1ba7a8"
@@ -3015,7 +3031,7 @@
 						comment="Marshal the content and update &quot;pulled&quot;. We assume that the data is now synchronized and pulling it would yield the same result"
 						disabled="false"
 						id="fa7f762ff61a489fa7b4361eb2da8eeb"
-						lineNumber="85">
+						lineNumber="86">
 					<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 							disabled="false"
 							id="dc1c5baeaf7f4f9481cedafcbd5eb200"
@@ -3203,11 +3219,11 @@
 					disabled="false"
 					id="4132d113246d4032b1696a06e5d3cf2e"
 					label="rejected &amp;&amp; subscription/pullId != null"
-					lineNumber="86">
+					lineNumber="87">
 				<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 						disabled="false"
 						id="069dd61ddfa14701bcbf5b5979595f02"
-						lineNumber="87">
+						lineNumber="88">
 					<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 							disabled="false"
 							id="c33dfb78212641d99ef61702bad14fee"
@@ -3298,7 +3314,7 @@
 						disabled="false"
 						id="bcc8f2de21804a80a8ac1489085f6e48"
 						label="newExternalIds"
-						lineNumber="88">
+						lineNumber="89">
 					<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 							disabled="false"
 							id="6ef0320513574c938aa1a50db885f23a"
@@ -3351,19 +3367,19 @@
 				<steps xsi:type="be.nabu.libs.services.vm.step.Switch"
 						disabled="false"
 						id="6faf0afbca574587b2c91e211902f55a"
-						lineNumber="89">
+						lineNumber="90">
 					<steps xsi:type="be.nabu.libs.services.vm.step.Sequence"
 							comment="If we had an instance but no longer have one, we set to decoupled and skip"
 							disabled="false"
 							id="ffb7d4deb8fe479bae2861c08d7366e1"
 							label="newestPartialInstance == null"
-							lineNumber="90">
+							lineNumber="91">
 						<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 								comment="If we had content before, set to decoupled. If the initial create failed (e.g. mandatory field missing), we don't want to set it to decoupled just yet"
 								disabled="false"
 								id="ef62fef8824a4a33be9d5a4d827b8e23"
 								label="instanceSubscription/content != null"
-								lineNumber="91">
+								lineNumber="92">
 							<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 									disabled="false"
 									id="c85727e81e1b4527beb9ce4a963da28a"
@@ -3381,7 +3397,7 @@
 						<steps xsi:type="be.nabu.libs.services.vm.step.Break"
 								disabled="false"
 								id="ad081687be8c451d84b3542e473c1a7b"
-								lineNumber="92">
+								lineNumber="93">
 							<count>3</count>
 							<continueExecution>true</continueExecution>
 						</steps>
@@ -3390,11 +3406,11 @@
 							comment="Otherwise we set the (potentially partially updated data) and update the pulled"
 							disabled="false"
 							id="deb73f6d87034eba93a02a1cdbc86e3b"
-							lineNumber="93">
+							lineNumber="94">
 						<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 								disabled="false"
 								id="e1160032a1b34a7ab0c0e3c97c8859cb"
-								lineNumber="94">
+								lineNumber="95">
 							<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 									disabled="false"
 									id="e518c8be6543420aa9924b333af18e03"
@@ -3499,7 +3515,7 @@
 						<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 								disabled="false"
 								id="b3797462d2b243d1bbfcc71f906bd77c"
-								lineNumber="95">
+								lineNumber="96">
 							<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 									disabled="false"
 									id="fff2b0f16d2d4ec7af91d52f07d60e6f"
@@ -3575,7 +3591,7 @@
 					features="CDM_FAIL_ON_REJECT"
 					id="113e7060dfdf49d0ad84f3596bf1a758"
 					label="rejected"
-					lineNumber="96"
+					lineNumber="97"
 					message="Rejected"
 					whitelist="false" xsi:nil="true"/>
 		</steps>
@@ -3585,7 +3601,7 @@
 			disabled="false"
 			id="973ff9e5d7214e1898fc333ee23eab74"
 			label="instanceSubscriptions"
-			lineNumber="97">
+			lineNumber="98">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="aa2f63054aa74874baa41d5989e99a55"
@@ -3612,7 +3628,7 @@
 			comment="Map the stopped for the sync"
 			disabled="false"
 			id="55b22a44404e46f3a684e8a0bf07e1a4"
-			lineNumber="98">
+			lineNumber="99">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="7ceb0ed61b434367a70b84cac0b3d63b"
@@ -3638,7 +3654,7 @@
 	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 			disabled="false"
 			id="01fca7eadc9d4417adff5d814b3c04dd"
-			lineNumber="99">
+			lineNumber="100">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="20636b3db2f24c39bfa53a6371c21d84"
@@ -3665,7 +3681,7 @@
 			disabled="false"
 			id="f483ce3eb03e4b0fbaa66c0e5ab6b8f3"
 			label="instanceSyncDiffs"
-			lineNumber="100">
+			lineNumber="101">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="df3a6c1c27fd4fb786cb72d3faf3df3b"
@@ -3692,7 +3708,7 @@
 			disabled="false"
 			id="a4335615970a434abc971065c7d8c73b"
 			label="logs"
-			lineNumber="101">
+			lineNumber="102">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="c14050ce7d6f4fe285e4b280d6af1464"

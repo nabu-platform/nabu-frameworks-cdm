@@ -84,6 +84,7 @@
 	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 			disabled="false"
 			id="44cf14d56d13467f9c860976eca09b72"
+			label="input/externalIds"
 			lineNumber="5">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
@@ -524,7 +525,7 @@
 		</steps>
 	</steps>
 	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
-			comment="Pull meta from other systems"
+			comment="Pull meta from other systems TODO: this only allows for external id resolving 1 system deep."
 			disabled="false"
 			id="016e6b7877f14f7099bd05cebfe7b225"
 			lineNumber="20">
@@ -649,6 +650,24 @@
 					fixedValue="false">
 				<from>systemsToSkipPull</from>
 				<to>skipPullForSystem</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="ae4a1fa59c44453896a55ff07c5c5722"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>true</from>
+				<to>skipNulls</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="19e4da74ced847259b682a675b2da56b"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>true</from>
+				<to>skipMaster</to>
 			</steps>
 		</steps>
 		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
