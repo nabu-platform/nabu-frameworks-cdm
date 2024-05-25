@@ -1116,7 +1116,8 @@
 				disabled="false"
 				id="3a1f46b32a704bdeabb19b5eaf784087"
 				label="newRun"
-				lineNumber="32">
+				lineNumber="32"
+				scopeDefaultTransaction="true">
 			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 					comment="Map the updated fields to the batch instance"
 					disabled="false"
@@ -1210,5 +1211,12 @@
 				</steps>
 			</steps>
 		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Throw"
+				comment="Rethrow to block task"
+				disabled="false"
+				id="26c63dde7b54432aad46c0b5e2a555ac"
+				lineNumber="35"
+				message="=exception"
+				whitelist="false" xsi:nil="true"/>
 	</steps>
 </sequence>
