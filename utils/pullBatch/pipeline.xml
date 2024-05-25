@@ -14,5 +14,5 @@
     <field name="marshalled" type="java.lang.String"/>
     <structure collectionName="cdmInstanceSubscriptions" definition="nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.list" maxOccurs="unbounded" minOccurs="0" name="instanceSubscriptionsToUpdate" persister="nabu.frameworks.cdm.crud.cdmInstanceSubscription.batch.updateAll"/>
     <field name="amountOfItemsPulled" type="java.lang.Long"/>
-    <field name="pullSince" timezone="UTC" type="java.util.Date"/>
+    <structure collectionName="cdmSystemBatchPulls" definition="nabu.frameworks.cdm.crud.cdmSystemBatchPull.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystemBatchPull.services.list" name="newRun" persister="nabu.frameworks.cdm.crud.cdmSystemBatchPull.batch.updateAll"/>
 </structure>
