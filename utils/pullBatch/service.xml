@@ -370,6 +370,7 @@
 						label="!remoteInstance/externalIds"
 						lineNumber="14"
 						code="CDM-NO-IDENTIFIERS"
+						data="=remoteInstance/cdmInstance"
 						whitelist="false" xsi:nil="true"/>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 						comment="Fetch existing instance"
@@ -471,6 +472,7 @@
 						label="amountOfMatches &gt;= 2"
 						lineNumber="16"
 						code="CDM-MULTIPLE-MATCHES"
+						data="=remoteInstance/externalIds"
 						whitelist="false" xsi:nil="true"/>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 						comment="Create the instance"

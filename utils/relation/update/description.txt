@@ -1,0 +1,1 @@
+Important: this service expects only relations FOR THE GIVEN SYSTEM SUBSCRIPTION

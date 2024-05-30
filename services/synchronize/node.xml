@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T09:32:02.013+02:00" lastModified="2024-03-09T08:24:28.822+01:00" leaf="true" version="32">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T09:32:02.013+02:00" lastModified="2024-05-27T21:43:41.121+02:00" leaf="true" version="36">
     <comment>Synchronize one or more instances</comment>
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
     <properties/>
+    <references>nabu.utils.Runtime.summarizeException</references>
+    <references>nabu.utils.Date.now</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceLog.services.create</references>
+    <references>java.util.UUID</references>
+    <references>nabu.frameworks.cdm.utils.instance.pullFromRemote</references>
+    <references>nabu.utils.List.addAll</references>
     <references>be.nabu.eai.module.services.crud.Page</references>
     <references>java.lang.Long</references>
     <references>nabu.frameworks.cdm.crud.cdmInstance.services.list</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output</references>
     <references>nabu.frameworks.cdm.utils.instance.pushToRemote</references>
     <references>java.lang.String</references>
-    <references>java.util.UUID</references>
-    <references>nabu.frameworks.cdm.utils.instance.pullFromRemote</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list</references>
     <references>nabu.frameworks.cdm.crud.cdmInstance.types.output</references>
 </node>

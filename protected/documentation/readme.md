@@ -2,6 +2,10 @@
 
 - use a separate type for pulling and pushing. pulling _MUST_ be a subtype of pushing (or equal to)
 
+# Indexes and constraints
+
+alter table cdm_instance_external_ids add constraint uniq_name_identifier unique(name, identifier);
+
 # The initial problem
 
 Suppose a few scenario's:
