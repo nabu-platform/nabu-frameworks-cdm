@@ -76,6 +76,15 @@
     </filters>
     <filters>
         <caseInsensitive>false</caseInsensitive>
+        <key>oldValue</key>
+        <operator>ilike</operator>
+        <or>true</or>
+        <alias>q</alias>
+        <input>true</input>
+        <vary>false</vary>
+    </filters>
+    <filters>
+        <caseInsensitive>false</caseInsensitive>
         <key>cdmSystemId</key>
         <operator>=</operator>
         <or>false</or>
@@ -85,6 +94,30 @@
     <filters>
         <caseInsensitive>false</caseInsensitive>
         <key>cdmSystem</key>
+        <operator>=</operator>
+        <or>false</or>
+        <input>true</input>
+        <vary>false</vary>
+    </filters>
+    <filters>
+        <caseInsensitive>false</caseInsensitive>
+        <key>propertyPath</key>
+        <operator>=</operator>
+        <or>false</or>
+        <input>true</input>
+        <vary>false</vary>
+    </filters>
+    <filters>
+        <caseInsensitive>false</caseInsensitive>
+        <key>newValue</key>
+        <operator>=</operator>
+        <or>false</or>
+        <input>true</input>
+        <vary>false</vary>
+    </filters>
+    <filters>
+        <caseInsensitive>false</caseInsensitive>
+        <key>oldValue</key>
         <operator>=</operator>
         <or>false</or>
         <input>true</input>
@@ -109,6 +142,14 @@
     <foreignFields>
         <foreignName>cdmSystemSubscriptionId:cdmSystemId</foreignName>
         <localName>cdmSystemId</localName>
+    </foreignFields>
+    <foreignFields>
+        <foreignName>cdmInstanceSyncId:started</foreignName>
+        <localName>cdmInstanceSyncStarted</localName>
+    </foreignFields>
+    <foreignFields>
+        <foreignName>cdmInstanceSyncId:stopped</foreignName>
+        <localName>cdmInstanceSyncStopped</localName>
     </foreignFields>
     <getPermission>cdm.list</getPermission>
     <hooks>false</hooks>

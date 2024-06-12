@@ -6,8 +6,8 @@
     <field comment="An identifier for the type (e.g. service id)" name="triggerId" type="java.lang.String"/>
     <field comment="You can set a condition to determine whether a particular instance should be logged or not" minOccurs="0" name="condition" type="java.lang.String"/>
     <field name="disabled" type="java.lang.Boolean"/>
-    <field foreignKey="nabu.frameworks.cdm.database.types.cdmDefinition:id" name="cdmDefinitionId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
-    <field comment="Most triggers target a specific system. If we ever want to trigger full syncs, we can make this optional" foreignKey="nabu.frameworks.cdm.database.types.cdmSystemSubscription:id" name="cdmSystemSubscriptionId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+    <field foreignKey="nabu.frameworks.cdm.database.types.cdmDefinition:id" indexed="true" name="cdmDefinitionId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+    <field comment="Most triggers target a specific system. If we ever want to trigger full syncs, we can make this optional" foreignKey="nabu.frameworks.cdm.database.types.cdmSystemSubscription:id" indexed="true" name="cdmSystemSubscriptionId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
     <field comment="Rule to extract external identifiers from the trigger." minOccurs="0" name="externalIdentifierRule" type="java.lang.String"/>
     <field comment="The external id rule can extract a list of identifiers to indicate multiple instances. It should however be 1 external id type. Configure the name here" minOccurs="0" name="externalIdName" type="java.lang.String"/>
     <field comment="Extract the id from the cdm instance itself" minOccurs="0" name="cdmIdentifierRule" type="java.lang.String"/>
