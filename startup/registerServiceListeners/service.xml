@@ -32,7 +32,7 @@
 					mask="false"
 					optional="false"
 					fixedValue="true">
-				<from>true</from>
+				<from>false</from>
 				<to>recursive</to>
 			</steps>
 		</steps>

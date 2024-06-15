@@ -124,18 +124,18 @@
 				lineNumber="6">
 			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 					disabled="false"
-					id="56d60126035a4c00b8d01c78547cbc44"
-					serviceId="nabu.frameworks.cdm.services.synchronize"
-					resultName="result2fa92a837f424957a906765eb93f9d04"
+					id="d2c18dc9de82455f8feabff2fcacbb5f"
+					serviceId="nabu.frameworks.cdm.utils.synchronizeBatch"
+					resultName="result63bc95795b4f4910a222e2c67b65988b"
 					temporaryMapping="true"
-					x="262"
-					y="89"
+					x="255"
+					y="98"
 					invocationOrder="0"
 					asynchronous="false"
 					recache="false">
 				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 						disabled="false"
-						id="8bd4bcff9a544b8d80493874d9f72d89"
+						id="fa4820ef064f43198e89672dfba6f886"
 						mask="false"
 						optional="false"
 						fixedValue="false">
@@ -151,19 +151,19 @@
 				lineNumber="7">
 			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 					disabled="false"
-					id="7dcf57654541444dbf8f801861fe210c"
-					serviceId="nabu.frameworks.cdm.services.synchronize"
-					resultName="result2353a07a01fd416b9752211fb49d80e6"
+					id="a3280e74e0e949b1a9b91254b03bfa99"
+					serviceId="nabu.frameworks.cdm.utils.synchronizeBatch"
+					resultName="resultdf03fc646c3d44ed8f188408ae4afd9b"
 					temporaryMapping="true"
-					x="264"
-					y="108"
+					x="317"
+					y="96"
 					invocationOrder="0"
 					target="nabu.frameworks.tasks.providers.executor"
 					asynchronous="false"
 					recache="false">
 				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 						disabled="false"
-						id="85094024f863422cb3a20191cd7d78b5"
+						id="eb4fcd6c00b7492d94874dca98723322"
 						mask="false"
 						optional="false"
 						fixedValue="false">
@@ -172,7 +172,7 @@
 				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 						disabled="false"
-						id="767a0257c3874d79aaa64d438436a4b3"
+						id="346c0492c1f4438996ef28141ca4da7d"
 						mask="false"
 						optional="false"
 						fixedValue="false">
@@ -180,7 +180,7 @@
 					<to>skipPullForSystem</to>
 				</steps>
 				<targetProperties
-						collectionIndex="contextId">=input/typeId</targetProperties>
+						collectionIndex="groupId">=input/typeId</targetProperties>
 				<targetProperties
 						collectionIndex="finalize">true</targetProperties>
 			</steps>

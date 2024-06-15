@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.types.structure.StructureManager" created="2024-02-26T20:20:52.694+01:00" lastModified="2024-06-10T17:55:44.713+02:00" leaf="true" version="13">
+<node artifactManager="be.nabu.eai.module.types.structure.StructureManager" created="2024-02-26T20:20:52.694+01:00" lastModified="2024-06-13T17:50:41.346+02:00" leaf="true" version="15">
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
@@ -10,4 +10,5 @@
     <references>java.lang.Boolean</references>
     <references>nabu.frameworks.cdm.database.types.cdmDefinition</references>
     <references>nabu.frameworks.cdm.database.types.cdmSystemSubscription</references>
+    <references>be.nabu.libs.types.base.Duration</references>
 </node>

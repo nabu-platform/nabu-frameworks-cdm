@@ -12,4 +12,6 @@
     <field comment="The external id rule can extract a list of identifiers to indicate multiple instances. It should however be 1 external id type. Configure the name here" minOccurs="0" name="externalIdName" type="java.lang.String"/>
     <field comment="Extract the id from the cdm instance itself" minOccurs="0" name="cdmIdentifierRule" type="java.lang.String"/>
     <field comment="A trigger can be marked as creation trigger. This will actually create a new instance rather than updating it" name="newInstance" type="java.lang.Boolean"/>
+    <field comment="By default it will run asynchronous so the root transaction is committed by the time CDM comes asking for changes" name="synchronous" type="java.lang.Boolean"/>
+    <field minOccurs="0" name="delay" type="be.nabu.libs.types.base.Duration"/>
 </structure>

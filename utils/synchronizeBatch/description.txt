@@ -1,0 +1,1 @@
+Synchronize all items in a batch

@@ -8,6 +8,5 @@
         <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.database.types.cdmInstanceExternalId" maxOccurs="unbounded" minOccurs="0" name="externalIds"/>
     </structure>
     <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.database.types.cdmInstanceExternalId" minOccurs="0" name="existingExternalId"/>
-    <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.database.types.cdmInstanceExternalId" maxOccurs="unbounded" minOccurs="0" name="existingExternalIds"/>
     <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.database.types.cdmInstanceExternalId" maxOccurs="unbounded" minOccurs="0" name="externalIdsToUpdate"/>
 </structure>

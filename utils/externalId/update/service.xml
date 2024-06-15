@@ -7,22 +7,12 @@
 			disabled="false"
 			id="d9b1b8e1460447b6a3ea6a5ca9ae271e"
 			lineNumber="2">
-		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-				disabled="false"
-				id="8cc8d65a700245b786dc97d58441bfda"
-				mask="false"
-				optional="false"
-				fixedValue="false">
-			<from>input/existingExternalIds</from>
-			<to>existingExternalIds</to>
-		</steps>
 	</steps>
 	<steps xsi:type="be.nabu.libs.services.vm.step.For"
 			disabled="false"
 			id="c97e95f71c254d64901474778099fc09"
 			lineNumber="3"
-			variable="newExternalId"
-			into="existingExternalIds">
+			variable="newExternalId">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 				comment="Get current"
 				disabled="false"
@@ -86,14 +76,44 @@
 						<to>instance/cdmInstanceId</to>
 					</steps>
 				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+						disabled="false"
+						id="7517ea3d79714784bf02336b5aa274f8"
+						serviceId="nabu.utils.List.add"
+						resultName="resultcf58fb37ee964fb593dc7aacc1aa4006"
+						temporaryMapping="true"
+						x="594"
+						y="354"
+						invocationOrder="1"
+						asynchronous="false"
+						recache="false">
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="3030ec92e5624637870551dede38a622"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>resultb265b59c0f554b65bbe6205b71ffb54f/created</from>
+						<to>object</to>
+					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="d4f7ddb2c2f44a38bced7ed4815c47ef"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>input/existingExternalIds</from>
+						<to>list</to>
+					</steps>
+				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 						disabled="false"
-						id="96abdc3546ca4f928c3c60a932b77701"
+						id="72cbf7ea93954bd7b7dc8c54ce52da35"
 						mask="false"
 						optional="false"
 						fixedValue="false">
-					<from>resultb265b59c0f554b65bbe6205b71ffb54f/created</from>
-					<to>existingExternalIds[0]</to>
+					<from>resultcf58fb37ee964fb593dc7aacc1aa4006/list</from>
+					<to>input/existingExternalIds</to>
 				</steps>
 			</steps>
 			<steps xsi:type="be.nabu.libs.services.vm.step.Sequence"
@@ -198,11 +218,11 @@
 			lineNumber="11">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 				disabled="false"
-				id="1a85e9dd868d4de2b306e9f1c1be3e61"
+				id="0de007c313b9480a8e1c05e522672036"
 				mask="false"
 				optional="false"
 				fixedValue="false">
-			<from>existingExternalIds</from>
+			<from>input/existingExternalIds</from>
 			<to>output/externalIds</to>
 		</steps>
 	</steps>
