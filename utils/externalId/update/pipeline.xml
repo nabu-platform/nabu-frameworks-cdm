@@ -3,10 +3,14 @@
         <field name="cdmInstanceId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
         <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.database.types.cdmInstanceExternalId" maxOccurs="unbounded" minOccurs="0" name="existingExternalIds"/>
         <structure definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="newExternalIds" restrict="cdmInstanceId, id"/>
+        <field foreignKey="nabu.frameworks.cdm.database.types.cdmInstanceSync:id" indexed="true" minOccurs="0" name="cdmInstanceSyncId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+        <field comment="It can be in function of a specific instance subscription" foreignKey="nabu.frameworks.cdm.database.types.cdmInstanceSubscription:id" indexed="true" minOccurs="0" name="cdmInstanceSubscription" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
     </structure>
     <structure name="output">
         <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.database.types.cdmInstanceExternalId" maxOccurs="unbounded" minOccurs="0" name="externalIds"/>
+        <structure collectionName="cdmInstanceLogs" definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" maxOccurs="unbounded" minOccurs="0" name="logs"/>
     </structure>
     <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.database.types.cdmInstanceExternalId" minOccurs="0" name="existingExternalId"/>
     <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.database.types.cdmInstanceExternalId" maxOccurs="unbounded" minOccurs="0" name="externalIdsToUpdate"/>
+    <field minOccurs="0" name="date" type="java.util.Date"/>
 </structure>

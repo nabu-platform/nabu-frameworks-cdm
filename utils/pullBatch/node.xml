@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T10:05:51.762+02:00" lastModified="2024-05-27T17:34:30.277+02:00" leaf="true" version="96">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T10:05:51.762+02:00" lastModified="2024-06-29T07:08:51.768+02:00" leaf="true" version="98">
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
@@ -30,6 +30,7 @@
     <references>nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output</references>
     <references>nabu.frameworks.cdm.crud.cdmSystemBatchPull.services.create</references>
     <references>nabu.frameworks.cdm.specs.batchPull</references>
+    <references>nabu.frameworks.cdm.utils.instance.normalizeExternalIds</references>
     <references>nabu.frameworks.cdm.utils.searchExternalIdSql</references>
     <references>nabu.services.jdbc.Services.update</references>
     <references>nabu.frameworks.cdm.crud.cdmSystemBatchPull.services.list</references>

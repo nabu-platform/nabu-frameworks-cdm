@@ -100,8 +100,23 @@
 			whitelist="false" xsi:nil="true"/>
 	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 			disabled="false"
-			id="0d588b05ff4e42afb4415da22db48ad4"
+			id="d571dbe99cca4f99801d3489d8867cc4"
+			label="input/query/full == true"
 			lineNumber="5">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="81c2ac08482b4d5190e6067a28cba847"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>subscription/system</from>
+			<to>fullPush[0]</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="0d588b05ff4e42afb4415da22db48ad4"
+			lineNumber="6">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="b2554ec92afe4dcebfc860cce73427c1"
@@ -139,6 +154,15 @@
 					fixedValue="false">
 				<from>subscription/system</from>
 				<to>forcePushForSystem[0]</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="00d6a95a20db4c7a8cc1423b089bc275"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>fullPush</from>
+				<to>fullPushForSystem</to>
 			</steps>
 		</steps>
 	</steps>

@@ -1,0 +1,8 @@
+<structure name="pipeline">
+    <structure name="input">
+        <structure definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="externalIds" restrict="cdmInstanceId, id"/>
+    </structure>
+    <structure name="output">
+        <structure definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="externalIds" restrict="cdmInstanceId, id"/>
+    </structure>
+</structure>

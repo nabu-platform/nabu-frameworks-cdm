@@ -1208,6 +1208,24 @@
 					<from>newExternalIds</from>
 					<to>newExternalIds</to>
 				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="1e0c3b227b354538918b351d8d5f8bfc"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>instanceSubscription/id</from>
+					<to>cdmInstanceSubscription</to>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="7356ec516294430c866ebc31d39dc6fa"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>instanceSync/id</from>
+					<to>cdmInstanceSyncId</to>
+				</steps>
 			</steps>
 			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 					disabled="false"
@@ -1217,6 +1235,45 @@
 					fixedValue="false">
 				<from>result35cf43d44d4343a393614080fe7f194e/externalIds</from>
 				<to>output/externalIds</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+					disabled="false"
+					id="c05dacf7035a46ac87dca002c51a1a7f"
+					serviceId="nabu.utils.List.addAll"
+					resultName="result05d891f177154dd0bd17dc4df415ccac"
+					temporaryMapping="true"
+					x="765"
+					y="387"
+					invocationOrder="1"
+					asynchronous="false"
+					recache="false">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="e94ee129287749bb8fa6a10c449f12a1"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>result35cf43d44d4343a393614080fe7f194e/logs</from>
+					<to>objects</to>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="9542a0e9096442f5baed8304e8bbb607"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>logs</from>
+					<to>list</to>
+				</steps>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="dfbc0ecdec97492c9bca0ad93293938b"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>result05d891f177154dd0bd17dc4df415ccac/list</from>
+				<to>logs</to>
 			</steps>
 		</steps>
 		<steps xsi:type="be.nabu.libs.services.vm.step.Sequence"

@@ -21,6 +21,7 @@
 	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 			disabled="false"
 			id="ffcee8abe3334475b41bc14a7dacca44"
+			label="input/ignoreTriggerOnly != true"
 			lineNumber="3">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"

@@ -4,8 +4,9 @@
         <field maxOccurs="unbounded" minOccurs="0" name="systems" type="java.lang.String"/>
         <field comment="Force pulling data before we push" minOccurs="0" name="forcePull" type="java.lang.Boolean"/>
         <field comment="List specific systems if you want, otherwise all systems will be used" maxOccurs="unbounded" minOccurs="0" name="skipPullForSystem" type="java.lang.String"/>
-        <field maxOccurs="unbounded" minOccurs="0" name="forcePushForSystem" type="java.lang.String"/>
+        <field comment="Force a push for a system that might not be intended." maxOccurs="unbounded" minOccurs="0" name="forcePushForSystem" type="java.lang.String"/>
         <field minOccurs="0" name="source" type="java.lang.String"/>
+        <field comment="You can do a full push where all fields are pushed instead of only fields that have changed. This can help when for instance mapping logic has been updated" maxOccurs="unbounded" minOccurs="0" name="fullPushForSystem" type="java.lang.String"/>
     </structure>
     <structure name="output">
         <structure comment="Existing external ids for this instance, this can be used to match it to a target system. Will always send all external ids so you can use other identifiers " definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="newExternalIds" restrict="cdmInstanceId, systemId, id"/>
@@ -15,21 +16,21 @@
     <structure collectionName="cdmInstanceSubscriptions" definition="nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.list" maxOccurs="unbounded" minOccurs="0" name="instanceSubscriptions" persister="nabu.frameworks.cdm.crud.cdmInstanceSubscription.batch.updateAll"/>
     <structure collectionName="cdmInstanceSubscriptions" definition="nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.list" minOccurs="0" name="instanceSubscription" persister="nabu.frameworks.cdm.crud.cdmInstanceSubscription.batch.updateAll"/>
     <field comment="The id of the document type that represents this canonical data model" foreignName="cdmInstanceId:cdmDefinitionId:typeId" name="typeId" primaryKey="false" type="java.lang.String"/>
-    <structure collectionCrudProvider="odata" collectionName="teamsTemplates" definition="java.lang.Object" name="partialInstance"/>
+    <structure collectionName="teamsTemplates" definition="java.lang.Object" name="partialInstance"/>
     <structure comment="Existing external ids for this instance, this can be used to match it to a target system. Will always send all external ids so you can use other identifiers " definition="nabu.frameworks.cdm.specs.externalId" minOccurs="0" name="mappedExternalId" restrict="cdmInstanceId, systemId, id"/>
     <structure collectionName="cdmInstanceContents" definition="nabu.frameworks.cdm.crud.cdmInstanceContent.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceContent.services.list" name="previousContent" persister="nabu.frameworks.cdm.crud.cdmInstanceContent.batch.updateAll"/>
-    <structure collectionCrudProvider="odata" collectionName="teamsTemplates" definition="java.lang.Object" minOccurs="0" name="cdmInstance"/>
-    <structure collectionCrudProvider="odata" collectionName="teamsTemplates" definition="java.lang.Object" minOccurs="0" name="previousCdmInstance"/>
+    <structure collectionName="teamsTemplates" definition="java.lang.Object" minOccurs="0" name="cdmInstance"/>
+    <structure collectionName="teamsTemplates" definition="java.lang.Object" minOccurs="0" name="previousCdmInstance"/>
     <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" minOccurs="0" name="cdmDiff"/>
     <field minOccurs="0" name="date" type="java.util.Date"/>
     <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" minOccurs="0" name="diffToApply"/>
-    <structure collectionCrudProvider="odata" collectionName="teamsTemplates" definition="java.lang.Object" name="staticPartialInstance"/>
-    <structure collectionCrudProvider="odata" collectionName="teamsTemplates" definition="java.lang.Object" name="patchedPartialInstance"/>
+    <structure collectionName="teamsTemplates" definition="java.lang.Object" name="staticPartialInstance"/>
+    <structure collectionName="teamsTemplates" definition="java.lang.Object" name="patchedPartialInstance"/>
     <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="appliedDiffs"/>
     <field name="push" type="java.lang.Boolean"/>
     <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list" maxOccurs="unbounded" minOccurs="0" name="externalIds" persister="nabu.frameworks.cdm.crud.cdmInstanceExternalId.batch.updateAll"/>
     <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="rejectedDiffs"/>
-    <structure collectionCrudProvider="odata" collectionName="teamsTemplates" definition="java.lang.Object" name="newestPartialInstance"/>
+    <structure collectionName="teamsTemplates" definition="java.lang.Object" name="newestPartialInstance"/>
     <field comment="Some or all of the data was rejected" minOccurs="0" name="rejected" type="java.lang.Boolean"/>
     <structure definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="newExternalIds" restrict="cdmInstanceId, id"/>
     <field name="rejectionReason" type="java.lang.String"/>

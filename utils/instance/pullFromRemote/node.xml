@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-16T11:28:20.913+02:00" lastModified="2024-05-24T14:30:30.293+02:00" leaf="true" version="267">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-16T11:28:20.913+02:00" lastModified="2024-06-29T08:00:14.982+02:00" leaf="true" version="269">
     <comment>Update an instance according to all system subscriptions</comment>
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>

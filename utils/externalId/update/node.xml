@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-20T16:07:48.310+02:00" lastModified="2024-06-13T16:22:30.448+02:00" leaf="true" version="22">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-20T16:07:48.310+02:00" lastModified="2024-06-29T08:03:23.025+02:00" leaf="true" version="38">
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
     <properties/>
-    <references>nabu.frameworks.cdm.specs.externalId</references>
     <references>nabu.utils.List.add</references>
-    <references>nabu.services.jdbc.Services.update</references>
+    <references>nabu.frameworks.cdm.database.types.cdmInstanceSubscription</references>
+    <references>java.util.Date</references>
+    <references>nabu.utils.Date.now</references>
+    <references>nabu.utils.Server.uuid</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.create</references>
     <references>nabu.frameworks.cdm.database.types.cdmInstanceExternalId</references>
     <references>java.util.UUID</references>
+    <references>nabu.frameworks.cdm.utils.instance.normalizeExternalIds</references>
+    <references>nabu.frameworks.cdm.specs.externalId</references>
+    <references>nabu.services.jdbc.Services.update</references>
+    <references>nabu.frameworks.cdm.database.types.cdmInstanceSync</references>
+    <references>nabu.frameworks.cdm.database.types.cdmInstanceLog</references>
 </node>

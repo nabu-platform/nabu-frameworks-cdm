@@ -1,5 +1,7 @@
 <structure collectionName="cdmInstanceExternalIds" name="cdmInstanceExternalId">
     <field name="id" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" primaryKey="true" type="java.util.UUID"/>
+    <field name="created" timezone="UTC" type="java.util.Date"/>
+    <field name="modified" timezone="UTC" type="java.util.Date"/>
     <field foreignKey="nabu.frameworks.cdm.database.types.cdmInstance:id" indexed="true" name="cdmInstanceId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
     <field name="name" type="java.lang.String"/>
     <field indexed="true" name="identifier" type="java.lang.String"/>

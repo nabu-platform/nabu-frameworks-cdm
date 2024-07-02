@@ -216,14 +216,14 @@
 		</steps>
 	</steps>
 	<steps xsi:type="be.nabu.libs.services.vm.step.Throw"
-			disabled="false"
+			disabled="true"
 			id="336f0172a5e3421b90aa28d43c68332a"
 			label="!primaryKey"
 			lineNumber="11"
 			message="No primary key found"
 			whitelist="false" xsi:nil="true"/>
 	<steps xsi:type="be.nabu.libs.services.vm.step.Throw"
-			disabled="false"
+			disabled="true"
 			id="a706c4c8ee404cfb845f31a3e22afdc9"
 			label="primaryKey/typeName != &quot;uuid&quot;"
 			lineNumber="12"

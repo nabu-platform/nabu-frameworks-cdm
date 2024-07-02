@@ -1,0 +1,10 @@
+<structure name="pipeline">
+    <structure name="input">
+        <field maxOccurs="unbounded" name="cdmInstanceIds" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+        <field name="system" type="java.lang.String"/>
+        <field comment="What is the source of the trigger?" minOccurs="0" name="source" type="java.lang.String"/>
+    </structure>
+    <structure name="output"/>
+    <structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list" maxOccurs="unbounded" minOccurs="0" name="impactedSubscriberSystems" persister="nabu.frameworks.cdm.crud.cdmSystemSubscription.batch.updateAll"/>
+    <structure collectionName="cdmInstances" definition="nabu.frameworks.cdm.crud.cdmInstance.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstance.services.list" name="cdmInstance" persister="nabu.frameworks.cdm.crud.cdmInstance.batch.updateAll"/>
+</structure>

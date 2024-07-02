@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2024-06-15T07:46:03.294+02:00" lastModified="2024-06-15T07:48:55.474+02:00" leaf="true" version="6">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2024-06-15T07:46:03.294+02:00" lastModified="2024-06-28T09:23:44.688+02:00" leaf="true" version="17">
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
@@ -8,10 +8,7 @@
     <references>java.lang.Long</references>
     <references>nabu.frameworks.cdm.crud.cdmInstance.services.list</references>
     <references>nabu.frameworks.cdm.services.synchronize</references>
-    <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output</references>
     <references>nabu.frameworks.tasks.providers.executor</references>
     <references>java.lang.String</references>
-    <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list</references>
     <references>nabu.frameworks.cdm.crud.cdmInstance.types.output</references>
-    <references>nabu.utils.List.addAll</references>
 </node>
