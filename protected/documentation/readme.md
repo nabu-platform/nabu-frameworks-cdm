@@ -6,6 +6,50 @@
 
 alter table cdm_instance_external_ids add constraint uniq_name_identifier unique(name, identifier);
 
+# Arrays
+
+Arrays are a tricky proposition. You can't simply conclude that yes or not a specific value is the same.
+
+There are two types of arrays:
+
+- simple type
+- complex type
+
+An array of simple types is still pretty easy to diff: you check which values differ between both arrays and you end up with a set of inserts and/or deletes
+
+When it comes to complex values however, it becomes more difficult. If you have a list of contact persons and you want to update the first name of a contact person, how do you match the updated contact person to the original?
+If you don't match them, it will seem like two different records and you will delete the original and insert the updated rather than "correctly" flagging the first name as an update.
+This is suboptimal as you can't correctly trace the history of these values but it would still work so it might be acceptable.
+
+However, another problem is that suppose you have 3 contact persons and you delete the first. If you simply assume the indexes match (so record 0 in the original must equate to record 0 in the new version), this will trigger a cascade of deletes and inserts because the system concludes that every record has changed.
+
+You can prevent this cascade by having an identity to each record which can be matched. The diffing algorithm supports this if you mark a field with "primary key".
+
+However if you don't set a primary key at this time, it will assume the index is the key which can trigger a delete cascade.
+
+In the future we may want to tweak the algorithm in case there is no obvious primary key:
+
+- serialize each entry (e.g. json) (we assume that you are using defined type which means the keys will be in the same order every time)
+- the serialized version is the key, we still can't properly log updates to nested fields but we can at least prevent delete cascade
+
+(recurse for nested arrays)
+
+## Referential deletes
+
+Suppose we again have 3 contact persons and in one system you delete the first and in the second system you delete the second.
+
+If we diff the first system against the CDM, we conclude "delete [0]". However, we don't apply that just yet, instead we diff the second system against the cdm and conclude "delete [1]".
+
+If we now sequentially run these two diffs, we actually end up with an array that only contains the second element. Inserts happen at the back but could also affect this given enough systems with differences.
+
+The solution here is to:
+
+- accept only one system updates arrays in any given push (AS IS!)
+- use the primary key (if present) to delete the correct one
+- use the stringification-as-key approach to ensure (before actually applying the delete) that you are deleting the correct one
+
+If it becomes tricky to access the original version to redetermine the correct key to delete, we might want to consider hashing the stringified version and using that as the delete key, for instance instead of "delete [0]" we say "delete [hash]".
+
 # The initial problem
 
 Suppose a few scenario's:

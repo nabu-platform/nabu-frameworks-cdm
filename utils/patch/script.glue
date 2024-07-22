@@ -29,7 +29,7 @@ for (diff : diffs)
 # We sort the arrays from longest name to smallest
 # This is an easy workaround for "nested arrays" where deleting a parent might impact the child
 # For a diff done between two documents this should never happen, for a multiway diff however it could be the case
-for (arrayPath : sort(lambda(a, b, size(b) - size(a)), keys(arraysToCheck)))
+for (arrayPath : sort(lambda(a, b, size(b) - size(a)), script.keys(arraysToCheck)))
 	instance[/arrayPath] = filter(lambda(x, i, i !? arraysToCheck[/arrayPath]), instance[/arrayPath])
 	
 # We then need to add any inserts, the indexes are incorrect if any deletes have happened, so instead we just append at the end

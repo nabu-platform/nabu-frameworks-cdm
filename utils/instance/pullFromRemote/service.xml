@@ -2176,8 +2176,8 @@
 			</steps>
 		</steps>
 		<steps xsi:type="be.nabu.libs.services.vm.step.Map"
-				comment="Distinguish between array insertion/deletion and plain update diffs"
-				disabled="false"
+				comment="Distinguish between array insertion/deletion and plain update diffs (no longer the case!)"
+				disabled="true"
 				id="53af76b2f94f43668ae65ad02cc44dec"
 				lineNumber="61">
 			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
@@ -2230,11 +2230,56 @@
 			</steps>
 		</steps>
 		<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+				comment="Add all diffs! Check documentation for array approaches"
+				disabled="false"
+				id="9cd0be76acd741f79cad2af473355714"
+				lineNumber="62">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+					disabled="false"
+					id="fd73ae8ffaef44a4813c6fb829b58855"
+					serviceId="nabu.utils.List.addAll"
+					resultName="result92e4a7fefb2d4646b4ec4c29ed123668"
+					temporaryMapping="true"
+					x="311"
+					y="124"
+					invocationOrder="0"
+					asynchronous="false"
+					recache="false">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="6572eea7576d421c85110ab358a8a3fc"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>diffs</from>
+					<to>objects</to>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="1d17b897ff2144c3a5011994a63f8778"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>cdmDiff</from>
+					<to>list</to>
+				</steps>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="591608584b244750af1a1411c98ebd78"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>result92e4a7fefb2d4646b4ec4c29ed123668/list</from>
+				<to>cdmDiff</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 				comment="If we have array insertion/deletion, we update the cdm immediately so future array changes are detected correctly. Other changes are combined into a bigger changeset"
 				disabled="false"
 				id="4bfae4044992436aaab862d494618902"
 				label="arrayDiffToApplyImmediately"
-				lineNumber="62">
+				lineNumber="63">
 			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 					disabled="false"
 					id="271b2e30e2ab48aa97f666fe09cdae96"
@@ -2273,7 +2318,7 @@
 			disabled="false"
 			id="e8a7d51866d44d729542d7aaba76752e"
 			label="cdmDiff"
-			lineNumber="63">
+			lineNumber="64">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="2fa2d02a84db49609022ac2bd3e42758"
@@ -2310,7 +2355,7 @@
 			disabled="false"
 			id="8956318aaadb43b8863efe2ac099a067"
 			label="instanceSubscriptions"
-			lineNumber="64">
+			lineNumber="65">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="c0f5c6bb2eb842a58f3a53b05d4be141"
@@ -2338,12 +2383,12 @@
 			disabled="false"
 			id="967ae3a443df4161aa3d1d240ffc266b"
 			label="output/changes"
-			lineNumber="65">
+			lineNumber="66">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 				comment="Deactivate any active instance contents"
 				disabled="false"
 				id="ef0b33da560f447cb1b7d50c9f6b8833"
-				lineNumber="66">
+				lineNumber="67">
 			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 					disabled="false"
 					id="b9ce091172004199a969f2b9121ea971"
@@ -2379,7 +2424,7 @@
 				comment="Create a new instance content"
 				disabled="false"
 				id="383fed97c12441119fe4d960b885fdf5"
-				lineNumber="67">
+				lineNumber="68">
 			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 					disabled="false"
 					id="1068925bcb4f4dd8a1c603fc1a099f15"
@@ -2521,7 +2566,7 @@
 			comment="Map the output"
 			disabled="false"
 			id="d56a6a46f13e4b7fb5194ab2f28b4996"
-			lineNumber="68">
+			lineNumber="69">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 				disabled="false"
 				id="21f9c84fe9fa47a19bd7f32d86f7976e"
@@ -2536,7 +2581,7 @@
 			comment="Map the stopped for the sync"
 			disabled="false"
 			id="55b22a44404e46f3a684e8a0bf07e1a4"
-			lineNumber="69">
+			lineNumber="70">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="7ceb0ed61b434367a70b84cac0b3d63b"
@@ -2562,7 +2607,7 @@
 	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 			disabled="false"
 			id="01fca7eadc9d4417adff5d814b3c04dd"
-			lineNumber="70">
+			lineNumber="71">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="20636b3db2f24c39bfa53a6371c21d84"
@@ -2589,7 +2634,7 @@
 			disabled="false"
 			id="f483ce3eb03e4b0fbaa66c0e5ab6b8f3"
 			label="instanceSyncDiffs"
-			lineNumber="71">
+			lineNumber="72">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="df3a6c1c27fd4fb786cb72d3faf3df3b"
@@ -2616,7 +2661,7 @@
 			disabled="false"
 			id="a4335615970a434abc971065c7d8c73b"
 			label="logs"
-			lineNumber="72">
+			lineNumber="73">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="c14050ce7d6f4fe285e4b280d6af1464"

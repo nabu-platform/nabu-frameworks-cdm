@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.glue.GlueServiceManager" created="2023-10-16T15:48:41.804+02:00" lastModified="2024-05-23T17:32:40.587+02:00" leaf="true" version="116">
+<node artifactManager="be.nabu.eai.module.services.glue.GlueServiceManager" created="2023-10-16T15:48:41.804+02:00" lastModified="2024-07-03T10:48:46.329+02:00" leaf="true" version="118">
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
