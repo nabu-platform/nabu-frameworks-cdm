@@ -53,4 +53,5 @@
     <field name="interested" type="java.lang.Boolean"/>
     <structure collectionName="cdmInstanceLogs" definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" name="log"/>
     <structure collectionName="cdmInstanceLogs" definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" maxOccurs="unbounded" minOccurs="0" name="logs"/>
+    <structure definition="be.nabu.utils.cep.impl.ComplexEventImpl" name="event"/>
 </structure>

@@ -291,6 +291,15 @@
 							<from>input/skipPullForSystem</from>
 							<to>skipPullForSystem</to>
 						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="8fd8f8725d2e4fc28f75dcde96a79fcc"
+								mask="false"
+								optional="false"
+								fixedValue="false">
+							<from>input/fullPushForSystem</from>
+							<to>fullPushForSystem</to>
+						</steps>
 					</steps>
 				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Catch"

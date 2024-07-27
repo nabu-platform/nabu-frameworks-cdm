@@ -3095,6 +3095,60 @@
 							<from>instanceSubscription/id</from>
 							<to>log/cdmInstanceSubscription</to>
 						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="7e2ffe3021274775bdaba27b4a2b14b9"
+								mask="false"
+								optional="false"
+								fixedValue="false">
+							<from>currentContent/typeId</from>
+							<to>event/artifactId</to>
+						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="65a6cfc1fe9e4c6884556494da9e4a8c"
+								mask="false"
+								optional="false"
+								fixedValue="true">
+							<from>cdm</from>
+							<to>event/eventCategory</to>
+						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="2060af265f0c433d9a7119004f653a21"
+								mask="false"
+								optional="false"
+								fixedValue="true">
+							<from>push-rejected</from>
+							<to>event/eventName</to>
+						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="f617aa408c60460e902a773c96b859b7"
+								mask="false"
+								optional="false"
+								fixedValue="false">
+							<from>input/cdmInstanceId</from>
+							<to>event/localId</to>
+						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="139d7e24d9b441d6a5a55328eb2b31c0"
+								mask="false"
+								optional="false"
+								fixedValue="true">
+							<from>ERROR</from>
+							<to>event/severity</to>
+						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+								disabled="false"
+								id="09fd524f495643ba959314862290803f"
+								mask="false"
+								optional="false"
+								fixedValue="false">
+							<from>rejectionReason</from>
+							<to>event/stacktrace</to>
+						</steps>
 					</steps>
 					<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 							disabled="false"
@@ -3143,6 +3197,31 @@
 								disabled="false"
 								id="b34749ac8c6244c3b91911ba9cc0ac05"
 								path="log" xsi:nil="true"/>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+								disabled="false"
+								id="c93a8966faef47979ee2e0a24a0b8f4d"
+								serviceId="nabu.utils.Event.fire"
+								resultName="resultef7b7f7631234139ada4cf396d1d3451"
+								temporaryMapping="true"
+								x="245"
+								y="384"
+								invocationOrder="0"
+								asynchronous="false"
+								recache="false">
+							<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+									disabled="false"
+									id="a044240af170458c985600dd29ad9318"
+									mask="false"
+									optional="false"
+									fixedValue="false">
+								<from>event</from>
+								<to>event</to>
+							</steps>
+						</steps>
+						<steps xsi:type="be.nabu.libs.services.vm.step.Drop"
+								disabled="false"
+								id="156448e945cd47b58b9f9860abeb9391"
+								path="event" xsi:nil="true"/>
 					</steps>
 				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Map"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-18T11:22:48.254+02:00" lastModified="2024-06-29T08:02:07.067+02:00" leaf="true" version="311">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-18T11:22:48.254+02:00" lastModified="2024-07-25T17:24:23.765+02:00" leaf="true" version="313">
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
@@ -20,6 +20,7 @@
     <references>nabu.frameworks.cdm.specs.pull</references>
     <references>nabu.frameworks.cdm.crud.cdmSystemRelationType.services.list</references>
     <references>nabu.data.json.Services.unmarshal</references>
+    <references>be.nabu.utils.cep.impl.ComplexEventImpl</references>
     <references>nabu.utils.reflection.Type.mask</references>
     <references>nabu.utils.Stream.toString</references>
     <references>nabu.frameworks.cdm.utils.relation.update</references>
@@ -48,6 +49,7 @@
     <references>nabu.frameworks.cdm.crud.cdmInstanceContent.types.output</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output</references>
     <references>java.lang.Boolean</references>
+    <references>nabu.utils.Event.fire</references>
     <references>java.lang.String</references>
     <references>nabu.data.json.Services.marshal</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list</references>

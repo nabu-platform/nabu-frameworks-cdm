@@ -148,6 +148,15 @@
 					<from>result/id</from>
 					<to>cdmSystemSubscriptionId</to>
 				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="d998a3be557b4b659c1ed991d4099d7f"
+						mask="false"
+						optional="false"
+						fixedValue="true">
+					<from>=result/system # /input/fullPullForSystem</from>
+					<to>full</to>
+				</steps>
 				<targetProperties
 						collectionIndex="groupId">=result/system</targetProperties>
 				<targetProperties
@@ -196,6 +205,15 @@
 						<from>input/typeId</from>
 						<to>typeId</to>
 					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="10cd6d76942544cfb37d6a21191a169f"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>input/fullPushForSystem</from>
+						<to>fullPushForSystem</to>
+					</steps>
 				</steps>
 			</steps>
 			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
@@ -232,6 +250,15 @@
 							fixedValue="false">
 						<from>results/system</from>
 						<to>skipPullForSystem</to>
+					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="614dca62bd8a428ca26748df2904dae5"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>input/fullPushForSystem</from>
+						<to>fullPushForSystem</to>
 					</steps>
 					<targetProperties
 							collectionIndex="groupId">=input/typeId</targetProperties>

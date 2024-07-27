@@ -6,6 +6,17 @@
 
 alter table cdm_instance_external_ids add constraint uniq_name_identifier unique(name, identifier);
 
+# Which diff to apply
+
+You might assume that CDM diffs the current CDM instance with what we know from the target system and applies any changes. However it does not do that.
+Instead, for each system it will keep track of the last "successfully" pushed cdm instance version.
+When we push again, we diff the current cdm version with that last version and apply only the changes.
+
+The advantage is that any unreported changes in the target system are not accidently rolled back (they would be flagged as a difference when comparing cdm to instance).
+The disadvantage is that if a system were to get out of sync for some reason, it would not automatically restore itself unless that particular field would happen to have changed.
+
+You can however force that behavior (pushing the last version of cdm regardless of current state of the target system) by using the "full push" feature.
+
 # Arrays
 
 Arrays are a tricky proposition. You can't simply conclude that yes or not a specific value is the same.

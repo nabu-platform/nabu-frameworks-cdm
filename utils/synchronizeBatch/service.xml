@@ -192,6 +192,15 @@
 					<from>input/skipPullForSystem</from>
 					<to>skipPullForSystem</to>
 				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="f0b27b75576e4333bb739126d411a96d"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>input/fullPushForSystem</from>
+					<to>fullPushForSystem</to>
+				</steps>
 				<targetProperties
 						collectionIndex="queue">=queueName</targetProperties>
 			</steps>
