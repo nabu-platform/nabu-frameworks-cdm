@@ -18,6 +18,16 @@ if (newTypeId != originalTypeId)
 	newProperties = nabu.utils.reflection.Type.describe(newTypeId, true)/parameters
 	properties = properties[path ? /newProperties/path]
 
+# Array diffing is tricky
+# You can't really assume arrays are in the same order, especially when you start deleting/inserting stuff cross multiple providers
+# Either we can identify the records (based on a primary key) or we can't
+# When we can't, we assume that any change to the array prompts the switch of the entire array rather than trying to pinpoint the exact field that was changed
+# E.g. insert contacts[1] is tricky to know if you want to apply it to a particular system because there is no way to know if the contact already exists
+# Same when we do update contacts[1]/firstName, we have no way of knowing whether we are updating the correct contact
+# For simple enough arrays (e.g. opening hours, listings of masterdata etc), it is enough that we simply change the entire array
+# For complex usecases (e.g. addresses, contacts,...) we assume you have enough data to assign a primary key that can be used to target the correct instance
+reportDetailedArrayChangesForNonPrimaryKeys = false
+
 differ = lambda
 	original ?= null
 	new ?= null
@@ -47,44 +57,70 @@ differ = lambda
 		if (property/list)
 			# a list of simple values
 			if (property/simple)
+				hasChanged = false
 				for (single : oldValue)
 					iterationPath = childPath + "[" + $index + "]"
 					newIndex = when(newValue == null, -1, position(lambda(x, x == single), newValue))
 					# it was removed!
 					if (newIndex < 0)
-						diffs = merge(diffs, structure(propertyPath: property/path, path: iterationPath, action: "delete", oldValue: single))
+						hasChanged = true
+						#diffs = merge(diffs, structure(propertyPath: property/path, path: iterationPath, action: "delete", oldValue: single))
 				insertCounter = size(oldValue)
 				for (single : newValue)
 					oldIndex = when(oldValue == null, -1, position(lambda(x, x == single), oldValue))
 					if (oldIndex < 0)
-						diffs = merge(diffs, structure(propertyPath: property/path, path: childPath + "[" + insertCounter + "]", action: "insert", newValue: single))
+						hasChanged = true
+						#diffs = merge(diffs, structure(propertyPath: property/path, path: childPath + "[" + insertCounter + "]", action: "insert", newValue: single))
+				if (hasChanged)
+					diffs = merge(diffs, structure(propertyPath: property/path, path: childPath, action: "update", oldValue: oldValue, newValue: newValue))
 			else
 				listPrimary = first(properties[path ~ /childFlatPath + "/[^/]+$" && primary == true])
+				
+				# We can only use primary key as index if we actually have one
+				usePrimaryKeyAsIndex = listPrimary != null
 	
 				# keep track of the ids we already checked to conclude inserts
 				ids = series()
 	
+				# only used when no explicit primary key is found
+				hasChanged = false
 				for (single : oldValue)
-					iterationPath = childPath + "[" + $index + "]"
 					# we need to find the equivalent entry in the new value, if there is no primary key field, we use the index
 					primaryKey = when(listPrimary == null, $index, single[/listPrimary/name])
+					iterationPath = childPath + "[" + when(usePrimaryKeyAsIndex, "'" + primaryKey + "'", $index) + "]"
 					ids = merge(ids, primaryKey)
 					equivalent = when(listPrimary == null, newValue[/primaryKey], first(newValue[$this[/listPrimary/name] == /primaryKey]))
 					# it was deleted!
 					if (equivalent == null)
-						diffs = merge(diffs, structure(propertyPath: property/path, path: iterationPath, action: "delete", oldValue: single))
+						hasChanged = true
+						# we only mark specific deletes if we have a primary key to report against
+						if (usePrimaryKeyAsIndex || reportDetailedArrayChangesForNonPrimaryKeys)
+							diffs = merge(diffs, structure(propertyPath: property/path, path: iterationPath, action: "delete", oldValue: single))
 					else
-						diffs = merge(diffs, differ(single, equivalent, iterationPath, childFlatPath))
+						nestedDiffs = differ(single, equivalent, iterationPath, childFlatPath)
+						if (size(nestedDiffs) > 0)
+							hasChanged = true
+						# we only mark nested updates if we have a primary key to report against
+						if (usePrimaryKeyAsIndex || reportDetailedArrayChangesForNonPrimaryKeys)
+							diffs = merge(diffs, nestedDiffs)
 	
 				# the insert counter starts after the last element in the old value
 				# this does not take into account deletes however, so if you apply both inserts and deletes the actual index might change
-				insertCounter = size(oldValue)				
+				insertCounter = size(oldValue)
 				for (single : newValue)
 					primaryKey = when(listPrimary == null, $index, single[/listPrimary/name])
 					# if it's not in the ids, its in insert
 					if (primaryKey !? ids)
-						diffs = merge(diffs, structure(propertyPath: property/path, path: childPath + "[" + insertCounter + "]", action: "insert", newValue: single))
+						iterationPath = childPath + "[" + when(usePrimaryKeyAsIndex, "'" + primaryKey + "'", insertCounter) + "]"
+						# only report specific inserts if we have a primary key to check against
+						if (usePrimaryKeyAsIndex || reportDetailedArrayChangesForNonPrimaryKeys)
+							diffs = merge(diffs, structure(propertyPath: property/path, path: iterationPath, action: "insert", newValue: single))
+						hasChanged = true
 						insertCounter = insertCounter + 1
+				
+				# if anything has changed and we can't use primary keys to report this, switch the full array much like simple types
+				if (hasChanged && !usePrimaryKeyAsIndex && !reportDetailedArrayChangesForNonPrimaryKeys)
+					diffs = merge(diffs, structure(propertyPath: property/path, path: childPath, action: "update", oldValue: oldValue, newValue: newValue))
 				
 		else if (property/simple && oldValue != newValue)
 			diffs = merge(diffs, structure(propertyPath: property/path, path: childPath, action: "update", oldValue: oldValue, newValue: newValue))
