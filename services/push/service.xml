@@ -1016,8 +1016,8 @@
 				serviceId="nabu.frameworks.cdm.utils.relation.update"
 				resultName="resultcbc069f97a48421e92d2a498d3017a60"
 				temporaryMapping="true"
-				x="450"
-				y="84"
+				x="677"
+				y="83"
 				invocationOrder="1"
 				asynchronous="false"
 				recache="false">
@@ -1095,6 +1095,15 @@
 					fixedValue="false">
 				<from>instance/id</from>
 				<to>filter/sourceId[0]</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="22aef5c1d2934697aacd2fd4fc639163"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>subscription/id</from>
+				<to>filter/cdmSystemSubscriptionId[0]</to>
 			</steps>
 		</steps>
 	</steps>

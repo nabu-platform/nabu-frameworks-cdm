@@ -1,0 +1,8 @@
+<structure interface="nabu.frameworks.cdm.manage.rest.instance.pushAll:api" name="pipeline">
+    <structure name="input"/>
+    <structure name="output"/>
+    <structure collectionName="cdmDefinitions" definition="nabu.frameworks.cdm.crud.cdmDefinition.types.output" enricher="nabu.frameworks.cdm.crud.cdmDefinition.services.list" minOccurs="0" name="definition" persister="nabu.frameworks.cdm.crud.cdmDefinition.batch.updateAll"/>
+    <structure collectionName="cdmSystems" definition="nabu.frameworks.cdm.crud.cdmSystem.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystem.services.list" minOccurs="0" name="system" persister="nabu.frameworks.cdm.crud.cdmSystem.batch.updateAll"/>
+    <field maxOccurs="unbounded" name="fullPush" type="java.lang.String"/>
+    <field maxOccurs="unbounded" name="skipPull" type="java.lang.String"/>
+</structure>

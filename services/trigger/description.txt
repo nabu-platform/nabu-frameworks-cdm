@@ -1,3 +1,10 @@
 You can trigger a cdm instance for one or more systems. If no systems are provided, all systems are checked.
 When you can have the target system call a webhook on change, it is best to trigger this with only that system.
 Otherwise you can trigger all systems in a recurring batch sync (e.g. nightly)
+
+
+# Known edge cases
+
+If we pull from source system and push to other systems, this might take several seconds.
+If anything changes in the source system in that time AND one of the target systems changed something (e.g. created new external id), we will push back the old data to the source system overriding any changes done in those few seconds!
+The only way around this is to either do a "soft push" (e.g. only metadata) or do yet another pull, which means we pull the system twice in a single trigger.

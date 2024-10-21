@@ -125,16 +125,16 @@
         <vary>false</vary>
     </filters>
     <foreignFields>
-        <foreignName>targetId:cdmDefinitionId:typeId</foreignName>
-        <localName>targetTypeId</localName>
-    </foreignFields>
-    <foreignFields>
         <foreignName>cdmRelationTypeId:name</foreignName>
         <localName>relationType</localName>
     </foreignFields>
     <foreignFields>
         <foreignName>sourceId:cdmDefinitionId:typeId</foreignName>
         <localName>sourceTypeId</localName>
+    </foreignFields>
+    <foreignFields>
+        <foreignName>cdmDefinitionId:typeId</foreignName>
+        <localName>targetTypeId</localName>
     </foreignFields>
     <getPermission>cdm.list</getPermission>
     <hooks>false</hooks>

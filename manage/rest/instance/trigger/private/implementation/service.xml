@@ -179,6 +179,15 @@
 				<from>input/path/cdmInstanceId</from>
 				<to>cdmInstanceId</to>
 			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="a4afc540f78b4990b27ab9490ebc193a"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>user</from>
+				<to>source</to>
+			</steps>
 		</steps>
 	</steps>
 </sequence>

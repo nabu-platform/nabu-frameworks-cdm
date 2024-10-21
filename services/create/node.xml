@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-16T12:13:45.664+02:00" lastModified="2024-06-28T09:07:22.300+02:00" leaf="true" version="89">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-16T12:13:45.664+02:00" lastModified="2024-10-21T11:08:03.340+02:00" leaf="true" version="94">
     <comment>Create a new instance of a CDM</comment>
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
@@ -19,6 +19,7 @@
     <references>nabu.frameworks.cdm.specs.externalId</references>
     <references>nabu.frameworks.cdm.crud.cdmDefinition.services.create</references>
     <references>nabu.frameworks.cdm.crud.cdmDefinition.services.list</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output</references>
     <references>nabu.frameworks.cdm.utils.instance.pushToRemote</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output</references>
     <references>java.lang.Object</references>

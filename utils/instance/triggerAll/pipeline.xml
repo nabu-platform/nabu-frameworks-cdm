@@ -1,0 +1,11 @@
+<structure name="pipeline">
+    <structure name="input">
+        <field maxOccurs="unbounded" minOccurs="0" name="cdmInstanceIds" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+        <field minOccurs="0" name="typeId" type="java.lang.String"/>
+        <field name="system" type="java.lang.String"/>
+        <field minOccurs="0" name="source" type="java.lang.String"/>
+    </structure>
+    <structure name="output">
+        <field maxOccurs="unbounded" minOccurs="0" name="failedTriggerIds" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+    </structure>
+</structure>

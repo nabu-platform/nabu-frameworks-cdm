@@ -1,0 +1,179 @@
+<sequence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		disabled="false"
+		id="f4580667d09147ccb4763a89e0af48e0"
+		lineNumber="1">
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="b7fef0a1a8854b40bc3442d5a5fdcaf5"
+			lineNumber="2">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="aab5f16d509949d1a6b95460191a8117"
+				serviceId="nabu.frameworks.cdm.crud.cdmDefinition.services.get"
+				resultName="result5b724a1db814473a82869dc18dd38a8e"
+				temporaryMapping="true"
+				x="175"
+				y="31"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="cf328175191d4c4cb7f1a92929382b14"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/path/definitionId</from>
+				<to>id</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="9fa5ac17db7c419fa9e497784de07d9c"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result5b724a1db814473a82869dc18dd38a8e/result</from>
+			<to>definition</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="8f8986ea59c54090a6a7a1a88f5e43dc"
+			lineNumber="3">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="64c41833c9fa4eaf89ff60adf02b4180"
+				serviceId="nabu.frameworks.cdm.crud.cdmSystem.services.get"
+				resultName="result1b77fb66f78f4447ad49a60ca1a63631"
+				temporaryMapping="true"
+				x="123"
+				y="113"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="327a28c08ffe42159e43a00ee549d739"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/path/systemId</from>
+				<to>id</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="bdfa425f004b4ce59240a7ac7738042a"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result1b77fb66f78f4447ad49a60ca1a63631/result</from>
+			<to>system</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="b06fd57abb25420da784b67b5d7a82d3"
+			label="input/query/full == true"
+			lineNumber="4">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="4b6fc52b0b16486ca66a253b8b112eb8"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>system/name</from>
+			<to>fullPush[0]</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="d6b126872dac446c8d3363be787e54cc"
+			label="input/query/skipPull == true"
+			lineNumber="5">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="4686567cd69646aba1ad34c9f3ce5fe9"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>system/name</from>
+			<to>skipPull[0]</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="db372f80ebfc4b89851a250fb356be5e"
+			lineNumber="6">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="3c5e9e9fe4ce4d7fb179a9d673d6ec4f"
+				serviceId="nabu.frameworks.cdm.utils.instance.pushAll"
+				resultName="result1c5dca26af474093b622ffca7abc8a0c"
+				temporaryMapping="true"
+				x="148"
+				y="50"
+				invocationOrder="0"
+				target="nabu.frameworks.tasks.providers.executor"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="2c8804a1575548e9a2142bc729274f87"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>definition/typeId</from>
+				<to>typeIds</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="6785dd131af446dfadca66991a768fad"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>system/name</from>
+				<to>systems</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="dcfcebfaae6d4358ba47bf47b4be647b"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>fullPush</from>
+				<to>fullPushForSystem</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="c3a25b25150a494f823a795f9244de3e"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>user</from>
+				<to>source</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="04e0210c84a242658e09335e58d1617c"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>skipPull</from>
+				<to>skipPullForSystem</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="7986097a21574790b11e13cc028c9013"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>system/name</from>
+				<to>forcePushForSystem[0]</to>
+			</steps>
+			<targetProperties
+					collectionIndex="queue">="cdm-push-" + definition/typeId</targetProperties>
+		</steps>
+	</steps>
+</sequence>

@@ -504,6 +504,15 @@
 				<from>input/system</from>
 				<to>system[0]</to>
 			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="fe7f7f8edf594837a402b680ec0e1ef5"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/source</from>
+				<to>source</to>
+			</steps>
 		</steps>
 		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 				disabled="false"
@@ -566,6 +575,15 @@
 					fixedValue="false">
 				<from>input/system</from>
 				<to>notSystem[0]</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="87117df306d24393943fc449cbe7e12b"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/source</from>
+				<to>source</to>
 			</steps>
 		</steps>
 		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
@@ -669,6 +687,15 @@
 				<from>true</from>
 				<to>skipMaster</to>
 			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="6cdf64f182974e62a449a3de84c6191c"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/source</from>
+				<to>source</to>
+			</steps>
 		</steps>
 		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 				disabled="false"
@@ -704,6 +731,70 @@
 					fixedValue="false">
 				<from>instance/id</from>
 				<to>cdmInstanceId</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="9df133d8a5fd4bd68ec4224461e768ff"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/source</from>
+				<to>source</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="a4484a869190413393f4ffa8f3ec97f8"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result633da0a76a154af28c1484b8378ba07e/subscriptions</from>
+			<to>subscriptions</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			comment="By creating in other systems, we likely have new metadata, do an additional push to make sure everyone has the new metadata"
+			disabled="false"
+			id="4f1c10fe7e584709b66f96274199a43e"
+			label="subscriptions"
+			lineNumber="23">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="b7aba62d7f9646db811aa77805452a90"
+				serviceId="nabu.frameworks.cdm.utils.instance.pushToRemote"
+				resultName="result633da0a76a154af28c1484b8378ba07e"
+				temporaryMapping="true"
+				x="196"
+				y="72"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="71e915971fc14ff690ca84012f73810b"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>instance/id</from>
+				<to>cdmInstanceId</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="75731784967e4689b4703c4485a53dab"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>subscriptions/system</from>
+				<to>skipPullForSystem</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="0426321906524063b302f49416b5fd6a"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/source</from>
+				<to>source</to>
 			</steps>
 		</steps>
 	</steps>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.web.component.WebComponentManager" created="2024-01-05T10:26:57.628+01:00" lastModified="2024-06-12T12:19:45.142+02:00" leaf="true" version="16">
+<node artifactManager="be.nabu.eai.module.web.component.WebComponentManager" created="2024-01-05T10:26:57.628+01:00" lastModified="2024-10-15T13:24:53.756+02:00" leaf="true" version="17">
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
@@ -27,4 +27,5 @@
     <references>nabu.frameworks.cdm.manage.rest.instance.synchronizeAll</references>
     <references>nabu.frameworks.cdm.manage.rest.instance.recouple</references>
     <references>nabu.frameworks.cdm.crud.cdmTrigger</references>
+    <references>nabu.frameworks.cdm.manage.rest.instance.pushAll</references>
 </node>

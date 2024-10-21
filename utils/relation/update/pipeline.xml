@@ -8,6 +8,7 @@
     </structure>
     <structure name="output">
         <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list" maxOccurs="unbounded" minOccurs="0" name="existingRelations" persister="nabu.frameworks.cdm.crud.cdmInstanceRelation.batch.updateAll"/>
+        <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list" maxOccurs="unbounded" minOccurs="0" name="newRelations" persister="nabu.frameworks.cdm.crud.cdmInstanceRelation.batch.updateAll"/>
     </structure>
     <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list" minOccurs="0" name="existingRelation" persister="nabu.frameworks.cdm.crud.cdmInstanceRelation.batch.updateAll"/>
     <field minOccurs="0" name="date" type="java.util.Date"/>

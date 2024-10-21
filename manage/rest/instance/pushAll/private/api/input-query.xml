@@ -1,0 +1,4 @@
+<structure name="query">
+    <field minOccurs="0" name="full" type="java.lang.Boolean"/>
+    <field minOccurs="0" name="skipPull" type="java.lang.Boolean"/>
+</structure>

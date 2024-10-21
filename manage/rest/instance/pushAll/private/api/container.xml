@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><container><artifactManagerClass>be.nabu.eai.module.rest.provider.iface.RESTInterfaceManager</artifactManagerClass><configuration><property key="actualId">nabu.frameworks.cdm.manage.rest.instance.pushAll</property><property key="interfaceEditable">false</property></configuration></container>

@@ -10,6 +10,7 @@
     </structure>
     <structure name="output">
         <structure comment="Existing external ids for this instance, this can be used to match it to a target system. Will always send all external ids so you can use other identifiers " definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="newExternalIds" restrict="cdmInstanceId, systemId, id"/>
+        <structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list" maxOccurs="unbounded" minOccurs="0" name="subscriptions" persister="nabu.frameworks.cdm.crud.cdmSystemSubscription.batch.updateAll"/>
     </structure>
     <structure collectionName="cdmInstanceContents" definition="nabu.frameworks.cdm.crud.cdmInstanceContent.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceContent.services.list" minOccurs="0" name="currentContent" persister="nabu.frameworks.cdm.crud.cdmInstanceContent.batch.updateAll"/>
     <structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list" maxOccurs="unbounded" minOccurs="0" name="subscriptions" persister="nabu.frameworks.cdm.crud.cdmSystemSubscription.batch.updateAll"/>
@@ -54,4 +55,5 @@
     <structure collectionName="cdmInstanceLogs" definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" name="log"/>
     <structure collectionName="cdmInstanceLogs" definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" maxOccurs="unbounded" minOccurs="0" name="logs"/>
     <structure definition="be.nabu.utils.cep.impl.ComplexEventImpl" name="event"/>
+    <field name="mostRecentExternalIdModification" timezone="UTC" type="java.util.Date"/>
 </structure>

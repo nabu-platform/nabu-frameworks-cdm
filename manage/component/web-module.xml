@@ -24,5 +24,6 @@
     <webFragments>nabu.frameworks.cdm.manage.rest.instance.synchronizeAll</webFragments>
     <webFragments>nabu.frameworks.cdm.manage.rest.instance.recouple</webFragments>
     <webFragments>nabu.frameworks.cdm.crud.cdmTrigger</webFragments>
+    <webFragments>nabu.frameworks.cdm.manage.rest.instance.pushAll</webFragments>
     <audience>MANAGER</audience>
 </webModule>

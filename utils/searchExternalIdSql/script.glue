@@ -11,10 +11,10 @@ string sql = "select distinct * from ~cdm_instances ci join ~cdm_definitions cd 
 where = ""
 for (externalId : externalIds)
 	from = from + " join ~cdm_instance_external_ids ciei" + $index
-		+ " on ciei" + $index + ".identifier = :identifier" + $index + " and ciei." + $index + ".name = :name" + $index
+		+ " on lower(ciei" + $index + ".identifier) = lower(:identifier" + $index + ") and ciei." + $index + ".name = :name" + $index
 	if (where != "")
 		where = where + " or "
-	where = where + "(ciei.name = :name" + $index + " and ciei.identifier = :identifier" + $index + ")" 
+	where = where + "(ciei.name = :name" + $index + " and lower(ciei.identifier) = lower(:identifier" + $index + "))" 
 	values = merge(values, 
 		structure(key: "name" + $index, value: externalId/name, type: "string"),
 		structure(key: "identifier" + $index, value: externalId/identifier, type: "string"))

@@ -3,6 +3,7 @@
         <field comment="You can optionally fixate the cdm instance id" minOccurs="0" name="cdmInstanceId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
         <field comment="The cdm type id" name="typeId" type="java.lang.String"/>
         <field comment="The item was created in _a_ system, we need to pull that first as it needs to form the basis of further enrichment from other providers" name="system" type="java.lang.String"/>
+        <field minOccurs="0" name="source" type="java.lang.String"/>
         <structure comment="Any external ids you already know. Other systems will need as much information as possible about the entity." definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="externalIds" restrict="cdmInstanceId, systemId, id"/>
     </structure>
     <structure name="output">
@@ -18,4 +19,5 @@
     <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list" maxOccurs="unbounded" minOccurs="0" name="matchingIdentifiers" persister="nabu.frameworks.cdm.crud.cdmInstanceExternalId.batch.updateAll"/>
     <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list" minOccurs="0" name="matchingIdentifier" persister="nabu.frameworks.cdm.crud.cdmInstanceExternalId.batch.updateAll"/>
     <field maxOccurs="unbounded" minOccurs="0" name="systemsToSkipPull" type="java.lang.String"/>
+    <structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list" maxOccurs="unbounded" minOccurs="0" name="subscriptions" persister="nabu.frameworks.cdm.crud.cdmSystemSubscription.batch.updateAll"/>
 </structure>

@@ -29,11 +29,87 @@
 		</steps>
 	</steps>
 	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			comment="Make sure the new relations are unique, we have had systems reporting the same relation multiple times"
+			disabled="false"
+			id="990e5db906a242f58b803c4138ba16c5"
+			label="input/newRelations"
+			lineNumber="3">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="8cec9472f38144dcb43ef4bb31c27886"
+				serviceId="nabu.utils.List.unique"
+				resultName="result95ba06a0a1cb47598ce655b64cfb629d"
+				temporaryMapping="true"
+				x="559"
+				y="123"
+				invocationOrder="1"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="1b0713e1e687411e99448a82301b623c"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/newRelations</from>
+				<to>list</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="6b663c877ed34c0f8825d8b2621b8dda"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>result5f6b4459f539404f877700fc0fe137c7/parts</from>
+				<to>fields</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="5a69d8b1c1fc48ed97e6f014d4a62658"
+				serviceId="nabu.utils.String.split"
+				resultName="result5f6b4459f539404f877700fc0fe137c7"
+				temporaryMapping="true"
+				x="73"
+				y="210"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="3354ac16ec3b47d8b20729bff939054e"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>name,identifier,targetTypeId,relationType,sourceTypeId</from>
+				<to>string</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="3b6e3bde3a034fa39505cd5f9887cb66"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>,</from>
+				<to>separator</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="c2a76c592f674f0f9c81740d100d9383"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result95ba06a0a1cb47598ce655b64cfb629d/list</from>
+			<to>input/newRelations</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 			comment="Get all definitions we might need"
 			disabled="false"
 			id="238f7cccb27f491cbbb8300907b0c9d8"
 			label="input/newRelations"
-			lineNumber="3">
+			lineNumber="4">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="9f5f818401ce4bb3840d664c8763c32c"
@@ -89,21 +165,42 @@
 	<steps xsi:type="be.nabu.libs.services.vm.step.For"
 			disabled="false"
 			id="1ce43cd7fda747108dbf056858fce36b"
-			lineNumber="4"
+			lineNumber="5"
 			variable="relation"
 			into="output/existingRelations">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Map"
-				comment="Get the existing relation based on identifier (its likely the same one"
+				comment="Get the existing relation based on identifier (its likely the same one. If there are multiple, we take the first and let the rest be disabled (backwards compatibility for historical doubles)"
 				disabled="false"
 				id="4c881c363c6c4227abf38aca8f710a68"
-				lineNumber="5">
+				lineNumber="6">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+					disabled="false"
+					id="f1a0280f53274525a4f27685261098be"
+					serviceId="nabu.utils.Object.first"
+					resultName="result66fcb80047c344c7a0788d1dcf7d8efb"
+					temporaryMapping="true"
+					x="330"
+					y="170"
+					invocationOrder="0"
+					asynchronous="false"
+					recache="false">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="fe046651a6604f0797ca70258bafa954"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>input/existingRelations[(targetTypeId == /relation/targetTypeId || targetTypeId == null) &amp;&amp; relationType == /relation/relationType &amp;&amp; name == /relation/name &amp;&amp; identifier == /relation/identifier]</from>
+					<to>options</to>
+				</steps>
+			</steps>
 			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 					disabled="false"
-					id="401ec05e0c314509b1e420e339b00528"
+					id="0af852a6ac154e77af5814e2eb3afe11"
 					mask="false"
 					optional="false"
 					fixedValue="false">
-				<from>input/existingRelations[(targetTypeId == /relation/targetTypeId || targetTypeId == null) &amp;&amp; relationType == /relation/relationType &amp;&amp; name == /relation/name &amp;&amp; identifier == /relation/identifier]</from>
+				<from>result66fcb80047c344c7a0788d1dcf7d8efb/first</from>
 				<to>existingRelation</to>
 			</steps>
 		</steps>
@@ -112,7 +209,7 @@
 				disabled="false"
 				id="e28ec41016124d809a5d72dba041870c"
 				label="existingRelation"
-				lineNumber="6">
+				lineNumber="7">
 			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 					disabled="false"
 					id="0407cc7fa6fd4c2dae222a99a429730d"
@@ -167,7 +264,7 @@
 				disabled="false"
 				id="725809d2f297471382600b6158723a72"
 				label="existingRelation &amp;&amp; existingRelation/targetId != null"
-				lineNumber="7">
+				lineNumber="8">
 			<count>1</count>
 			<continueExecution>true</continueExecution>
 		</steps>
@@ -175,7 +272,7 @@
 				comment="This should be one hit because identifiers should be unique. It is possible that we haven't synced the entity yet though"
 				disabled="false"
 				id="d1b2f1d48a544dbd909089a3c3997db1"
-				lineNumber="8">
+				lineNumber="9">
 			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 					disabled="false"
 					id="38c41f95aa9f4d7984dc1816617d1475"
@@ -278,24 +375,24 @@
 				disabled="false"
 				id="af1dbf9f193f473088f9578b20f5a1bc"
 				label="amountOfMatches &gt;= 2"
-				lineNumber="9"
+				lineNumber="10"
 				code="CDM-MULTIPLE-MATCHES"
 				whitelist="false" xsi:nil="true"/>
 		<steps xsi:type="be.nabu.libs.services.vm.step.Switch"
 				disabled="false"
 				id="e3052f0d4432414f878c374c56fd0ae5"
-				lineNumber="10">
+				lineNumber="11">
 			<steps xsi:type="be.nabu.libs.services.vm.step.Sequence"
 					comment="It was not found before but has been now, update the relation"
 					disabled="false"
 					id="6a428afe91824c288e81f4abcbbd873d"
 					label="existingRelation != null &amp;&amp; existingRelation/targetId == null &amp;&amp; existingInstance != null"
-					lineNumber="11">
+					lineNumber="12">
 				<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 						comment="Map the id"
 						disabled="false"
 						id="e7e412671d3d427aaac84aa95b64fa11"
-						lineNumber="12">
+						lineNumber="13">
 					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 							disabled="false"
 							id="cf1a7d456518458fb301cbf023dd2300"
@@ -305,12 +402,21 @@
 						<from>existingInstance/id</from>
 						<to>existingRelation/targetId</to>
 					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="0175a26ba6294b2b94fd6cdd6fa17bf9"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>date</from>
+						<to>existingRelation/modified</to>
+					</steps>
 				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 						comment="Add it to a list of relations to update"
 						disabled="false"
 						id="541389254f1145e689bc2945dd70ed76"
-						lineNumber="13">
+						lineNumber="14">
 					<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 							disabled="false"
 							id="42aacc4b1e284f4183c1dc01b515b574"
@@ -357,14 +463,14 @@
 					disabled="false"
 					id="e7d335c50b0d4628a3346ea539a22c49"
 					label="existingRelation == null"
-					lineNumber="14">
+					lineNumber="15">
 				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 						disabled="false"
 						id="02e9ca0154a0458c8ae06edf4974beae"
 						serviceId="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.create"
 						resultName="result864a2ece995b431eae3a30ba37849a97"
 						temporaryMapping="true"
-						x="473"
+						x="65"
 						y="50"
 						invocationOrder="1"
 						asynchronous="false"
@@ -450,6 +556,15 @@
 						<from>input/cdmSystemSubscriptionId</from>
 						<to>instance/cdmSystemSubscriptionId</to>
 					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="090f35aa8a8d4814af8300a1af1e4265"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>date</from>
+						<to>instance/modified</to>
+					</steps>
 				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
 						disabled="false"
@@ -499,6 +614,45 @@
 						<to>cdmSystemSubscriptionId</to>
 					</steps>
 				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+						disabled="false"
+						id="5658a206f00f4be6a051e0b493afe74e"
+						serviceId="nabu.utils.List.add"
+						resultName="result8c4c9ab831b24684beed3cfe7b49765e"
+						temporaryMapping="true"
+						x="476"
+						y="203"
+						invocationOrder="2"
+						asynchronous="false"
+						recache="false">
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="95cd34390149488c96fc50c99cd74f2f"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>result864a2ece995b431eae3a30ba37849a97/created</from>
+						<to>object</to>
+					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="2dff1ad849184c1a8e46cb2744d83e39"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>output/newRelations</from>
+						<to>list</to>
+					</steps>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="2b90204785c94e9db55c9c55f8d3c5ba"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>result8c4c9ab831b24684beed3cfe7b49765e/list</from>
+					<to>output/newRelations</to>
+				</steps>
 			</steps>
 		</steps>
 		<query>input/newRelations</query>
@@ -508,7 +662,7 @@
 			disabled="false"
 			id="01bfe044b4a641a9aa066b1116dadefc"
 			label="input/existingRelations"
-			lineNumber="15">
+			lineNumber="16">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="469506af68d447509d3f1e55cacc8397"
@@ -544,7 +698,7 @@
 			disabled="false"
 			id="9af8eff84bf54ee19fa64a875e8fa58f"
 			label="relationsToUpdate"
-			lineNumber="16">
+			lineNumber="17">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="a405c99f1f40437d981df011bc2b8fb4"

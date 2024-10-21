@@ -1,7 +1,7 @@
 <structure collectionName="cdmInstanceLogs" name="cdmInstanceLog">
     <field name="id" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" primaryKey="true" type="java.util.UUID"/>
-    <field name="created" timezone="UTC" type="java.util.Date"/>
-    <field comment="Log type for instance &quot;push&quot;" name="logType" type="java.lang.String"/>
+    <field indexed="true" name="created" timezone="UTC" type="java.util.Date"/>
+    <field comment="Log type for instance &quot;push&quot;" indexed="true" name="logType" type="java.lang.String"/>
     <field comment="The actual content for this log" minOccurs="0" name="content" type="java.lang.String"/>
     <field comment="The instance it is relevant for" foreignKey="nabu.frameworks.cdm.database.types.cdmInstance:id" indexed="true" name="cdmInstanceId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
     <field comment="It can be in function of a specific instance subscription" foreignKey="nabu.frameworks.cdm.database.types.cdmInstanceSubscription:id" indexed="true" minOccurs="0" name="cdmInstanceSubscription" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>

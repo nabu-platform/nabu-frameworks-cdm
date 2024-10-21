@@ -207,4 +207,58 @@
 			</steps>
 		</steps>
 	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			comment="We push back to the triggering system in case one of the other systems reported something of interest (primarily external ids). We just pulled so don't pull again"
+			disabled="false"
+			id="d1ebb14f171845ba89e231f4fabf9e4c"
+			lineNumber="7">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="d170f9382a164f42b2a837cd17e0f20c"
+				serviceId="nabu.frameworks.cdm.utils.instance.pushToRemote"
+				resultName="result2fe43ac5cf1643ab9760e2356c61496f"
+				temporaryMapping="true"
+				x="209"
+				y="86"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="6e60873bf3754f07ae1d71565e0544f7"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>cdmInstance/id</from>
+				<to>cdmInstanceId</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="2e07e6a8bd8b4c47ad0ae2e7fe41a8b9"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/system</from>
+				<to>systems[0]</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="ea03992fb7a94f858766ad7a22a2aa49"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/source</from>
+				<to>source</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="c44f30e162ac48d2b6baf314536ac713"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/system</from>
+				<to>skipPullForSystem[0]</to>
+			</steps>
+		</steps>
+	</steps>
 </sequence>

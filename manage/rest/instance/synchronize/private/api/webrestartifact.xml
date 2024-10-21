@@ -33,4 +33,5 @@
     <limitedToInterface>false</limitedToInterface>
     <allowExplicitResponseCode>false</allowExplicitResponseCode>
     <stubbed>false</stubbed>
+    <clusterLock>false</clusterLock>
 </restInterface>

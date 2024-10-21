@@ -28,7 +28,7 @@ for (diff : diffs)
 		instanceToDelete = instance[/diff/path]
 		arraysToCheck[/arrayPath] = when(arraysToCheck[/arrayPath] == null, series(instanceToDelete), merge(arraysToCheck[/arrayPath], instanceToDelete))
 
-console("deleting", arraysToCheck)
+#console("deleting", arraysToCheck)
 # We sort the arrays from longest name to smallest
 # This is an easy workaround for "nested arrays" where deleting a parent might impact the child
 # For a diff done between two documents this should never happen, for a multiway diff however it could be the case

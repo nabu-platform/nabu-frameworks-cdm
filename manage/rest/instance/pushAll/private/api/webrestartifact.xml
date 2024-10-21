@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <restInterface>
     <method>POST</method>
-    <path>/cdm/instance/{cdmInstanceId}/trigger/{system}</path>
+    <path>/cdm/definition/{definitionId}/system/{systemId}/pushAll</path>
+    <queryParameters>full, skipPull</queryParameters>
     <role>$user</role>
     <permissionAction>cdm.manage</permissionAction>
     <useServiceContextAsPermissionContext>false</useServiceContextAsPermissionContext>
