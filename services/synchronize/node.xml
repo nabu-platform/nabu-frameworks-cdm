@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T09:32:02.013+02:00" lastModified="2024-07-25T13:38:03.530+02:00" leaf="true" version="41">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T09:32:02.013+02:00" lastModified="2024-10-21T15:04:51.785+02:00" leaf="true" version="44">
     <comment>Synchronize one or more instances</comment>
     <environmentId>apollo</environmentId>
     <hidden>false</hidden>

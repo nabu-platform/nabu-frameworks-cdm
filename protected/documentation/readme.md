@@ -2,6 +2,19 @@
 
 - use a separate type for pulling and pushing. pulling _MUST_ be a subtype of pushing (or equal to)
 
+# The single sync
+
+Because CDM is often triggered only on change, it is imperative that we sync _all_ changes to _all_ systems in a single go. Otherwise you may need to wait to the next change to push some latent changes.
+
+The "trigger" and "create" are two examples where a source system performs a "pull" and the target systems perform a "push". However the "push" in the target systems might add data (especially metadata like relations & identifiers) that might not be picked up otherwise.
+
+There are two ways to look at this:
+
+- we optimize all the interactions so cascading changes are pushed to all systems (A triggers B which changes something that should be reported to A and C etc).
+- we do a periodic check to see if there are unreported changes (e.g. last modified that is greater than the push date)
+
+However, in the latter case we have to be careful with push rejections which culminate in never ending attempts to push the data.
+
 # Indexes and constraints
 
 alter table cdm_instance_external_ids add constraint uniq_name_identifier unique(name, identifier);

@@ -14,4 +14,5 @@
     <field comment="A trigger can be marked as creation trigger. This will actually create a new instance rather than updating it" name="newInstance" type="java.lang.Boolean"/>
     <field comment="By default it will run asynchronous so the root transaction is committed by the time CDM comes asking for changes" name="synchronous" type="java.lang.Boolean"/>
     <field minOccurs="0" name="delay" type="be.nabu.libs.types.base.Duration"/>
+    <field comment="Allow freestyle comments, triggers can get complex (interaction-wise) very fast" minOccurs="0" name="comment" type="java.lang.String"/>
 </structure>

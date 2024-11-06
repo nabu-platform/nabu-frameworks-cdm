@@ -206,11 +206,21 @@
 				<to>source</to>
 			</steps>
 		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="16d05fb62c094367acf118227cfee9f9"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>resultb45299d35fe54a51926ff4c5f3403857/hasNewMetadata</from>
+			<to>hasNewMetadata</to>
+		</steps>
 	</steps>
 	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 			comment="We push back to the triggering system in case one of the other systems reported something of interest (primarily external ids). We just pulled so don't pull again"
 			disabled="false"
 			id="d1ebb14f171845ba89e231f4fabf9e4c"
+			label="hasNewMetadata"
 			lineNumber="7">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"

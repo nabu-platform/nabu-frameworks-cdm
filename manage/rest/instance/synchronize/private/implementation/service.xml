@@ -104,5 +104,87 @@
 				<to>source</to>
 			</steps>
 		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="7dd39aaee5d94b7cb1ba86228c93fd18"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>resultb45299d35fe54a51926ff4c5f3403857/subscriptions</from>
+			<to>pushedSubscriptions</to>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="673c21250af84781ae7feb713ea29a2c"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>resultb45299d35fe54a51926ff4c5f3403857/hasNewMetadata</from>
+			<to>hasNewMetadata</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			comment="Push it to the remote systems forcing a pull before we push it"
+			disabled="false"
+			id="a3ad2fedf68d4080b08451ef8cc14fd1"
+			label="hasNewMetadata"
+			lineNumber="6">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="02fe20482a4944a8ae03ac0d450b1ba2"
+				serviceId="nabu.frameworks.cdm.utils.instance.pushToRemote"
+				resultName="resultb45299d35fe54a51926ff4c5f3403857"
+				temporaryMapping="true"
+				x="92"
+				y="50"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="cf22c451968b4be2b17a1ed0d283fe85"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/path/cdmInstanceId</from>
+				<to>cdmInstanceId</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="7d77f0451a7146a4ad82182377403c3d"
+					mask="false"
+					optional="false"
+					fixedValue="true">
+				<from>user</from>
+				<to>source</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="0a6172aaecd9499b9f7d13a760c50ef5"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>pushedSubscriptions/system</from>
+				<to>skipPullForSystem</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="7dd39aaee5d94b7cb1ba86228c93fd18"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>resultb45299d35fe54a51926ff4c5f3403857/subscriptions</from>
+			<to>pushedSubscriptions</to>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="673c21250af84781ae7feb713ea29a2c"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>resultb45299d35fe54a51926ff4c5f3403857/hasNewMetadata</from>
+			<to>hasNewMetadata</to>
+		</steps>
 	</steps>
 </sequence>

@@ -1435,6 +1435,15 @@
 					<from>result7984e6eb17a841c68fb85731972df2ef/list</from>
 					<to>logs</to>
 				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="2815fabf31764ac2866a61cd2a3c7da7"
+						mask="false"
+						optional="false"
+						fixedValue="true">
+					<from>true</from>
+					<to>output/hasNewMetadata</to>
+				</steps>
 			</steps>
 			<steps xsi:type="be.nabu.libs.services.vm.step.Sequence"
 					comment="If we had an instance but no longer have one, we set to decoupled and skip"
@@ -2933,6 +2942,15 @@
 					<from>result543706be45754788aade5bec423cfff1/list</from>
 					<to>logs</to>
 				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="e89209d6bee94369af743739d05bd254"
+						mask="false"
+						optional="false"
+						fixedValue="true">
+					<from>true</from>
+					<to>output/hasNewMetadata</to>
+				</steps>
 			</steps>
 			<steps xsi:type="be.nabu.libs.services.vm.step.For"
 					disabled="false"
@@ -4142,13 +4160,72 @@
 					message="Rejected"
 					whitelist="false" xsi:nil="true"/>
 		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Sequence"
+				comment="If we didn't have new metadata yet, check if we created some this iteration"
+				disabled="false"
+				id="61d599c7bad648e1b095e1177243282c"
+				label="!output/hasNewMetadata &amp;&amp; existingRelations != null"
+				lineNumber="102">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+					comment="Get amount of relations that were updated after the start of this service"
+					disabled="false"
+					id="3e3d6182d10a466ea99f5b2f15934ea1"
+					lineNumber="103">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+						disabled="false"
+						id="c1bf92ab499a4ab785781b0794dd27d0"
+						serviceId="nabu.utils.List.size"
+						resultName="resulta5ccdde3e122448a94597bab6031eb70"
+						temporaryMapping="true"
+						x="292"
+						y="188"
+						invocationOrder="0"
+						asynchronous="false"
+						recache="false">
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="4e5cd2d520ab4f13a97d36b42575662f"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>existingRelations[modified != null &amp;&amp; modified &gt; date]</from>
+						<to>list</to>
+					</steps>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="3b5223422ffb42eb85ec086ad7c2c8ca"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>resulta5ccdde3e122448a94597bab6031eb70/size</from>
+					<to>amountOfChangedRelations</to>
+				</steps>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+					comment="Set to true "
+					disabled="false"
+					id="29b93f2518c74a57ac0f166ce22349e9"
+					label="amountOfChangedRelations &gt; 0"
+					lineNumber="104">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="1c31ccabe0a4442782876284e345b4ce"
+						mask="false"
+						optional="false"
+						fixedValue="true">
+					<from>true</from>
+					<to>output/hasNewMetadata</to>
+				</steps>
+			</steps>
+		</steps>
 		<query>subscriptions</query>
 	</steps>
 	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 			disabled="false"
 			id="973ff9e5d7214e1898fc333ee23eab74"
 			label="instanceSubscriptions"
-			lineNumber="102">
+			lineNumber="105">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="aa2f63054aa74874baa41d5989e99a55"
@@ -4175,7 +4252,7 @@
 			comment="Map the stopped for the sync"
 			disabled="false"
 			id="55b22a44404e46f3a684e8a0bf07e1a4"
-			lineNumber="103">
+			lineNumber="106">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="7ceb0ed61b434367a70b84cac0b3d63b"
@@ -4201,7 +4278,7 @@
 	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 			disabled="false"
 			id="01fca7eadc9d4417adff5d814b3c04dd"
-			lineNumber="104">
+			lineNumber="107">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="20636b3db2f24c39bfa53a6371c21d84"
@@ -4228,7 +4305,7 @@
 			disabled="false"
 			id="f483ce3eb03e4b0fbaa66c0e5ab6b8f3"
 			label="instanceSyncDiffs"
-			lineNumber="105">
+			lineNumber="108">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="df3a6c1c27fd4fb786cb72d3faf3df3b"
@@ -4255,7 +4332,7 @@
 			disabled="false"
 			id="a4335615970a434abc971065c7d8c73b"
 			label="logs"
-			lineNumber="106">
+			lineNumber="109">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="c14050ce7d6f4fe285e4b280d6af1464"

@@ -749,14 +749,23 @@
 				optional="false"
 				fixedValue="false">
 			<from>result633da0a76a154af28c1484b8378ba07e/subscriptions</from>
-			<to>subscriptions</to>
+			<to>pushedSubscriptions</to>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="34e3727ca0d9461d8f7744b596ad9053"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result633da0a76a154af28c1484b8378ba07e/hasNewMetadata</from>
+			<to>hasNewMetadata</to>
 		</steps>
 	</steps>
 	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
-			comment="By creating in other systems, we likely have new metadata, do an additional push to make sure everyone has the new metadata"
+			comment="If we have new metadata, do an additional push to make sure everyone has the new metadata"
 			disabled="false"
 			id="4f1c10fe7e584709b66f96274199a43e"
-			label="subscriptions"
+			label="hasNewMetadata &amp;&amp; pushedSubscriptions != null"
 			lineNumber="23">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
@@ -784,7 +793,7 @@
 					mask="false"
 					optional="false"
 					fixedValue="false">
-				<from>subscriptions/system</from>
+				<from>pushedSubscriptions/system</from>
 				<to>skipPullForSystem</to>
 			</steps>
 			<steps xsi:type="be.nabu.libs.services.vm.step.Link"

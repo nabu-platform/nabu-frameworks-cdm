@@ -11,4 +11,6 @@
     <structure collectionName="cdmInstances" definition="nabu.frameworks.cdm.crud.cdmInstance.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstance.services.list" maxOccurs="unbounded" minOccurs="0" name="instances" persister="nabu.frameworks.cdm.crud.cdmInstance.batch.updateAll"/>
     <structure definition="be.nabu.eai.module.services.crud.Page" minOccurs="0" name="paging"/>
     <structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list" maxOccurs="unbounded" minOccurs="0" name="subscriptionsToSkip" persister="nabu.frameworks.cdm.crud.cdmSystemSubscription.batch.updateAll"/>
+    <field comment="Indicates whether new metadata was created or updated (e.g. new external ids or relations)" name="hasNewMetadata" type="java.lang.Boolean"/>
+    <structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list" maxOccurs="unbounded" minOccurs="0" name="pushedSubscriptions" persister="nabu.frameworks.cdm.crud.cdmSystemSubscription.batch.updateAll"/>
 </structure>
