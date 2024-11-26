@@ -16,4 +16,5 @@
     <field comment="You can limit how often we pull data. This will be compared to the last pull date." minOccurs="0" name="pullInterval" type="be.nabu.libs.types.base.Duration"/>
     <field comment="You can disable a subscription" name="enabled" type="java.lang.Boolean"/>
     <field comment="A normal subscription will be pulled (either batch or per entity) for a synchronization. You can skip this however if the subscription is intended to use triggers for every update." name="triggerOnly" type="java.lang.Boolean"/>
+    <field comment="By default a subscription will both update existing entities and create new ones. If you set this to true, we will not create new ones" name="updateOnly" type="java.lang.Boolean"/>
 </structure>
