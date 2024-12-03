@@ -176,6 +176,14 @@
 						<from>subscriptions[id == /trigger/cdmSystemSubscriptionId]</from>
 						<to>subscription</to>
 					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Drop"
+							disabled="false"
+							id="30958fed23bf4726a18a38fd5234a75b"
+							path="externalIdentifiers" xsi:nil="true"/>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Drop"
+							disabled="false"
+							id="36c7eff42cb74c19ac6b1d10b36aa2b3"
+							path="cdmInstanceIds" xsi:nil="true"/>
 				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Break"
 						disabled="false"
