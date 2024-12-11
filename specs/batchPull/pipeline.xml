@@ -6,5 +6,6 @@
     </structure>
     <structure name="output">
         <structure definition="nabu.frameworks.cdm.specs.pull:output" maxOccurs="unbounded" minOccurs="0" name="instances"/>
+        <field comment="By default CDM will stop requesting if no instances are returned. You can force continuation by setting this to true." minOccurs="0" name="continue" type="java.lang.Boolean"/>
     </structure>
 </structure>
