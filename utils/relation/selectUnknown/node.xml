@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.services.jdbc.JDBCServiceManager" created="2025-01-07T12:34:07.542+01:00" lastModified="2025-01-07T12:37:24.495+01:00" leaf="true" version="11">
+    <environmentId>ares</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>java.lang.String</references>
+    <references>java.lang.Long</references>
+    <references>java.lang.Integer</references>
+    <references>java.lang.Boolean</references>
+    <references>be.nabu.libs.services.jdbc.AffixInput</references>
+    <references>nabu.frameworks.cdm.utils.relation.selectUnknown.parameters</references>
+    <references>be.nabu.libs.types.api.KeyValuePair</references>
+    <references>nabu.frameworks.cdm.database.types.cdmInstanceRelation</references>
+    <references>be.nabu.libs.services.jdbc.api.Statistic</references>
+    <references>java.lang.Long</references>
+    <references>java.lang.Boolean</references>
+</node>

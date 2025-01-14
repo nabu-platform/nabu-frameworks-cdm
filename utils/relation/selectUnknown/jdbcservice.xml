@@ -1,0 +1,9 @@
+<jdbcService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<outputDefinition>nabu.frameworks.cdm.database.types.cdmInstanceRelation</outputDefinition>
+	<sql>select * from ~cdm_instance_relations 
+where target_id is null and active = true and stopped is null
+	and (:cdmInstanceId is null or source_id = any(:cdmInstanceId))
+	and (:targetDefinitionId is null or cdm_definition_id = any(:targetDefinitionId))
+	and (:relationTypeId is null or cdm_relation_type_id = any(:relationTypeId))</sql>
+	<validateOutput>false</validateOutput>
+</jdbcService>
