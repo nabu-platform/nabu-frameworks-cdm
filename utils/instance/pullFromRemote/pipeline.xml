@@ -45,6 +45,6 @@
     <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="arrayDiffToApplyImmediately"/>
     <structure collectionName="cdmInstanceLogs" definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" name="log"/>
     <structure collectionName="cdmInstanceLogs" definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" maxOccurs="unbounded" minOccurs="0" name="logs"/>
-    <field name="newInstanceSubscription" type="java.lang.Boolean"/>
     <field name="direction" type="java.lang.String"/>
+    <field name="newInstance" type="java.lang.Boolean"/>
 </structure>

@@ -416,7 +416,8 @@
 					disabled="false"
 					id="58a971ef487d47edb5dfb7687a2d001c"
 					lineNumber="16"
-					variable="remoteInstance">
+					variable="remoteInstance"
+					into="output/cdmInstanceIds">
 				<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 						disabled="false"
 						id="d00be5c6295244beabb333c584c66a20"
@@ -691,6 +692,15 @@
 							fixedValue="false">
 						<from>resultdda790f21bae433b8180710b3f7073f9/externalIds</from>
 						<to>externalIds</to>
+					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="b1811e6624af4a9db5ae47fa1fbcd2d1"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>localInstance/id</from>
+						<to>output/cdmInstanceIds[0]</to>
 					</steps>
 				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Map"

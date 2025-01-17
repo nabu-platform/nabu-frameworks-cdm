@@ -2,6 +2,25 @@
 
 - use a separate type for pulling and pushing. pulling _MUST_ be a subtype of pushing (or equal to)
 
+# Onboarding new systems
+
+When you start a new cdm instance alltogether, we attempt to gather as much information as possible from all systems involved.
+This means we ignore master definitions allowing systems to provide information beyond their daily master scope. Additionally we don't unset values so if a lower tier (in priority) system has information which a higher tier does not, that information will be retained.
+In a normal sync the higher prio system would win, throwing away the information.
+
+However, when you have an existing cdm instance and want to onboard a new system, we assume that you have spent time cleaning up the data in the CDM so it should be more correct in cases of conflicting data.
+If we do nothing special however, all data from the new system would be flagged as "new" and overwrite your cleaned up CDM instance.
+
+Instead for onboarding we have a similar special handling: if we see that CDM has never pushed the instance to your system, we assume your data is less valid which in turn means we ignore any changes to _existing_ data in the cdm instance.
+However, the newly onboarded system CAN go beyond the master (NOT the initial master which is set up specifically for this purpose of onboarding but requires manual preparation). It can add information that it assuming the current value is "null" in cdm.
+
+## Data overlap
+
+If the system you are onboarding has a dataset that has a large overlap with the existing dataset, it is best to run a full batch sync because you will need all your system information to be as up to date as possible.
+However, in some exotic cases you want to onboard a system that has a dataset that has little to no overlap with the existing data set.
+
+For small overlaps "point syncs" are acceptable (pulling specific data from the remote systems) which is the default behavior if you sync without doing a batch pull first.
+
 # The single sync
 
 Because CDM is often triggered only on change, it is imperative that we sync _all_ changes to _all_ systems in a single go. Otherwise you may need to wait to the next change to push some latent changes.

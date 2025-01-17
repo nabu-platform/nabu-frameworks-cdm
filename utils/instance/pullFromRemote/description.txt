@@ -1,1 +1,2 @@
 We pull data from the indicated systems (or all systems if none are indicated) and patch our own instance of the CDM to conform to the latest data available.
+Note that the "newInstanceSubscription" is not correct because batchpull creates this as well

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2025-01-16T15:34:47.404+01:00" lastModified="2025-01-17T10:17:36.892+01:00" leaf="true" version="11">
+    <environmentId>ares</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>nabu.frameworks.cdm.services.synchronizeAll</references>
+    <references>nabu.frameworks.cdm.utils.pullBatch</references>
+    <references>nabu.frameworks.cdm.services.synchronize</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output</references>
+    <references>java.lang.Boolean</references>
+    <references>nabu.frameworks.tasks.providers.executor</references>
+    <references>java.lang.String</references>
+    <references>java.util.UUID</references>
+    <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list</references>
+</node>

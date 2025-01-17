@@ -1,0 +1,179 @@
+<sequence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		disabled="false"
+		id="8360d000d0e0464a944d420537608b35"
+		lineNumber="1">
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="87dc7ffa458f4897889361334b212248"
+			lineNumber="2">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="a3ada3b1f25b4aeb867679ca5190199e"
+				serviceId="nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list"
+				resultName="result32dbdeeb7f3a4c6ab53bc4ffe553f0eb"
+				temporaryMapping="true"
+				x="131"
+				y="17"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="d75aad02da8f4c98a52ce50e54403395"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/system</from>
+				<to>filter/system[0]</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="00cf5f869b984bf1ae4a48de60681552"
+					mask="false"
+					optional="false"
+					fixedValue="false">
+				<from>input/typeId</from>
+				<to>filter/coreTypeId[0]</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="8476f02bd2ff4f77b0d8f3e0dab148d2"
+				mask="false"
+				optional="false"
+				fixedValue="false">
+			<from>result32dbdeeb7f3a4c6ab53bc4ffe553f0eb/results[0]</from>
+			<to>subscription</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Throw"
+			disabled="false"
+			id="39ae0bee3c394e349f54a02fc467be52"
+			label="!subscription"
+			lineNumber="3"
+			message="Not a valid subscription"
+			whitelist="false" xsi:nil="true"/>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Switch"
+			disabled="false"
+			id="ec3a0ddcea5e43589e276f9e86b76d43"
+			lineNumber="4">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+				comment="If we have a large overlap, syncing everything is faster than doing point syncs. If you have no batch service, we can't even pull everything, so sync all."
+				disabled="false"
+				id="ebaae95d92134b15922be75b5146bb4a"
+				label="input/largeDataOverlap == true || subscription/batchPullId == null"
+				lineNumber="5">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+					disabled="false"
+					id="8b81f70fd5424c218b7868a6aa8f1acd"
+					serviceId="nabu.frameworks.cdm.services.synchronizeAll"
+					resultName="result6ce2ac7ccd5547beaa79baee84f073bd"
+					temporaryMapping="true"
+					x="149"
+					y="59"
+					invocationOrder="0"
+					asynchronous="false"
+					recache="false">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="dcd825b6f368427fb0c5f4263aa7be6f"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>input/typeId</from>
+					<to>typeId</to>
+				</steps>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Sequence"
+				disabled="false"
+				id="7542d8d3d0344439b327c0ee24c42b88"
+				lineNumber="6">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+					disabled="false"
+					id="4ef6dbf541994e44a318d4752d843369"
+					lineNumber="7">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+						disabled="false"
+						id="059a214543a74e57aa510fb8d92516e5"
+						serviceId="nabu.frameworks.cdm.utils.pullBatch"
+						resultName="result2f474904e6e24095a745ed54a3ee4cfb"
+						temporaryMapping="true"
+						x="239"
+						y="51"
+						invocationOrder="0"
+						asynchronous="false"
+						recache="false">
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="94ec0e5b41b84ade8586476bf431cf02"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>subscription/id</from>
+						<to>cdmSystemSubscriptionId</to>
+					</steps>
+				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="d2703de4153941d48e0cd5564e9a0b8b"
+						mask="false"
+						optional="false"
+						fixedValue="false">
+					<from>result2f474904e6e24095a745ed54a3ee4cfb/cdmInstanceIds</from>
+					<to>cdmInstanceIds</to>
+				</steps>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+					disabled="false"
+					id="7eea22e57e02435ab02165862e01999a"
+					label="cdmInstanceIds != null"
+					lineNumber="8">
+				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+						disabled="false"
+						id="4546f70e870a44c39d8fdcb7fc9bf736"
+						serviceId="nabu.frameworks.cdm.services.synchronize"
+						resultName="result824a3f5180a3456483693c204cd60cb8"
+						temporaryMapping="true"
+						x="356"
+						y="80"
+						invocationOrder="0"
+						target="nabu.frameworks.tasks.providers.executor"
+						asynchronous="false"
+						recache="false">
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="2806b065572344458756594f9db3db53"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>cdmInstanceIds</from>
+						<to>cdmInstanceId</to>
+					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="7375bea0e7804efea5768194d0429e2b"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>input/typeId</from>
+						<to>typeId</to>
+					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="c23995f229af4a2c96ecf59b1d8beca2"
+							mask="false"
+							optional="false"
+							fixedValue="false">
+						<from>input/system</from>
+						<to>skipPullForSystem[0]</to>
+					</steps>
+					<targetProperties
+							collectionIndex="groupId">=input/typeId</targetProperties>
+					<targetProperties
+							collectionIndex="queue">="cdm-synchronize-" + input/typeId</targetProperties>
+				</steps>
+			</steps>
+		</steps>
+	</steps>
+</sequence>

@@ -1,0 +1,10 @@
+<structure name="pipeline">
+    <structure name="input" validate="true">
+        <field name="typeId" type="java.lang.String"/>
+        <field name="system" type="java.lang.String"/>
+        <field name="largeDataOverlap" type="java.lang.Boolean"/>
+    </structure>
+    <structure name="output"/>
+    <structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list" minOccurs="0" name="subscription" persister="nabu.frameworks.cdm.crud.cdmSystemSubscription.batch.updateAll"/>
+    <field maxOccurs="unbounded" minOccurs="0" name="cdmInstanceIds" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+</structure>
