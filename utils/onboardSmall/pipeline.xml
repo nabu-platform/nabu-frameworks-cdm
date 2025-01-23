@@ -1,4 +1,0 @@
-<structure name="pipeline">
-    <structure name="input"/>
-    <structure name="output"/>
-</structure>
