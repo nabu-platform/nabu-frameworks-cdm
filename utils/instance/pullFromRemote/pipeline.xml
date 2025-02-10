@@ -47,4 +47,5 @@
     <structure collectionName="cdmInstanceLogs" definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" maxOccurs="unbounded" minOccurs="0" name="logs"/>
     <field name="direction" type="java.lang.String"/>
     <field name="newInstance" type="java.lang.Boolean"/>
+    <structure definition="nabu.utils.types.ParameterDescription" maxOccurs="unbounded" minOccurs="0" name="initialMasterProperties"/>
 </structure>
