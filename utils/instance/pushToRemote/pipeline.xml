@@ -38,6 +38,7 @@
     <field name="rejectionReason" type="java.lang.String"/>
     <structure comment="The relations of this cdm instance. These should be ALL currently active relations. If an existing relation is no longer listed, it is removed." definition="nabu.frameworks.cdm.specs.relation" maxOccurs="unbounded" minOccurs="0" name="newRelations" restrict="id,cdmSystemId,started,stopped,cdmDefinitionId,sourceId,targetId,active"/>
     <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list" maxOccurs="unbounded" minOccurs="0" name="allExistingRelations" persister="nabu.frameworks.cdm.crud.cdmInstanceRelation.batch.updateAll"/>
+    <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list" maxOccurs="unbounded" minOccurs="0" name="allInactivatedRelations" persister="nabu.frameworks.cdm.crud.cdmInstanceRelation.batch.updateAll"/>
     <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list" maxOccurs="unbounded" minOccurs="0" name="existingRelations" persister="nabu.frameworks.cdm.crud.cdmInstanceRelation.batch.updateAll"/>
     <field minOccurs="0" name="nextPull" type="java.util.Date"/>
     <field name="pullNewData" type="java.lang.Boolean"/>
@@ -47,6 +48,7 @@
     <structure collectionName="cdmSystemRelationTypes" definition="nabu.frameworks.cdm.crud.cdmSystemRelationType.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystemRelationType.services.list" maxOccurs="unbounded" minOccurs="0" name="interestedRelationTypes" persister="nabu.frameworks.cdm.crud.cdmSystemRelationType.batch.updateAll"/>
     <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list" maxOccurs="unbounded" minOccurs="0" name="changedRelations" persister="nabu.frameworks.cdm.crud.cdmInstanceRelation.batch.updateAll"/>
     <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list" maxOccurs="unbounded" minOccurs="0" name="interestingRelations" persister="nabu.frameworks.cdm.crud.cdmInstanceRelation.batch.updateAll"/>
+    <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list" maxOccurs="unbounded" minOccurs="0" name="interestingInactivatedRelations" persister="nabu.frameworks.cdm.crud.cdmInstanceRelation.batch.updateAll"/>
     <structure collectionName="cdmInstanceSyncs" definition="nabu.frameworks.cdm.database.types.cdmInstanceSync" name="instanceSync"/>
     <structure collectionName="cdmInstanceSyncDiffs" definition="nabu.frameworks.cdm.database.types.cdmInstanceSyncDiff" maxOccurs="unbounded" minOccurs="0" name="instanceSyncDiffs"/>
     <field comment="The target instance of the relation (if we know it)" foreignKey="nabu.frameworks.cdm.database.types.cdmInstance:id" maxOccurs="unbounded" name="allExistingRelationTargetIds" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
@@ -58,4 +60,5 @@
     <structure definition="be.nabu.utils.cep.impl.ComplexEventImpl" name="event"/>
     <field name="mostRecentExternalIdModification" timezone="UTC" type="java.util.Date"/>
     <field minOccurs="0" name="amountOfChangedRelations" type="java.lang.Integer"/>
+    <field comment="When did we last push our data to the remote?" minOccurs="0" name="oldestPush" timezone="UTC" type="java.util.Date"/>
 </structure>

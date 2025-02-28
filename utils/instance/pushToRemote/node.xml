@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-18T11:22:48.254+02:00" lastModified="2024-10-21T14:51:36.198+02:00" leaf="true" version="332">
-    <environmentId>apollo</environmentId>
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-18T11:22:48.254+02:00" lastModified="2025-02-25T11:21:52.065+01:00" leaf="true" version="338">
+    <environmentId>ares</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
     <properties/>
@@ -56,6 +56,7 @@
     <references>nabu.data.json.Services.marshal</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list</references>
     <references>nabu.utils.Date.now</references>
+    <references>nabu.utils.List.minimum</references>
     <references>nabu.utils.List.addAll</references>
     <references>nabu.services.jdbc.Services.update</references>
     <references>nabu.frameworks.cdm.database.types.cdmInstanceSync</references>
