@@ -454,12 +454,13 @@
 					</steps>
 				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Throw"
-						description="=instance"
+						description="=&quot;No identifiers provided for an instance for type &quot; + subscription/coreTypeId + &quot; from system &quot; + subscription/system"
 						disabled="false"
 						id="fce5f85406a84b5dac93633c41b2ea80"
 						label="!remoteInstance/externalIds"
 						lineNumber="18"
 						code="CDM-NO-IDENTIFIERS"
+						message="No identifiers provided for an instance"
 						data="=remoteInstance/cdmInstance"
 						whitelist="false" xsi:nil="true"/>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Map"
@@ -556,12 +557,13 @@
 					</steps>
 				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Throw"
-						description="=instance"
+						description="=&quot;Duplicate match detected for type &quot; + subscription/coreTypeId + &quot; from system &quot; + subscription/system"
 						disabled="false"
 						id="23455f961d0749d8add6f3def3cf6fc0"
 						label="amountOfMatches &gt;= 2"
 						lineNumber="20"
 						code="CDM-MULTIPLE-MATCHES"
+						message="Duplicate match detected"
 						data="=remoteInstance/externalIds"
 						whitelist="false" xsi:nil="true"/>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Break"
