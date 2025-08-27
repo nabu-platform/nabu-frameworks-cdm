@@ -1,0 +1,5 @@
+<structure interface="nabu.frameworks.cdm.manage.rest.instance.externalId.delete:api" name="pipeline">
+    <structure name="input"/>
+    <structure name="output"/>
+    <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list" minOccurs="0" name="externalId" persister="nabu.frameworks.cdm.crud.cdmInstanceExternalId.batch.updateAll"/>
+</structure>

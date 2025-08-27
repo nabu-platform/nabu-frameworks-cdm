@@ -1,10 +1,10 @@
 <structure name="pipeline">
     <structure name="input">
-        <structure collectionCrudProvider="odata" collectionName="teamsTemplates" definition="java.lang.Object" name="cdmInstance"/>
+        <structure collectionName="teamsTemplates" definition="java.lang.Object" name="cdmInstance"/>
     </structure>
     <structure name="output">
         <structure collectionName="cdmDefinitions" definition="nabu.frameworks.cdm.database.types.cdmDefinition" minOccurs="0" name="definition"/>
     </structure>
-    <structure collectionName="cdmDefinitions" definition="nabu.frameworks.cdm.crud.cdmDefinition.types.output" maxOccurs="unbounded" minOccurs="0" name="types"/>
+    <structure collectionName="cdmDefinitions" definition="nabu.frameworks.cdm.crud.cdmDefinition.types.output" enricher="nabu.frameworks.cdm.crud.cdmDefinition.services.list" maxOccurs="unbounded" minOccurs="0" name="types" persister="nabu.frameworks.cdm.crud.cdmDefinition.batch.updateAll"/>
     <field name="is" type="java.lang.Boolean"/>
 </structure>

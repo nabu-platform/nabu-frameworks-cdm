@@ -25,5 +25,6 @@
     <webFragments>nabu.frameworks.cdm.manage.rest.instance.recouple</webFragments>
     <webFragments>nabu.frameworks.cdm.crud.cdmTrigger</webFragments>
     <webFragments>nabu.frameworks.cdm.manage.rest.instance.pushAll</webFragments>
+    <webFragments>nabu.frameworks.cdm.manage.rest.instance.externalId.delete</webFragments>
     <audience>MANAGER</audience>
 </webModule>

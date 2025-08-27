@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T09:44:07.182+02:00" lastModified="2024-07-25T13:39:19.835+02:00" leaf="true" version="55">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T09:44:07.182+02:00" lastModified="2025-08-26T12:22:01.040+02:00" leaf="true" version="56">
     <comment>First run any custom batches and then start a regular sync of all the items involved</comment>
-    <environmentId>apollo</environmentId>
+    <environmentId>ares</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
     <properties/>

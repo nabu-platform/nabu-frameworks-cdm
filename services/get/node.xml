@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T09:34:51.623+02:00" deprecated="2024-03-09T08:13:46.457+01:00" lastModified="2023-10-21T09:36:01.894+02:00" leaf="true" version="6">
-    <environmentId>apollo</environmentId>
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T09:34:51.623+02:00" deprecated="2024-03-09T08:13:46.457+01:00" lastModified="2025-08-26T12:22:01.036+02:00" leaf="true" version="7">
+    <environmentId>ares</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
     <properties/>
@@ -8,4 +8,7 @@
     <references>java.lang.Object</references>
     <references>java.lang.String</references>
     <references>java.util.UUID</references>
+    <todos>
+        <id>nabu.frameworks.cdm.services.get:5e94c9063cb04039ad61749546b84ece</id>
+    </todos>
 </node>

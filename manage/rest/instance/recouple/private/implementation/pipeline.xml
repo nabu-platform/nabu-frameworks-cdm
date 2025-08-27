@@ -1,4 +1,4 @@
-<structure interface="$self:api" name="pipeline">
+<structure interface="nabu.frameworks.cdm.manage.rest.instance.recouple:api" name="pipeline">
     <structure name="input"/>
     <structure name="output"/>
     <structure collectionName="cdmInstances" definition="nabu.frameworks.cdm.crud.cdmInstance.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstance.services.list" name="instance" persister="nabu.frameworks.cdm.crud.cdmInstance.batch.updateAll"/>

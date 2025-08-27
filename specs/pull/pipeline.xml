@@ -2,11 +2,11 @@
     <structure name="input">
         <field name="cdmInstanceId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
         <structure definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="externalIds" restrict="cdmInstanceId, id"/>
-        <structure comment="The current relations for this entity, you might need it" definition="nabu.frameworks.cdm.specs.relation" maxOccurs="unbounded" minOccurs="0" name="relations"/>
+        <structure comment="The current relations for this entity, you might need it" definition="nabu.frameworks.cdm.specs.relation" maxOccurs="unbounded" minOccurs="0" name="relations" restrict="id,cdmSystemSubscriptionId,started,stopped,cdmDefinitionId,sourceId,targetId,active,cdmRelationTypeId"/>
     </structure>
     <structure name="output">
         <structure definition="java.lang.Object" minOccurs="0" name="cdmInstance"/>
         <structure comment="These will be merged into existing external ids" definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="externalIds" restrict="cdmInstanceId, id"/>
-        <structure comment="The relations of this cdm instance. These should be ALL currently active relations. If an existing relation is no longer listed, it is removed." definition="nabu.frameworks.cdm.specs.relation" maxOccurs="unbounded" minOccurs="0" name="relations"/>
+        <structure comment="The relations of this cdm instance. These should be ALL currently active relations. If an existing relation is no longer listed, it is removed." definition="nabu.frameworks.cdm.specs.relation" maxOccurs="unbounded" minOccurs="0" name="relations" restrict="id,cdmSystemSubscriptionId,started,stopped,cdmDefinitionId,sourceId,targetId,active,cdmRelationTypeId"/>
     </structure>
 </structure>

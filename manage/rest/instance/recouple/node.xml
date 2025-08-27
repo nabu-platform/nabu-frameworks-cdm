@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.rest.provider.RESTServiceManager" created="2024-05-22T09:56:09.293+02:00" lastModified="2024-05-22T09:59:18.564+02:00" leaf="true" version="5">
-    <environmentId>apollo</environmentId>
+<node artifactManager="be.nabu.eai.module.rest.provider.RESTServiceManager" created="2024-05-22T09:56:09.293+02:00" lastModified="2025-08-26T12:22:01.076+02:00" leaf="true" version="6">
+    <environmentId>ares</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
     <properties/>
     <references>nabu.services.jdbc.Services.update</references>
     <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output</references>
-    <references>java.util.UUID</references>
     <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.list</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output</references>

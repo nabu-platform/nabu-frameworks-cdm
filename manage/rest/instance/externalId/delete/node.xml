@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.rest.provider.RESTServiceManager" created="2025-08-05T09:38:59.603+02:00" lastModified="2025-08-26T12:22:01.059+02:00" leaf="true" version="13">
+    <environmentId>ares</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>nabu.services.jdbc.Services.delete</references>
+    <references>nabu.utils.Runtime.getCurrentToken</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list</references>
+    <references>nabu.utils.Date.now</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceLog.services.create</references>
+    <references>nabu.utils.Runtime.getCorrelationId</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output</references>
+</node>

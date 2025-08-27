@@ -4,7 +4,7 @@ new ?= null
 # Suppose we have simply not set _any_ value (not even null) in the target, do we want to diff it?
 # The idea is that suppose you have an instance A and you want to diff it with instance B, but whoever created instance B can not provide any sensible value (not even null) for a particular field, if we don't check for explicitly changed, it will always revert to null
 # If this is true, we only diff values that were actually set
-changedOnly ?= true
+boolean changedOnly ?= true
 
 originalTypeId = nabu.utils.reflection.Type.of(original)/typeId
 

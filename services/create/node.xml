@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-16T12:13:45.664+02:00" lastModified="2024-10-21T15:03:48.812+02:00" leaf="true" version="99">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-16T12:13:45.664+02:00" lastModified="2025-08-26T12:22:01.038+02:00" leaf="true" version="100">
     <comment>Create a new instance of a CDM</comment>
-    <environmentId>apollo</environmentId>
+    <environmentId>ares</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
     <properties/>

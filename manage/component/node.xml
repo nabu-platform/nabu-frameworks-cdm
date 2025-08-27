@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.web.component.WebComponentManager" created="2024-01-05T10:26:57.628+01:00" lastModified="2024-10-15T13:24:53.756+02:00" leaf="true" version="17">
-    <environmentId>apollo</environmentId>
+<node artifactManager="be.nabu.eai.module.web.component.WebComponentManager" created="2024-01-05T10:26:57.628+01:00" lastModified="2025-08-26T12:22:01.095+02:00" leaf="true" version="19">
+    <environmentId>ares</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
     <properties/>
@@ -28,4 +28,5 @@
     <references>nabu.frameworks.cdm.manage.rest.instance.recouple</references>
     <references>nabu.frameworks.cdm.crud.cdmTrigger</references>
     <references>nabu.frameworks.cdm.manage.rest.instance.pushAll</references>
+    <references>nabu.frameworks.cdm.manage.rest.instance.externalId.delete</references>
 </node>
