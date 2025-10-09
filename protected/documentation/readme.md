@@ -2,6 +2,10 @@
 
 - use a separate type for pulling and pushing. pulling _MUST_ be a subtype of pushing (or equal to)
 
+# Design Guidelines
+
+- always return the primary external id (and any optional ones), both in pull AND push
+
 # Onboarding new systems
 
 When you start a new cdm instance alltogether, we attempt to gather as much information as possible from all systems involved.
@@ -20,6 +24,19 @@ If the system you are onboarding has a dataset that has a large overlap with the
 However, in some exotic cases you want to onboard a system that has a dataset that has little to no overlap with the existing data set.
 
 For small overlaps "point syncs" are acceptable (pulling specific data from the remote systems) which is the default behavior if you sync without doing a batch pull first.
+
+# Definition vs master vs slave
+
+The definition should contain all the fields you might be interested in, this does not mean however that you can actually persist all these fields. Some (e.g. a soft delete indicator field like "enabled") might be informative and spawn a human task or something in the target system to review potential deletion there as well.
+
+For this reason, two other documents are available:
+
+- master: all the fields the system is allowed to change (if not defined, all fields can be changed in the target system)
+- slave: all the fields the system _must_ persist verbatim (or at least reproduce verbatim when asked)
+
+If you have a field that is NOT in the master but it IS in the slave and your system has a different value for it, it will be flagged for reversion as you are not allowed to change it.
+
+It is advised to always create a master and slave document. Use allow instead of restrict where possible.
 
 # The single sync
 

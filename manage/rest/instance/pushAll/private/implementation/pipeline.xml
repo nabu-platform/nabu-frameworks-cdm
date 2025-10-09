@@ -5,4 +5,5 @@
     <structure collectionName="cdmSystems" definition="nabu.frameworks.cdm.crud.cdmSystem.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystem.services.list" minOccurs="0" name="system" persister="nabu.frameworks.cdm.crud.cdmSystem.batch.updateAll"/>
     <field maxOccurs="unbounded" name="fullPush" type="java.lang.String"/>
     <field maxOccurs="unbounded" name="skipPull" type="java.lang.String"/>
+    <field maxOccurs="unbounded" minOccurs="0" name="cdmInstanceIds" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" primaryKey="true" type="java.util.UUID"/>
 </structure>

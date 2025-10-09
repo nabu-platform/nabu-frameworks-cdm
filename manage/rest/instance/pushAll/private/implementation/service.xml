@@ -104,8 +104,47 @@
 	</steps>
 	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
 			disabled="false"
-			id="db372f80ebfc4b89851a250fb356be5e"
+			id="3345015a9a7c4b9c9f537239fd3d5670"
+			label="input/query/tryAllInstances == true"
 			lineNumber="6">
+		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
+				disabled="false"
+				id="1bc4116e7c1c4b37926d04c70f53cc0f"
+				serviceId="nabu.frameworks.cdm.crud.cdmInstance.services.list"
+				resultName="result6d43e3bab7ca46b7aae29e6c4d82cac2"
+				temporaryMapping="true"
+				x="65"
+				y="48"
+				invocationOrder="0"
+				asynchronous="false"
+				recache="false">
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="48854bd43330443e94aa74ecc2f0f04e"
+					fixedValue="false">
+				<from>definition/id</from>
+				<to>filter/cdmDefinitionId[0]</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="577b1c94ad084fb69d0e76d3052ca2ea"
+					fixedValue="true">
+				<from>true</from>
+				<to>filter/active</to>
+			</steps>
+		</steps>
+		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+				disabled="false"
+				id="90094c3d2c9540df805e725b354d30f0"
+				fixedValue="false">
+			<from>result6d43e3bab7ca46b7aae29e6c4d82cac2/results/id</from>
+			<to>cdmInstanceIds</to>
+		</steps>
+	</steps>
+	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
+			disabled="false"
+			id="db372f80ebfc4b89851a250fb356be5e"
+			lineNumber="7">
 		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 				disabled="false"
 				id="3c5e9e9fe4ce4d7fb179a9d673d6ec4f"
@@ -171,6 +210,13 @@
 					fixedValue="false">
 				<from>system/name</from>
 				<to>forcePushForSystem[0]</to>
+			</steps>
+			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+					disabled="false"
+					id="6ef15f49066b40dbafb86db9b20b8b4b"
+					fixedValue="false">
+				<from>cdmInstanceIds</from>
+				<to>cdmInstanceIds</to>
 			</steps>
 			<targetProperties
 					collectionIndex="queue">="cdm-push-" + definition/typeId</targetProperties>

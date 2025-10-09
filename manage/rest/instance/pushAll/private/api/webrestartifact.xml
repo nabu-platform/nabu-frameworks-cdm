@@ -2,7 +2,7 @@
 <restInterface>
     <method>POST</method>
     <path>/cdm/definition/{definitionId}/system/{systemId}/pushAll</path>
-    <queryParameters>full, skipPull</queryParameters>
+    <queryParameters>full, skipPull, tryAllInstances</queryParameters>
     <role>$user</role>
     <permissionAction>cdm.manage</permissionAction>
     <useServiceContextAsPermissionContext>false</useServiceContextAsPermissionContext>

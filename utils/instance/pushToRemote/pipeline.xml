@@ -62,4 +62,5 @@
     <field minOccurs="0" name="amountOfChangedRelations" type="java.lang.Integer"/>
     <field comment="When did we last push our data to the remote?" minOccurs="0" name="oldestPush" timezone="UTC" type="java.util.Date"/>
     <field name="isFirstSync" type="java.lang.Boolean"/>
+    <structure definition="nabu.utils.types.ParameterDescription" maxOccurs="unbounded" minOccurs="0" name="slaveParameters"/>
 </structure>

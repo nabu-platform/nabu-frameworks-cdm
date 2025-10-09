@@ -430,6 +430,13 @@
 					<from>result74bf8adf698c47ff8d286e0a9eba57bb/stream</from>
 					<to>input</to>
 				</steps>
+				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						disabled="false"
+						id="3e4efc5e9bed4d6c9379c49b89247acd"
+						fixedValue="true">
+					<from>true</from>
+					<to>ignoreUndefinedFields</to>
+				</steps>
 			</steps>
 			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 					disabled="false"
@@ -1113,6 +1120,13 @@
 							fixedValue="false">
 						<from>resultd50cf8e1e04d48b38074370a49f0c432/first</from>
 						<to>type</to>
+					</steps>
+					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+							disabled="false"
+							id="e4093b741b2a4fd8a06d6a025d486e05"
+							fixedValue="true">
+						<from>true</from>
+						<to>ignoreUndefinedFields</to>
 					</steps>
 				</steps>
 				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"

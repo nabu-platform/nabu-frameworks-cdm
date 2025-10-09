@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-18T11:22:48.254+02:00" lastModified="2025-08-26T12:22:01.170+02:00" leaf="true" version="369">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-18T11:22:48.254+02:00" lastModified="2025-09-25T17:37:17.080+02:00" leaf="true" version="373">
     <environmentId>ares</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
     <properties/>
+    <references>nabu.frameworks.cdm.database.types.cdmSystemRelationType</references>
     <references>nabu.frameworks.cdm.utils.externalId.update</references>
+    <references>nabu.frameworks.cdm.database.types.cdmInstanceContent</references>
     <references>java.util.Date</references>
     <references>nabu.utils.Server.uuid</references>
     <references>nabu.frameworks.cdm.utils.diff</references>
@@ -17,6 +19,7 @@
     <references>java.lang.Integer</references>
     <references>nabu.utils.Object.toString</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list</references>
+    <references>java.lang.Long</references>
     <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output</references>
     <references>nabu.frameworks.cdm.specs.pull</references>
     <references>nabu.utils.List.maximum</references>
@@ -25,27 +28,36 @@
     <references>be.nabu.utils.cep.impl.ComplexEventImpl</references>
     <references>nabu.utils.reflection.Type.mask</references>
     <references>nabu.utils.Stream.toString</references>
+    <references>nabu.frameworks.cdm.database.types.cdmSystem</references>
     <references>nabu.frameworks.cdm.utils.relation.update</references>
+    <references>be.nabu.utils.cep.api.EventSeverity</references>
+    <references>java.util.TimeZone</references>
     <references>nabu.utils.String.toStream</references>
     <references>nabu.frameworks.cdm.utils.diffResult</references>
+    <references>be.nabu.utils.cep.api.ComplexEvent</references>
     <references>java.util.UUID</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output</references>
     <references>nabu.frameworks.cdm.utils.instance.serializeDiff</references>
     <references>nabu.utils.Server.getServerName</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceContent.services.list</references>
+    <references>nabu.frameworks.cdm.database.types.cdmInstanceRelation</references>
     <references>nabu.frameworks.cdm.specs.relationWithExternalIds</references>
+    <references>nabu.frameworks.cdm.database.types.cdmSystemSubscription</references>
     <references>nabu.utils.Date.incrementDuration</references>
     <references>nabu.frameworks.cdm.database.types.cdmInstanceSyncDiff</references>
     <references>nabu.utils.Runtime.summarizeException</references>
     <references>nabu.utils.List.add</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceContent.services.get</references>
     <references>nabu.utils.Runtime.getCurrentToken</references>
+    <references>java.lang.Double</references>
+    <references>nabu.frameworks.cdm.database.types.cdmInstanceExternalId</references>
     <references>nabu.services.glue.Services.evaluate</references>
     <references>nabu.frameworks.cdm.specs.relation</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.list</references>
     <references>nabu.utils.reflection.Type.describe</references>
     <references>nabu.frameworks.cdm.specs.externalId</references>
     <references>nabu.frameworks.cdm.crud.cdmSystemRelationType.types.output</references>
+    <references>be.nabu.libs.types.base.Scope</references>
     <references>nabu.frameworks.cdm.utils.patch</references>
     <references>nabu.services.jdbc.Services.insert</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceContent.types.output</references>
@@ -54,7 +66,9 @@
     <references>nabu.utils.Event.fire</references>
     <references>java.lang.String</references>
     <references>nabu.data.json.Services.marshal</references>
+    <references>nabu.frameworks.cdm.database.types.cdmDefinition</references>
     <references>nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list</references>
+    <references>nabu.frameworks.cdm.database.types.cdmInstanceSubscription</references>
     <references>nabu.utils.Date.now</references>
     <references>nabu.utils.List.minimum</references>
     <references>nabu.utils.List.addAll</references>
