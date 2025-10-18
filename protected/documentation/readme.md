@@ -55,6 +55,8 @@ However, in the latter case we have to be careful with push rejections which cul
 
 alter table cdm_instance_external_ids add constraint uniq_name_identifier unique(name, identifier);
 
+alter table cdm_instance_contents add constraint uniq_cdm_instance_id_version unique(cdm_instance_id, version);
+
 # Which diff to apply
 
 You might assume that CDM diffs the current CDM instance with what we know from the target system and applies any changes. However it does not do that.

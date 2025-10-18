@@ -2501,18 +2501,36 @@
 						</steps>
 					</steps>
 					<steps xsi:type="be.nabu.libs.services.vm.step.Map"
-							comment="Map the new instance to partial so we use the latest data"
+							comment="If we have a new instance, it may be of a different type (e.g. master) which may have less information than the core definition. So we don't map it in full but use a map by key to update specific values"
 							disabled="false"
 							id="f177683cfedf4ebdbf3489a925b89bdc"
+							label="partialInstance != null"
 							lineNumber="66">
-						<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+						<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
 								disabled="false"
-								id="0650eb581f0c46df8b13952e2f02d9ab"
-								mask="false"
-								optional="false"
-								fixedValue="false">
-							<from>newestPartialInstance</from>
-							<to>partialInstance</to>
+								id="a28ca62f5f7a4b8686ba1c78691e26a5"
+								serviceId="nabu.utils.Object.mapByKey"
+								resultName="result7face7d0f076489fa07ea825790e0f64"
+								temporaryMapping="true"
+								x="244"
+								y="234"
+								invocationOrder="0"
+								asynchronous="false"
+								recache="false">
+							<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+									disabled="false"
+									id="9f03ac6f883249fe9e0e581825d22431"
+									fixedValue="false">
+								<from>newestPartialInstance</from>
+								<to>from</to>
+							</steps>
+							<steps xsi:type="be.nabu.libs.services.vm.step.Link"
+									disabled="false"
+									id="ff7bbbab16dd45d4ad885699c6f0a719"
+									fixedValue="false">
+								<from>partialInstance</from>
+								<to>into</to>
+							</steps>
 						</steps>
 					</steps>
 					<steps xsi:type="be.nabu.libs.services.vm.step.Switch"
