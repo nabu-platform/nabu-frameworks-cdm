@@ -371,7 +371,7 @@
 			</steps>
 		</steps>
 		<steps xsi:type="be.nabu.libs.services.vm.step.Throw"
-				description="=relation"
+				description="=&quot;Instance '&quot; + input/cdmInstanceId + &quot;' has multiple matches when resolving the relation: &quot; + relation/name + &quot; = &quot; + relation/identifier"
 				disabled="false"
 				id="af1dbf9f193f473088f9578b20f5a1bc"
 				label="amountOfMatches &gt;= 2"
