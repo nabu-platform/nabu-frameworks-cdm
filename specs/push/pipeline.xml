@@ -1,6 +1,7 @@
 <structure comment="Allows you to subscribe to changes to the instance that interest you&#10;For the best experience: restrict the cdm instance and inject the correct type. This can be the full cdm, but most likely its a partial view." name="pipeline">
     <structure name="input">
         <structure collectionName="teamsTemplates" comment="The full cdm instance as it is now" definition="java.lang.Object" name="cdmInstance"/>
+        <structure comment="MUST be the same data type (or derivative) of the cdmInstance type used." definition="java.lang.Object" minOccurs="0" name="previousInstance"/>
         <structure definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="externalIds" restrict="cdmInstanceId, id"/>
         <structure comment="The current relations for this entity, you might need it" definition="nabu.frameworks.cdm.specs.relation" maxOccurs="unbounded" minOccurs="0" name="relations" restrict="id,cdmSystemId,started,stopped,cdmDefinitionId,sourceId,targetId,active"/>
         <structure definition="nabu.frameworks.cdm.specs.relationWithExternalIds" maxOccurs="unbounded" minOccurs="0" name="interestingRelations"/>
