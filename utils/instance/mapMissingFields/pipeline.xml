@@ -1,0 +1,12 @@
+<structure name="pipeline">
+    <structure name="input">
+        <structure definition="java.lang.Object" name="cdmInstance"/>
+        <structure definition="java.lang.Object" name="partialInstance"/>
+        <field name="definitionTypeId" type="java.lang.String"/>
+        <field name="pullServiceId" type="java.lang.String"/>
+    </structure>
+    <structure name="output"/>
+    <structure definition="nabu.utils.types.ParameterDescription" maxOccurs="unbounded" minOccurs="0" name="definitionParameters"/>
+    <structure definition="nabu.utils.types.ParameterDescription" maxOccurs="unbounded" minOccurs="0" name="pullParameters"/>
+    <field maxOccurs="unbounded" name="pulledNames" type="java.lang.String"/>
+</structure>

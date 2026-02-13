@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2026-01-16T17:11:43.388+01:00" lastModified="2026-01-19T10:40:04.177+01:00" leaf="true" version="16">
+    <environmentId>ares</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>nabu.utils.types.ParameterDescription</references>
+    <references>java.lang.Object</references>
+    <references>java.lang.String</references>
+    <references>nabu.utils.reflection.Type.set</references>
+    <references>nabu.utils.reflection.Type.describe</references>
+    <references>nabu.utils.reflection.Type.get</references>
+</node>

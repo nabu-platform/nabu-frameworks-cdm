@@ -1,0 +1,88 @@
+<sequence id="084a1667dbe746559984452cbdeb62e7">
+	<map id="e13e3935f282468399265816cf4c91b5">
+		<invoke id="2a432a614eda4c638b5ebed7288278a0"
+			invocationOrder="1"
+			resultName="result2a432a614eda4c638b5ebed7288278a0"
+			serviceId="nabu.utils.reflection.Type.describe"
+			x="442"
+			y="80">
+			<link id="c6a4bd0055794eb0a51eeddc0841311d">
+				<from>input/definitionTypeId</from>
+				<to>typeId</to>
+			</link>
+		</invoke>
+		<link id="d95b5cb71df3449c853fae6a1738da3b">
+			<from>result2a432a614eda4c638b5ebed7288278a0/parameters</from>
+			<to>definitionParameters</to>
+		</link>
+		<invoke id="897a4451302b4b4992c65260c1a8b024"
+			resultName="result897a4451302b4b4992c65260c1a8b024"
+			serviceId="nabu.utils.reflection.Type.describe"
+			x="120"
+			y="268">
+			<link id="99d8fa4c87ad486c97635c5ebcbe1d5d"
+				fixedValue="true">
+				<from>=input/pullServiceId + ":output"</from>
+				<to>typeId</to>
+			</link>
+		</invoke>
+		<invoke id="cf968a605ef04bda9caa423767231f5e"
+			invocationOrder="1"
+			resultName="resultcf968a605ef04bda9caa423767231f5e"
+			serviceId="nabu.utils.reflection.Type.describe"
+			x="586"
+			y="272">
+			<link id="84693b37fd60424abed442888e8a9ce4">
+				<from>result897a4451302b4b4992c65260c1a8b024/parameters[name == "cdmInstance"]/type</from>
+				<to>typeId</to>
+			</link>
+		</invoke>
+		<link id="b482cd99bcf042d48988b0c5dd0ee5cc">
+			<from>resultcf968a605ef04bda9caa423767231f5e/parameters</from>
+			<to>pullParameters</to>
+		</link>
+		<link id="29c9872860104c60b0d9f269a818a57d">
+			<from>resultcf968a605ef04bda9caa423767231f5e/parameters/name</from>
+			<to>pulledNames</to>
+		</link>
+	</map>
+	<for id="33a08e75b0ea4a548c4536b7d66aea1b"
+		variable="missingParameter">
+		<map id="4daee35362bc4ab2843a0e682416e66f">
+			<invoke id="ff12f976008e49d6ab2e22f42368ac4a"
+				resultName="resultff12f976008e49d6ab2e22f42368ac4a"
+				serviceId="nabu.utils.reflection.Type.get"
+				x="50"
+				y="63">
+				<link id="ca02fad3034d4bec8f8858078d9b1928">
+					<from>input/cdmInstance</from>
+					<to>typeInstance</to>
+				</link>
+				<link id="da4675687eb045a1b3d171889fa5ea6b">
+					<from>missingParameter/name</from>
+					<to>path</to>
+				</link>
+			</invoke>
+			<invoke id="df653aa4814a4c61a42b7e450ad341fc"
+				invocationOrder="1"
+				resultName="resultdf653aa4814a4c61a42b7e450ad341fc"
+				serviceId="nabu.utils.reflection.Type.set"
+				x="458"
+				y="167">
+				<link id="4b51f7ad4f6b4478b2f4f7f7432e05c4">
+					<from>missingParameter/name</from>
+					<to>path</to>
+				</link>
+				<link id="88b0ede005094b1fb4809cb0c1326fda">
+					<from>input/partialInstance</from>
+					<to>typeInstance</to>
+				</link>
+				<link id="4a39940f8f684390993750834499c17d">
+					<from>resultff12f976008e49d6ab2e22f42368ac4a/value</from>
+					<to>value</to>
+				</link>
+			</invoke>
+		</map>
+		<query>definitionParameters[name !# /pulledNames]</query>
+	</for>
+</sequence>

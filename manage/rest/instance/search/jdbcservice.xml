@@ -4,6 +4,6 @@
 from ~cdm_instances ci
 	join ~cdm_instance_external_ids ciei on ciei.cdm_instance_id = ci.id
 where (:q is null or lower(ciei.identifier) like '%' || lower(:q) || '%' or ('' || ci.id) like '%' || lower(:q) || '%')
-	and (:identifier is null or lower(ciei.identifier) = lower(:identifier) or ('' || ci.id) = lower(:identifier))
+	and (:identifier is null or lower(ciei.identifier) = lower(:identifier) or replace('' || ci.id, '-', '') = lower(:identifier))
 	and (:cdmDefinitionId is null or ci.cdm_definition_id = any(:cdmDefinitionId))</sql>
 </jdbcService>

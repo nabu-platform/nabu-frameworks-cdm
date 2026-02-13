@@ -1760,7 +1760,48 @@
 				</for>
 			</sequence>
 			<sequence id="25ef206d71a54d4d9daef3baaf84dbbd"
+				comment="Do the actual push"
 				scopeDefaultTransaction="true">
+				<map id="c12f6b5a969e4c20a5ca5a4f4f1b020a"
+					label="subscription/pullId != null">
+					<invoke id="d482e25d94494829bc69c669c569fd17"
+						invocationOrder="1"
+						resultName="resultd482e25d94494829bc69c669c569fd17"
+						serviceId="nabu.frameworks.cdm.utils.instance.mapMissingFields"
+						x="485"
+						y="121">
+						<link id="664bff12f541465580a0417c2fd7c72b">
+							<from>subscription/pullId</from>
+							<to>pullServiceId</to>
+						</link>
+						<link id="cee8ffbe26124316a6f94326d7d93a29">
+							<from>cdmInstance</from>
+							<to>cdmInstance</to>
+						</link>
+						<link id="9f197531da87407d90dbc2517b5113ea">
+							<from>patchedPartialInstance</from>
+							<to>partialInstance</to>
+						</link>
+						<link id="cced44593d034ae086d93bc422381f67">
+							<from>resultf86f8cb0dee94510b92c26d2f9a88481/first</from>
+							<to>definitionTypeId</to>
+						</link>
+					</invoke>
+					<invoke id="f86f8cb0dee94510b92c26d2f9a88481"
+						resultName="resultf86f8cb0dee94510b92c26d2f9a88481"
+						serviceId="nabu.utils.Object.first"
+						x="94"
+						y="274">
+						<link id="cd0bc0f1fed143fb8eb03c2efb70ae1b">
+							<from>subscription/coreTypeId</from>
+							<to>options[1]</to>
+						</link>
+						<link id="2e14b39cc5ea461f9403df00b7ed8eed">
+							<from>subscription/typeId</from>
+							<to>options[0]</to>
+						</link>
+					</invoke>
+				</map>
 				<map id="d6b3bf8a67954136acca6df8a0a8ec7b"
 					comment="It is unclear whether we want the unpatched partial instance OR the previous cdm instance. Given &quot;assumed&quot; content and potentially unreported changes these might diverge from your reality?">
 					<invoke id="fbb3af112b5c4c659b777757d7852d8a"

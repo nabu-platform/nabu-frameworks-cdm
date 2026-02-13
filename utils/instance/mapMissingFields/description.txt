@@ -1,0 +1,10 @@
+There are three types: definition, slave and master.
+
+The goal is that the definition contains everything the system might be interested in.
+The slave extends the definition and can restrict it to only fields that the system MUST persist.
+The master extends the slave and can restrict it to only fields that the system MAY update.
+
+This means the definition might create fields that the target system can not modify nor persist. These fields however might influence behavior (if A == B, then do something slightly different) that it might not be able to reproduce in the slave document.
+
+This also means, if we do a PULL, we can only reconstruct the slave fields (presumably). This might leave a gap for fields that exist in the definition but not in the slave, they will be null. This might cause issues downstream.
+For this reason, we compare the fields from the definition to the output of the pull to see if there is anything missing and fetch that from the cdm instance.
