@@ -19,4 +19,6 @@
     <field name="amountOfItemsPulled" type="java.lang.Long"/>
     <structure collectionName="cdmSystemBatchPulls" definition="nabu.frameworks.cdm.crud.cdmSystemBatchPull.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystemBatchPull.services.list" name="newRun" persister="nabu.frameworks.cdm.crud.cdmSystemBatchPull.batch.updateAll"/>
     <field comment="By default CDM will stop requesting if no instances are returned. You can force continuation by setting this to true." minOccurs="0" name="continue" type="java.lang.Boolean"/>
+    <structure collectionName="cdmInstanceLogs" definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" maxOccurs="unbounded" minOccurs="0" name="logs"/>
+    <structure collectionName="cdmInstanceLogs" definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" maxOccurs="unbounded" minOccurs="0" name="logsToInsert"/>
 </structure>

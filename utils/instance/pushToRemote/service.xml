@@ -2518,6 +2518,14 @@
 				label="rejected"
 				message="Rejected"/>
 		</sequence>
+		<map id="ca8b837bbec34ad8a739d0b469a52510"
+			comment="If we decide not to push, we still need to update the lastCdmContentInstanceId, it's the last one we checked, otherwise a pingpong between the new value the system reported and the previous value would not be correctly pushed"
+			label="!push">
+			<link id="1faf561a290540839fbd32e45d40274c">
+				<from>currentContent/id</from>
+				<to>instanceSubscription/lastCdmInstanceContentId</to>
+			</link>
+		</map>
 		<sequence id="61d599c7bad648e1b095e1177243282c"
 			comment="If we didn't have new metadata yet, check if we created some this iteration"
 			label="!output/hasNewMetadata &amp;&amp; existingRelations != null">
