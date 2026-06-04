@@ -1,53 +1,54 @@
 <structure name="pipeline">
-    <structure name="input">
-        <field name="cdmInstanceId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
-        <field comment="List specific systems if you want, otherwise all systems will be used" maxOccurs="unbounded" minOccurs="0" name="system" type="java.lang.String"/>
-        <field maxOccurs="unbounded" minOccurs="0" name="notSystem" type="java.lang.String"/>
-        <field comment="By default this service will adhere to pull interval requirements. You can however force it to pull data anyway." minOccurs="0" name="force" type="java.lang.Boolean"/>
-        <field comment="List specific systems if you want, otherwise all systems will be used" maxOccurs="unbounded" minOccurs="0" name="skipPullForSystem" type="java.lang.String"/>
-        <field minOccurs="0" name="source" type="java.lang.String"/>
-        <field comment="By skipping the merge, you don't create a new cdm content instance. This can be useful for updating only the external identifiers for instance." minOccurs="0" name="metadataOnly" type="java.lang.Boolean"/>
-        <field comment="When maximizing data gathering, we " minOccurs="0" name="skipNulls" type="java.lang.Boolean"/>
-        <field comment="You can skip master documents and focus on maximizing the data gathering" minOccurs="0" name="skipMaster" type="java.lang.Boolean"/>
-    </structure>
-    <structure name="output">
-        <structure collectionName="teamsTemplates" definition="java.lang.Object" name="cdmInstance"/>
-        <structure comment="The order of these changes is relevant, they are incremental" definition="nabu.frameworks.cdm.utils.diffResultForSystem" maxOccurs="unbounded" minOccurs="0" name="changes"/>
-        <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list" maxOccurs="unbounded" minOccurs="0" name="externalIds" persister="nabu.frameworks.cdm.crud.cdmInstanceExternalId.batch.updateAll"/>
-        <field maxOccurs="unbounded" minOccurs="0" name="systems" type="java.lang.String"/>
-    </structure>
-    <field name="typeId" type="java.lang.String"/>
-    <structure collectionName="teamsTemplates" definition="java.lang.Object" name="partialInstance"/>
-    <structure comment="Existing external ids for this instance, this can be used to match it to a target system. Will always send all external ids so you can use other identifiers " definition="nabu.frameworks.cdm.specs.externalId" minOccurs="0" name="mappedExternalId" restrict="cdmInstanceId, systemId, id"/>
-    <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="diffs"/>
-    <structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list" maxOccurs="unbounded" minOccurs="0" name="subscriptions" persister="nabu.frameworks.cdm.crud.cdmSystemSubscription.batch.updateAll"/>
-    <structure collectionName="cdmInstanceSubscriptions" definition="nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.list" maxOccurs="unbounded" minOccurs="0" name="instanceSubscriptions" persister="nabu.frameworks.cdm.crud.cdmInstanceSubscription.batch.updateAll"/>
-    <structure collectionName="cdmInstanceSubscriptions" definition="nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.list" minOccurs="0" name="instanceSubscription" persister="nabu.frameworks.cdm.crud.cdmInstanceSubscription.batch.updateAll"/>
-    <structure collectionName="cdmInstanceContents" definition="nabu.frameworks.cdm.crud.cdmInstanceContent.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceContent.services.list" name="currentContent" persister="nabu.frameworks.cdm.crud.cdmInstanceContent.batch.updateAll"/>
-    <field name="content" type="java.lang.String"/>
-    <field minOccurs="0" name="date" type="java.util.Date"/>
-    <structure collectionName="cdmInstances" definition="nabu.frameworks.cdm.crud.cdmInstance.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstance.services.list" name="instance" persister="nabu.frameworks.cdm.crud.cdmInstance.batch.updateAll"/>
-    <structure collectionName="teamsTemplates" definition="java.lang.Object" minOccurs="0" name="cdmInstance"/>
-    <structure definition="nabu.utils.types.ParameterDescription" minOccurs="0" name="primaryKeyField"/>
-    <structure comment="These will be merged into existing external ids" definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="newExternalIds" restrict="cdmInstanceId, id"/>
-    <field name="newVersion" type="java.lang.Long"/>
-    <field minOccurs="0" name="earliestNextPull" type="java.util.Date"/>
-    <structure comment="The relations of this cdm instance. These should be ALL currently active relations. If an existing relation is no longer listed, it is removed." definition="nabu.frameworks.cdm.specs.relation" maxOccurs="unbounded" minOccurs="0" name="newRelations" restrict="id,cdmSystemId,started,stopped,cdmDefinitionId,sourceId,targetId,active"/>
-    <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list" maxOccurs="unbounded" minOccurs="0" name="results" persister="nabu.frameworks.cdm.crud.cdmInstanceRelation.batch.updateAll"/>
-    <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list" maxOccurs="unbounded" minOccurs="0" name="allExistingRelations" persister="nabu.frameworks.cdm.crud.cdmInstanceRelation.batch.updateAll"/>
-    <structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list" maxOccurs="unbounded" minOccurs="0" name="existingRelations" persister="nabu.frameworks.cdm.crud.cdmInstanceRelation.batch.updateAll"/>
-    <field name="pull" type="java.lang.Boolean"/>
-    <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="fullDiff"/>
-    <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="forbiddenDiffs"/>
-    <structure collectionName="cdmInstanceSyncs" definition="nabu.frameworks.cdm.database.types.cdmInstanceSync" name="instanceSync"/>
-    <structure collectionName="cdmInstanceSyncDiffs" definition="nabu.frameworks.cdm.database.types.cdmInstanceSyncDiff" maxOccurs="unbounded" minOccurs="0" name="instanceSyncDiffs"/>
-    <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="cdmDiff"/>
-    <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="arrayDiffToApplyImmediately"/>
-    <structure collectionName="cdmInstanceLogs" definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" name="log"/>
-    <structure collectionName="cdmInstanceLogs" definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" maxOccurs="unbounded" minOccurs="0" name="logs"/>
-    <field name="direction" type="java.lang.String"/>
-    <field name="newInstance" type="java.lang.Boolean"/>
-    <structure definition="nabu.utils.types.ParameterDescription" maxOccurs="unbounded" minOccurs="0" name="initialMasterProperties"/>
-    <structure collectionName="teamsTemplates" definition="java.lang.Object" minOccurs="0" name="originalCdmInstance"/>
-    <structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="finalCdmDiffs"/>
+	<structure name="input">
+		<field name="cdmInstanceId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
+		<field comment="List specific systems if you want, otherwise all systems will be used" maxOccurs="unbounded" minOccurs="0" name="system" type="java.lang.String"/>
+		<field maxOccurs="unbounded" minOccurs="0" name="notSystem" type="java.lang.String"/>
+		<field comment="By default this service will adhere to pull interval requirements. You can however force it to pull data anyway." minOccurs="0" name="force" type="java.lang.Boolean"/>
+		<field comment="List specific systems if you want, otherwise all systems will be used" maxOccurs="unbounded" minOccurs="0" name="skipPullForSystem" type="java.lang.String"/>
+		<field minOccurs="0" name="source" type="java.lang.String"/>
+		<field comment="By skipping the merge, you don't create a new cdm content instance. This can be useful for updating only the external identifiers for instance." minOccurs="0" name="metadataOnly" type="java.lang.Boolean"/>
+		<field comment="When maximizing data gathering, we " minOccurs="0" name="skipNulls" type="java.lang.Boolean"/>
+		<field comment="You can skip master documents and focus on maximizing the data gathering" minOccurs="0" name="skipMaster" type="java.lang.Boolean"/>
+	</structure>
+	<structure name="output">
+		<structure collectionName="teamsTemplates" definition="java.lang.Object" name="cdmInstance"/>
+		<structure comment="The order of these changes is relevant, they are incremental" definition="nabu.frameworks.cdm.utils.diffResultForSystem" maxOccurs="unbounded" minOccurs="0" name="changes"/>
+		<structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.crud.cdmInstanceExternalId.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceExternalId.services.list" maxOccurs="unbounded" minOccurs="0" name="externalIds" persister="nabu.frameworks.cdm.crud.cdmInstanceExternalId.batch.updateAll"/>
+		<field maxOccurs="unbounded" minOccurs="0" name="systems" type="java.lang.String"/>
+	</structure>
+	<field name="typeId" type="java.lang.String"/>
+	<structure collectionName="teamsTemplates" definition="java.lang.Object" name="partialInstance"/>
+	<structure comment="Existing external ids for this instance, this can be used to match it to a target system. Will always send all external ids so you can use other identifiers " definition="nabu.frameworks.cdm.specs.externalId" minOccurs="0" name="mappedExternalId" restrict="cdmInstanceId, systemId, id"/>
+	<structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="diffs"/>
+	<structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list" maxOccurs="unbounded" minOccurs="0" name="subscriptions" persister="nabu.frameworks.cdm.crud.cdmSystemSubscription.batch.updateAll"/>
+	<structure collectionName="cdmInstanceSubscriptions" definition="nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.list" maxOccurs="unbounded" minOccurs="0" name="instanceSubscriptions" persister="nabu.frameworks.cdm.crud.cdmInstanceSubscription.batch.updateAll"/>
+	<structure collectionName="cdmInstanceSubscriptions" definition="nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.list" minOccurs="0" name="instanceSubscription" persister="nabu.frameworks.cdm.crud.cdmInstanceSubscription.batch.updateAll"/>
+	<structure collectionName="cdmInstanceContents" definition="nabu.frameworks.cdm.crud.cdmInstanceContent.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceContent.services.list" name="currentContent" persister="nabu.frameworks.cdm.crud.cdmInstanceContent.batch.updateAll"/>
+	<field name="content" type="java.lang.String"/>
+	<field minOccurs="0" name="date" type="java.util.Date"/>
+	<structure collectionName="cdmInstances" definition="nabu.frameworks.cdm.crud.cdmInstance.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstance.services.list" name="instance" persister="nabu.frameworks.cdm.crud.cdmInstance.batch.updateAll"/>
+	<structure collectionName="teamsTemplates" definition="java.lang.Object" minOccurs="0" name="cdmInstance"/>
+	<structure definition="nabu.utils.types.ParameterDescription" minOccurs="0" name="primaryKeyField"/>
+	<structure comment="These will be merged into existing external ids" definition="nabu.frameworks.cdm.specs.externalId" maxOccurs="unbounded" minOccurs="0" name="newExternalIds" restrict="cdmInstanceId, id"/>
+	<field name="newVersion" type="java.lang.Long"/>
+	<field minOccurs="0" name="earliestNextPull" type="java.util.Date"/>
+	<structure comment="The relations of this cdm instance. These should be ALL currently active relations. If an existing relation is no longer listed, it is removed." definition="nabu.frameworks.cdm.specs.relation" maxOccurs="unbounded" minOccurs="0" name="newRelations" restrict="id,cdmSystemId,started,stopped,cdmDefinitionId,sourceId,targetId,active"/>
+	<structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list" maxOccurs="unbounded" minOccurs="0" name="results" persister="nabu.frameworks.cdm.crud.cdmInstanceRelation.batch.updateAll"/>
+	<structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list" maxOccurs="unbounded" minOccurs="0" name="allExistingRelations" persister="nabu.frameworks.cdm.crud.cdmInstanceRelation.batch.updateAll"/>
+	<structure collectionName="cdmInstanceRelations" definition="nabu.frameworks.cdm.crud.cdmInstanceRelation.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceRelation.services.list" maxOccurs="unbounded" minOccurs="0" name="existingRelations" persister="nabu.frameworks.cdm.crud.cdmInstanceRelation.batch.updateAll"/>
+	<field name="pull" type="java.lang.Boolean"/>
+	<structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="fullDiff"/>
+	<structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="forbiddenDiffs"/>
+	<structure collectionName="cdmInstanceSyncs" definition="nabu.frameworks.cdm.database.types.cdmInstanceSync" name="instanceSync"/>
+	<structure collectionName="cdmInstanceSyncDiffs" definition="nabu.frameworks.cdm.database.types.cdmInstanceSyncDiff" maxOccurs="unbounded" minOccurs="0" name="instanceSyncDiffs"/>
+	<structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="cdmDiff"/>
+	<structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="arrayDiffToApplyImmediately"/>
+	<structure collectionName="cdmInstanceLogs" definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" name="log"/>
+	<structure collectionName="cdmInstanceLogs" definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" maxOccurs="unbounded" minOccurs="0" name="logs"/>
+	<field name="direction" type="java.lang.String"/>
+	<field name="newInstance" type="java.lang.Boolean"/>
+	<structure definition="nabu.utils.types.ParameterDescription" maxOccurs="unbounded" minOccurs="0" name="initialMasterProperties"/>
+	<structure collectionName="teamsTemplates" definition="java.lang.Object" minOccurs="0" name="originalCdmInstance"/>
+	<structure definition="nabu.frameworks.cdm.utils.diffResult" maxOccurs="unbounded" name="finalCdmDiffs"/>
+	<field name="interested" type="java.lang.Boolean"/>
 </structure>
