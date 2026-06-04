@@ -1,0 +1,43 @@
+<jdbcService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<sql>update ~cdm_instance_relations
+set
+	target_id = (
+		select distinct e.cdm_instance_id
+		from ~cdm_instance_external_ids e
+		join ~cdm_instances i
+			on i.id = e.cdm_instance_id
+		where e.name = ~cdm_instance_relations.name
+			and e.identifier = ~cdm_instance_relations.identifier
+			and i.cdm_definition_id = ~cdm_instance_relations.cdm_definition_id
+	),
+	modified = current_timestamp
+where target_id is null
+	and active = true
+	and stopped is null
+	and exists (
+		select 1
+		from ~cdm_instance_external_ids e
+		join ~cdm_instances i
+			on i.id = e.cdm_instance_id
+		where e.name = ~cdm_instance_relations.name
+			and e.identifier = ~cdm_instance_relations.identifier
+			and i.cdm_definition_id = ~cdm_instance_relations.cdm_definition_id
+	)
+	and not exists (
+		select 1
+		from ~cdm_instance_external_ids e1
+		join ~cdm_instances i1
+			on i1.id = e1.cdm_instance_id
+		join ~cdm_instance_external_ids e2
+			on e2.name = e1.name
+			and e2.identifier = e1.identifier
+		join ~cdm_instances i2
+			on i2.id = e2.cdm_instance_id
+		where e1.name = ~cdm_instance_relations.name
+			and e1.identifier = ~cdm_instance_relations.identifier
+			and i1.cdm_definition_id = ~cdm_instance_relations.cdm_definition_id
+			and i2.cdm_definition_id = ~cdm_instance_relations.cdm_definition_id
+			and e1.cdm_instance_id &lt;&gt; e2.cdm_instance_id
+	)</sql>
+	<validateOutput>false</validateOutput>
+</jdbcService>

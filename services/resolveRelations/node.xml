@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2026-06-04T15:46:46.782+02:00" lastModified="2026-06-04T15:57:39.737+02:00" leaf="true" version="5">
+    <environmentId>ares</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>nabu.frameworks.cdm.utils.relation.resolveResolvable</references>
+    <references>java.lang.Long</references>
+</node>

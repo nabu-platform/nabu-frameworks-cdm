@@ -1,0 +1,6 @@
+<structure name="pipeline">
+	<structure name="input"/>
+	<structure name="output">
+		<field minOccurs="0" name="resolved" type="java.lang.Long"/>
+	</structure>
+</structure>

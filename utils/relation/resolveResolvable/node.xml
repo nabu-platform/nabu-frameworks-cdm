@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.services.jdbc.JDBCServiceManager" created="2026-06-04T09:28:36.686+02:00" lastModified="2026-06-04T16:05:26.612+02:00" leaf="false" version="9">
+    <description>Updates active unresolved cdm_instance_relations by matching relation name and identifier to a target cdm_instance_external_id with the same CDM definition. Ambiguous matches are skipped.</description>
+    <environmentId>ares</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>java.lang.String</references>
+    <references>java.lang.Long</references>
+    <references>java.lang.Integer</references>
+    <references>java.lang.Boolean</references>
+    <references>be.nabu.libs.services.jdbc.AffixInput</references>
+    <references>be.nabu.libs.types.api.KeyValuePair</references>
+    <references>nabu.frameworks.cdm.utils.relation.resolveResolvable.results</references>
+    <references>be.nabu.libs.services.jdbc.api.Statistic</references>
+    <references>java.lang.Long</references>
+    <references>java.lang.Boolean</references>
+    <summary>Directly resolves unknown CDM relation targets when exactly one matching target external id exists.</summary>
+</node>

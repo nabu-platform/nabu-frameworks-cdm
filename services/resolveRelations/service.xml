@@ -1,0 +1,14 @@
+<sequence id="b107e37207e442feb3d12ed4f65d49fa">
+	<map id="36a1d45fcf1b4998a87a6e25a9a1474d">
+		<invoke id="db7207d5aa6f48bdb8b81362e5d2e06b"
+			resultName="resolvedRelationsResult"
+			serviceId="nabu.frameworks.cdm.utils.relation.resolveResolvable"
+			x="25"
+			y="25">
+		</invoke>
+		<link id="aea830a83f6e49389e6d3fc4e5eb3b05">
+			<from>resolvedRelationsResult/rowCount</from>
+			<to>output/resolved</to>
+		</link>
+	</map>
+</sequence>
