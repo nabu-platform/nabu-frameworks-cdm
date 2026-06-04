@@ -2,7 +2,7 @@
 <restInterface>
     <method>POST</method>
     <path>/cdm/batch/{cdmSystemSubscriptionId}/run</path>
-    <queryParameters>push</queryParameters>
+    <queryParameters>push, full</queryParameters>
     <role>$user</role>
     <permissionAction>cdm.manage</permissionAction>
     <useServiceContextAsPermissionContext>false</useServiceContextAsPermissionContext>
