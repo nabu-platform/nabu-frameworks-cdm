@@ -1,351 +1,203 @@
-<sequence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		disabled="false"
-		id="0227e3a5739b4a03852f86ca6f37aecd"
-		lineNumber="1">
-	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
-			disabled="false"
-			id="413d373e8a9b404c8d92f3b7450e2323"
-			label="input/useParallelSync == null"
-			lineNumber="2">
-		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
-				disabled="false"
-				id="8f96b7fc83ec4fd0aba3c7a841322840"
-				serviceId="nabu.utils.Server.property"
-				resultName="result4e3689d8e8fe4bfbbd1b8b2414f864fc"
-				temporaryMapping="true"
-				x="84"
-				y="87"
-				invocationOrder="0"
-				asynchronous="false"
-				recache="false">
-			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-					disabled="false"
-					id="964784160c284824b955eca7a08efe4b"
-					mask="false"
-					optional="false"
-					fixedValue="true">
+<sequence id="0227e3a5739b4a03852f86ca6f37aecd">
+	<map id="413d373e8a9b404c8d92f3b7450e2323"
+		label="input/useParallelSync == null">
+		<invoke id="8f96b7fc83ec4fd0aba3c7a841322840"
+			resultName="result4e3689d8e8fe4bfbbd1b8b2414f864fc"
+			serviceId="nabu.utils.Server.property"
+			x="84"
+			y="87">
+			<link id="964784160c284824b955eca7a08efe4b"
+				fixedValue="true">
 				<from>cdm.batch.parallel</from>
 				<to>key</to>
-			</steps>
-			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-					disabled="false"
-					id="ded4ddd2af9f416ca90f8a4485622edc"
-					mask="false"
-					optional="false"
-					fixedValue="true">
+			</link>
+			<link id="ded4ddd2af9f416ca90f8a4485622edc"
+				fixedValue="true">
 				<from>false</from>
 				<to>defaultValue</to>
-			</steps>
-		</steps>
-		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-				disabled="false"
-				id="4fe2928949df4816aeb76791a39f3cd9"
-				mask="false"
-				optional="false"
-				fixedValue="false">
+			</link>
+		</invoke>
+		<link id="4fe2928949df4816aeb76791a39f3cd9">
 			<from>result4e3689d8e8fe4bfbbd1b8b2414f864fc/value</from>
 			<to>input/useParallelSync</to>
-		</steps>
-	</steps>
-	<steps xsi:type="be.nabu.libs.services.vm.step.Map"
-			disabled="false"
-			id="6cd4efca1424421e988b69589f7330ab"
-			lineNumber="3">
-		<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
-				disabled="false"
-				id="4135a86ec71d48cf9ae6601588809bc0"
-				serviceId="nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list"
-				resultName="resulte36223e19db6426481ff895a50c5f20b"
-				temporaryMapping="true"
-				x="189"
-				y="119"
-				invocationOrder="0"
-				asynchronous="false"
-				recache="false">
-			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-					disabled="false"
-					id="1015ba41d06f41b7a5037d29aa1ee009"
-					mask="false"
-					optional="false"
-					fixedValue="false">
+		</link>
+	</map>
+	<map id="a0eccb26867d4190b44ea432a8d983a1">
+		<invoke id="7724c41ec2bc465faaa240c4e2e58c8c"
+			resultName="result7724c41ec2bc465faaa240c4e2e58c8c"
+			serviceId="nabu.frameworks.cdm.utils.hasOngoingAnonymousQueueForType"
+			x="365"
+			y="55">
+			<link id="b196850a3fd4404797b2a6e5bb16761b">
+				<from>input/typeId</from>
+				<to>parameters/typeId</to>
+			</link>
+		</invoke>
+		<link id="f74e268b920843edb6716315f1b617b0">
+			<from>result7724c41ec2bc465faaa240c4e2e58c8c/results[0]/count</from>
+			<to>amountOfActiveQueues</to>
+		</link>
+	</map>
+	<throw id="babbb415346c43168e6c2743abc37f43"
+		description="=&quot;Can't start a new synchronize while a previous one is running for: &quot; + input/typeId"
+		label="amountOfActiveQueues &gt; 0"
+		message="Can't start a new synchronize while a previous one is running"/>
+	<map id="6cd4efca1424421e988b69589f7330ab">
+		<invoke id="4135a86ec71d48cf9ae6601588809bc0"
+			resultName="resulte36223e19db6426481ff895a50c5f20b"
+			serviceId="nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list"
+			x="189"
+			y="119">
+			<link id="1015ba41d06f41b7a5037d29aa1ee009">
 				<from>input/typeId</from>
 				<to>filter/coreTypeId[0]</to>
-			</steps>
-			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-					disabled="false"
-					id="5cc5d43efd374865b7762fdf58c98d4c"
-					mask="false"
-					optional="false"
-					fixedValue="true">
+			</link>
+			<link id="5cc5d43efd374865b7762fdf58c98d4c"
+				fixedValue="true">
 				<from>true</from>
 				<to>filter/hasBatchPull</to>
-			</steps>
-			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-					disabled="false"
-					id="786a725d4ad1432f884953e88a496d12"
-					mask="false"
-					optional="false"
-					fixedValue="true">
+			</link>
+			<link id="786a725d4ad1432f884953e88a496d12"
+				fixedValue="true">
 				<from>priority desc</from>
 				<to>orderBy[0]</to>
-			</steps>
-			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-					disabled="false"
-					id="d5abc492f1e94032ac51e5d99a818759"
-					mask="false"
-					optional="false"
-					fixedValue="false">
+			</link>
+			<link id="d5abc492f1e94032ac51e5d99a818759">
 				<from>input/system</from>
 				<to>filter/system</to>
-			</steps>
-			<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-					disabled="false"
-					id="9c4068c4e7694c508b6557f127d3c75f"
-					mask="false"
-					optional="false"
-					fixedValue="false">
+			</link>
+			<link id="9c4068c4e7694c508b6557f127d3c75f">
 				<from>input/notSystem</from>
 				<to>filter/notSystem</to>
-			</steps>
-		</steps>
-		<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-				disabled="false"
-				id="c46903364e6b4c5284589a8e89601ace"
-				mask="false"
-				optional="false"
-				fixedValue="false">
+			</link>
+		</invoke>
+		<link id="c46903364e6b4c5284589a8e89601ace">
 			<from>resulte36223e19db6426481ff895a50c5f20b/results</from>
 			<to>results</to>
-		</steps>
-	</steps>
-	<steps xsi:type="be.nabu.libs.services.vm.step.For"
-			disabled="false"
-			id="11e2ea78dada40ca9313e4b43d1cda84"
-			lineNumber="4"
-			variable="result">
-		<steps xsi:type="be.nabu.libs.services.vm.step.Map"
-				disabled="false"
-				id="ad54a781f1174a5d90087a5d08aa2eaa"
-				lineNumber="5">
-			<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
-					disabled="false"
-					id="5e0cd9abad31432ea125f61bc6b55fd8"
-					serviceId="nabu.frameworks.cdm.utils.pullBatch"
-					resultName="resultf997dc89b2fb4de19961e2c526a635a2"
-					temporaryMapping="true"
-					x="364"
-					y="90"
-					invocationOrder="0"
-					target="nabu.frameworks.tasks.providers.executor"
-					asynchronous="false"
-					recache="false">
-				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-						disabled="false"
-						id="74639c91bb514369b0fe72805a5fc7ef"
-						mask="false"
-						optional="false"
-						fixedValue="false">
+		</link>
+	</map>
+	<for id="11e2ea78dada40ca9313e4b43d1cda84"
+		query="results"
+		variable="result">
+		<map id="ad54a781f1174a5d90087a5d08aa2eaa">
+			<invoke id="5e0cd9abad31432ea125f61bc6b55fd8"
+				resultName="resultf997dc89b2fb4de19961e2c526a635a2"
+				serviceId="nabu.frameworks.cdm.utils.pullBatch"
+				target="nabu.frameworks.tasks.providers.executor"
+				x="364"
+				y="90">
+				<link id="74639c91bb514369b0fe72805a5fc7ef">
 					<from>result/id</from>
 					<to>cdmSystemSubscriptionId</to>
-				</steps>
-				<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-						disabled="false"
-						id="d998a3be557b4b659c1ed991d4099d7f"
-						mask="false"
-						optional="false"
-						fixedValue="true">
+				</link>
+				<link id="d998a3be557b4b659c1ed991d4099d7f"
+					fixedValue="true">
 					<from>=result/system # /input/fullPullForSystem</from>
 					<to>full</to>
-				</steps>
+				</link>
 				<targetProperties
 						collectionIndex="groupId">=result/system</targetProperties>
 				<targetProperties
 						collectionIndex="contextId">=input/typeId</targetProperties>
 				<targetProperties
 						collectionIndex="queue">="cdm-synchronize-" + input/typeId</targetProperties>
-			</steps>
-		</steps>
-		<query>results</query>
-	</steps>
-	<steps xsi:type="be.nabu.libs.services.vm.step.Switch"
-			disabled="false"
-			id="18a7cd0f2e484e1b90c797c9bcaf637b"
-			lineNumber="6"
-			query="input/useParallelSync">
-		<steps xsi:type="be.nabu.libs.services.vm.step.Switch"
-				comment="Use batch"
-				disabled="false"
-				id="1cd07eed9f15484798b8d1bb40751c64"
-				label="true"
-				lineNumber="7"
-				query="results">
-			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
-					comment="If we don't actually have batch subscriptions, start the sync immediately"
-					disabled="false"
-					id="358609e3463e419eaa1d9c3a97660724"
-					label="null"
-					lineNumber="8">
-				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
-						disabled="false"
-						id="d2c18dc9de82455f8feabff2fcacbb5f"
-						serviceId="nabu.frameworks.cdm.utils.synchronizeBatch"
-						resultName="result63bc95795b4f4910a222e2c67b65988b"
-						temporaryMapping="true"
-						x="255"
-						y="98"
-						invocationOrder="0"
-						asynchronous="false"
-						recache="false">
-					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-							disabled="false"
-							id="fa4820ef064f43198e89672dfba6f886"
-							mask="false"
-							optional="false"
-							fixedValue="false">
+			</invoke>
+		</map>
+	</for>
+	<switch id="18a7cd0f2e484e1b90c797c9bcaf637b"
+		query="input/useParallelSync">
+		<switch id="1cd07eed9f15484798b8d1bb40751c64"
+			comment="Use batch"
+			label="true"
+			query="results">
+			<map id="358609e3463e419eaa1d9c3a97660724"
+				comment="If we don't actually have batch subscriptions, start the sync immediately"
+				label="null">
+				<invoke id="d2c18dc9de82455f8feabff2fcacbb5f"
+					resultName="result63bc95795b4f4910a222e2c67b65988b"
+					serviceId="nabu.frameworks.cdm.utils.synchronizeBatch"
+					x="255"
+					y="98">
+					<link id="fa4820ef064f43198e89672dfba6f886">
 						<from>input/typeId</from>
 						<to>typeId</to>
-					</steps>
-					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-							disabled="false"
-							id="10cd6d76942544cfb37d6a21191a169f"
-							mask="false"
-							optional="false"
-							fixedValue="false">
+					</link>
+					<link id="10cd6d76942544cfb37d6a21191a169f">
 						<from>input/fullPushForSystem</from>
 						<to>fullPushForSystem</to>
-					</steps>
-				</steps>
-			</steps>
-			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
-					comment="Otherwise, start it once all batch syncs are done"
-					disabled="false"
-					id="8001e1d22dcf49f68221019e030495fe"
-					lineNumber="9">
-				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
-						disabled="false"
-						id="a3280e74e0e949b1a9b91254b03bfa99"
-						serviceId="nabu.frameworks.cdm.utils.synchronizeBatch"
-						resultName="resultdf03fc646c3d44ed8f188408ae4afd9b"
-						temporaryMapping="true"
-						x="317"
-						y="96"
-						invocationOrder="0"
-						target="nabu.frameworks.tasks.providers.executor"
-						asynchronous="false"
-						recache="false">
-					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-							disabled="false"
-							id="eb4fcd6c00b7492d94874dca98723322"
-							mask="false"
-							optional="false"
-							fixedValue="false">
+					</link>
+				</invoke>
+			</map>
+			<map id="8001e1d22dcf49f68221019e030495fe"
+				comment="Otherwise, start it once all batch syncs are done">
+				<invoke id="a3280e74e0e949b1a9b91254b03bfa99"
+					resultName="resultdf03fc646c3d44ed8f188408ae4afd9b"
+					serviceId="nabu.frameworks.cdm.utils.synchronizeBatch"
+					target="nabu.frameworks.tasks.providers.executor"
+					x="317"
+					y="96">
+					<link id="eb4fcd6c00b7492d94874dca98723322">
 						<from>input/typeId</from>
 						<to>typeId</to>
-					</steps>
-					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-							disabled="false"
-							id="346c0492c1f4438996ef28141ca4da7d"
-							mask="false"
-							optional="false"
-							fixedValue="false">
+					</link>
+					<link id="346c0492c1f4438996ef28141ca4da7d">
 						<from>results/system</from>
 						<to>skipPullForSystem</to>
-					</steps>
-					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-							disabled="false"
-							id="614dca62bd8a428ca26748df2904dae5"
-							mask="false"
-							optional="false"
-							fixedValue="false">
+					</link>
+					<link id="614dca62bd8a428ca26748df2904dae5">
 						<from>input/fullPushForSystem</from>
 						<to>fullPushForSystem</to>
-					</steps>
+					</link>
 					<targetProperties
 							collectionIndex="groupId">=input/typeId</targetProperties>
 					<targetProperties
 							collectionIndex="finalize">true</targetProperties>
 					<targetProperties
 							collectionIndex="queue">="cdm-synchronize-" + input/typeId</targetProperties>
-				</steps>
-			</steps>
-		</steps>
-		<steps xsi:type="be.nabu.libs.services.vm.step.Switch"
-				comment="Use synchronize"
-				disabled="false"
-				id="8694081cc73f497ba1548e516d0842f8"
-				lineNumber="10"
-				query="results">
-			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
-					comment="If we don't actually have batch subscriptions, start the sync immediately"
-					disabled="false"
-					id="428e7beadac54addabe6b1284ac2fe13"
-					label="null"
-					lineNumber="11">
-				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
-						disabled="false"
-						id="be12c5b00e28404f96de6c3d9754364b"
-						serviceId="nabu.frameworks.cdm.services.synchronize"
-						resultName="result080bfa9d0222478cb58b767485fe0f07"
-						temporaryMapping="true"
-						x="157"
-						y="96"
-						invocationOrder="0"
-						asynchronous="false"
-						recache="false">
-					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-							disabled="false"
-							id="47548fa11bc84547b81fdf325235e242"
-							mask="false"
-							optional="false"
-							fixedValue="false">
+				</invoke>
+			</map>
+		</switch>
+		<switch id="8694081cc73f497ba1548e516d0842f8"
+			comment="Use synchronize"
+			query="results">
+			<map id="428e7beadac54addabe6b1284ac2fe13"
+				comment="If we don't actually have batch subscriptions, start the sync immediately"
+				label="null">
+				<invoke id="be12c5b00e28404f96de6c3d9754364b"
+					resultName="result080bfa9d0222478cb58b767485fe0f07"
+					serviceId="nabu.frameworks.cdm.services.synchronize"
+					x="157"
+					y="96">
+					<link id="47548fa11bc84547b81fdf325235e242">
 						<from>input/typeId</from>
 						<to>typeId</to>
-					</steps>
-				</steps>
-			</steps>
-			<steps xsi:type="be.nabu.libs.services.vm.step.Map"
-					comment="Otherwise, start it once all batch syncs are done"
-					disabled="false"
-					id="a83f006a8a9548fb9b5116ae318c8367"
-					lineNumber="12">
-				<steps xsi:type="be.nabu.libs.services.vm.step.Invoke"
-						disabled="false"
-						id="bacc215b7ecb42108c412c6e888af08a"
-						serviceId="nabu.frameworks.cdm.services.synchronize"
-						resultName="result9ed72b0f30d34e9693dc764861929e4c"
-						temporaryMapping="true"
-						x="288"
-						y="120"
-						invocationOrder="0"
-						target="nabu.frameworks.tasks.providers.executor"
-						asynchronous="false"
-						recache="false">
-					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-							disabled="false"
-							id="b6893fc69a2344feb8f895aa2c46f920"
-							mask="false"
-							optional="false"
-							fixedValue="false">
+					</link>
+				</invoke>
+			</map>
+			<map id="a83f006a8a9548fb9b5116ae318c8367"
+				comment="Otherwise, start it once all batch syncs are done">
+				<invoke id="bacc215b7ecb42108c412c6e888af08a"
+					resultName="result9ed72b0f30d34e9693dc764861929e4c"
+					serviceId="nabu.frameworks.cdm.services.synchronize"
+					target="nabu.frameworks.tasks.providers.executor"
+					x="288"
+					y="120">
+					<link id="b6893fc69a2344feb8f895aa2c46f920">
 						<from>results/system</from>
 						<to>skipPullForSystem</to>
-					</steps>
-					<steps xsi:type="be.nabu.libs.services.vm.step.Link"
-							disabled="false"
-							id="c5664b5a793341518db77a3adac4f5be"
-							mask="false"
-							optional="false"
-							fixedValue="false">
+					</link>
+					<link id="c5664b5a793341518db77a3adac4f5be">
 						<from>input/typeId</from>
 						<to>typeId</to>
-					</steps>
+					</link>
 					<targetProperties
 							collectionIndex="groupId">=input/typeId</targetProperties>
 					<targetProperties
 							collectionIndex="finalize">true</targetProperties>
 					<targetProperties
 							collectionIndex="queue">="cdm-synchronize-" + input/typeId</targetProperties>
-				</steps>
-			</steps>
-		</steps>
-	</steps>
+				</invoke>
+			</map>
+		</switch>
+	</switch>
 </sequence>

@@ -1,0 +1,4 @@
+<structure name="parameter">
+	<field minOccurs="0" name="typeId" type="java.lang.String"/>
+	<field maxOccurs="unbounded" minOccurs="0" name="skipPullForSystem" type="java.lang.String"/>
+</structure>

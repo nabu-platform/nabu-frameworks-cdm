@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.services.jdbc.JDBCServiceManager" created="2026-06-17T15:06:56.822+02:00" lastModified="2026-06-23T09:24:00.242+02:00" leaf="false" version="13">
+    <description>Filters out active instances whose subscriptions are only triggerOnly or belong to skipped systems and whose latest pull is not newer than the active content.</description>
+    <environmentId>ares</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>java.lang.String</references>
+    <references>java.lang.Long</references>
+    <references>java.lang.Integer</references>
+    <references>java.lang.Boolean</references>
+    <references>be.nabu.libs.services.jdbc.AffixInput</references>
+    <references>nabu.frameworks.cdm.utils.selectSyncCandidates.parameters</references>
+    <references>be.nabu.libs.types.api.KeyValuePair</references>
+    <references>nabu.frameworks.cdm.database.types.cdmInstance</references>
+    <references>be.nabu.libs.services.jdbc.api.Statistic</references>
+    <references>java.lang.Long</references>
+    <references>java.lang.Boolean</references>
+    <summary>Selects cdm instances that still need synchronization.</summary>
+</node>

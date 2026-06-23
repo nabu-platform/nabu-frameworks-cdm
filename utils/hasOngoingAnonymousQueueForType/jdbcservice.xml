@@ -1,0 +1,11 @@
+<jdbcService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<sql>select count(*) as count
+from ~task_queues tq
+where tq.anonymous = true
+	and tq.state = 'ACTIVE'
+	and (
+		tq.name like 'cdm-merge-' || :typeId || ':%'
+		or tq.name like 'cdm-synchronize-' || :typeId || ':%'
+	)
+</sql>
+</jdbcService>

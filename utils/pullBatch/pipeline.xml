@@ -1,24 +1,25 @@
 <structure name="pipeline">
-    <structure name="input">
-        <field name="cdmSystemSubscriptionId" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
-        <field comment="By default it will use the last date for delta syncing. By forcing a full sync we will ignore the date" minOccurs="0" name="full" type="java.lang.Boolean"/>
-    </structure>
-    <structure name="output">
-        <field maxOccurs="unbounded" minOccurs="0" name="cdmInstanceIds" pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}|[0-9a-fA-F]{32}" type="java.util.UUID"/>
-    </structure>
-    <structure collectionName="cdmSystemSubscriptions" definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystemSubscription.services.list" name="subscription" persister="nabu.frameworks.cdm.crud.cdmSystemSubscription.batch.updateAll"/>
-    <field minOccurs="0" name="started" type="java.util.Date"/>
-    <structure collectionName="cdmSystemBatchPulls" definition="nabu.frameworks.cdm.crud.cdmSystemBatchPull.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystemBatchPull.services.list" minOccurs="0" name="lastRun" persister="nabu.frameworks.cdm.crud.cdmSystemBatchPull.batch.updateAll"/>
-    <structure definition="nabu.frameworks.cdm.specs.pull:output" maxOccurs="unbounded" minOccurs="0" name="instances"/>
-    <structure collectionName="cdmInstances" definition="nabu.frameworks.cdm.database.types.cdmInstance" minOccurs="0" name="localInstance"/>
-    <field minOccurs="0" name="amountOfMatches" type="java.lang.Long"/>
-    <structure collectionName="cdmInstanceExternalIds" definition="nabu.frameworks.cdm.database.types.cdmInstanceExternalId" maxOccurs="unbounded" minOccurs="0" name="externalIds"/>
-    <structure collectionName="cdmInstanceSubscriptions" definition="nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.list" minOccurs="0" name="instanceSubscription" persister="nabu.frameworks.cdm.crud.cdmInstanceSubscription.batch.updateAll"/>
-    <field name="marshalled" type="java.lang.String"/>
-    <structure collectionName="cdmInstanceSubscriptions" definition="nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output" enricher="nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.list" maxOccurs="unbounded" minOccurs="0" name="instanceSubscriptionsToUpdate" persister="nabu.frameworks.cdm.crud.cdmInstanceSubscription.batch.updateAll"/>
-    <field name="amountOfItemsPulled" type="java.lang.Long"/>
-    <structure collectionName="cdmSystemBatchPulls" definition="nabu.frameworks.cdm.crud.cdmSystemBatchPull.types.output" enricher="nabu.frameworks.cdm.crud.cdmSystemBatchPull.services.list" name="newRun" persister="nabu.frameworks.cdm.crud.cdmSystemBatchPull.batch.updateAll"/>
-    <field comment="By default CDM will stop requesting if no instances are returned. You can force continuation by setting this to true." minOccurs="0" name="continue" type="java.lang.Boolean"/>
-    <structure collectionName="cdmInstanceLogs" definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" maxOccurs="unbounded" minOccurs="0" name="logs"/>
-    <structure collectionName="cdmInstanceLogs" definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" maxOccurs="unbounded" minOccurs="0" name="logsToInsert"/>
+	<structure name="input">
+		<field name="cdmSystemSubscriptionId" type="java.util.UUID"/>
+		<field comment="By default it will use the last date for delta syncing. By forcing a full sync we will ignore the date" minOccurs="0" name="full" type="java.lang.Boolean"/>
+	</structure>
+	<structure name="output">
+		<field maxOccurs="unbounded" minOccurs="0" name="cdmInstanceIds" type="java.util.UUID"/>
+	</structure>
+	<structure definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" name="subscription"/>
+	<field minOccurs="0" name="started" type="java.util.Date"/>
+	<structure definition="nabu.frameworks.cdm.crud.cdmSystemBatchPull.types.output" minOccurs="0" name="lastRun"/>
+	<structure definition="nabu.frameworks.cdm.specs.pull:output" maxOccurs="unbounded" minOccurs="0" name="instances"/>
+	<structure definition="nabu.frameworks.cdm.database.types.cdmInstance" minOccurs="0" name="localInstance"/>
+	<field minOccurs="0" name="amountOfMatches" type="java.lang.Long"/>
+	<structure definition="nabu.frameworks.cdm.database.types.cdmInstanceExternalId" maxOccurs="unbounded" minOccurs="0" name="externalIds"/>
+	<structure definition="nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output" minOccurs="0" name="instanceSubscription"/>
+	<field name="marshalled" type="java.lang.String"/>
+	<structure definition="nabu.frameworks.cdm.crud.cdmInstanceSubscription.types.output" maxOccurs="unbounded" minOccurs="0" name="instanceSubscriptionsToUpdate"/>
+	<field name="amountOfItemsPulled" type="java.lang.Long"/>
+	<structure definition="nabu.frameworks.cdm.crud.cdmSystemBatchPull.types.output" name="newRun"/>
+	<field comment="By default CDM will stop requesting if no instances are returned. You can force continuation by setting this to true." minOccurs="0" name="continue" type="java.lang.Boolean"/>
+	<structure definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" maxOccurs="unbounded" minOccurs="0" name="logs"/>
+	<structure definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" maxOccurs="unbounded" minOccurs="0" name="logsToInsert"/>
+	<structure definition="nabu.frameworks.cdm.database.types.cdmInstanceLog" name="pullSkippedLog"/>
 </structure>

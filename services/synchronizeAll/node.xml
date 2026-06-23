@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T09:44:07.182+02:00" lastModified="2025-08-26T12:22:01.040+02:00" leaf="true" version="56">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T09:44:07.182+02:00" lastModified="2026-06-17T16:30:15.857+02:00" leaf="true" version="61">
     <comment>First run any custom batches and then start a regular sync of all the items involved</comment>
     <environmentId>ares</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
     <properties/>
     <references>nabu.frameworks.cdm.utils.pullBatch</references>
+    <references>nabu.frameworks.cdm.utils.hasOngoingAnonymousQueueForType</references>
+    <references>java.lang.Long</references>
     <references>nabu.frameworks.cdm.services.synchronize</references>
     <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output</references>
     <references>java.lang.Boolean</references>

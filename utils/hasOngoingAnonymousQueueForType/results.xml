@@ -1,0 +1,3 @@
+<structure name="result">
+	<field name="count" type="java.lang.Long"/>
+</structure>

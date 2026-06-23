@@ -148,7 +148,8 @@
 			path="lastRun"/>
 	</map>
 	<for id="57eab5a08ba94efaa00ad3c7f2fd7e2b"
-		index="page">
+		index="page"
+		query="true">
 		<sequence id="554a62320a58494f858f44a1540cfd3e"
 			scopeDefaultTransaction="true">
 			<map id="963b4fd0444445279a189801564104e4">
@@ -205,6 +206,7 @@
 			</break>
 			<for id="58a971ef487d47edb5dfb7687a2d001c"
 				into="output/cdmInstanceIds"
+				query="instances"
 				variable="remoteInstance">
 				<map id="d00be5c6295244beabb333c584c66a20">
 					<invoke id="74809970765d4ba3adc97b86dbed9cd4"
@@ -487,10 +489,9 @@
 						<to>marshalled</to>
 					</link>
 				</map>
-				<switch id="aeaeb28fac484d73be0d41c23f4a9a4c"
-					query="instanceSubscription">
+				<switch id="aeaeb28fac484d73be0d41c23f4a9a4c">
 					<map id="07d263b5495b415b8710b20cb0292573"
-						label="null">
+						label="instanceSubscription == null">
 						<invoke id="4cb6f4c18a494ce3bdee74ad6c464919"
 							resultName="result19b2414ec3a3498d819942bc28b4dec0"
 							serviceId="nabu.frameworks.cdm.crud.cdmInstanceSubscription.services.create"
@@ -519,7 +520,8 @@
 							</link>
 						</invoke>
 					</map>
-					<sequence id="62888634662b4ec596f47bfa49e291a4">
+					<sequence id="62888634662b4ec596f47bfa49e291a4"
+						label="marshalled != instanceSubscription/content">
 						<map id="7290a55c0f4a493683e4a2e7cbe74043"
 							comment="Map updates">
 							<link id="fbc55e16867544b5bcf49bd45afac1bd">
@@ -562,6 +564,76 @@
 							</link>
 						</map>
 					</sequence>
+					<sequence id="dfd14975beef40cda4eace159d847880">
+						<map id="77f25d2324094669a32db74b156ec162"
+							comment="Map the pull skipped log">
+							<invoke id="669abdb7432441cba142dedb0d934454"
+								resultName="result669abdb7432441cba142dedb0d934454"
+								serviceId="nabu.utils.Server.uuid"
+								x="288"
+								y="167">
+							</invoke>
+							<link id="1a82c34636754336ba48474f81253df7">
+								<from>result669abdb7432441cba142dedb0d934454/uuid</from>
+								<to>pullSkippedLog/id</to>
+							</link>
+							<link id="b72cb0f37fba410ba134c17fbb2a7f34">
+								<from>started</from>
+								<to>pullSkippedLog/created</to>
+							</link>
+							<link id="207c02645400485699b64893200e4909"
+								fixedValue="true">
+								<from>pull-skipped</from>
+								<to>pullSkippedLog/logType</to>
+							</link>
+							<link id="54c98dfa36f64896a0bab1808df7cfe0"
+								fixedValue="true">
+								<from>Skipped pull because the content was not changed</from>
+								<to>pullSkippedLog/content</to>
+							</link>
+							<link id="7d183e408e2341bca6f114b7887c24e4">
+								<from>localInstance/id</from>
+								<to>pullSkippedLog/cdmInstanceId</to>
+							</link>
+							<link id="f98fca82be79409abbdb198a026218e6">
+								<from>instanceSubscription/id</from>
+								<to>pullSkippedLog/cdmInstanceSubscription</to>
+							</link>
+							<invoke id="191b510d7dcf42c5bbba2bf596932199"
+								resultName="result191b510d7dcf42c5bbba2bf596932199"
+								serviceId="nabu.utils.Runtime.getCorrelationId"
+								x="244"
+								y="479">
+							</invoke>
+							<link id="b525fb295ba444cc878c7c26afeee464">
+								<from>result191b510d7dcf42c5bbba2bf596932199/correlationId</from>
+								<to>pullSkippedLog/correlationId</to>
+							</link>
+						</map>
+						<map id="9213a8a3629b44b8807149c2eeee69e5"
+							comment="Add skipped log">
+							<invoke id="d99b2f9ea1b74faab4f2cd5edeab29a3"
+								resultName="resultd99b2f9ea1b74faab4f2cd5edeab29a3"
+								serviceId="nabu.utils.List.add"
+								x="184"
+								y="175">
+								<link id="0389267aefbc4522a903a03bbfb8e0f1">
+									<from>logsToInsert</from>
+									<to>list</to>
+								</link>
+								<link id="4cd4e1c846e04b868f27b2cbed0d1d4b">
+									<from>pullSkippedLog</from>
+									<to>object</to>
+								</link>
+							</invoke>
+							<link id="d8c6b606176e4da8b2a688689b761b0f">
+								<from>resultd99b2f9ea1b74faab4f2cd5edeab29a3/list</from>
+								<to>logsToInsert</to>
+							</link>
+							<drop id="3b0ac20fda8e4efab184cf9debcd2195"
+								path="pullSkippedLog"/>
+						</map>
+					</sequence>
 				</switch>
 				<map id="58e2405c013749cab7ed5dda3f39daa2"
 					comment="Increment amount pulled">
@@ -571,7 +643,6 @@
 						<to>amountOfItemsPulled</to>
 					</link>
 				</map>
-				<query>instances</query>
 			</for>
 			<map id="54a67534a99b4f9fa456b0e98ec45c09"
 				label="instanceSubscriptionsToUpdate">
@@ -609,7 +680,6 @@
 				<count>2</count>
 			</break>
 		</sequence>
-		<query>true</query>
 	</for>
 	<map id="efa326482ae94102b4f106d7f8981330"
 		comment="Map the updated fields to the batch instance">

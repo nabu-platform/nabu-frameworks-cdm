@@ -395,6 +395,7 @@
 		</link>
 	</map>
 	<for id="dba1f5bd61534d32a710542e956dfe7a"
+		query="subscriptions"
 		variable="subscription">
 		<sequence id="372561136c79480da3c77dcdbbd98b14"
 			comment="If we have a filter, check that we are interested"
@@ -803,6 +804,10 @@
 							<from>false</from>
 							<to>instance/assumedContent</to>
 						</link>
+						<link id="c416845a44ce4bc3b3e86a6965830257">
+							<from>date</from>
+							<to>instance/merged</to>
+						</link>
 					</invoke>
 				</map>
 				<map id="dac5dbf2ecd647978ea0b34fded09070"
@@ -955,6 +960,7 @@
 		<for id="eaa273022dec43a697091114172c3631"
 			comment="Map to the output"
 			into="output/changes"
+			query="diffs"
 			variable="diff">
 			<map id="3fed0d6ce0d74bafb2acabbd9a950e00">
 				<link id="2b41d38551c04a5796f109ea8f98d450">
@@ -982,11 +988,11 @@
 					<to>output/changes[0]/propertyPath</to>
 				</link>
 			</map>
-			<query>diffs</query>
 		</for>
 		<for id="3b36d76e196341f389128867a5224f8c"
 			comment="Map to the sync diffs"
 			into="instanceSyncDiffs"
+			query="diffs"
 			variable="diff">
 			<map id="36ea0171137c4240ab7ccdee8e951d72">
 				<link id="34e73ce0659940be981b2899663ee944">
@@ -1053,7 +1059,6 @@
 					<to>instanceSyncDiffs[0]/rejected</to>
 				</link>
 			</map>
-			<query>diffs</query>
 		</for>
 		<sequence id="ef6c7fc545314b39b6c569470ea3230d"
 			comment="We have a full diff as well, let's compare our master diff"
@@ -1203,7 +1208,13 @@
 				</link>
 			</invoke>
 		</map>
-		<query>subscriptions</query>
+		<map id="e25bb8312be3462cab55edd14967904f"
+			comment="Update the merged">
+			<link id="3f9d2b3c374c4e2e94e1c4f5038b3799">
+				<from>date</from>
+				<to>instanceSubscription/merged</to>
+			</link>
+		</map>
 	</for>
 	<map id="b8f31171490b4919afeb12baed151295"
 		comment="Map original BEFORE we mask it (link order!). We need this original to find any actually applied differences.">
