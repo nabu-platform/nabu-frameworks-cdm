@@ -1,0 +1,251 @@
+name: Release module
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out sources
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+
+      - name: Configure Maven GitHub access
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$HOME/.m2"
+          if [ -f "$HOME/.m2/settings.xml" ] && grep -q 'https://maven.pkg.github.com/nabu-platform/maven' "$HOME/.m2/settings.xml"; then
+            echo 'GitHub Maven endpoint already configured in settings.xml'
+            exit 0
+          fi
+          cat > "$HOME/.m2/settings.xml" <<'EOF'
+          <settings>
+            <servers>
+              <server>
+                <id>github</id>
+                <username>__MAVEN_BUILD_USER__</username>
+                <password>__MAVEN_BUILD_TOKEN__</password>
+              </server>
+            </servers>
+            <profiles>
+              <profile>
+                <id>github-packages</id>
+                <repositories>
+                  <repository>
+                    <id>github</id>
+                    <url>https://maven.pkg.github.com/nabu-platform/maven</url>
+                    <releases>
+                      <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                      <enabled>true</enabled>
+                    </snapshots>
+                  </repository>
+                </repositories>
+              </profile>
+            </profiles>
+            <activeProfiles>
+              <activeProfile>github-packages</activeProfile>
+            </activeProfiles>
+          </settings>
+          EOF
+          python3 -c "import os; from pathlib import Path; path = Path(os.path.expanduser('~/.m2/settings.xml')); text = path.read_text(); text = text.replace('__MAVEN_BUILD_USER__', os.environ['MAVEN_BUILD_USER']); text = text.replace('__MAVEN_BUILD_TOKEN__', os.environ['MAVEN_BUILD_TOKEN']); path.write_text(text)"
+        env:
+          MAVEN_BUILD_USER: ${{ secrets.MAVEN_BUILD_USER }}
+          MAVEN_BUILD_TOKEN: ${{ secrets.MAVEN_BUILD_TOKEN }}
+
+      - name: Set up Maven cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: maven-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            maven-${{ runner.os }}-
+
+      - name: Check out poms repository
+        uses: actions/checkout@v4
+        with:
+          repository: nabu-platform/poms
+          path: .tmp
+
+      - name: Prepare modules parent from published BOM
+        working-directory: .tmp
+        shell: bash
+        run: |
+          set -euo pipefail
+          base_url="https://maven.pkg.github.com/nabu-platform/maven/be/nabu/modules-bom/1.0-SNAPSHOT"
+          auth="$MAVEN_BUILD_USER:$MAVEN_BUILD_TOKEN"
+          metadata="$RUNNER_TEMP/modules-bom-metadata.xml"
+          curl -fsSL -u "$auth" "$base_url/maven-metadata.xml" -o "$metadata"
+          value=$(python3 -c "import sys, xml.etree.ElementTree as ET; root = ET.parse(sys.argv[1]).getroot(); matches = [(node.findtext('updated') or '', node.findtext('value') or '') for node in root.findall('./versioning/snapshotVersions/snapshotVersion') if node.findtext('extension') == 'pom']; assert matches, 'Could not resolve snapshot POM version from metadata'; print(max(matches)[1])" "$metadata")
+          python3 -c "import sys; from pathlib import Path; source = Path(sys.argv[1]); target = Path(sys.argv[2]); version = sys.argv[3]; text = source.read_text(); text = text.replace('<artifactId>modules-local-bom</artifactId>', '<artifactId>modules-bom</artifactId>'); text = text.replace('<artifactId>modules-bom</artifactId>\n\t\t\t\t<version>1.0-SNAPSHOT</version>', f'<artifactId>modules-bom</artifactId>\n\t\t\t\t<version>{version}</version>'); target.write_text(text)" modules.xml "$RUNNER_TEMP/modules-parent.xml" "$value"
+          mvn -s "$HOME/.m2/settings.xml" -B install:install-file -Dpackaging=pom -Dfile="$RUNNER_TEMP/modules-parent.xml" -DpomFile="$RUNNER_TEMP/modules-parent.xml"
+        env:
+          MAVEN_BUILD_USER: ${{ secrets.MAVEN_BUILD_USER }}
+          MAVEN_BUILD_TOKEN: ${{ secrets.MAVEN_BUILD_TOKEN }}
+
+      - name: Copy dependency types from resolved BOM
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > "$RUNNER_TEMP/copy_bom_types.py" <<'PY'
+          import base64
+          import os
+          import urllib.request
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+
+          ET.register_namespace('', 'http://maven.apache.org/POM/4.0.0')
+          ET.register_namespace('xsi', 'http://www.w3.org/2001/XMLSchema-instance')
+          ns = {'m': 'http://maven.apache.org/POM/4.0.0'}
+          metadata = Path(os.environ['RUNNER_TEMP']) / 'modules-bom-metadata.xml'
+          root = ET.parse(metadata).getroot()
+          matches = [
+            (node.findtext('updated') or '', node.findtext('value') or '')
+            for node in root.findall('./versioning/snapshotVersions/snapshotVersion')
+            if node.findtext('extension') == 'pom'
+          ]
+          if not matches:
+            raise RuntimeError('Could not resolve snapshot POM version from metadata')
+          bom_version = max(matches)[1]
+          url = f'https://maven.pkg.github.com/nabu-platform/maven/be/nabu/modules-bom/1.0-SNAPSHOT/modules-bom-{bom_version}.pom'
+          credentials = f"{os.environ['MAVEN_BUILD_USER']}:{os.environ['MAVEN_BUILD_TOKEN']}".encode()
+          request = urllib.request.Request(url)
+          request.add_header('Authorization', 'Basic ' + base64.b64encode(credentials).decode())
+          bom_root = ET.parse(urllib.request.urlopen(request)).getroot()
+          dep_mgmt = bom_root.find('m:dependencyManagement', ns)
+          managed = {}
+          for dep in dep_mgmt.find('m:dependencies', ns).findall('m:dependency', ns):
+            group_id = dep.findtext('m:groupId', default='', namespaces=ns)
+            artifact_id = dep.findtext('m:artifactId', default='', namespaces=ns)
+            type_value = dep.findtext('m:type', default='', namespaces=ns)
+            if type_value:
+              managed[(group_id, artifact_id)] = type_value
+          pom_tree = ET.parse('pom.xml')
+          pom_root = pom_tree.getroot()
+          deps_node = pom_root.find('m:dependencies', ns)
+          if deps_node is not None:
+            for dep in deps_node.findall('m:dependency', ns):
+              if dep.find('m:type', ns) is not None:
+                continue
+              group_id = dep.findtext('m:groupId', default='', namespaces=ns)
+              artifact_id = dep.findtext('m:artifactId', default='', namespaces=ns)
+              type_value = managed.get((group_id, artifact_id))
+              if not type_value:
+                continue
+              type_element = ET.Element('{http://maven.apache.org/POM/4.0.0}type')
+              type_element.text = type_value
+              dep.append(type_element)
+          ET.indent(pom_tree, space='\t')
+          pom_tree.write('pom.xml', encoding='unicode')
+          PY
+          python3 "$RUNNER_TEMP/copy_bom_types.py"
+        env:
+          MAVEN_BUILD_USER: ${{ secrets.MAVEN_BUILD_USER }}
+          MAVEN_BUILD_TOKEN: ${{ secrets.MAVEN_BUILD_TOKEN }}
+
+      - name: Remove optional dependencies for CI build
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY2'
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+
+          ET.register_namespace('', 'http://maven.apache.org/POM/4.0.0')
+          ET.register_namespace('xsi', 'http://www.w3.org/2001/XMLSchema-instance')
+          ns = {'m': 'http://maven.apache.org/POM/4.0.0'}
+          pom_path = Path('pom.xml')
+          tree = ET.parse(pom_path)
+          root = tree.getroot()
+          deps = root.find('m:dependencies', ns)
+          removed = []
+          if deps is not None:
+          	for dep in list(deps.findall('m:dependency', ns)):
+          		optional = dep.findtext('m:optional', default='', namespaces=ns).strip().lower()
+          		if optional != 'true':
+          			continue
+          		group_id = dep.findtext('m:groupId', default='', namespaces=ns)
+          		artifact_id = dep.findtext('m:artifactId', default='', namespaces=ns)
+          		removed.append(f'{group_id}:{artifact_id}')
+          		deps.remove(dep)
+          if removed:
+          	tree.write(pom_path, encoding='unicode')
+          	print('Removed optional dependencies for CI build:')
+          	for entry in removed:
+          		print(entry)
+          else:
+          	print('No optional dependencies removed for CI build')
+          PY2
+
+      - name: Determine release version
+        id: version
+        shell: bash
+        run: |
+          set -euo pipefail
+          release_version="${GITHUB_REF_NAME#v}"
+          if [ -z "$release_version" ]; then
+            echo 'Could not determine release version from tag'
+            exit 1
+          fi
+          echo "value=$release_version" >> "$GITHUB_OUTPUT"
+
+      - name: Set module version
+        run: mvn -s "$HOME/.m2/settings.xml" -B versions:set -DnewVersion=${{ steps.version.outputs.value }} -DgenerateBackupPoms=false
+
+      - name: Prepare signing keystore
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s' "$SIGN_KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/github-ci-signing.jks"
+        env:
+          SIGN_KEYSTORE_BASE64: ${{ secrets.SIGN_KEYSTORE_BASE64 }}
+
+      - name: Build module
+        run: >-
+          mvn -s "$HOME/.m2/settings.xml" -B -Duser.timezone=UTC clean install
+          -Dsign.keystore=$RUNNER_TEMP/github-ci-signing.jks
+          -Dsign.storetype=JKS
+          -Dsign.alias=${{ secrets.SIGN_KEY_ALIAS }}
+          -Dsign.storepass=${{ secrets.SIGN_KEYSTORE_PASSWORD }}
+          -Dsign.keypass=${{ secrets.SIGN_KEY_PASSWORD }}
+
+      - name: Collect release asset
+        id: asset
+        shell: bash
+        run: |
+          set -euo pipefail
+          group_id=$(sed -n 's:.*<groupId>\(.*\)</groupId>.*:\1:p' pom.xml | head -n 1)
+          artifact_id=$(sed -n 's:.*<artifactId>\(.*\)</artifactId>.*:\1:p' pom.xml | head -n 1)
+          version='${{ steps.version.outputs.value }}'
+          jar_asset="/tmp/${group_id}.${artifact_id}/${group_id}.${artifact_id}.${version}.jar"
+          nar_asset="/tmp/${group_id}.${artifact_id}/${group_id}.${artifact_id}.${version}.nar"
+          if [ ! -f "$jar_asset" ]; then
+            echo "Expected built artifact not found: $jar_asset"
+            exit 1
+          fi
+          cp "$jar_asset" "$nar_asset"
+          echo "path=$nar_asset" >> "$GITHUB_OUTPUT"
+          echo "name=$(basename "$nar_asset")" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ steps.asset.outputs.path }}
+          generate_release_notes: true
