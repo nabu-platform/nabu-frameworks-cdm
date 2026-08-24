@@ -398,8 +398,8 @@
 		query="subscriptions"
 		variable="subscription">
 		<sequence id="372561136c79480da3c77dcdbbd98b14"
-			comment="If we have a filter, check that we are interested"
-			label="subscription/filter != null">
+			comment="If we have a filter, check that we are interested. We do not apply this during initial merge because there is no content to filter against."
+			label="newInstance == false &amp;&amp; subscription/filter != null">
 			<map id="23a5a192cf4f45d28cbbbbffe357a32e">
 				<invoke id="6d6716a4d7084f688b6de542d1fd5b70"
 					resultName="result8af07d66e6454123861a8e82b3a52997"

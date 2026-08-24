@@ -2,3 +2,22 @@ Each successful push "assumes" that the data has been correctly synced.
 This might mean the state is not entirely correct, for example non-slave fields might not be updated.
 
 We only apply changes that we detect between two cdm versions. This means we do not aggressively keep pushing back stale values overwriting potentially new values.
+
+
+# New external ids in pull
+
+In the pull (inside the push) we were originally persisting any external id updates we got there, however, there is a problem:
+
+- system A sees update to existing external id
+- system B is configured as trigger only and as part of the pull, it reports the "old" id hence reverting the change
+
+This means a trigger only system has an absolute veto on any change to an external identifier. We don't want this.
+
+There is still a problem but smaller:
+
+- system A updates a random other field which triggers a push to B
+- system B is configured as trigger only, its pull does catch any pending changes to content, but not external identifiers, so it gets the "old" identifier. Identifiers do not have enough metadata (timeline-wise) for system B to determine which value is "newer", so it overwrites a possible pending external id change with the original value.
+
+The underlying issue is that identifiers are not timelined which makes it hard to distinguish which is the "latest" version, so we have to prioritize one.
+
+However, the absolute veto blocks any change whereas the new system will only "lose" pending changes to an existing external identifer in a trigger only system which is possible but a edge case of an edge case.

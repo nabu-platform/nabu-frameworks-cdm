@@ -715,6 +715,58 @@
 			</link>
 		</invoke>
 	</map>
+	<map id="dad5261ba47f4d63a65c0344092fe733">
+		<invoke id="2d4c9ca4d8ee4453833394906cf791c4"
+			invocationOrder="1"
+			resultName="resulta7fc12e09b104b9f86a3a97f7383a7af"
+			serviceId="nabu.utils.Event.create"
+			x="288"
+			y="65">
+			<link id="711e846629d142c5ab8105d538d5c2dd"
+				fixedValue="true">
+				<from>cdm-sync</from>
+				<to>event/eventCategory</to>
+			</link>
+			<link id="af302ba8650741b383f40b28b7647e82"
+				fixedValue="true">
+				<from>pull-batch</from>
+				<to>event/eventName</to>
+			</link>
+			<link id="bd29488e18524cd1bc39fd73a8edd13b"
+				fixedValue="true">
+				<from>INFO</from>
+				<to>event/severity</to>
+			</link>
+			<link id="3113f007482f4746a3dc4d3a306ad63f">
+				<from>subscription/system</from>
+				<to>event/context</to>
+			</link>
+			<link id="03632d2bcc214203a45bad7d247bfd94"
+				fixedValue="true">
+				<from>="Pull batch succeeded for: " + subscription/system</from>
+				<to>event/message</to>
+			</link>
+			<link id="bd06c4aa9c5c406d867656e305a05b17">
+				<from>subscription/coreTypeId</from>
+				<to>event/artifactId</to>
+			</link>
+			<link id="2857b41a53d7487f9972853d5793dab6">
+				<from>newRun/id</from>
+				<to>event/localId</to>
+			</link>
+		</invoke>
+		<invoke id="bf12dd8c3728403893fb474bcee31291"
+			invocationOrder="2"
+			resultName="resultf5c96ace2d73471d984d1660d55c44c9"
+			serviceId="nabu.utils.Event.fire"
+			x="956"
+			y="133">
+			<link id="4a5481cc937543fe926c3738e2d1dead">
+				<from>resulta7fc12e09b104b9f86a3a97f7383a7af/event</from>
+				<to>event</to>
+			</link>
+		</invoke>
+	</map>
 	<catch id="e87fe92158624d9b8788adcd51f791d3"
 		variable="exception">
 		<sequence id="3a1f46b32a704bdeabb19b5eaf784087"
@@ -766,6 +818,76 @@
 				</invoke>
 			</map>
 		</sequence>
+		<map id="3d759adb52b84d06a402b7aeb6432b57">
+			<invoke id="a7fc12e09b104b9f86a3a97f7383a7af"
+				invocationOrder="1"
+				resultName="resulta7fc12e09b104b9f86a3a97f7383a7af"
+				serviceId="nabu.utils.Event.create"
+				x="595"
+				y="92">
+				<link id="c53f1d6e085440c1a062291b0878f2e2"
+					fixedValue="true">
+					<from>cdm-sync</from>
+					<to>event/eventCategory</to>
+				</link>
+				<link id="e4af45bf8190466483ab78c7cb6277e9"
+					fixedValue="true">
+					<from>pull-batch</from>
+					<to>event/eventName</to>
+				</link>
+				<link id="319f6fd21a554d8ab21ae476b8ce97f8"
+					fixedValue="true">
+					<from>ERROR</from>
+					<to>event/severity</to>
+				</link>
+				<link id="ae642c0a4f7241dd8467ce4923c51440">
+					<from>subscription/system</from>
+					<to>event/context</to>
+				</link>
+				<link id="b3a4f0ce10df4ac28c591f87177dae06"
+					fixedValue="true">
+					<from>="Pull batch failed for: " + subscription/system</from>
+					<to>event/message</to>
+				</link>
+				<link id="9021bc4dc2ba4b68bd673b61d701da4b">
+					<from>subscription/coreTypeId</from>
+					<to>event/artifactId</to>
+				</link>
+				<link id="8cd74d359129493280582e7de926c7e0">
+					<from>newRun/id</from>
+					<to>event/localId</to>
+				</link>
+				<link id="81b67bd06f0f4491b78b3b1a3cc0b89c">
+					<from>resultf6f99c85f327416cb9de129193925250/summary/exceptionStack</from>
+					<to>event/stacktrace</to>
+				</link>
+				<link id="8ed78844177a4aeeaa5a03920c9ab255">
+					<from>resultf6f99c85f327416cb9de129193925250/summary/message</from>
+					<to>event/reason</to>
+				</link>
+			</invoke>
+			<invoke id="f5c96ace2d73471d984d1660d55c44c9"
+				invocationOrder="2"
+				resultName="resultf5c96ace2d73471d984d1660d55c44c9"
+				serviceId="nabu.utils.Event.fire"
+				x="956"
+				y="133">
+				<link id="956af908dea1449086c2898ce64e2409">
+					<from>resulta7fc12e09b104b9f86a3a97f7383a7af/event</from>
+					<to>event</to>
+				</link>
+			</invoke>
+			<invoke id="f6f99c85f327416cb9de129193925250"
+				resultName="resultf6f99c85f327416cb9de129193925250"
+				serviceId="nabu.utils.Runtime.summarizeException"
+				x="114"
+				y="318">
+				<link id="e9b156bf851b442f88a43130d576f4a4">
+					<from>exception</from>
+					<to>exception</to>
+				</link>
+			</invoke>
+		</map>
 		<throw id="26c63dde7b54432aad46c0b5e2a555ac"
 			comment="Rethrow to block task"
 			message="=exception"/>

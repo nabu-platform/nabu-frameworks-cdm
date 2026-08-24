@@ -17,17 +17,21 @@ where ci.active = true
 		where cis.cdm_instance_id = ci.id
 			and cis.decoupled is null
 			and (
+				-- We must have a pull service in order to actually provide new data
+				css.pull_id is not null
 				-- Keep the instance if a non-skipped, non-triggerOnly subscription can still be pulled.
-				not (
-					css.trigger_only = true
-					or cs.name = any(:skipPullForSystem)
-				)
-				or (
-					-- Also keep it if any subscription has pulled newer data than it has merged.
-					cis.pulled is not null
-					and (
-						cis.merged is null
-						or cis.pulled &gt; cis.merged
+				and (
+					not (
+						css.trigger_only = true
+						or cs.name = any(:skipPullForSystem)
+					)
+					or (
+						-- Also keep it if any subscription has pulled newer data than it has merged.
+						cis.pulled is not null
+						and (
+							cis.merged is null
+							or cis.pulled &gt; cis.merged
+						)
 					)
 				)
 			)

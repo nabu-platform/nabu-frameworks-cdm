@@ -8,6 +8,27 @@
 			<to>input/limit</to>
 		</link>
 	</map>
+	<map id="17758040692a48abb799843ce3340eda"
+		label="input/started == null">
+		<invoke id="31896681168c47ef8bfedb06091a2ec2"
+			resultName="result31896681168c47ef8bfedb06091a2ec2"
+			serviceId="nabu.utils.Date.now"
+			x="258"
+			y="246">
+		</invoke>
+		<link id="fc0ce07914e5423599361bb217255d89">
+			<from>result31896681168c47ef8bfedb06091a2ec2/date</from>
+			<to>input/started</to>
+		</link>
+	</map>
+	<map id="cb15aca4b009420a8fe9dd7289ada8b4"
+		comment="Default to 0">
+		<link id="8adcef76530645248cbbe8a666c69944"
+			fixedValue="true">
+			<from>0</from>
+			<to>totalRowCount</to>
+		</link>
+	</map>
 	<map id="0d6d7c2fd4ad4c50be553c8407fe023b"
 		features="ALWAYS_FULL_MERGE"
 		label="input/fullMerge == null">
@@ -80,6 +101,11 @@
 					<from>result80fe146f693f482483748b0c0c824b91/page</from>
 					<to>paging</to>
 				</link>
+				<link id="831275dcb5154037ba813d1d17c084c7"
+					optional="true">
+					<from>result80fe146f693f482483748b0c0c824b91/page/totalRowCount</from>
+					<to>totalRowCount</to>
+				</link>
 			</map>
 			<map id="b1d3383e5dd94ad0a095bd6a17fd781d"
 				comment="Get instances">
@@ -144,6 +170,11 @@
 					<from>result2cfa5cdafe584b45b682c34fc21de6aa/page</from>
 					<to>paging</to>
 				</link>
+				<link id="3982fb3b5f6245a0b74eb2885490a93c"
+					optional="true">
+					<from>result0d46ffbc3d244df498a77c69b0c55f88/totalRowCount</from>
+					<to>totalRowCount</to>
+				</link>
 			</map>
 		</switch>
 		<map id="d2f2cbcbb5054c21bf70636da6922aa6"
@@ -176,6 +207,8 @@
 				</link>
 				<targetProperties
 						collectionIndex="queue">=queueName</targetProperties>
+				<targetProperties
+						collectionIndex="anonymous">true</targetProperties>
 			</invoke>
 		</map>
 		<break id="86b0bcbd97a246779891876291ab5fc2"
@@ -183,4 +216,31 @@
 			<count>1</count>
 		</break>
 	</for>
+	<map id="d90ac34046b8490ca88bc3b8581a72ca">
+		<invoke id="054ff536863848d6afd6265b22694037"
+			resultName="result054ff536863848d6afd6265b22694037"
+			serviceId="nabu.frameworks.cdm.utils.finalizeSynchronization"
+			target="nabu.frameworks.tasks.providers.executor"
+			x="141"
+			y="89">
+			<link id="9af70a9c25124f73903e1b30df7a7230">
+				<from>input/started</from>
+				<to>started</to>
+			</link>
+			<link id="cc3c5421b42447c1a3d876f2ab0aff6a">
+				<from>input/typeId</from>
+				<to>typeId</to>
+			</link>
+			<link id="de89c16c97824804bf0baba16dcaba14">
+				<from>totalRowCount</from>
+				<to>amountOfRecords</to>
+			</link>
+			<targetProperties
+					collectionIndex="anonymous">true</targetProperties>
+			<targetProperties
+					collectionIndex="finalize">true</targetProperties>
+			<targetProperties
+					collectionIndex="queue">=queueName</targetProperties>
+		</invoke>
+	</map>
 </sequence>

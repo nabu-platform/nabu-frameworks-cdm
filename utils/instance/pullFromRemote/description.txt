@@ -4,3 +4,5 @@ Note that the "newInstanceSubscription" is not correct because batchpull creates
 
 CDM_SKIP_SMART_MERGE: if enabled you get the old behavior
 -> new system onboards will overwrite all values (possibly limited to initial master)
+
+We assume systems will generally NOT manipulate the fields that are included in their own filtering, otherwise systems could lock themselves out. This is allowed but we advise against it.

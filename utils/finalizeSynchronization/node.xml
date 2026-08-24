@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2026-07-02T11:54:56.163+02:00" lastModified="2026-07-02T12:09:06.325+02:00" leaf="true" version="9">
+    <environmentId>ares</environmentId>
+    <hidden>false</hidden>
+    <locked>false</locked>
+    <properties/>
+    <references>java.lang.Long</references>
+    <references>java.util.Date</references>
+    <references>nabu.utils.Date.now</references>
+    <references>nabu.utils.Event.fire</references>
+    <references>java.lang.String</references>
+    <references>nabu.utils.Event.create</references>
+</node>

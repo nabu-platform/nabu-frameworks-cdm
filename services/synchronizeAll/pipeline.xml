@@ -10,4 +10,5 @@
 	<structure name="output"/>
 	<structure definition="nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output" maxOccurs="unbounded" minOccurs="0" name="results"/>
 	<field name="amountOfActiveQueues" type="java.lang.Long"/>
+	<field minOccurs="0" name="date" type="java.util.Date"/>
 </structure>

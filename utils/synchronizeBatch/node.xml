@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2024-06-15T07:46:03.294+02:00" lastModified="2026-06-18T10:30:15.108+02:00" leaf="true" version="26">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2024-06-15T07:46:03.294+02:00" lastModified="2026-07-03T14:43:30.163+02:00" leaf="true" version="32">
     <environmentId>ares</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
     <properties/>
     <references>be.nabu.eai.repository.api.Page</references>
-    <references>java.lang.Long</references>
-    <references>nabu.frameworks.cdm.crud.cdmInstance.services.list</references>
+    <references>java.util.Date</references>
+    <references>nabu.utils.Date.now</references>
     <references>nabu.frameworks.cdm.services.synchronize</references>
     <references>nabu.services.jdbc.Services.page</references>
-    <references>java.lang.Boolean</references>
     <references>nabu.frameworks.cdm.database.types.cdmInstance</references>
+    <references>nabu.frameworks.cdm.utils.selectSyncCandidates</references>
+    <references>nabu.frameworks.cdm.utils.finalizeSynchronization</references>
+    <references>java.lang.Long</references>
+    <references>nabu.frameworks.cdm.crud.cdmInstance.services.list</references>
+    <references>java.lang.Boolean</references>
     <references>nabu.frameworks.tasks.providers.executor</references>
     <references>java.lang.String</references>
-    <references>nabu.frameworks.cdm.utils.selectSyncCandidates</references>
 </node>

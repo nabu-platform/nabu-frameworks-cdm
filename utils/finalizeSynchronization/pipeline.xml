@@ -1,0 +1,8 @@
+<structure name="pipeline">
+	<structure name="input">
+		<field name="typeId" type="java.lang.String"/>
+		<field name="started" type="java.util.Date"/>
+		<field name="amountOfRecords" nillable="false" type="java.lang.Long"/>
+	</structure>
+	<structure name="output"/>
+</structure>

@@ -75,6 +75,84 @@
 			<from>resulte36223e19db6426481ff895a50c5f20b/results</from>
 			<to>results</to>
 		</link>
+		<invoke id="29aa8d571f244858b68627370c4943dd"
+			resultName="result29aa8d571f244858b68627370c4943dd"
+			serviceId="nabu.utils.Date.now"
+			x="216"
+			y="221">
+		</invoke>
+		<link id="538c3241ebfc42bcb4f5e2303bee06f3">
+			<from>result29aa8d571f244858b68627370c4943dd/date</from>
+			<to>date</to>
+		</link>
+	</map>
+	<map id="3d759adb52b84d06a402b7aeb6432b57">
+		<invoke id="a7fc12e09b104b9f86a3a97f7383a7af"
+			invocationOrder="1"
+			resultName="resulta7fc12e09b104b9f86a3a97f7383a7af"
+			serviceId="nabu.utils.Event.create"
+			x="384"
+			y="50">
+			<link id="9e4f3420a2534fea8cd2462843f2d051">
+				<from>input/typeId</from>
+				<to>event/artifactId</to>
+			</link>
+			<link id="c53f1d6e085440c1a062291b0878f2e2"
+				fixedValue="true">
+				<from>cdm-sync</from>
+				<to>event/eventCategory</to>
+			</link>
+			<link id="e4af45bf8190466483ab78c7cb6277e9"
+				fixedValue="true">
+				<from>synchronization</from>
+				<to>event/eventName</to>
+			</link>
+			<link id="319f6fd21a554d8ab21ae476b8ce97f8"
+				fixedValue="true">
+				<from>INFO</from>
+				<to>event/severity</to>
+			</link>
+			<link id="06a08ecdadfd43869cc145207eed9516">
+				<from>result162fd5778f134ebd9dc768074e9c77ef/marshalled</from>
+				<to>event/data</to>
+			</link>
+			<link id="4168cd1b467045689ecc2517a1beb9ab"
+				fixedValue="true">
+				<from>SYNCHRONIZATION-START</from>
+				<to>event/code</to>
+			</link>
+			<link id="5669c96c384f4365a44d49b6ec7a352f"
+				fixedValue="true">
+				<from>="Synchronizing " + input/typeId</from>
+				<to>event/message</to>
+			</link>
+		</invoke>
+		<invoke id="162fd5778f134ebd9dc768074e9c77ef"
+			resultName="result162fd5778f134ebd9dc768074e9c77ef"
+			serviceId="nabu.data.json.Services.marshal"
+			x="23"
+			y="189">
+			<link id="7d3ce0094ec44ca0b8a9d06f8dd6d800">
+				<from>input</from>
+				<to>data</to>
+			</link>
+			<link id="eefb5c28b80f4bfc8603003794b1193b"
+				fixedValue="true">
+				<from>true</from>
+				<to>prettyPrint</to>
+			</link>
+		</invoke>
+		<invoke id="f5c96ace2d73471d984d1660d55c44c9"
+			invocationOrder="2"
+			resultName="resultf5c96ace2d73471d984d1660d55c44c9"
+			serviceId="nabu.utils.Event.fire"
+			x="779"
+			y="133">
+			<link id="956af908dea1449086c2898ce64e2409">
+				<from>resulta7fc12e09b104b9f86a3a97f7383a7af/event</from>
+				<to>event</to>
+			</link>
+		</invoke>
 	</map>
 	<for id="11e2ea78dada40ca9313e4b43d1cda84"
 		query="results"
@@ -101,6 +179,8 @@
 						collectionIndex="contextId">=input/typeId</targetProperties>
 				<targetProperties
 						collectionIndex="queue">="cdm-synchronize-" + input/typeId</targetProperties>
+				<targetProperties
+						collectionIndex="anonymous">true</targetProperties>
 			</invoke>
 		</map>
 	</for>
@@ -126,6 +206,10 @@
 						<from>input/fullPushForSystem</from>
 						<to>fullPushForSystem</to>
 					</link>
+					<link id="2a33e20de5914979a9d0c5795b892722">
+						<from>date</from>
+						<to>started</to>
+					</link>
 				</invoke>
 			</map>
 			<map id="8001e1d22dcf49f68221019e030495fe"
@@ -135,7 +219,7 @@
 					serviceId="nabu.frameworks.cdm.utils.synchronizeBatch"
 					target="nabu.frameworks.tasks.providers.executor"
 					x="317"
-					y="96">
+					y="127">
 					<link id="eb4fcd6c00b7492d94874dca98723322">
 						<from>input/typeId</from>
 						<to>typeId</to>
@@ -147,6 +231,10 @@
 					<link id="614dca62bd8a428ca26748df2904dae5">
 						<from>input/fullPushForSystem</from>
 						<to>fullPushForSystem</to>
+					</link>
+					<link id="ef3f908649a54937afeee517bb32fce2">
+						<from>date</from>
+						<to>started</to>
 					</link>
 					<targetProperties
 							collectionIndex="groupId">=input/typeId</targetProperties>

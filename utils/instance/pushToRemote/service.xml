@@ -374,6 +374,7 @@
 		</link>
 	</map>
 	<for id="9cd35a45cbdc4142ae9bcd48a15e2383"
+		query="subscriptions"
 		variable="subscription">
 		<sequence id="451e79842264480ca429eb4d1634cb5b"
 			comment="If we have a filter, check that we are interested"
@@ -1111,7 +1112,8 @@
 						</link>
 					</map>
 					<map id="85b3245ea4094a81be16363511293e35"
-						comment="Update the ids"
+						comment="Update the ids, this is disabled, check description as to why"
+						disabled="true"
 						label="newExternalIds">
 						<invoke id="6cf7e93e611e4992b036a591cfde2745"
 							resultName="result35cf43d44d4343a393614080fe7f194e"
@@ -1740,6 +1742,7 @@
 				label="interestingRelations">
 				<for id="f6a036ca5cd640a78c7ba6455c2191e8"
 					into="interestingRelationsWithIds"
+					query="interestingRelations"
 					variable="singleInterestingRelation">
 					<map id="8175b453426e44e79c12655ad5c423a8"
 						comment="Map initial">
@@ -1756,7 +1759,6 @@
 							<to>interestingRelationsWithIds[0]/targetExternalIds</to>
 						</link>
 					</map>
-					<query>interestingRelations</query>
 				</for>
 			</sequence>
 			<sequence id="25ef206d71a54d4d9daef3baaf84dbbd"
@@ -1941,6 +1943,7 @@
 			</map>
 			<for id="9e141712ece540a781f468245641d9c5"
 				into="instanceSyncDiffs"
+				query="appliedDiffs"
 				variable="appliedDiff">
 				<map id="6441928ac44142639daf31fbfa9718ee">
 					<link id="28fe544f5360439d819389e7a591a70e">
@@ -2006,7 +2009,6 @@
 						<to>instanceSyncDiffs[0]/rejected</to>
 					</link>
 				</map>
-				<query>appliedDiffs</query>
 			</for>
 			<map id="47ce2c02fd6940e49af9c25a62a932f9"
 				comment="Update the &quot;pushed&quot;, this is incorrect if it has been rejected!"
@@ -2556,7 +2558,6 @@
 				</link>
 			</map>
 		</sequence>
-		<query>subscriptions</query>
 	</for>
 	<map id="973ff9e5d7214e1898fc333ee23eab74"
 		label="instanceSubscriptions">

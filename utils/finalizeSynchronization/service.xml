@@ -1,0 +1,65 @@
+<sequence id="2a7e375b744b41d299101ee44ea2e49a">
+	<map id="3d759adb52b84d06a402b7aeb6432b57">
+		<invoke id="a7fc12e09b104b9f86a3a97f7383a7af"
+			invocationOrder="1"
+			resultName="resulta7fc12e09b104b9f86a3a97f7383a7af"
+			serviceId="nabu.utils.Event.create"
+			x="384"
+			y="50">
+			<link id="c53f1d6e085440c1a062291b0878f2e2"
+				fixedValue="true">
+				<from>cdm-sync</from>
+				<to>event/eventCategory</to>
+			</link>
+			<link id="e4af45bf8190466483ab78c7cb6277e9"
+				fixedValue="true">
+				<from>synchronization</from>
+				<to>event/eventName</to>
+			</link>
+			<link id="319f6fd21a554d8ab21ae476b8ce97f8"
+				fixedValue="true">
+				<from>INFO</from>
+				<to>event/severity</to>
+			</link>
+			<link id="cb99979d17054c3e89607977ad518d5f">
+				<from>input/started</from>
+				<to>event/started</to>
+			</link>
+			<link id="96a038560ddc4eee940c5d88cc3b7b31">
+				<from>result5a9e913cdd52462cb1be933c1743f810/date</from>
+				<to>event/stopped</to>
+			</link>
+			<link id="1dfbe982cc504f048396748f705363b1"
+				fixedValue="true">
+				<from>SYNCHRONIZATION-SUCCEEDED</from>
+				<to>event/code</to>
+			</link>
+			<link id="efa98d2d22c84bd19bfaba9b515c9da9">
+				<from>input/typeId</from>
+				<to>event/artifactId</to>
+			</link>
+			<link id="18aaa6aba3fa40509a7b549df26b32d5"
+				fixedValue="true">
+				<from>="Synchronized " + input/amountOfRecords + " " + input/typeId + " instances"</from>
+				<to>event/message</to>
+			</link>
+		</invoke>
+		<invoke id="f5c96ace2d73471d984d1660d55c44c9"
+			invocationOrder="2"
+			resultName="resultf5c96ace2d73471d984d1660d55c44c9"
+			serviceId="nabu.utils.Event.fire"
+			x="779"
+			y="133">
+			<link id="956af908dea1449086c2898ce64e2409">
+				<from>resulta7fc12e09b104b9f86a3a97f7383a7af/event</from>
+				<to>event</to>
+			</link>
+		</invoke>
+		<invoke id="5a9e913cdd52462cb1be933c1743f810"
+			resultName="result5a9e913cdd52462cb1be933c1743f810"
+			serviceId="nabu.utils.Date.now"
+			x="33"
+			y="183">
+		</invoke>
+	</map>
+</sequence>

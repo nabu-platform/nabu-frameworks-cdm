@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T10:05:51.762+02:00" lastModified="2026-06-17T15:36:04.079+02:00" leaf="true" version="119">
+<node artifactManager="be.nabu.eai.module.services.vm.VMServiceManager" created="2023-10-21T10:05:51.762+02:00" lastModified="2026-07-02T11:43:37.724+02:00" leaf="true" version="120">
     <environmentId>ares</environmentId>
     <hidden>false</hidden>
     <locked>false</locked>
@@ -21,6 +21,7 @@
     <references>java.lang.Long</references>
     <references>nabu.frameworks.cdm.crud.cdmSystemSubscription.types.output</references>
     <references>java.lang.Boolean</references>
+    <references>nabu.utils.Event.fire</references>
     <references>java.lang.String</references>
     <references>nabu.data.json.Services.marshal</references>
     <references>nabu.frameworks.cdm.crud.cdmSystemBatchPull.types.output</references>
@@ -40,5 +41,6 @@
     <references>nabu.frameworks.cdm.crud.cdmSystemBatchPull.services.list</references>
     <references>nabu.utils.Runtime.getCorrelationId</references>
     <references>nabu.frameworks.cdm.specs.pull:output</references>
+    <references>nabu.utils.Event.create</references>
     <references>nabu.frameworks.cdm.database.types.cdmInstanceLog</references>
 </node>
